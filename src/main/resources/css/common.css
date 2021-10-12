@@ -69,7 +69,6 @@ body{
 	min-width: 1%;
 }
 
-
 /* CONTAINER CONTENT */
 
 .content{
@@ -93,7 +92,6 @@ body{
 	min-width: 1%;
 }
 
-
 /* MENU BAR */
 
 .logo-main{
@@ -113,7 +111,7 @@ body{
 	
 }
 
-ul, menu, dir {
+.menu>ul{
 	display: flex;
 	list-style-type: disc;
 	margin-block-start: 0;
@@ -133,9 +131,7 @@ li{
 	color: var(--white);
 }
 
-
 /* CONTENT */
-
 
 .page-content {
 	display: block;

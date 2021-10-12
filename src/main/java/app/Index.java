@@ -64,7 +64,6 @@ public class Index implements Handler {
         html = html + "<div id='content'>";
         html = html + "<div id='container-main' class='container'>";
         
-
         // Default Content Div
         html = html + "<div class='page-content'>";
         html = html + "<h1>Homepage</h1>" + "<hr>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
