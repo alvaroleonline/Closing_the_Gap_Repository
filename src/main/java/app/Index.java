@@ -38,12 +38,14 @@ public class Index implements Handler {
         
 
         // Header
-        html = html + "<header class='header'>";
+        html = html + "<div id='header'>";
         html = html + "<div id='container-header' class='container'>";
+        //Menu bar
+        html = html + "<div class='menu'>";
         // Logo
         html = html + "<a href='/'><img src='logo.png' class='logo-main' /></a>";
         // Menu List
-        html = html + "<ul class='menu'>";
+        html = html + "<ul>";
         html = html + "<li> <a href='page1.html'>Page 1</a> </li>";
         html = html + "<li> <a href='page2.html'>Page 2</a> </li>";
         html = html + "<li> <a href='page3.html'>Page 3</a> </li>";
@@ -51,21 +53,24 @@ public class Index implements Handler {
         html = html + "<li> <a href='page5.html'>Page 5</a> </li>";
         html = html + "<li> <a href='page6.html'>Page 6</a> </li>";
         html = html + "</ul>";
+        html = html + "</div>";
         // Closes Header
         html = html + "</div>";
-        html = html + "</header>";
+        html = html + "</div>";
 
 
 
         // Content
-        html = html + "<div id='container-main' class='container'>";
         html = html + "<div id='content'>";
-
-        html = html + "<div class='page-content'>";
-        html = html + "<h1>Homepage</h1>" + "<hr>" + "<p>SSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+        html = html + "<div id='container-main' class='container'>";
         
+
+        // Default Content Div
+        html = html + "<div class='page-content'>";
+        html = html + "<h1>Homepage</h1>" + "<hr>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
         html = html + "</div>";
-        //Closes Main Container
+        
+        //Closes Content
         html = html + "</div>";
         html = html + "</div>";
 
