@@ -119,19 +119,20 @@ body{
 	margin-inline-start: 2em;
 	margin-inline-end: 0;
 	padding-inline-start: 0;
-	}
+}
 
 li{
 	padding: 0 5px;
 	list-style: none;
 }
+
 .li, a{
     text-align: -webkit-match-parent;
 	text-decoration: none;
 	color: var(--white);
 }
 
-/* CONTENT */
+/* DEFAULT CONTENT DIV */
 
 .page-content {
 	display: block;
@@ -147,4 +148,17 @@ li{
 	padding: 20px;
 	margin:20px;
 	text-align: left;
-	}
+}
+
+/* 3 FACTS CONTENT */
+
+.card-wrapper {
+	display: grid;
+	grid-template-columns: minmax(30%,1fr) minmax(30%,1fr) minmax(30%,1fr);
+	grid-gap: 20px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}

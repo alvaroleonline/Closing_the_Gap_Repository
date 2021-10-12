@@ -68,6 +68,29 @@ public class Index implements Handler {
         html = html + "<div class='page-content'>";
         html = html + "<h1>Homepage</h1>" + "<hr>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
         html = html + "</div>";
+
+
+        // Facts Container
+        html = html + "<div class='card-wrapper'>";
+
+        // Opens Fact
+        html = html + "<div class='card-item'>";
+        // Look up information from JDBC
+        JDBCConnection jdbc = new JDBCConnection();
+        // Next we will ask this *class* for the movies
+        ArrayList<String> movies = jdbc.getMovies();
+        // Add HTML for the movies list
+        html = html + "<h1>Movies</h1>" + "<ul>";
+        // Print out all of the movies
+        for (String movie : movies) {
+            html = html + "<li>" + movie + "</li>";
+        }
+        // Closes Fact
+        html = html + "</div>";
+
+        html = html + "<div class='card-item'></div>";
+        html = html + "<div class='card-item'></div>";
+        html = html + "</div>";
         
         //Closes Content
         html = html + "</div>";
