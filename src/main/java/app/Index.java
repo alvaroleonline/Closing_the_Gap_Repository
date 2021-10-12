@@ -39,7 +39,7 @@ public class Index implements Handler {
 
         // Header
         html = html + "<header class='header'>";
-        html = html + "<div class='container'>";
+        html = html + "<div id='container-header' class='container'>";
         // Logo
         html = html + "<a href='/'><img src='logo.png' class='logo-main' /></a>";
         // Menu List
@@ -55,16 +55,27 @@ public class Index implements Handler {
         html = html + "</div>";
         html = html + "</header>";
 
-        // Adds Main Container 
-        html = html + "<h1>Homepage</h1>" +
-               "<p>Some text goes here</p>";
+
+
+        // Content
+        html = html + "<div id='container-main' class='container'>";
+        html = html + "<div id='content'>";
+
+        html = html + "<div class='page-content'>";
+        html = html + "<h1>Homepage</h1>" + "<hr>" + "<p>SSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+        
+        html = html + "</div>";
+        //Closes Main Container
+        html = html + "</div>";
+        html = html + "</div>";
+
+
+
+
 
 
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";
-
-
-
 
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
