@@ -35,26 +35,35 @@ public class Index implements Handler {
         html = html + "<body>";
 
         // Add HTML for the logo.png image
-        html = html + "<img src='logo.png' height='200px'/>";
+        
 
-        // Add HTML for the list of pages
-        html = html + "<h1>Homepage</h1>" +
-               "<p>Links to sub-pages</p>" +
-               "<ul>";
-
-        // Link for each page
+        // Header
+        html = html + "<header class='header'>";
+        html = html + "<div class='container'>";
+        // Logo
+        html = html + "<a href='/'><img src='logo.png' class='logo-main' /></a>";
+        // Menu List
+        html = html + "<ul class='menu'>";
         html = html + "<li> <a href='page1.html'>Page 1</a> </li>";
         html = html + "<li> <a href='page2.html'>Page 2</a> </li>";
         html = html + "<li> <a href='page3.html'>Page 3</a> </li>";
         html = html + "<li> <a href='page4.html'>Page 4</a> </li>";
         html = html + "<li> <a href='page5.html'>Page 5</a> </li>";
         html = html + "<li> <a href='page6.html'>Page 6</a> </li>";
-
-        // Finish the List HTML
         html = html + "</ul>";
+        // Closes Header
+        html = html + "</div>";
+        html = html + "</header>";
+
+        // Adds Main Container 
+        html = html + "<h1>Homepage</h1>" +
+               "<p>Some text goes here</p>";
+
 
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";
+
+
 
 
         // DO NOT MODIFY THIS
