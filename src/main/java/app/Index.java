@@ -78,15 +78,12 @@ public class Index implements Handler {
         // Look up information from JDBC
         JDBCConnection jdbc = new JDBCConnection();
         // Next we will ask this *class* for the movies
-        ArrayList<String> movies = jdbc.getMovies();
-        // Add HTML for the movies list
-        html = html + "<h1>Movies</h1>" + "<ul>";
-        // Print out all of the movies
-        for (String movie : movies) {
-            html = html + "<li>" + movie + "</li>";
-        }
+        int count = jdbc.getFirstFact();
+        // Print out fact count
+        html = html + "<p class='fact-count'>" + count + "%</p>";
         // Closes Fact
         html = html + "</div>";
+        
 
         html = html + "<div class='card-item'></div>";
         html = html + "<div class='card-item'></div>";

@@ -27,6 +27,51 @@ public class JDBCConnection {
         System.out.println("Created JDBC Connection Object");
     }
 
+    //LEVEL 1 - INDEX PAGE 
+
+    //Fact 1
+    public int getFirstFact() {
+        int count = 0;
+
+        // Setup the variable for the JDBC connection
+        Connection connection = null;
+
+        try {
+            // Connect to JDBC data base
+            connection = DriverManager.getConnection(DATABASE);
+
+            // Prepare a new SQL Query & Set a timeout
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            // The Query
+            String query = "SELECT count(*) from MOVIE";
+            
+            // Get Result
+            ResultSet results = statement.executeQuery(query);
+            count = results.getInt("count(*)");
+
+            // Close the statement because we are done with it
+            statement.close();
+            // Exception 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return count;
+    }
+
+
+
+    
     /**
      * Get all of the Movies in the database
      */
