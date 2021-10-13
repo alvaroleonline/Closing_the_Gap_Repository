@@ -188,16 +188,17 @@ li{
 /* FACTS CONTAINER */
 
 .row {
-	display: inline-flex;
-	grid-gap: 20px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-wrap: wrap;
-	flex-wrap: wrap;
+	width: 100%;
+	content: "";
+    display: flex;
+    justify-content:space-between;
+	margin: 0 20px;
+	
 }
 
 .col3{
-	width: calc(50% - 0.65em);
+	width: calc(33.3% - 20px);
 	background-color: var(--white);
+	position: relative;
+	float:left;
 }

@@ -37,7 +37,7 @@ public class Index implements Handler {
         // Add HTML for the logo.png image
         
 
-        // Header
+        // HEADER
         html = html + "<div id='header'>";
         html = html + "<div id='container-header' class='container'>";
         //Menu bar
@@ -60,21 +60,21 @@ public class Index implements Handler {
 
 
 
-        // Content
+        // CONTENT
         html = html + "<div id='content'>";
         html = html + "<div id='container-main' class='container'>";
         
-        // Default Content Div
+        // 1 DIV: Default Content Div
         html = html + "<div class='page-content'>";
         html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
         html = html + "</div>";
 
 
-        // Facts Container
+        // 2 DIV: Facts Container
         html = html + "<div class='row'>";
         
-         // Look up information from JDBC
-         JDBCConnection jdbc = new JDBCConnection();
+        // Look up information from JDBC
+        JDBCConnection jdbc = new JDBCConnection();
         
         // Fact 1
         html = html + "<div class='col3'>";
@@ -84,8 +84,7 @@ public class Index implements Handler {
         html = html + "<p class='fact-count'>" + count1 + "%</p>";
         // Closes Fact
         html = html + "</div>";
-
-
+ 
         // Fact 2
         html = html + "<div class='col3'>";
         // Asks this *class* for the data
@@ -94,8 +93,6 @@ public class Index implements Handler {
         html = html + "<p class='fact-count'>" + count2 + "%</p>";
         // Closes Fact
         html = html + "</div>";
-
-
 
         // Fact 3
         html = html + "<div class='col3'>";
@@ -106,19 +103,23 @@ public class Index implements Handler {
         // Closes Fact
         html = html + "</div>";
 
-
-
-
         // Closes Facts Container
         html = html + "</div>";
-        
+
+
+        // 3 DIV: Default Content Div
+        html = html + "<div class='page-content'>";
+        html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+        html = html + "</div>";
+
+
+
         //Closes Content
         html = html + "</div>";
         html = html + "</div>";
 
-
-
-
+        //FOOTER
+        //Closes Footer
 
 
         // Finish the HTML webpage
