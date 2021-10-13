@@ -29,9 +29,9 @@ public class JDBCConnection {
 
     //LEVEL 1 - INDEX PAGE 
 
-    //Fact 1
+    //FACT 1
     public int getFirstFact() {
-        int count = 0;
+        int count1 = 0;
 
         // Setup the variable for the JDBC connection
         Connection connection = null;
@@ -49,7 +49,7 @@ public class JDBCConnection {
             
             // Get Result
             ResultSet results = statement.executeQuery(query);
-            count = results.getInt("count(*)");
+            count1 = results.getInt("count(*)");
 
             // Close the statement because we are done with it
             statement.close();
@@ -66,7 +66,89 @@ public class JDBCConnection {
             }
         }
 
-        return count;
+        return count1;
+    }
+
+
+    //FACT 2
+    public int getSecondFact() {
+        int count2 = 0;
+
+        // Setup the variable for the JDBC connection
+        Connection connection = null;
+
+        try {
+            // Connect to JDBC data base
+            connection = DriverManager.getConnection(DATABASE);
+
+            // Prepare a new SQL Query & Set a timeout
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            // The Query
+            String query = "SELECT count(*) from MOVIE";
+            
+            // Get Result
+            ResultSet results = statement.executeQuery(query);
+            count2 = results.getInt("count(*)");
+
+            // Close the statement because we are done with it
+            statement.close();
+            // Exception 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return count2;
+    }
+
+
+    //FACT 3
+    public int getThirdFact() {
+        int count3 = 0;
+
+        // Setup the variable for the JDBC connection
+        Connection connection = null;
+
+        try {
+            // Connect to JDBC data base
+            connection = DriverManager.getConnection(DATABASE);
+
+            // Prepare a new SQL Query & Set a timeout
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            // The Query
+            String query = "SELECT count(*) from MOVIE";
+            
+            // Get Result
+            ResultSet results = statement.executeQuery(query);
+            count3 = results.getInt("count(*)");
+
+            // Close the statement because we are done with it
+            statement.close();
+            // Exception 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return count3;
     }
 
 

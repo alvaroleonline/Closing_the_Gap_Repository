@@ -66,27 +66,50 @@ public class Index implements Handler {
         
         // Default Content Div
         html = html + "<div class='page-content'>";
-        html = html + "<h1>Homepage</h1>" + "<hr>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+        html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
         html = html + "</div>";
 
 
         // Facts Container
-        html = html + "<div class='card-wrapper'>";
-
-        // Opens Fact
-        html = html + "<div class='card-item'>";
-        // Look up information from JDBC
-        JDBCConnection jdbc = new JDBCConnection();
-        // Next we will ask this *class* for the movies
-        int count = jdbc.getFirstFact();
-        // Print out fact count
-        html = html + "<p class='fact-count'>" + count + "%</p>";
+        html = html + "<div class='row'>";
+        
+         // Look up information from JDBC
+         JDBCConnection jdbc = new JDBCConnection();
+        
+        // Fact 1
+        html = html + "<div class='col3'>";
+        // Asks this *class* for the data
+        int count1 = jdbc.getFirstFact();
+        // Print out data
+        html = html + "<p class='fact-count'>" + count1 + "%</p>";
         // Closes Fact
         html = html + "</div>";
-        
 
-        html = html + "<div class='card-item'></div>";
-        html = html + "<div class='card-item'></div>";
+
+        // Fact 2
+        html = html + "<div class='col3'>";
+        // Asks this *class* for the data
+        int count2 = jdbc.getSecondFact();
+        // Print out data
+        html = html + "<p class='fact-count'>" + count2 + "%</p>";
+        // Closes Fact
+        html = html + "</div>";
+
+
+
+        // Fact 3
+        html = html + "<div class='col3'>";
+        // Asks this *class* for the data
+        int count3 = jdbc.getThirdFact();
+        // Print out data
+        html = html + "<p class='fact-count'>" + count3 + "%</p>";
+        // Closes Fact
+        html = html + "</div>";
+
+
+
+
+        // Closes Facts Container
         html = html + "</div>";
         
         //Closes Content
