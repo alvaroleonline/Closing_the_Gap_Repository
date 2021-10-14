@@ -120,6 +120,10 @@ public class Index implements Handler {
 
         //FOOTER
         //Closes Footer
+        
+        // Add some JS (external file)
+        //html = html + "<link rel='javascript' type='text/css' href='common.css' />";
+        html = html + "<script src='common.js'></script>";
 
 
         // Finish the HTML webpage

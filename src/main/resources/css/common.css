@@ -85,9 +85,10 @@ margin-inline-end: 0;
 
 #header{
 	width: 100%;
-	display: flex;
-	position: fixed;
-	bottom: 0;
+	display: block; /* flex */
+	/*position: fixed;*/
+    top: 0;
+    transition: top 0.3s ease-in-out;
 	z-index: 999;
 }
 
@@ -96,7 +97,7 @@ margin-inline-end: 0;
 	display: -ms-flexbox;
 	display: flex;
 	margin-top: 0;
-	margin-bottom:40px;
+	margin-bottom: 0; /* 40 */
 }
 
 #container-header>#header{
@@ -138,14 +139,16 @@ margin-inline-end: 0;
 
 .menu{
 	display: flex;
-	width: 100%;
-	background-color: var(--gray-500);
+	width: 100%; /* auto */
+	background-color: var(--gray-400);
 	color: var(--white);
 	border-radius: var(--big);
 	-webkit-box-shadow: var(--shadow-auto);
 	box-shadow: var(--auto);
 	padding: 20px;
 	margin:20px;
+	-webkit-backdrop-filter: saturate(150%) blur(32px);
+	backdrop-filter: saturate(150%) blur(32px);
 	
 }
 
