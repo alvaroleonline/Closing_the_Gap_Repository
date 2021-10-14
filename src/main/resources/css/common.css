@@ -207,3 +207,96 @@ li{
 	position: relative;
 	float:left;
 }
+
+
+/* Mission page CSS*/
+
+.navbar {
+	overflow: hidden;
+	background-color: var(--gray-300);
+	margin-bottom: 80px;
+}
+
+/* Navigation links */
+.navbar a {
+	float: left;
+	font-size: 16px;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+
+  /* The subnavigation menu */
+  .subnav {
+	float: left;
+	overflow: hidden;
+  }
+  
+  .subnav .subnavbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: black;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+  }
+  
+  .navbar a:hover, .subnav:hover .subnavbtn {
+	background-color: var(--orange);
+  }
+  
+  .subnav-content {
+	display: none;
+	background-color: var(--orange);
+	position: absolute;
+  	left: 0;
+	width: 100%;
+	z-index: 1;
+  }
+  
+  /* Style the subnav links */
+  .subnav-content a {
+	float: center;
+	color: black;
+	text-decoration: none;
+  }
+  .subnav-content a:hover {
+	background-color: var(--blue);
+	color: white;
+  }
+  
+  /* When you move the mouse over the subnav container, open the subnav content */
+  .subnav:hover .subnav-content {
+	display: block;
+	}
+
+  .navbar .current {
+	background-color: var(--blue);
+	color: white;
+  }
+  
+  main {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+  }
+
+  .textbox {
+	margin: 10px 60px 10px 60px;
+	max-width: 1000px;
+	padding: 5px 10px 5px 10px;
+	border-radius: 25px;
+	background-color: white;
+  }
+
+
+  footer {
+	  display: block;
+	  position: relative;
+	  left: 15px;
+	  bottom: 15px;
+	  margin-top: 30px;
+  }
