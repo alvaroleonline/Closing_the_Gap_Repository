@@ -51,10 +51,13 @@ public class Page2 implements Handler {
         html = html + "</div></div></div></header>";
 
 
-        //main 
-        html = html + "<main>";
-        html = html + "<div class = 'textbox'>";
+        // CONTENT
+        html = html + "<div id='content'>";
+        html = html + "<div id='container-main' class='container'>";
+
+        html = html + "<div class = 'content-box'>";
         html = html + "<h1>Closing the Gap: Addressing the Challenge</h1>";
+        html = html + "<hr class='in'>";
         html = html + "<p> This website demonstrates progress on the socioeconomic outcomes of the 2020 National Agreement on Closing the Gap for Indigenous Australians. ";
         html = html + "The original Closing the Gap plan created in 2008 fell short on many of its targets. ";
         html = html + "It is our aim to pursue social change by keeping the targets at the forefront of the community's mind, ";
@@ -71,14 +74,21 @@ public class Page2 implements Handler {
         html = html + "<li>Outcome 6: population aged 15+ that have completed Advanced Diploma or higher";
         html = html + "<li>Outcome 8: population aged 15+ that are employed</ul></div>";
 
-        html = html + "<div class = 'textbox'>";
+        html = html + "<div class = 'content-box'>";
         html = html + "<h1>Target Audiences</h1>";
+        html = html + "<hr class='in'>";
         html = html + "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat maecenas volutpat blandit aliquam etiam erat. Amet consectetur adipiscing elit ut aliquam purus. Nec ultrices dui sapien eget mi proin. Purus gravida quis blandit turpis cursus in hac habitasse. Est ultricies integer quis auctor elit sed vulputate mi sit. Vel pretium lectus quam id leo in vitae turpis massa. Velit scelerisque in dictum non consectetur a erat. Tellus at urna condimentum mattis pellentesque id nibh tortor id. Donec enim diam vulputate ut pharetra.</p></div>";
 
-        html = html + "<div class = 'textbox'>";
+        html = html + "<div class = 'content-box'>";
         html = html + "<h1>How to Use this Site</h1>";
+        html = html + "<hr class='in'>";
         html = html + "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat maecenas volutpat blandit aliquam etiam erat. Amet consectetur adipiscing elit ut aliquam purus. Nec ultrices dui sapien eget mi proin. Purus gravida quis blandit turpis cursus in hac habitasse. Est ultricies integer quis auctor elit sed vulputate mi sit. Vel pretium lectus quam id leo in vitae turpis massa. Velit scelerisque in dictum non consectetur a erat. Tellus at urna condimentum mattis pellentesque id nibh tortor id. Donec enim diam vulputate ut pharetra.</p></div>";
-        html = html + "</main>";
+        
+
+
+        //Closes Content
+        html = html + "</div>";
+        html = html + "</div>";
 
         //footer
         html = html + "<footer>2021 Work by Scott Dunsdon (s3918676) & Alvaro Pena Leon (s3909789).</footer>";

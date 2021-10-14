@@ -47,7 +47,7 @@ public class Index implements Handler {
         // Menu List
         html = html + "<ul>";
         html = html + "<li> <a href='page1.html'>Page 1</a> </li>";
-        html = html + "<li> <a href='page2.html'>Page 2</a> </li>";
+        html = html + "<li> <a href='mission.html'>Page 2</a> </li>";
         html = html + "<li> <a href='page3.html'>Page 3</a> </li>";
         html = html + "<li> <a href='page4.html'>Page 4</a> </li>";
         html = html + "<li> <a href='page5.html'>Page 5</a> </li>";
@@ -65,7 +65,7 @@ public class Index implements Handler {
         html = html + "<div id='container-main' class='container'>";
         
         // 1 DIV: Default Content Div
-        html = html + "<div class='page-content'>";
+        html = html + "<div class='content-box'>";
         html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
         html = html + "</div>";
 
@@ -108,7 +108,7 @@ public class Index implements Handler {
 
 
         // 3 DIV: Default Content Div
-        html = html + "<div class='page-content'>";
+        html = html + "<div class='content-box'>";
         html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
         html = html + "</div>";
 

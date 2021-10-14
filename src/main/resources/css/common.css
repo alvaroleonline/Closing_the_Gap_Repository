@@ -175,7 +175,7 @@ li{
 
 /* DEFAULT CONTENT DIV */
 
-.page-content {
+.content-box {
 	display: block;
 	position: relative;
 	overflow: hidden;
@@ -187,7 +187,7 @@ li{
 	-webkit-box-shadow: var(--shadow-auto);
 	box-shadow: var(--shadow-auto);
 	padding: var(--content-div);
-	margin:20px;
+	margin: 10px 20px;
 	text-align: left;
 }
 
@@ -198,7 +198,7 @@ li{
 	content: "";
     display: flex;
     justify-content:space-between;
-	margin: 0 20px;
+	margin: 10px 20px;
 	
 }
 
@@ -281,6 +281,7 @@ li{
 	color: white;
   }
   
+  /*
   main {
 	  display: flex;
 	  flex-direction: column;
@@ -294,6 +295,7 @@ li{
 	border-radius: 25px;
 	background-color: white;
   }
+  */
 
 
   footer {
