@@ -64,13 +64,14 @@ public class Index implements Handler {
         html = html + "<div id='content'>";
         html = html + "<div id='container-main' class='container'>";
         
-        // 1 DIV: Default Content Div
-        html = html + "<div class='content-box'>";
-        html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+        // 1st DIV: Default Content Div
+        html = html + "<div class='content-title'>";
+        html = html + "<h1>Closing the Gap</h1>";
+        html = html + "<hr class='white'>" + "<p>A repository on the socioeconomic outcomes of the 2020 National Agreement on Closing the Gap for Indigenous Australians.</p>";
         html = html + "</div>";
 
 
-        // 2 DIV: Facts Container
+        // 2nd DIV: Facts Container
         html = html + "<div class='row'>";
         
         // Look up information from JDBC
@@ -81,7 +82,7 @@ public class Index implements Handler {
         // Asks this *class* for the data
         int count1 = jdbc.getFirstFact();
         // Print out data
-        html = html + "<p class='fact-count'>" + count1 + "%</p>";
+        html = html + "<h1 class='fact-count'>" + count1 + "%</h1>";
         // Closes Fact
         html = html + "</div>";
  
@@ -90,7 +91,7 @@ public class Index implements Handler {
         // Asks this *class* for the data
         int count2 = jdbc.getSecondFact();
         // Print out data
-        html = html + "<p class='fact-count'>" + count2 + "%</p>";
+        html = html + "<h1 class='fact-count'>" + count2 + "%</h1>";
         // Closes Fact
         html = html + "</div>";
 
@@ -99,17 +100,35 @@ public class Index implements Handler {
         // Asks this *class* for the data
         int count3 = jdbc.getThirdFact();
         // Print out data
-        html = html + "<p class='fact-count'>" + count3 + "%</p>";
+        html = html + "<h1 class='fact-count'>" + count3 + "%</h1>";
         // Closes Fact
         html = html + "</div>";
 
-        // Closes Facts Container
+        // Closes 2nd DIV
         html = html + "</div>";
 
 
-        // 3 DIV: Default Content Div
-        html = html + "<div class='content-box'>";
-        html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+
+        
+        // 3rd DIV
+        html = html + "<div class='row2'>";
+        
+
+        //col1
+        html = html + "<a href='mission.html'>";
+        html = html + "<div class='col1'>";
+        html = html + "<img src='cover_image.jpg' class='img-cover'></img>";
+        html = html + "<h1>Learn More</h1>";
+        html = html + "</div>";
+        html = html + "</a>";
+
+        //col1
+        html = html + "<div class='col2'>";
+        html = html + "<h1>Resources</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+        html = html + "</div>";
+
+
+        // Closes 3rd DIV 
         html = html + "</div>";
 
 
