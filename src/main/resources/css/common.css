@@ -13,6 +13,7 @@ Base styles
     --white: #FFFFFF;
 	--black: #000000;
 	--orange: #FF7F0E;
+	--orange-900: #BF360C;
 	--blue: #304FFE; /* 1F77B4 */
 	--blue-900: #1A237E;
 	--green: #BDFF00;
@@ -258,7 +259,7 @@ li{
     padding: var(--content-div);
     /**/
     overflow: hidden;
-    display: block;
+    display: table-row;
     text-align: center;
     position: relative;
     border: none;
@@ -278,12 +279,16 @@ li{
 
 }
 
+.col3>.fact-count:hover{
+	height:20px;
+}
+
 .fact-hidden {
     color: var(--white);
     margin: 10px -31px 0 -31px;
 	padding: var(--content-div);
     height: 50%;
-    background-color: var(--orange);
+    background-color: var(--blue-900);
     display: block;
 }
 

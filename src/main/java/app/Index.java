@@ -104,7 +104,7 @@ public class Index implements Handler {
         int count1 = jdbc.getFirstFact();
         // Print out data
         html = html + "<span class='fact-count'><h1>" + count1 + "%</h1></span>";
-        html = html + "<span class='fact-hidden'><p>Indigenous people have completed Year 12 against 33% of non-Indigenous</p></span>";
+        html = html + "<span class='fact-hidden'><p>Year 12 completition of Indigenous people compare to 33% of non-Indigenous</p></span>";
         // Closes Fact
         html = html + "</div>";
  
