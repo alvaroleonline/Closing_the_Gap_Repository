@@ -270,7 +270,7 @@ li{
 }
 
 .col3:hover{
-    line-height: 70px;
+    line-height: 80px;
 	-webkit-transition: all .3s ease-in-out;
 	transition: all .3s ease-in-out;
 	box-shadow: var(--shadow-dark);
@@ -279,8 +279,9 @@ li{
 
 }
 
-.col3>.fact-count:hover{
-	height:20px;
+.fact-count>p{
+	line-height: 0px;
+
 }
 
 .fact-hidden {
@@ -288,6 +289,8 @@ li{
     margin: 10px -31px 0 -31px;
 	padding: var(--content-div);
     height: 50%;
+	border-top: 3px;
+	border-color: var(--orange);
     background-color: var(--blue-900);
     display: block;
 }
