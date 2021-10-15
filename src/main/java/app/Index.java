@@ -38,6 +38,27 @@ public class Index implements Handler {
         
 
         // HEADER
+
+
+        //navigation header
+        html = html + "<div id='header'>";
+        //html = html + "<div id='container-header' class='container'>";
+        html = html + "<div class='navbar'>";
+        html = html + "<a href='/'>Home</a>";
+        html = html + "<a class='current' href='mission.html'>Mission</a>";
+        html = html + "<div class='subnav'>";
+        html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
+        html = html + "<div class='subnav-content'>";
+        html = html + "<a href='page3.html'>Subtask 2.1</a>";
+        html = html + "<a href='page4.html'>Subtask 2.2</a>";
+        html = html + "<a href='page5.html'>Subtask 3.1</a>";
+        html = html + "<a href='page6.html'>Subtask 3.2</a>";
+        html = html + "</div></div></div>";
+        // Closes Header
+        //html = html + "</div>";
+        html = html + "</div>";
+        
+        /*
         html = html + "<div id='header'>";
         html = html + "<div id='container-header' class='container'>";
         //Menu bar
@@ -56,7 +77,7 @@ public class Index implements Handler {
         html = html + "</div>";
         // Closes Header
         html = html + "</div>";
-        html = html + "</div>";
+        html = html + "</div>"; */
 
 
 
@@ -82,7 +103,8 @@ public class Index implements Handler {
         // Asks this *class* for the data
         int count1 = jdbc.getFirstFact();
         // Print out data
-        html = html + "<h1 class='fact-count'>" + count1 + "%</h1>";
+        html = html + "<span class='fact-count'><h1>" + count1 + "%</h1></span>";
+        html = html + "<span class='fact-hidden'><p>Of Indigenous people have completed Year 12 against 33 of non-Indigenous</p></span>";
         // Closes Fact
         html = html + "</div>";
  
