@@ -104,7 +104,7 @@ public class Index implements Handler {
         int count1 = jdbc.getFirstFact();
         // Print out data
         html = html + "<span class='fact-count'><h1>" + count1 + "%</h1></span>";
-        html = html + "<span class='fact-hidden'><p>Of Indigenous people have completed Year 12 against 33 of non-Indigenous</p></span>";
+        html = html + "<span class='fact-hidden'><p>Indigenous people have completed Year 12 against 33% of non-Indigenous</p></span>";
         // Closes Fact
         html = html + "</div>";
  
@@ -113,7 +113,8 @@ public class Index implements Handler {
         // Asks this *class* for the data
         int count2 = jdbc.getSecondFact();
         // Print out data
-        html = html + "<h1 class='fact-count'>" + count2 + "%</h1>";
+        html = html + "<span class='fact-count'><h1>" + count2 + "%</h1></span>";
+        html = html + "<span class='fact-hidden'><p>Indigenous people are over 65 years old.</p></span>";
         // Closes Fact
         html = html + "</div>";
 
@@ -122,7 +123,8 @@ public class Index implements Handler {
         // Asks this *class* for the data
         int count3 = jdbc.getThirdFact();
         // Print out data
-        html = html + "<h1 class='fact-count'>" + count3 + "%</h1>";
+        html = html + "<span class='fact-count'><h1>" + count3 + "%</h1></span>";
+        html = html + "<span class='fact-hidden'><p>Indigenous population people in the labour force.</p></span>";
         // Closes Fact
         html = html + "</div>";
 
