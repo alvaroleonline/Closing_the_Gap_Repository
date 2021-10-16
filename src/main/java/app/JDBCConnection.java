@@ -27,7 +27,7 @@ public class JDBCConnection {
         System.out.println("Created JDBC Connection Object");
     }
 
-    //LEVEL 1 - INDEX PAGE 
+    //LEVEL 1.1 - INDEX PAGE 
 
     //FACT 1
     public int getFirstFact() {
@@ -153,7 +153,7 @@ public class JDBCConnection {
 
 
 
-    
+    //LEVEL 2.1 - OUTCOME PAGE 
     /**
      * Get all of the Movies in the database
      */

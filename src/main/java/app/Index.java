@@ -101,32 +101,38 @@ public class Index implements Handler {
         
         // Fact 1
         html = html + "<div class='col3'>";
+        html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
         int count1 = jdbc.getFirstFact();
         // Print out data
-        html = html + "<span class='fact-count'><p>School Education</p><h1>" + count1 + "%</h1></span>";
+        html = html + "<span class='fact-count'><p class='outcome'>School Education</p><h1>" + count1 + "%</h1></span>";
         html = html + "<span class='fact-hidden'><p>Indigenous people have completed Year 12.</p></span>";
         // Closes Fact
+        html = html + "</a>";
         html = html + "</div>";
  
         // Fact 2
         html = html + "<div class='col3'>";
+        html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
         int count2 = jdbc.getSecondFact();
         // Print out data
-        html = html + "<span class='fact-count'><p>Life Expectancy</p><h1>" + count2 + "%</h1></span>";
+        html = html + "<span class='fact-count'><p class='outcome'>Life Expectancy</p><h1>" + count2 + "%</h1></span>";
         html = html + "<span class='fact-hidden'><p>Indigenous people are over 65 years old.</p></span>";
         // Closes Fact
+        html = html + "</a>";
         html = html + "</div>";
 
         // Fact 3
         html = html + "<div class='col3'>";
+        html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
         int count3 = jdbc.getThirdFact();
         // Print out data
-        html = html + "<span class='fact-count'><p>Employement</p><h1>" + count3 + "%</h1></span>";
+        html = html + "<span class='fact-count'><p class='outcome'>Employement</p><h1>" + count3 + "%</h1></span>";
         html = html + "<span class='fact-hidden'><p>Indigenous population people in the labour force.</p></span>";
         // Closes Fact
+        html = html + "</a>";
         html = html + "</div>";
 
         // Closes 2nd DIV
@@ -140,17 +146,22 @@ public class Index implements Handler {
         
 
         //col1
-        html = html + "<a href='mission.html'>";
+        
         html = html + "<div class='col1'>";
         html = html + "<img src='cover_image.jpg' class='img-cover'></img>";
+        html = html + "<a href='mission.html'>";
         html = html + "<h1>Learn More<i class='fa fa-angle-right'></i></h1>";
-        html = html + "</div>";
         html = html + "</a>";
+        html = html + "</div>";
 
         //col1
         html = html + "<div class='col2'>";
-        html = html + "<h1>Resources</h1>" + "<hr class='in'>";
-        html = html + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+        html = html + "<h1>Resources</h1>";
+        html = html + "<div class='resourcebox'>";
+        html = html + "<hr class='in'>" + "<a href='mission.html'><p class='resourcelink'>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p></a>";
+        html = html + "<hr class='in'>" + "<a href='mission.html'><p class='resourcelink'>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p></a>";
+        html = html + "<hr class='in'>" + "<a href='mission.html'><p class='resourcelink'>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p></a>";
+        html = html + "</div>";
         html = html + "</div>";
 
 
