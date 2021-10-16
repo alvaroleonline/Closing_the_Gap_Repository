@@ -1,4 +1,8 @@
 
+
+
+// *** HEADER HIDE AT SCROLLING JS (Currently not active)
+
 var prevScrollpos = window.pageYOffset;
 var lastScrollTop = 0;
 
@@ -13,8 +17,6 @@ window.onscroll = function() {
     }
     prevScrollpos = currentScrollPos;
 }
-
-
 
 /*
 
@@ -57,6 +59,22 @@ function hasScrolled() {
     lastScrollTop = st;
 }
 
-// Credit: Gill @ codeseek.com
+// Credit: Gill @ codeseek.com */
 
-*/
+
+/// *** MISSION PAGE COLLAPSIBLE JS
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var contenthidden = this.nextElementSibling;
+    if (contenthidden.style.maxHeight){
+      contenthidden.style.maxHeight = null;
+    } else {
+      contenthidden.style.maxHeight = contenthidden.scrollHeight + "px";
+    } 
+  });
+}

@@ -20,7 +20,7 @@ Base styles
 	--blue-gradient: linear-gradient(49deg, rgba(26,35,126,1) 0%, rgba(26,35,126,1) 50%, rgba(33,55,177,1) 88%);
 	--green: #BDFF00;
 	/*border-radius*/
-	--big: 10px;
+	--big: 8px;
 	--small: 5px;
 	/*box shadow*/
 	--shadow-auto: 0 1px 3px rgba(0,0,0,.2);
@@ -58,6 +58,10 @@ hr.white{
 
 /*TEXT*/
 
+.content-title>h1{
+	color: var(--white);
+}
+
 h1 {
 	display: block;
 	font-size: var(--h1);
@@ -81,9 +85,6 @@ h2 {
 	font-weight:500;
 }
 
-.content-title>h1{
-	color: var(--white);
-}
 
 p {
 display: block;
@@ -94,6 +95,16 @@ margin-block-end: 0;
 margin-inline-start: 0;
 margin-inline-end: 0;
 }
+
+.fa {
+	display: inline-block;
+	font:'FontAwesome'; 
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transform: translate(0, 0);
+  }
 
 /* CONTAINER */
 
@@ -148,7 +159,7 @@ margin-inline-end: 0;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	margin-top: 150px;
+	margin-top: 100px;
 	margin-bottom:150px;
 }
 
@@ -160,15 +171,93 @@ margin-inline-end: 0;
 	min-width: 1%;
 }
 
-/* MENU BAR */
+.li, a{
+    text-align: -webkit-match-parent;
+	text-decoration: none;
+	list-style: none;
+	color: var(--white);
+}
 
+
+/*** MENU BAR ***/
+
+
+.navbar {
+	overflow: hidden;
+	background-color: var(--gray-300);
+	margin-bottom: 80px;
+}
+
+/* Navigation links */
+.navbar a {
+	float: left;
+	font-size: 16px;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+	float: left;
+	overflow: hidden;
+}
+  
+.subnav .subnavbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: black;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+  
+.navbar a:hover, .subnav:hover .subnavbtn {
+	background-color: var(--orange);
+}
+  
+.subnav-content {
+	display: none;
+	background-color: var(--orange);
+	position: absolute;
+  	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+  
+/* Style the subnav links */
+.subnav-content a {
+	float: center;
+	color: black;
+	text-decoration: none;
+}
+
+.subnav-content a:hover {
+	background-color: var(--blue);
+	color: white;
+}
+  
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+	display: block;
+}
+
+.navbar .current {
+	background-color: var(--blue);
+	color: white;
+}
+
+/*
 .logo-main{
 	max-height: 20px;
 }
 
 .menu{
 	display: flex;
-	width: 100%; /* auto */
+	width: 100%; 
 	background-color: var(--gray-400);
 	color: var(--white);
 	border-radius: var(--big);
@@ -190,17 +279,8 @@ margin-inline-end: 0;
 	margin-inline-end: 0;
 	padding-inline-start: 0;
 }
+*/
 
-li{
-	padding: 0 5px;
-	list-style: none;
-}
-
-.li, a{
-    text-align: -webkit-match-parent;
-	text-decoration: none;
-	color: var(--white);
-}
 
 /* DEFAULT CONTENT DIV */
 
@@ -237,6 +317,9 @@ li{
 	text-align: left;
 }
 
+
+
+/***  HOMEPAGE ***/
 
 /* FACTS CONTAINER */
 
@@ -422,102 +505,63 @@ h2>.fa {
 }
 
 
+/*** MISSION PAGE CSS ***/
 
 
-
-/* Mission page CSS*/
-
-.navbar {
-	overflow: hidden;
-	background-color: var(--gray-300);
-	margin-bottom: 80px;
-}
-
-/* Navigation links */
-.navbar a {
-	float: left;
-	font-size: 16px;
-	color: black;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-  }
-
-  /* The subnavigation menu */
-  .subnav {
-	float: left;
-	overflow: hidden;
-  }
-  
-  .subnav .subnavbtn {
-	font-size: 16px;
-	border: none;
-	outline: none;
-	color: black;
-	padding: 14px 16px;
-	background-color: inherit;
-	font-family: inherit;
-	margin: 0;
-  }
-  
-  .navbar a:hover, .subnav:hover .subnavbtn {
-	background-color: var(--orange);
-  }
-  
-  .subnav-content {
-	display: none;
-	background-color: var(--orange);
-	position: absolute;
-  	left: 0;
+.collapsible {
+	background-color: var(--gray-100);
+	color: var(--black);
+	border-radius: var(--small);
+	cursor: pointer;
+	padding: 18px;
 	width: 100%;
-	z-index: 1;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 15px;
   }
   
-  /* Style the subnav links */
-  .subnav-content a {
-	float: center;
-	color: black;
-	text-decoration: none;
-  }
-  .subnav-content a:hover {
-	background-color: var(--blue);
-	color: white;
+  .active, .collapsible:hover {
+	background-color: var(--orange-900);
+	color: var(--white);
   }
   
-  /* When you move the mouse over the subnav container, open the subnav content */
-  .subnav:hover .subnav-content {
+  .collapsible:after {
+	font-family: 'FontAwesome';
+	content: "\f107";
+    font-weight: 900; 
+	float: right;
+	margin-left: 5px;
+	font-size: 20px;
+  }
+  
+  .active:after {
+	font-family: 'FontAwesome';
+	content: "\f106";
+    font-weight: 900;
+  }
+  
+  .contenthidden {
+	margin: 0;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+  }
+
+  .contenthidden>p {
+	margin: 10px 0;
+  }
+
+
+/*** FOOTER CSS ***/
+
+footer {
 	display: block;
-	}
-
-  .navbar .current {
-	background-color: var(--blue);
-	color: white;
-  }
-  
-  /*
-  main {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-  }
-
-  .textbox {
-	margin: 10px 60px 10px 60px;
-	max-width: 1000px;
-	padding: 5px 10px 5px 10px;
-	border-radius: 25px;
-	background-color: white;
-  }
-  */
-
-
-  footer {
-	  display: block;
-	  position: relative;
-	  left: 15px;
-	  bottom: 15px;
-	  margin-top: 30px;
-  }
+	position: relative;
+	left: 15px;
+	bottom: 15px;
+	margin-top: 30px;
+}
 
 
 
