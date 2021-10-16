@@ -313,15 +313,12 @@ li{
 }
 
 .col1{
-	background-color: var(--white);
+	background-color: var(--blue-900);
 	border-radius: var(--big);
 	box-shadow: var(--shadow-auto);
 	text-align: left;
 	display: inline-block;
     overflow: hidden;
-	-webkit-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
-	background-color: var(--blue-900);
 }
 
 .col1:hover{
@@ -333,7 +330,21 @@ li{
 	padding: var(--content-div);
 	position: -webkit-sticky;
 	color: var(--white);
+	margin-right:17px;
+	transition: all .3s;
+	-webkit-transition: all .3s;
 
+}
+
+.col1>h1:hover{
+	margin-right:0px;
+	transition: all .3s;
+	-webkit-transition: all .3s;
+}
+
+.col1>h1>.fa {
+	margin-top: 5px;
+	float: right;
 }
 
 .img-cover{

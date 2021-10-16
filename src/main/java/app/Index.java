@@ -30,6 +30,7 @@ public class Index implements Handler {
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
+        html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
 
         // Add the body
         html = html + "<body>";
@@ -142,13 +143,14 @@ public class Index implements Handler {
         html = html + "<a href='mission.html'>";
         html = html + "<div class='col1'>";
         html = html + "<img src='cover_image.jpg' class='img-cover'></img>";
-        html = html + "<h1>Learn More</h1>";
+        html = html + "<h1>Learn More<i class='fa fa-angle-right'></i></h1>";
         html = html + "</div>";
         html = html + "</a>";
 
         //col1
         html = html + "<div class='col2'>";
-        html = html + "<h1>Resources</h1>" + "<hr class='in'>" + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
+        html = html + "<h1>Resources</h1>" + "<hr class='in'>";
+        html = html + "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>";
         html = html + "</div>";
 
 
