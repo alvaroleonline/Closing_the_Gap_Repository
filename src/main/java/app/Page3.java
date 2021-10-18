@@ -76,28 +76,78 @@ public class Page3 implements Handler {
         JDBCConnection jdbc = new JDBCConnection();
 
 
-        //Col2 - Chart
+        //Col1 - Chart
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
         
+        /* Add HTML for the web form
+         * We are giving two ways here
+         *  - one for a text box
+         *  - one for a drop down
+         * 
+         * Whitespace is used to help us understand the HTML!
+         * 
+         * IMPORTANT! the action speicifes the URL for POST!
+         */
+        html = html + "<form action='/page3.html' method='post'>";
+        ArrayList<String> movieDirector = jdbc.getMovieDirector();
+        
+        // Add HTML for the dropdown list
+
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='movietype_drop'>Select the Movie Director (Dropdown):</label>";
+        html = html + "      <select id='moviedirector_drop' name='moviedirector_drop'>";
+        html = html + "         <option> </option>";
+        for (String director : movieDirector) {
+                html = html + "<option>" + director + "</option>";
+            }
+        html = html + "      </select>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='orderby_drop'>Order Movie Titles by:</label>";
+        html = html + "      <select id='orderby_drop' name='orderby_drop'>";
+        html = html + "         <option> </option>";
+        html = html + "         <option> ASC </option>";
+        html = html + "         <option> DESC </option>";
+        html = html + "      </select>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='moviedirector_textbox'>Select the Movie Director (Textbox)</label>";
+        html = html + "      <input class='form-control' id='moviedirector_textbox' name='moviedirector_textbox'>";
+        html = html + "   </div>";
+
+        html = html + "   <button type='submit' class='btn btn-primary'>Get all of the movies!</button>";
+
+        html = html + "</form>";
         
         html = html + "</div>";
 
-        //Col1 - Table
-        html = html + "<div class='colTable'>";
-        html = html + "<h1>Overview</h1><hr class='in'>";
-        // Next we will ask this *class* for the movies
-        ArrayList<String> movies = jdbc.getMovies();
-        // Add HTML for the movies list
-        html = html + "<h1>Movies</h1>" + "<ul>";
-        // Finally we can print out all of the movies
-        for (String movie : movies) {
-            html = html + "<li>" + movie + "</li>";
-        }
-        // Finish the List HTML
-        html = html + "</ul>";
-        html = html + "</div>";
 
+
+        //Col2 - Table
+        html = html + "<div class='colTable'>";
+        // html = html + "<h1>Overview</h1><hr class='in'>";
+
+        String moviedirector_drop = context.formParam("moviedirector_drop");
+        String orderby_drop = context.formParam("orderby_drop");
+        // String movietype_drop = context.queryParam("movietype_drop");
+        if (moviedirector_drop == null) {
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html + "<h2><i>No Results to show for dropbox</i></h2>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+            html = html + outputMovies(moviedirector_drop, orderby_drop);
+        }
+
+        String moviedirector_textbox = context.formParam("moviedirector_textbox");
+        if (moviedirector_textbox == null || moviedirector_textbox == "") {
+            // If NULL, nothing to show, therefore we make some "no results" HTML
+            html = html + "<h2><i>No Results to show for textbox</i></h2>";
+        } else {
+            // If NOT NULL, then lookup the movie by type!
+            html = html + outputMovies(moviedirector_textbox, orderby_drop);
+        }
+        html = html + "</div>";
 
 
         // Closes 2nd DIV 
@@ -128,6 +178,69 @@ public class Page3 implements Handler {
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
+    }
+
+    public String outputMovies(String director, String orderby) {
+        String html = "";
+        html = html + "<h1>" + director + " Movies</h1><hr class='in'>";
+        
+        // Look up movies from JDBC
+        JDBCConnection jdbc = new JDBCConnection();
+        ArrayList<String> movies = jdbc.getMovieTitlesAndDirectors(director, orderby);
+
+        
+        
+        // Add HTML for the movies list
+        html = html + "<table><tr><th>Title</th><th>Stars</th></tr>";
+        for (String movie : movies) {
+
+            ArrayList<String> stars = new ArrayList<String>();
+            if (movie.contains("\'")) {
+                String[] splitmovie = movie.split("\'");
+                stars = jdbc.getStarByMovie("%" + splitmovie[0] + "%");
+            } else { 
+                stars = jdbc.getStarByMovie(movie);
+            }
+            
+            html = html + "<tr><td>" + movie + "</td><td><ul>";
+            for (String star : stars) {
+                html = html + "<li>" + star + "</li>";
+            }
+            html = html + "</ul></td></tr>";
+
+        }
+        html = html + "</table>";
+
+        return html;
+    }
+
+
+
+    public class MovieStars {
+        String movieTitle;
+        ArrayList<String> movieStars;
+        
+        //class constructor
+        public MovieStars() {
+            movieTitle = "";
+            movieStars = new ArrayList<String>();
+        }
+    
+        //get and set methods for the class attributes
+        public String getTitle() {
+            return movieTitle;
+        }
+        public ArrayList<String> getStars() {
+            return movieStars;
+        }
+    
+        public void setTitle(String title) {
+            movieTitle = title;
+        }
+        public void setStars(ArrayList<String> stars){
+            movieStars = stars;
+        }
+    
     }
 
 }

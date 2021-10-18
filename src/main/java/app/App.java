@@ -55,10 +55,10 @@ public class App {
         // app.post(Index.URL, new Index());
         // app.post(Page1.URL, new Page1());
         // app.post(Page2.URL, new Page2());
-        // app.post(Page3.URL, new Page3());
-        // app.post(Page4.URL, new Page4());
-        // app.post(Page5.URL, new Page5());
-        // app.post(Page6.URL, new Page6());
+        app.post(Page3.URL, new Page3());
+        app.post(Page4.URL, new Page4());
+        app.post(Page5.URL, new Page5());
+        app.post(Page6.URL, new Page6());
     }
 
 }
