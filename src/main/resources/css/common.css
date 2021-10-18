@@ -12,7 +12,7 @@ Base styles
 	--gray-500: #37474F;
     --white: #FFFFFF;
 	--black: #000000;
-	--orange: #FF7F0E;
+	--orange: #FF7600; /*FF7F0E, FF5400*/
 	--orange-clear: #FF7F0E50;
 	--orange-900: #BF360C;
 	--blue: #304FFE; /* 1F77B4 */
@@ -217,6 +217,7 @@ margin-inline-end: 0;
   
 .navbar a:hover, .subnav:hover .subnavbtn {
 	background-color: var(--orange);
+	color: var(--white);
 }
   
 .subnav-content {
@@ -231,7 +232,8 @@ margin-inline-end: 0;
 /* Style the subnav links */
 .subnav-content a {
 	float: center;
-	color: black;
+	
+	color: var(--white);
 	text-decoration: none;
 }
 
@@ -245,7 +247,7 @@ margin-inline-end: 0;
 	display: block;
 }
 
-.navbar .current {
+.navbar:focus{
 	background-color: var(--blue);
 	color: white;
 }
@@ -360,17 +362,20 @@ margin-inline-end: 0;
 	transition: all .3s ease-in-out;
 	box-shadow: var(--shadow-dark);
     -webkit-box-shadow: var(--shadow-dark);
-	
+}
 
+.fact-count>H1{
+	font-size: 2.3rem;
+	font-weight: 500;
 }
 
 .fact-count>p{
 	line-height: 0px;
-
 }
 
 p.outcome{
 	color: var(--black);
+	font-weight: 500;
 }
 
 .fact-hidden {
@@ -490,7 +495,7 @@ h2.resourcelink:hover{
 	margin:-10px;
 	padding: 10px;
 	transition: .2s;
-	background-color: var(--orange-900);
+	background-color: var(--orange);
 	border-radius: var(--small);
 }
 
@@ -522,7 +527,7 @@ h2>.fa {
   }
   
   .active, .collapsible:hover {
-	background-color: var(--orange-900);
+	background-color: var(--gray-500);
 	color: var(--white);
   }
   
