@@ -154,7 +154,7 @@ public class Index implements Handler {
         html = html + "</a>";
         html = html + "</div>";
 
-        //col1
+        //col2
         html = html + "<div class='col2'>";
         html = html + "<h1>Resources</h1>";
         html = html + "<div class='resourcebox'>";

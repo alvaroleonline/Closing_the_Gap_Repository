@@ -552,6 +552,57 @@ h2>.fa {
 	margin: 10px 0;
   }
 
+/*** SUBTASK 2.2 ***/
+
+.row3 {
+	width: 100%;
+	/*content: "";
+    display: flex;
+    justify-content:space-between;*/
+	margin: 10px 20px;
+	display: grid;
+    grid-template-columns: minmax(24%,1fr) minmax(66%,1fr);
+    grid-gap: 21px;
+}
+
+.row3>.col1{
+	position: -webkit-sticky;
+    position: sticky;
+    top: 20;
+	color: var(--gray-500);
+	background: var(--white);
+	border-radius: var(--big);
+	box-shadow: var(--shadow-auto);
+	padding: var(--content-div);
+	text-align: left;
+	display: inline-block;
+    overflow: hidden;
+	height:fit-content;
+	-webkit-height: fit-content;
+}
+.row3>.colTable{
+	background-color: var(--white);
+	border-radius: var(--big);
+	box-shadow: var(--shadow-auto);
+	padding: var(--content-div);
+	text-align: left;
+	height: 100%;
+}
+
+.colTable>h1 {
+	padding: 0;
+}
+
+.colTable>ul {
+display: block;
+list-style-type: disc;
+margin-block-start: 1em;
+margin-block-end: 1em;
+margin-inline-start: 0px;
+margin-inline-end: 0px;
+padding-inline-start: 30px;
+}
+
 
 /*** FOOTER CSS ***/
 

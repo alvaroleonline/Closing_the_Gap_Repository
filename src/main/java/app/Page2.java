@@ -62,11 +62,7 @@ public class Page2 implements Handler {
         html = html + "The original Closing the Gap plan created in 2008 fell short on many of its targets. ";
         html = html + "It is our aim to pursue social change by keeping the targets at the forefront of the community's mind, ";
         html = html + "in the hope that this awareness creates the political pressure necessaryto meet the targets outlined in the report. ";
-        html = html + "This online database seeks to strike a balance between dense amounts of information and ";
-        html = html + "accessibility. We want our users to be able to see a high-level view of progress towards targets ";
-        html = html + "with ease, as well as to be able to drill down into individual outcomes as required. Ideally having ";
-        html = html + "access to this data will encourage greater community buy-in to achieve the targets, and act as a ";
-        html = html + "touchstone and tool for advocacy work in the area.<br><br></p>";
+        html = html + "<br><br></p>";
         html = html + "<p>Based on the information available to us, we are highlighting measures that relate to four of the Outcomes in the Agreement. "; 
         html = html + "The chosen outcomes and related measurements are as follows:<br><br></p>";
 
@@ -84,7 +80,7 @@ public class Page2 implements Handler {
         html = html + "<div class = 'content-box'>";
         html = html + "<h1>Target Audiences</h1>";
         html = html + "<hr class='in'>";
-        html = html + "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat maecenas volutpat blandit aliquam etiam erat. Amet consectetur adipiscing elit ut aliquam purus. Nec ultrices dui sapien eget mi proin. Purus gravida quis blandit turpis cursus in hac habitasse. Est ultricies integer quis auctor elit sed vulputate mi sit. Vel pretium lectus quam id leo in vitae turpis massa. Velit scelerisque in dictum non consectetur a erat. Tellus at urna condimentum mattis pellentesque id nibh tortor id. Donec enim diam vulputate ut pharetra.</p></div>";
+        html = html + "<p>This online database seeks to strike a balance between dense amounts of information and accessibility. We want our users to be able to see a high-level view of progress towards targets with ease, as well as to be able to drill down into individual outcomes as required. Ideally having access to this data will encourage greater community buy-in to achieve the targets, and act as a touchstone and tool for advocacy work in the area.</p></div>";
 
         html = html + "<div class = 'content-box'>";
         html = html + "<h1>How to Use this Site</h1>";
