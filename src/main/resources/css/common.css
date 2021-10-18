@@ -552,6 +552,9 @@ h2>.fa {
 	margin: 10px 0;
   }
 
+
+
+
 /*** SUBTASK 2.2 ***/
 
 .row3 {
@@ -580,6 +583,7 @@ h2>.fa {
 	height:fit-content;
 	-webkit-height: fit-content;
 }
+
 .row3>.colTable{
 	background-color: var(--white);
 	border-radius: var(--big);
@@ -594,13 +598,13 @@ h2>.fa {
 }
 
 .colTable>ul {
-display: block;
-list-style-type: disc;
-margin-block-start: 1em;
-margin-block-end: 1em;
-margin-inline-start: 0px;
-margin-inline-end: 0px;
-padding-inline-start: 30px;
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 30px;
 }
 
 

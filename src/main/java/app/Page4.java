@@ -28,7 +28,7 @@ public class Page4 implements Handler {
 
         // Add some Header information
         html = html + "<head>" + 
-               "<title>Movies</title>";
+               "<title>State Statistics</title>";
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
@@ -36,29 +36,87 @@ public class Page4 implements Handler {
         // Add the body
         html = html + "<body>";
 
-        // Add HTML for link back to the homepage
-        html = html + "<h1>Page 4</h1>";
-        html = html + "<p>Return to Homepage: ";
-        html = html + "<a href='/'>Link to Homepage</a>";
-        html = html + "</p>";
+        // HEADER
+        //navigation header
+        html = html + "<div id='header'>";
+        //html = html + "<div id='container-header' class='container'>";
+        html = html + "<div class='navbar'>";
+        html = html + "<a href='/'>Home</a>";
+        html = html + "<a class='current' href='mission.html'>Mission</a>";
+        html = html + "<div class='subnav'>";
+        html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
+        html = html + "<div class='subnav-content'>";
+        html = html + "<a href='page3.html'>LGA Statistics</a>";
+        html = html + "<a href='page4.html'>State Statistics</a>";
+        html = html + "<a href='page5.html'>Subtask 3.1</a>";
+        html = html + "<a href='page6.html'>Subtask 3.2</a>";
+        html = html + "</div></div></div>";
+        // CLOSES HEADER
+        //html = html + "</div>";
+        html = html + "</div>";
 
-        // Look up some information from JDBC
-        // First we need to use your JDBCConnection class
+        // OPENS CONTENT
+        html = html + "<div id='content'>";
+        html = html + "<div id='container-main' class='container'>";
+
+        
+        // 1st DIV - Default Content Div
+        html = html + "<div class='content-title'>";
+        html = html + "<h1>Outcome Statistics by State</h1>";
+        html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by State.</p>";
+        html = html + "</div>";
+
+
+        // 2nd DIV - Chart and Table
+        html = html + "<div class='row3'>";
+
+        // Look up some information from JDBC - use JDBCConnection class
         JDBCConnection jdbc = new JDBCConnection();
 
+
+        //Col2 - Chart
+        html = html + "<div class='col1'>";
+        html = html + "<h1>Custom Charts</h1><hr class='in'>";
+        
+        
+        html = html + "</div>";
+
+        //Col1 - Table
+        html = html + "<div class='colTable'>";
+        html = html + "<h1>Overview</h1><hr class='in'>";
         // Next we will ask this *class* for the movies
         ArrayList<String> movies = jdbc.getMovies();
-
         // Add HTML for the movies list
         html = html + "<h1>Movies</h1>" + "<ul>";
-
         // Finally we can print out all of the movies
         for (String movie : movies) {
             html = html + "<li>" + movie + "</li>";
         }
-
         // Finish the List HTML
         html = html + "</ul>";
+        html = html + "</div>";
+
+
+
+        // Closes 2nd DIV 
+        html = html + "</div>";
+
+
+
+        //CLOSES CONTENT
+        html = html + "</div>";
+        html = html + "</div>";
+
+
+
+        //FOOTER
+        //Closes Footer
+        
+
+
+        // Add some JS (external file)
+        //html = html + "<link rel='javascript' type='text/css' href='common.css' />";
+        html = html + "<script src='common.js'></script>";
 
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";

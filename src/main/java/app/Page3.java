@@ -28,7 +28,7 @@ public class Page3 implements Handler {
 
         // Add some Header information
         html = html + "<head>" + 
-               "<title>Movies</title>";
+               "<title>LGA Statistics</title>";
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
@@ -47,8 +47,8 @@ public class Page3 implements Handler {
         html = html + "<div class='subnav'>";
         html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
         html = html + "<div class='subnav-content'>";
-        html = html + "<a href='page3.html'>Subtask 2.1</a>";
-        html = html + "<a href='page4.html'>Subtask 2.2</a>";
+        html = html + "<a href='page3.html'>LGA Statistics</a>";
+        html = html + "<a href='page4.html'>State Statistics</a>";
         html = html + "<a href='page5.html'>Subtask 3.1</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
         html = html + "</div></div></div>";
@@ -64,8 +64,8 @@ public class Page3 implements Handler {
         
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Socioeconomic outcome</h1>";
-        html = html + "<hr class='white'>" + "<p>A repository on the socioeconomic outcomes of the 2020 National Agreement on Closing the Gap for Indigenous Australians.</p>";
+        html = html + "<h1>Outcome Statistics by LGA</h1>";
+        html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
         html = html + "</div>";
 
 
@@ -79,10 +79,13 @@ public class Page3 implements Handler {
         //Col2 - Chart
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
+        
+        
         html = html + "</div>";
 
         //Col1 - Table
         html = html + "<div class='colTable'>";
+        html = html + "<h1>Overview</h1><hr class='in'>";
         // Next we will ask this *class* for the movies
         ArrayList<String> movies = jdbc.getMovies();
         // Add HTML for the movies list
