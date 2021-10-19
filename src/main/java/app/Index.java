@@ -160,7 +160,7 @@ public class Index implements Handler {
         html = html + "<div class='resourcebox'>";
         html = html + "<hr class='in'>" + "<a href='https://iaha.com.au'><h2 class='resourcelink'>IAHA Indigenous Allied Health Australia.<p>Member-based Aboriginal and Torres Strait Islander allied health organisation.</p><i class='fa fa-angle-right'></i></h2></a>";
         html = html + "<hr class='in'>" + "<a href='https://firstnationsmedia.org.au'><h2 class='resourcelink'>First Nations Media Australia.<p>National peak body for the Aboriginal and Torres Strait Islander media industry.</p><i class='fa fa-angle-right'></i></h2></a>";
-        html = html + "<hr class='in'>" + "<a href='https://www.acnc.gov.au'><h2 class='resourcelink'>National Congress of Australia's First Peoples.<p>Advocating for the implementation of the United Nations Declaration on the Rights of Indigenous Peoples.</p><i class='fa fa-angle-right'></i></h2></a>";
+        html = html + "<hr class='in'>" + "<a href='https://humanrights.gov.au'><h2 class='resourcelink'>National Congress of Australia's First Peoples.<p>Advocating for the implementation of the United Nations Declaration on the Rights of Indigenous Peoples.</p><i class='fa fa-angle-right'></i></h2></a>";
         html = html + "</div>";
         html = html + "</div>";
 

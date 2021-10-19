@@ -72,9 +72,6 @@ public class Page3 implements Handler {
         // 2nd DIV - Chart and Table
         html = html + "<div class='row3'>";
 
-        // Look up some information from JDBC - use JDBCConnection class
-        JDBCConnection jdbc = new JDBCConnection();
-
 
         //Col1 - Chart
         html = html + "<div class='col1'>";
@@ -90,6 +87,7 @@ public class Page3 implements Handler {
          * IMPORTANT! the action speicifes the URL for POST!
          */
         html = html + "<form action='/page3.html' method='post'>";
+        JDBCConnection jdbc = new JDBCConnection();
         ArrayList<String> movieDirector = jdbc.getMovieDirector();
         
         // Add HTML for the dropdown list
