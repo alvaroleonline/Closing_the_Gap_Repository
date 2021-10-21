@@ -145,15 +145,7 @@ public class Index implements Handler {
         html = html + "<div class='row2'>";
         
 
-        //col1
         
-        html = html + "<div class='col1'>";
-        html = html + "<img src='cover_image.jpg' class='img-cover'></img>";
-        html = html + "<a href='mission.html'>";
-        html = html + "<h1>Learn More<i class='fa fa-angle-right'></i></h1>";
-        html = html + "</a>";
-        html = html + "</div>";
-
         //col2
         html = html + "<div class='col2'>";
         html = html + "<h1>Resources</h1>";
@@ -162,6 +154,15 @@ public class Index implements Handler {
         html = html + "<hr class='in'>" + "<a href='https://firstnationsmedia.org.au'><h2 class='resourcelink'>First Nations Media Australia.<p>National peak body for the Aboriginal and Torres Strait Islander media industry.</p><i class='fa fa-angle-right'></i></h2></a>";
         html = html + "<hr class='in'>" + "<a href='https://humanrights.gov.au'><h2 class='resourcelink'>National Congress of Australia's First Peoples.<p>Advocating for the implementation of the United Nations Declaration on the Rights of Indigenous Peoples.</p><i class='fa fa-angle-right'></i></h2></a>";
         html = html + "</div>";
+        html = html + "</div>";
+
+
+        //col1
+        html = html + "<div class='col1'>";
+        html = html + "<img src='cover_image.jpg' class='img-cover'></img>";
+        html = html + "<a href='mission.html'>";
+        html = html + "<h1>Learn More</h1>";
+        html = html + "</a>";
         html = html + "</div>";
 
 
