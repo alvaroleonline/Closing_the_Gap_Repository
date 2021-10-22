@@ -54,7 +54,8 @@ public class Index implements Handler {
         html = html + "<a href='page4.html'>Subtask 2.2</a>";
         html = html + "<a href='page5.html'>Subtask 3.1</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
-        html = html + "</div></div></div>";
+        html = html + "</div></div>";
+        html = html + "<a href='resources.html'>Resources</a></div>";
         // Closes Header
         //html = html + "</div>";
         html = html + "</div>";
@@ -150,12 +151,10 @@ public class Index implements Handler {
         html = html + "<div class='col2'>";
         html = html + "<h1>Resources</h1>";
         html = html + "<div class='resourcebox'>";
-        html = html + "<hr class='in'>" + "<a href='https://iaha.com.au'><h2 class='resourcelink'>IAHA Indigenous Allied Health Australia<p>Member-based Aboriginal and Torres Strait Islander allied health organisation.</p><i class='fa fa-angle-right'></i></h2></a>";
         html = html + "<hr class='in'>" + "<a href='https://www.naccho.org.au'><h2 class='resourcelink'>National Aboriginal Community Controlled Health Organisation<p>Leadership body for 143 ACCHOs across Australia that advocate for and implement community-developed health solutions.</p><i class='fa fa-angle-right'></i></h2></a>";
-        html = html + "<hr class='in'>" + "<a href='http://aief.com.au'><h2 class='resourcelink'>Australian Indigenous Education Foundation<p>Provides funding that enables Indigenous students to pursue their education at leading schools.</p><i class='fa fa-angle-right'></i></h2></a>";
         html = html + "<hr class='in'>" + "<a href='https://firstnationsmedia.org.au'><h2 class='resourcelink'>First Nations Media Australia<p>National peak body for the Aboriginal and Torres Strait Islander media industry.</p><i class='fa fa-angle-right'></i></h2></a>";
         html = html + "<hr class='in'>" + "<a href='https://aiatsis.gov.au/'><h2 class='resourcelink'>AIATSIS<p>The Australian Institute of Aboriginal and Torres Strait Islander Studies</p><i class='fa fa-angle-right'></i></h2></a>";
-        html = html + "<hr class='in'>" + "<a href='https://humanrights.gov.au'><h2 class='resourcelink'>National Congress of Australia's First Peoples<p>Advocating for the implementation of the United Nations Declaration on the Rights of Indigenous Peoples.</p><i class='fa fa-angle-right'></i></h2></a>";
+        html = html + "<hr class='in'>" + "<a href='resources.html'><h2 class='resourcelink'>View All<i class='fa fa-angle-right'></i></h2></a>";
         html = html + "</div>";
         html = html + "</div>";
 

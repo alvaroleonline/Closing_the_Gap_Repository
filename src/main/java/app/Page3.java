@@ -51,7 +51,8 @@ public class Page3 implements Handler {
         html = html + "<a href='page4.html'>State Statistics</a>";
         html = html + "<a href='page5.html'>Subtask 3.1</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
-        html = html + "</div></div></div>";
+        html = html + "</div></div>";
+        html = html + "<a href='resources.html'>Resources</a></div>";
         // CLOSES HEADER
         //html = html + "</div>";
         html = html + "</div>";

@@ -48,7 +48,8 @@ public class Page2 implements Handler {
         html = html + "<a href='page4.html'>Subtask 2.2</a>";
         html = html + "<a href='page5.html'>Subtask 3.1</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
-        html = html + "</div></div></div></header>";
+        html = html + "</div></div>";
+        html = html + "<a href='resources.html'>Resources</a></div>";
 
 
         // CONTENT
