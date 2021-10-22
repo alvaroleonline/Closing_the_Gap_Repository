@@ -44,7 +44,7 @@ public class App {
     public static void configureRoutes(Javalin app) {
         // All webpages are listed here as GET pages
         app.get(Index.URL, new Index());
-        app.get(Page1.URL, new Page1());
+        app.get(Resources.URL, new Resources());
         app.get(Page2.URL, new Page2());
         app.get(Page3.URL, new Page3());
         app.get(Page4.URL, new Page4());
