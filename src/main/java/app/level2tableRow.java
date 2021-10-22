@@ -3,18 +3,20 @@ package app;
 public class level2tableRow {
     String lga;
     String state;
-    int rawDataIndig;
-    int rawDataNonIndig;
+    int countIndig;
+    int countNonIndig;
     double percentIndig;
     double percentNonIndig;
+    double gapScore;
 
     level2tableRow() {
         lga = "";
         state = "";
-        rawDataIndig = 0;
-        rawDataNonIndig = 0;
+        countIndig = 0;
+        countNonIndig = 0;
         percentIndig = 0.0;
         percentNonIndig = 0.0;
+        gapScore = 0.0;
     }
 
     public void setLga(String input) {
@@ -25,12 +27,12 @@ public class level2tableRow {
         state = input;
     }
 
-    public void setRawIndig(int input) {
-        rawDataIndig = input;
+    public void setCountIndig(int input) {
+        countIndig = input;
     }
     
-    public void setRawNonIndig(int input) {
-        rawDataNonIndig = input;
+    public void setCountNonIndig(int input) {
+        countNonIndig = input;
     }
 
     public void setPercentIndig(double input) {
@@ -41,6 +43,10 @@ public class level2tableRow {
         percentNonIndig = input;
     }
 
+    public void setGapScore(double input) {
+        gapScore = input;
+    }
+
     public String getLga() {
         return lga;
     }
@@ -49,12 +55,12 @@ public class level2tableRow {
         return state;
     }
 
-    public int getRawIndig () {
-        return rawDataIndig;
+    public int getCountIndig () {
+        return countIndig;
     }
 
-    public int getRawNonIndig () {
-        return rawDataNonIndig;
+    public int getCountNonIndig () {
+        return countNonIndig;
     }
 
     public double getPercentIndig () {
@@ -63,6 +69,10 @@ public class level2tableRow {
 
     public double getPercentNonIndig() {
         return percentNonIndig;
+    }
+
+    public double getGapScore() {
+        return gapScore;
     }
  
 
