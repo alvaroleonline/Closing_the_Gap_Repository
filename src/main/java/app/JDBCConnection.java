@@ -21,7 +21,7 @@ import java.sql.Statement;
 public class JDBCConnection {
 
     // Name of database file (contained in database folder)
-    private static final String DATABASE = "jdbc:sqlite:database/Movies.db";
+    private static final String DATABASE = "jdbc:sqlite:database/ctg.db";
 
     public JDBCConnection() {
         System.out.println("Created JDBC Connection Object");
@@ -293,49 +293,46 @@ public class JDBCConnection {
     //************************************************************* LEVEL 2.2 - STATE STATISTICS  *************************************************************
     
     
-    /**
-     * Get all of the Movies in the database
-     */
-    public ArrayList<String> getMovies() {
-        ArrayList<String> movies = new ArrayList<String>();
+    //a test query using the level 2 view for populating table data
+
+    public ArrayList<level2tableRow> testQuery() {
+        //Create ArrayList of our tableRow class to store the returned data
+        ArrayList<level2tableRow> level2TableData = new ArrayList<level2tableRow>();
 
         // Setup the variable for the JDBC connection
         Connection connection = null;
 
         try {
-            // Connect to JDBC data base
+            // Connect to JDBC data base, prepare a new SQL Query & Set a timeout
             connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
 
             // The Query
-            String query = "SELECT * FROM movie";
+            String query = "SELECT state, SUM(outcome1_i), SUM(outcome1_ni) FROM level2view GROUP BY state";
             
             // Get Result
             ResultSet results = statement.executeQuery(query);
 
             // Process all of the results
-            // The "results" variable is similar to an array
-            // We can iterate through all of the database query results
-            while (results.next()) {
-                // We can lookup a column of the a single record in the
-                // result using the column name
-                // BUT, we must be careful of the column type!
-                int id              = results.getInt("mvnumb");
-                String movieName     = results.getString("mvtitle");
-                int year            = results.getInt("yrmde");
-                String type         = results.getString("mvtype");
 
-                // For now we will just store the movieName and ignore the id
-                movies.add(movieName);
+            while (results.next()) {
+                //create a new row of data
+                level2tableRow row = new level2tableRow();
+
+                //use Set methods to store individual values
+                row.setState(results.getString("state"));
+                row.setCountIndig(results.getInt("outcome1_i"));
+                row.setCountNonIndig(results.getInt("outcome1_ni"));
+
+                //add this row to our ArrayList
+                level2TableData.add(row);
             }
 
             // Close the statement because we are done with it
             statement.close();
         } catch (SQLException e) {
-            // If there is an error, lets just pring the error
+            // If there is an error, lets just print the error
             System.err.println(e.getMessage());
         } finally {
             // Safety code to cleanup
@@ -349,7 +346,10 @@ public class JDBCConnection {
             }
         }
 
-        // Finally we return all of the movies
-        return movies;
+        // Finally we return all table data
+        return level2TableData;
     }
+
+
+
 }
