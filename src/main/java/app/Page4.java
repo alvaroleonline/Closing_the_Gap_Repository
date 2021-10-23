@@ -77,23 +77,30 @@ public class Page4 implements Handler {
         //Col2 - Chart
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
-        
+        //insert chart options 
+        html = html + "//Placeholder for options";
         
         html = html + "</div>";
 
         //Col1 - Table
         html = html + "<div class='colTable'>";
-        html = html + "<h1>Overview</h1><hr class='in'>";
-        // Next we will ask this *class* for the movies
-        ArrayList<String> movies = jdbc.getMovies();
-        // Add HTML for the movies list
-        html = html + "<h1>Movies</h1>" + "<ul>";
-        // Finally we can print out all of the movies
-        for (String movie : movies) {
-            html = html + "<li>" + movie + "</li>";
+        html = html + "<h1>Test Query: Outcome 1</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
+        
+        //create and populate tableData from jdbc
+        ArrayList<level2tableRow> tableData = jdbc.testQuery();
+        // Output into a table
+        html = html + "<table><tr>";
+        html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
+        html = html + "</tr>";
+        for (level2tableRow row : tableData) {
+            html = html + "<tr>";
+            html = html + "<td>" + row.getState() + "</td>";
+            html = html + "<td>" + row.getCountIndig() + "</td>";
+            html = html + "<td>" + row.getCountNonIndig() + "</td>";
+            html = html + "</tr>";
         }
-        // Finish the List HTML
-        html = html + "</ul>";
+        // Finish the table
+        html = html + "</table>";
         html = html + "</div>";
 
 

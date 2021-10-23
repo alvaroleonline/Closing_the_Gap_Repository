@@ -322,8 +322,8 @@ public class JDBCConnection {
 
                 //use Set methods to store individual values
                 row.setState(results.getString("state"));
-                row.setCountIndig(results.getInt("outcome1_i"));
-                row.setCountNonIndig(results.getInt("outcome1_ni"));
+                row.setCountIndig(results.getInt("SUM(outcome1_i)"));
+                row.setCountNonIndig(results.getInt("SUM(outcome1_ni)"));
 
                 //add this row to our ArrayList
                 level2TableData.add(row);
