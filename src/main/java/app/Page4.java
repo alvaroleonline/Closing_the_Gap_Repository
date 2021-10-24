@@ -70,37 +70,110 @@ public class Page4 implements Handler {
         // 2nd DIV - Chart and Table
         html = html + "<div class='row3'>";
 
-        // Look up some information from JDBC - use JDBCConnection class
-        JDBCConnection jdbc = new JDBCConnection();
+        
 
 
-        //Col2 - Chart
+        //Col1 - Chart options
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
         //insert chart options 
-        html = html + "//Placeholder for options";
+        html = html + "<form action='/page4.html' method='post'>";
+        
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
+        html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
+        html = html + "         <option> </option>";
+        html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
+        html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
+        html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
+        html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
+        html = html + "      </select>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
+        html = html + "      <input type='radio' id='all' name='populationRadio' value='All' checked='checked'> <label for='all'>All</label>";
+        html = html + "      <input type='radio' id='female' name='populationRadio' value='Female'> <label for='female'>Females</label>";
+        html = html + "      <input type='radio' id='male' name='populationRadio' value='Male'> <label for='male'>Males</label>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
+        html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
+        html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
+        html = html + "      <select id='orderByDrop' name='orderByDrop'>";
+        html = html + "         <option> State </option>";
+        html = html + "         <option> Indigenous Results </option>";
+        html = html + "         <option> Non-Indigenous Results </option>";
+        html = html + "      </select>";
+        html = html + "      <br>";
+        html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
+        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
+        html = html + "   </div><br>";
+
+        html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
+
+        html = html + "</form>";
         
         html = html + "</div>";
 
-        //Col1 - Table
+        //populate form submission results
+        String outcomeDrop = context.formParam("outcomeDrop");
+        String populationRadio = context.formParam("populationRadio");
+        String displayAsRadio = context.formParam("displayAsRadio");
+        String orderByDrop = context.formParam("orderByDrop");
+        String orderRadio = context.formParam("orderRadio");
+
+        //Col - Table
         html = html + "<div class='colTable'>";
         html = html + "<h1>Test Query: Outcome 1</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
         
+        //Testing form submission results
+        html = html + "<p>Outcome = " + outcomeDrop + "</p>";
+        html = html + "<p>Population Segment = " + populationRadio + "</p>";
+        html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
+        html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
+
         //create and populate tableData from jdbc
+        JDBCConnection jdbc = new JDBCConnection();
+        //ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
+
+        //testQuery
         ArrayList<level2tableRow> tableData = jdbc.testQuery();
+
         // Output into a table
+        if (outcomeDrop == null) {
+            html = html + "<h1>Please select table data options on the left</h1>";
+        } else {
         html = html + "<table><tr>";
         html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
         html = html + "</tr>";
+
         for (level2tableRow row : tableData) {
             html = html + "<tr>";
             html = html + "<td>" + row.getState() + "</td>";
-            html = html + "<td>" + row.getCountIndig() + "</td>";
-            html = html + "<td>" + row.getCountNonIndig() + "</td>";
+            if (displayAsRadio == "Count") {
+                html = html + "<td>" + row.getCountIndig() + "</td>";
+                html = html + "<td>" + row.getCountNonIndig() + "</td>";
+            } else {
+                if (row.getPercentIndig() > 100) {
+                    html = html + "<td>100</td>";
+                } else {
+                html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "</td>";
+                }
+                if (row.getPercentNonIndig() > 100) {
+                    html = html + "<td>100</td>";
+                } else {
+                html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "</td>";
+                }
+            }
+
             html = html + "</tr>";
         }
         // Finish the table
         html = html + "</table>";
+        }
         html = html + "</div>";
 
 
