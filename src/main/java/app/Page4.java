@@ -135,37 +135,37 @@ public class Page4 implements Handler {
         html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
         html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
 
-        //create and populate tableData from jdbc
-        JDBCConnection jdbc = new JDBCConnection();
-        //ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
-
         //testQuery
-        ArrayList<level2tableRow> tableData = jdbc.testQuery();
+        //ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         // Output into a table
         if (outcomeDrop == null) {
             html = html + "<h1>Please select table data options on the left</h1>";
         } else {
-        html = html + "<table><tr>";
-        html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
-        html = html + "</tr>";
+            //create and populate tableData from jdbc
+            JDBCConnection jdbc = new JDBCConnection();
+            ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
+            //start table
+            html = html + "<table><tr>";
+            html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            html = html + "</tr>";
 
         for (level2tableRow row : tableData) {
             html = html + "<tr>";
             html = html + "<td>" + row.getState() + "</td>";
-            if (displayAsRadio == "Count") {
+            if (displayAsRadio.equals("Count")) {
                 html = html + "<td>" + row.getCountIndig() + "</td>";
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
             } else {
                 if (row.getPercentIndig() > 100) {
-                    html = html + "<td>100</td>";
+                    html = html + "<td>100%</td>";
                 } else {
-                html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "</td>";
+                html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
                 }
                 if (row.getPercentNonIndig() > 100) {
                     html = html + "<td>100</td>";
                 } else {
-                html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "</td>";
+                html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
                 }
             }
 
