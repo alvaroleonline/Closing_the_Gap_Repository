@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
+
 /**
  * Temporary HTML as an example page.
  * 
@@ -32,6 +33,9 @@ public class Page3 implements Handler {
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
+        html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
+        
+        
 
         // Add the body
         html = html + "<body>";
@@ -133,7 +137,7 @@ public class Page3 implements Handler {
         html = html + "<div class='colTable'>";
         // html = html + "<h1>Overview</h1><hr class='in'>";
 
-        html = html + "<h1>Test Query: Outcome 1</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
+        html = html + "<h1>" + outcomeDrop + "," + populationRadio + "</h1><h3></h3><hr class='in'>";
         
         //Testing form submission results
         html = html + "<p>Outcome = " + outcomeDrop + "</p>";
@@ -152,11 +156,14 @@ public class Page3 implements Handler {
             JDBCConnection jdbc = new JDBCConnection();
             ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
             //start table
-            html = html + "<table><tr>";
+            html = html + "<table id='table_id' class='display'>";
+            html = html + "<thead><tr>";
             html = html + "<th>Lga</th><th>Indigenous</th><th>Non-Indigenous</th>";
-            html = html + "</tr>";
+            html = html + "</tr></thead>";
 
+        html = html + "<tbody>";
         for (level2tableRow row : tableData) {
+            
             html = html + "<tr>";
             html = html + "<td>" + row.getLga() + "</td>";
             if (displayAsRadio.equals("Count")) {
@@ -177,6 +184,7 @@ public class Page3 implements Handler {
 
             html = html + "</tr>";
         }
+        html = html + "</tbody>";
         // Finish the table
         html = html + "</table>";
         }
@@ -200,8 +208,12 @@ public class Page3 implements Handler {
 
 
         // Add some JS (external file)
-        //html = html + "<link rel='javascript' type='text/css' href='common.css' />";
+        html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
+        // html = html + "<script type='text/javascript' src='https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js'></script>";
+        
         html = html + "<script src='common.js'></script>";
+
+
 
 
         // Finish the HTML webpage

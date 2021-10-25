@@ -1,6 +1,5 @@
 
 
-
 // *** HEADER HIDE AT SCROLLING JS (Currently not active)
 
 var prevScrollpos = window.pageYOffset;
@@ -62,7 +61,7 @@ function hasScrolled() {
 // Credit: Gill @ codeseek.com */
 
 
-/// *** MISSION PAGE COLLAPSIBLE JS
+/// Mission page collapsible
 
 var coll = document.getElementsByClassName("collapsible");
 var i;
@@ -78,3 +77,10 @@ for (i = 0; i < coll.length; i++) {
     } 
   });
 }
+
+
+// Initialize DataTables
+
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} );
