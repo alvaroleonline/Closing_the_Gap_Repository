@@ -78,48 +78,54 @@ public class Page3 implements Handler {
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
         
-        /* Add HTML for the web form
-         * We are giving two ways here
-         *  - one for a text box
-         *  - one for a drop down
-         * 
-         * Whitespace is used to help us understand the HTML!
-         * 
-         * IMPORTANT! the action speicifes the URL for POST!
-         */
         html = html + "<form action='/page3.html' method='post'>";
-        JDBCConnection jdbc = new JDBCConnection();
-        ArrayList<String> movieDirector = jdbc.getMovieDirector();
         
-        // Add HTML for the dropdown list
-
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='movietype_drop'>Select the Movie Director (Dropdown):</label>";
-        html = html + "      <select id='moviedirector_drop' name='moviedirector_drop'>";
+        html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
+        html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
         html = html + "         <option> </option>";
-        for (String director : movieDirector) {
-                html = html + "<option>" + director + "</option>";
-            }
+        html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
+        html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
+        html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
+        html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
         html = html + "      </select>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='orderby_drop'>Order Movie Titles by:</label>";
-        html = html + "      <select id='orderby_drop' name='orderby_drop'>";
-        html = html + "         <option> </option>";
-        html = html + "         <option> ASC </option>";
-        html = html + "         <option> DESC </option>";
-        html = html + "      </select>";
+        html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
+        html = html + "      <input type='radio' id='all' name='populationRadio' value='All' checked='checked'> <label for='all'>All</label>";
+        html = html + "      <input type='radio' id='female' name='populationRadio' value='Female'> <label for='female'>Females</label>";
+        html = html + "      <input type='radio' id='male' name='populationRadio' value='Male'> <label for='male'>Males</label>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='moviedirector_textbox'>Select the Movie Director (Textbox)</label>";
-        html = html + "      <input class='form-control' id='moviedirector_textbox' name='moviedirector_textbox'>";
+        html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
+        html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
+        html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
         html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
+        html = html + "      <select id='orderByDrop' name='orderByDrop'>";
+        html = html + "         <option> Lga </option>";
+        html = html + "         <option> Indigenous Results </option>";
+        html = html + "         <option> Non-Indigenous Results </option>";
+        html = html + "      </select>";
+        html = html + "      <br>";
+        html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
+        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
+        html = html + "   </div><br>";
 
-        html = html + "   <button type='submit' class='btn btn-primary'>Get all of the movies!</button>";
+        html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
 
         html = html + "</form>";
         
         html = html + "</div>";
+
+
+        //populate form submission results
+        String outcomeDrop = context.formParam("outcomeDrop");
+        String populationRadio = context.formParam("populationRadio");
+        String displayAsRadio = context.formParam("displayAsRadio");
+        String orderByDrop = context.formParam("orderByDrop");
+        String orderRadio = context.formParam("orderRadio");
 
 
 
@@ -127,24 +133,52 @@ public class Page3 implements Handler {
         html = html + "<div class='colTable'>";
         // html = html + "<h1>Overview</h1><hr class='in'>";
 
-        String moviedirector_drop = context.formParam("moviedirector_drop");
-        String orderby_drop = context.formParam("orderby_drop");
-        // String movietype_drop = context.queryParam("movietype_drop");
-        if (moviedirector_drop == null) {
-            // If NULL, nothing to show, therefore we make some "no results" HTML
-            html = html + "<h2><i>No Results to show for dropbox</i></h2>";
-        } else {
-            // If NOT NULL, then lookup the movie by type!
-            html = html + outputMovies(moviedirector_drop, orderby_drop);
-        }
+        html = html + "<h1>Test Query: Outcome 1</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
+        
+        //Testing form submission results
+        html = html + "<p>Outcome = " + outcomeDrop + "</p>";
+        html = html + "<p>Population Segment = " + populationRadio + "</p>";
+        html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
+        html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
 
-        String moviedirector_textbox = context.formParam("moviedirector_textbox");
-        if (moviedirector_textbox == null || moviedirector_textbox == "") {
-            // If NULL, nothing to show, therefore we make some "no results" HTML
-            html = html + "<h2><i>No Results to show for textbox</i></h2>";
+        //testQuery
+        //ArrayList<level2tableRow> tableData = jdbc.testQuery();
+
+        // Output into a table
+        if (outcomeDrop == null) {
+            html = html + "<h1>Please select table data options on the left</h1>";
         } else {
-            // If NOT NULL, then lookup the movie by type!
-            html = html + outputMovies(moviedirector_textbox, orderby_drop);
+            //create and populate tableData from jdbc
+            JDBCConnection jdbc = new JDBCConnection();
+            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
+            //start table
+            html = html + "<table><tr>";
+            html = html + "<th>Lga</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            html = html + "</tr>";
+
+        for (level2tableRow row : tableData) {
+            html = html + "<tr>";
+            html = html + "<td>" + row.getLga() + "</td>";
+            if (displayAsRadio.equals("Count")) {
+                html = html + "<td>" + row.getCountIndig() + "</td>";
+                html = html + "<td>" + row.getCountNonIndig() + "</td>";
+            } else {
+                if (row.getPercentIndig() > 100) {
+                    html = html + "<td>100%</td>";
+                } else {
+                html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
+                }
+                if (row.getPercentNonIndig() > 100) {
+                    html = html + "<td>100</td>";
+                } else {
+                html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
+                }
+            }
+
+            html = html + "</tr>";
+        }
+        // Finish the table
+        html = html + "</table>";
         }
         html = html + "</div>";
 
@@ -177,69 +211,6 @@ public class Page3 implements Handler {
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
-    }
-
-    public String outputMovies(String director, String orderby) {
-        String html = "";
-        html = html + "<h1>" + director + " Movies</h1><hr class='in'>";
-        
-        // Look up movies from JDBC
-        JDBCConnection jdbc = new JDBCConnection();
-        ArrayList<String> movies = jdbc.getMovieTitlesAndDirectors(director, orderby);
-
-        
-        
-        // Add HTML for the movies list
-        html = html + "<table><tr><th>Title</th><th>Stars</th></tr>";
-        for (String movie : movies) {
-
-            ArrayList<String> stars = new ArrayList<String>();
-            if (movie.contains("\'")) {
-                String[] splitmovie = movie.split("\'");
-                stars = jdbc.getStarByMovie("%" + splitmovie[0] + "%");
-            } else { 
-                stars = jdbc.getStarByMovie(movie);
-            }
-            
-            html = html + "<tr><td>" + movie + "</td><td><ul>";
-            for (String star : stars) {
-                html = html + "<li>" + star + "</li>";
-            }
-            html = html + "</ul></td></tr>";
-
-        }
-        html = html + "</table>";
-
-        return html;
-    }
-
-
-
-    public class MovieStars {
-        String movieTitle;
-        ArrayList<String> movieStars;
-        
-        //class constructor
-        public MovieStars() {
-            movieTitle = "";
-            movieStars = new ArrayList<String>();
-        }
-    
-        //get and set methods for the class attributes
-        public String getTitle() {
-            return movieTitle;
-        }
-        public ArrayList<String> getStars() {
-            return movieStars;
-        }
-    
-        public void setTitle(String title) {
-            movieTitle = title;
-        }
-        public void setStars(ArrayList<String> stars){
-            movieStars = stars;
-        }
-    
     }
 
 }

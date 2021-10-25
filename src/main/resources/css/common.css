@@ -669,7 +669,6 @@ h2>.fa {
 	padding: var(--content-div);
 	border-radius: var(--big);
 	position: -webkit-sticky;
-	padding-right: 50px;
 	transition: all .3s;
 	-webkit-transition: all .3s;
 	color: var(--black);
@@ -679,9 +678,9 @@ h2>.fa {
 
 .col4>a>h2:hover{
 	margin: -2px;
-	color: var(--white);
-	background-color: var(--orange);
-	padding-right:35px;
+	padding-right: 32px;
+	/*color: var(--white);
+	background-color: var(--orange);*/
 	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
 	-webkit-box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
 	-moz-box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
@@ -706,9 +705,10 @@ h2>.fa {
   }
 
   .col4>a>h2:hover:after {
+	margin-right: -10px;
 	transform: scale(1.05);
-	background-color: var(--white);
-	color: var(--orange);
+	background-color: var(--orange);
+	color: var(--white);
 	box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.2);
 	-webkit-box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.2);

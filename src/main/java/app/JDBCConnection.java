@@ -155,79 +155,79 @@ public class JDBCConnection {
 
     //************************************************************* LEVEL 2.1 - LGA STATISTICS *************************************************************
     
-    public ArrayList<String> getMovieTitlesAndDirectors(String director, String orderby) {
-        ArrayList<String> movies = new ArrayList<String>();
-        
-        //keep this
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection(DATABASE);
-
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // edit from here
-            String query = "SELECT m.mvtitle FROM movie m JOIN director d ON m.dirnumb = d.dirnumb WHERE dirname = '" + director + "' ORDER BY mvtitle " + orderby + "";
-            //System.out.println(query);
-        
-            ResultSet results = statement.executeQuery(query);
-            while (results.next()) {
-                String movieName     = results.getString("mvtitle");
-                movies.add(movieName);
-            }
-
-            // keep this
-            statement.close();
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-            }
-        }
-
-        //edit this as needed
-        return movies;
-    }
-
-
-    // METHOD FOR DROP DOWN DIRECTOR 
-    public ArrayList<String> getMovieDirector() {
-        ArrayList<String> director = new ArrayList<String>();
+    public ArrayList<level2tableRow> dataByLga(String outcome, String population, String display, String orderColumn, String order) {
+        //Create ArrayList of our tableRow class to store the returned data
+        ArrayList<level2tableRow> level2TableData = new ArrayList<level2tableRow>();
 
         // Setup the variable for the JDBC connection
         Connection connection = null;
 
         try {
-            // Connect to JDBC data base
+            // Connect to JDBC data base, prepare a new SQL Query & Set a timeout
             connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
 
             // The Query
-            String query = "SELECT distinct dirname from DIRECTOR;";
-           // System.out.println(query);
             
+            String select1 = "";
+            String select2 = "";
+            String having = "";
+            String orderBy = "";
+
+
+            if (display.equals("Count")) {
+                select1 = "SUM(" + outcome + "_i)";
+                select2 = "SUM(" + outcome + "_ni)";
+            } else {
+                select1 = "AVG(" + outcome + "_iPercent)";
+                select2 = "AVG(" + outcome + "_niPercent)";
+            }
+            
+            if (!population.equals("All")) {
+                having = ", sex HAVING sex = '" + population + "'";
+            }
+            
+            if (orderColumn.equals("Lga")) {
+                orderBy = "lga";
+            } else if (orderColumn.equals("Indigenous Results")) {
+                orderBy = select1;
+            } else {
+                orderBy = select2;
+            }
+
+            String query = "SELECT lga, " + select1 + ", " + select2 + " FROM level2view GROUP BY lga" + having + " ORDER BY " + orderBy + " " + order;
+            
+            //test query output
+            //System.out.println(query);
+
             // Get Result
             ResultSet results = statement.executeQuery(query);
 
             // Process all of the results
+
             while (results.next()) {
-                String movieDirector     = results.getString("dirname");
-                director.add(movieDirector);
+                //create a new row of data
+                level2tableRow row = new level2tableRow();
+
+                //use Set methods to store individual values
+                row.setLga(results.getString("lga"));
+
+                if (display.equals("Count")) {
+                    row.setCountIndig(results.getInt(select1));
+                    row.setCountNonIndig(results.getInt(select2));
+                } else {
+                    row.setPercentIndig(results.getDouble(select1));
+                    row.setPercentNonIndig(results.getDouble(select2));
+                }
+                //add this row to our ArrayList
+                level2TableData.add(row);
             }
 
             // Close the statement because we are done with it
             statement.close();
         } catch (SQLException e) {
-            // If there is an error, lets just pring the error
+            // If there is an error, lets just print the error
             System.err.println(e.getMessage());
         } finally {
             // Safety code to cleanup
@@ -241,53 +241,10 @@ public class JDBCConnection {
             }
         }
 
-        // Finally we return all of the movies
-        return director;
+        // Finally we return all table data
+        return level2TableData;
     }
 
-
-
-    public ArrayList<String> getStarByMovie(String movie) {
-        ArrayList<String> star = new ArrayList<String>();
-        
-        //keep this
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection(DATABASE);
-
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            // edit from here
-            String query = "SELECT s.starname FROM star as s JOIN movstar as ms ON s.starnumb = ms.starnumb JOIN movie as m ON m.mvnumb = ms.mvnumb WHERE m.mvtitle LIKE '" + movie + "'";
-            //System.out.println(query);
-        
-            ResultSet results = statement.executeQuery(query);
-            while (results.next()) {
-                String movieStar     = results.getString("starname");
-                star.add(movieStar);
-            }
-
-            // keep this
-            statement.close();
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-            }
-        }
-
-        //edit this as needed
-        return star;
-    }
-    
-    
     
 
     //************************************************************* LEVEL 2.2 - STATE STATISTICS  *************************************************************
