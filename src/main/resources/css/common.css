@@ -30,6 +30,7 @@ Base styles
 	--h1: 2.3rem;
 	--h2: 1.2rem;
 	--p: 0.9rem;
+	--b: 600;
 	/*padding*/
 	--content-div: 30px;
 }
@@ -107,7 +108,7 @@ margin-inline-end: 0;
   }
 
 b {
-	font-weight: 600;
+	font-weight: var(--b);
 }
 
 /* CONTAINER */
@@ -591,7 +592,7 @@ h2>.fa {
 
 
 
-/*** SUBTASK 2.2 ***/
+/*** SUBTASK 2.1 - 2.2  MAIN CONTAINERS ***/
 
 .row3 {
 	width: 100%;
@@ -642,6 +643,47 @@ h2>.fa {
 	margin-inline-end: 0px;
 	padding-inline-start: 30px;
 }
+
+
+/*** 2.1 ***/
+
+/* Chart */
+.form-group>#outcomeDrop, #populationDrop, #countAsDrop{
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+
+/* Table */
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--gray-400);
+	text-align: left;
+}
+
+table.dataTable thead th, table.dataTable tfoot th {
+    font-weight: var(--b);
+}
+
+table {
+    font-size: var(--p);
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+	color: #333;
+	font-size: var(--p);
+}
+
+table.dataTable.no-footer {
+	padding-top:20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid var(--gray-400);
+	}
+
+
+
+
+
 
 
 

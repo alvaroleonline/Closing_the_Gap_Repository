@@ -32,9 +32,10 @@ public class Page3 implements Handler {
                "<title>LGA Statistics</title>";
 
         // Add some CSS (external file)
-        html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
         html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
-        
+        html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
+        html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
+        html = html + "<script src='common.js'></script>";
         
 
         // Add the body
@@ -85,9 +86,9 @@ public class Page3 implements Handler {
         html = html + "<form action='/page3.html' method='post'>";
         
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
+        // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option> </option>";
+        html = html + "         <option>Select Outcome Data</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
@@ -95,15 +96,20 @@ public class Page3 implements Handler {
         html = html + "      </select>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
-        html = html + "      <input type='radio' id='all' name='populationRadio' value='All' checked='checked'> <label for='all'>All</label>";
-        html = html + "      <input type='radio' id='female' name='populationRadio' value='Female'> <label for='female'>Females</label>";
-        html = html + "      <input type='radio' id='male' name='populationRadio' value='Male'> <label for='male'>Males</label>";
+        //html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
+        html = html + "      <select id='populationDrop' name='populationDrop'>";
+        html = html + "         <option value = 'All'>Select the Population Segment</option>";
+        html = html + "         <option value = 'All'> All</option>";
+        html = html + "         <option value = 'Female'> Female</option>";
+        html = html + "         <option value = 'Male'> Male</option>";
+        html = html + "      </select>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
-        html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
-        html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
+        html = html + "      <select id='countAsDrop' name='countAsDrop'>";
+        html = html + "         <option>Display Count as</option>";
+        html = html + "         <option value = 'Percent'> Percentages</option>";
+        html = html + "         <option value = 'Count'> Raw Figures</option>";
+        html = html + "      </select>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
@@ -117,7 +123,7 @@ public class Page3 implements Handler {
         html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
         html = html + "   </div><br>";
 
-        html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
+        html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
         
@@ -126,8 +132,8 @@ public class Page3 implements Handler {
 
         //populate form submission results
         String outcomeDrop = context.formParam("outcomeDrop");
-        String populationRadio = context.formParam("populationRadio");
-        String displayAsRadio = context.formParam("displayAsRadio");
+        String populationDrop = context.formParam("populationDrop");
+        String countAsDrop = context.formParam("countAsDrop");
         String orderByDrop = context.formParam("orderByDrop");
         String orderRadio = context.formParam("orderRadio");
 
@@ -137,13 +143,13 @@ public class Page3 implements Handler {
         html = html + "<div class='colTable'>";
         // html = html + "<h1>Overview</h1><hr class='in'>";
 
-        html = html + "<h1>" + outcomeDrop + "," + populationRadio + "</h1><h3></h3><hr class='in'>";
+        html = html + "<h1>" + outcomeDrop + "," + populationDrop + "</h1><h3></h3><hr class='in'>";
         
-        //Testing form submission results
+        /* Testing form submission results
         html = html + "<p>Outcome = " + outcomeDrop + "</p>";
-        html = html + "<p>Population Segment = " + populationRadio + "</p>";
-        html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
-        html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
+        html = html + "<p>Population Segment = " + populationDrop + "</p>";
+        html = html + "<p>Display Data As = " + countAsDrop + "</p>";
+        html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>"; */
 
         //testQuery
         //ArrayList<level2tableRow> tableData = jdbc.testQuery();
@@ -154,7 +160,7 @@ public class Page3 implements Handler {
         } else {
             //create and populate tableData from jdbc
             JDBCConnection jdbc = new JDBCConnection();
-            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
+            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationDrop, countAsDrop, orderByDrop, orderRadio);
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
@@ -166,17 +172,17 @@ public class Page3 implements Handler {
             
             html = html + "<tr>";
             html = html + "<td>" + row.getLga() + "</td>";
-            if (displayAsRadio.equals("Count")) {
+            if (countAsDrop.equals("Count")) {
                 html = html + "<td>" + row.getCountIndig() + "</td>";
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
             } else {
                 if (row.getPercentIndig() > 100) {
-                    html = html + "<td>100%</td>";
+                    html = html + "<td>100.00%</td>";
                 } else {
                 html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
                 }
                 if (row.getPercentNonIndig() > 100) {
-                    html = html + "<td>100</td>";
+                    html = html + "<td>100.00%</td>";
                 } else {
                 html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
                 }
@@ -208,10 +214,9 @@ public class Page3 implements Handler {
 
 
         // Add some JS (external file)
-        html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
+        
         // html = html + "<script type='text/javascript' src='https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js'></script>";
         
-        html = html + "<script src='common.js'></script>";
 
 
 
