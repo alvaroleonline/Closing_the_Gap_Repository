@@ -155,7 +155,7 @@ public class JDBCConnection {
 
     //************************************************************* LEVEL 2.1 - LGA STATISTICS *************************************************************
     
-    public ArrayList<level2tableRow> dataByLga(String outcome, String population, String display, String orderColumn, String order) {
+    public ArrayList<level2tableRow> dataByLga(String outcome, String population, String display) {
         //Create ArrayList of our tableRow class to store the returned data
         ArrayList<level2tableRow> level2TableData = new ArrayList<level2tableRow>();
 
@@ -173,7 +173,7 @@ public class JDBCConnection {
             String select1 = "";
             String select2 = "";
             String having = "";
-            String orderBy = "";
+            //String orderBy = "";
 
 
             if (display.equals("Count")) {
@@ -188,15 +188,15 @@ public class JDBCConnection {
                 having = ", sex HAVING sex = '" + population + "'";
             }
             
-            if (orderColumn.equals("Lga")) {
+            /*if (orderColumn.equals("Lga")) {
                 orderBy = "lga";
             } else if (orderColumn.equals("Indigenous Results")) {
                 orderBy = select1;
             } else {
                 orderBy = select2;
-            }
+            }*/
 
-            String query = "SELECT lga, " + select1 + ", " + select2 + " FROM level2view GROUP BY lga" + having + " ORDER BY " + orderBy + " " + order;
+            String query = "SELECT lga, " + select1 + ", " + select2 + " FROM level2view GROUP BY lga" + having ;
             
             //test query output
             //System.out.println(query);

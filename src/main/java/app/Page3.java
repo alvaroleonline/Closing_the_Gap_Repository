@@ -111,7 +111,7 @@ public class Page3 implements Handler {
         html = html + "         <option value = 'Count'> Raw Figures</option>";
         html = html + "      </select>";
         html = html + "   </div>";
-        html = html + "   <div class='form-group'>";
+        /*html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
         html = html + "      <select id='orderByDrop' name='orderByDrop'>";
         html = html + "         <option> Lga </option>";
@@ -121,7 +121,7 @@ public class Page3 implements Handler {
         html = html + "      <br>";
         html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
         html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
-        html = html + "   </div><br>";
+        html = html + "   </div><br>";*/
 
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
@@ -134,8 +134,8 @@ public class Page3 implements Handler {
         String outcomeDrop = context.formParam("outcomeDrop");
         String populationDrop = context.formParam("populationDrop");
         String countAsDrop = context.formParam("countAsDrop");
-        String orderByDrop = context.formParam("orderByDrop");
-        String orderRadio = context.formParam("orderRadio");
+        //String orderByDrop = context.formParam("orderByDrop");
+        //String orderRadio = context.formParam("orderRadio");
 
 
 
@@ -160,7 +160,7 @@ public class Page3 implements Handler {
         } else {
             //create and populate tableData from jdbc
             JDBCConnection jdbc = new JDBCConnection();
-            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationDrop, countAsDrop, orderByDrop, orderRadio);
+            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationDrop, countAsDrop);
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
