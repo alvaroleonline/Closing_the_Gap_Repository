@@ -104,10 +104,11 @@ public class Index implements Handler {
         html = html + "<div class='col3'>";
         html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
-        int count1 = jdbc.getFirstFact();
+        int countI = jdbc.getFirstFact1("Indigenous");
+        int countNonI = jdbc.getFirstFact2("Non-Indigenous");
         // Print out data
-        html = html + "<span class='fact-count'><p class='outcome'>School Education</p><h1>" + count1 + "%</h1></span>";
-        html = html + "<span class='fact-hidden'><p>Indigenous people have completed Year 12.</p></span>";
+        html = html + "<span class='fact-count'><p class='outcome'>Indigenous population aged 65 or over</p><h1>" + countI + "%</h1></span>";
+        html = html + "<span class='fact-hidden'><p>Compared to a " + countNonI +"% of Non-Indigenous</p></span>";
         // Closes Fact
         html = html + "</a>";
         html = html + "</div>";

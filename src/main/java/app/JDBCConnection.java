@@ -30,28 +30,22 @@ public class JDBCConnection {
     //************************************************************* LEVEL 1.1 - INDEX PAGE *************************************************************
 
     //FACT 1
-    public int getFirstFact() {
-        int count1 = 0;
-
-        // Setup the variable for the JDBC connection
+    public int getFirstFact1(String status) {
+        int countI = 0;
         Connection connection = null;
 
         try {
-            // Connect to JDBC data base
             connection = DriverManager.getConnection(DATABASE);
-
-            // Prepare a new SQL Query & Set a timeout
+            // Prepare a new SQL Query
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
 
-            // The Query
-            String query = "SELECT count(*) from MOVIE";
-            
-            // Get Result
-            ResultSet results = statement.executeQuery(query);
-            count1 = results.getInt("count(*)");
+            String query = "SELECT (CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
-            // Close the statement because we are done with it
+            ResultSet results = statement.executeQuery(query);
+            countI = results.getInt("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
+
+            // Close statement
             statement.close();
             // Exception 
         } catch (SQLException e) {
@@ -65,8 +59,39 @@ public class JDBCConnection {
                 System.err.println(e.getMessage());
             }
         }
+        return countI;
+    }
 
-        return count1;
+    public int getFirstFact2(String status) {
+        int countNonI = 0;
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(DATABASE);
+            // Prepare a new SQL Query
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            String query = "SELECT (CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
+
+            ResultSet results = statement.executeQuery(query);
+            countNonI = results.getInt("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
+            
+            // Close statement
+            statement.close();
+            // Exception 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        return countNonI;
     }
 
 

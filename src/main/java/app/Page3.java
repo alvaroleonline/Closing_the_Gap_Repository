@@ -36,6 +36,7 @@ public class Page3 implements Handler {
         html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
         html = html + "<script src='common.js'></script>";
+        html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
         
 
         // Add the body
@@ -88,28 +89,28 @@ public class Page3 implements Handler {
         html = html + "   <div class='form-group'>";
         // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option>Select Outcome Data</option>";
+        html = html + "         <option value = 'none' selected disabled hidden>Select Outcome Data</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
         html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
-        html = html + "      </select>";
-        html = html + "   </div>";
-        html = html + "   <div class='form-group'>";
+        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
+        
+        
         //html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
-        html = html + "         <option value = 'All'>Select the Population Segment</option>";
-        html = html + "         <option value = 'All'> All</option>";
-        html = html + "         <option value = 'Female'> Female</option>";
-        html = html + "         <option value = 'Male'> Male</option>";
-        html = html + "      </select>";
-        html = html + "   </div>";
-        html = html + "   <div class='form-group'>";
+        html = html + "         <option value = 'All' selected disabled hidden>Select the Population Segment</option>";
+        html = html + "         <option value = 'All'> Total Population</option>";
+        html = html + "         <option value = 'Female'> Female Population</option>";
+        html = html + "         <option value = 'Male'> Male Population</option>";
+        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
+        
+        
         html = html + "      <select id='countAsDrop' name='countAsDrop'>";
-        html = html + "         <option>Display Count as</option>";
+        html = html + "         <option value = 'none' selected disabled hidden>Display Count as</option>";
         html = html + "         <option value = 'Percent'> Percentages</option>";
         html = html + "         <option value = 'Count'> Raw Figures</option>";
-        html = html + "      </select>";
+        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
         html = html + "   </div>";
         /*html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
