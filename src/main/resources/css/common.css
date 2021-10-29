@@ -57,6 +57,13 @@ hr.white{
     background: var(--gray-300);
 }
 
+hr.small{
+	border: 0;
+	margin: 15px 0;
+    height: 1px;
+    background: var(--gray-400);
+}
+
 /*TEXT*/
 
 .content-title>h1{
@@ -112,6 +119,13 @@ p#blue{
   }
 
 b {
+	display: block;
+	font-size: var(--p);
+	line-height: 1.6;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	margin-inline-start: 0;
+	margin-inline-end: 0;
 	font-weight: var(--b);
 }
 
@@ -520,7 +534,7 @@ p.outcome{
 
 
 #viewall{
-	margin: 30px;
+	margin: 30px 20px 30px 20px;
 	border-radius: var(--small);
 	width: -webkit-fill-available;
 	position: absolute;
@@ -532,8 +546,7 @@ p.outcome{
 }
 
 #viewall:hover{
-	background-color: var(--orange);
-	color: var(--white);
+	background-color: var(--gray-300);
 	transition-duration: 0.2s;
 }
 
@@ -567,6 +580,7 @@ h2>.fa {
 }
 
 
+
 /*** MISSION PAGE CSS ***/
 
 
@@ -575,17 +589,18 @@ h2>.fa {
 	color: var(--black);
 	border-radius: var(--small);
 	cursor: pointer;
-	padding: 18px;
+	padding: 15px;
 	width: 100%;
 	border: none;
 	text-align: left;
 	outline: none;
 	font-size: 15px;
+	font-weight: 500;
   }
   
   .active, .collapsible:hover {
-	background-color: var(--gray-500);
-	color: var(--white);
+	background-color: var(--gray-300);
+	color: var(--black);
   }
   
   .collapsible:after {
@@ -604,15 +619,38 @@ h2>.fa {
   }
   
   .contenthidden {
-	margin: 0;
+	margin:0;
+	margin-bottom: 10px;
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.2s ease-out;
+	transition: max-height 0.2s ease-in-out;
   }
 
   .contenthidden>p {
 	margin: 10px 0;
   }
+
+  .row4{
+	width: 100%;
+	/*content: "";
+    display: flex;
+    justify-content:space-between;*/
+	margin: 10px 0px;
+	display: grid;
+    grid-template-columns: minmax(20%,1fr) minmax(76%,1fr);
+    grid-gap: 21px;
+}
+
+
+a#missionlink{
+	color:var(--blue);
+	text-decoration: underline;
+}
+
+a#missionlink:hover{
+	color:var(--blue);
+	text-decoration: none;
+}
 
 
 
