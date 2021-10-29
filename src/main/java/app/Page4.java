@@ -78,12 +78,12 @@ public class Page4 implements Handler {
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option> </option>";
+        html = html + "         <option value = 'none'> </option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
         html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
-        html = html + "      </select>";
+        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
@@ -124,7 +124,7 @@ public class Page4 implements Handler {
         //Col - Table
         html = html + "<div class='colTable'>";
         
-        if (outcomeDrop == null) {
+        if (outcomeDrop == null || outcomeDrop.equals("none")) {
             html = html + "<h1>Awaiting Selection</h1><h3>Please select table data options on the left</h3><hr class='in'>";
         } else {
             int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
