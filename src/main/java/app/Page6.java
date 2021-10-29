@@ -28,37 +28,201 @@ public class Page6 implements Handler {
 
         // Add some Header information
         html = html + "<head>" + 
-               "<title>Movies</title>";
+               "<title>LGA Statistics</title>";
 
         // Add some CSS (external file)
+        html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
+        html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
+        html = html + "<script src='common.js'></script>";
+        html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
+        
 
         // Add the body
         html = html + "<body>";
 
-        // Add HTML for link back to the homepage
-        html = html + "<h1>Page 6</h1>";
-        html = html + "<p>Return to Homepage: ";
-        html = html + "<a href='/'>Link to Homepage</a>";
-        html = html + "</p>";
 
-        // Look up some information from JDBC
-        // First we need to use your JDBCConnection class
-        //JDBCConnection jdbc = new JDBCConnection();
+        // HEADER
+        //navigation header
+        html = html + "<div id='header'>";
+        //html = html + "<div id='container-header' class='container'>";
+        html = html + "<div class='navbar'>";
+        html = html + "<a href='/'>Home</a>";
+        html = html + "<a class='current' href='mission.html'>Mission</a>";
+        html = html + "<div class='subnav'>";
+        html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
+        html = html + "<div class='subnav-content'>";
+        html = html + "<a href='page3.html'>LGA Statistics</a>";
+        html = html + "<a href='page4.html'>State Statistics</a>";
+        html = html + "<a href='page5.html'>Subtask 3.1</a>";
+        html = html + "<a href='page6.html'>Subtask 3.2</a>";
+        html = html + "</div></div>";
+        html = html + "<a href='resources.html'>Resources</a></div>";
+        // CLOSES HEADER
+        //html = html + "</div>";
+        html = html + "</div>";
 
-        // Next we will ask this *class* for the movies
-       //ArrayList<String> movies = jdbc.getMovies();
 
-        // Add HTML for the movies list
-        html = html + "<h1>Movies</h1>" + "<ul>";
+        // OPENS CONTENT
+        html = html + "<div id='content'>";
+        html = html + "<div id='container-main' class='container'>";
 
-        // Finally we can print out all of the movies
-        //for (String movie : movies) {
-        //    html = html + "<li>" + movie + "</li>";
-        //}
+        
+        // 1st DIV - Default Content Div
+        html = html + "<div class='content-title'>";
+        html = html + "<h1>Outcome Statistics by LGA</h1>";
+        html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
+        html = html + "</div>";
 
-        // Finish the List HTML
-        html = html + "</ul>";
+
+        // 2nd DIV - Chart and Table
+        html = html + "<div class='row3'>";
+
+
+        //Col1 - Chart
+        html = html + "<div class='col1'>";
+        html = html + "<h1>Choose LGA and Outcomes</h1><hr class='in'>";
+        
+        html = html + "<form action='/page6.html' method='post'>";
+        
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
+        html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
+        html = html + "         <option> </option>";
+        html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
+        html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
+        html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
+        html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
+        html = html + "      </select>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
+        html = html + "      <input type='radio' id='all' name='populationRadio' value='All' checked='checked'> <label for='all'>All</label>";
+        html = html + "      <input type='radio' id='female' name='populationRadio' value='Female'> <label for='female'>Females</label>";
+        html = html + "      <input type='radio' id='male' name='populationRadio' value='Male'> <label for='male'>Males</label>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
+        html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
+        html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
+        html = html + "      <select id='orderByDrop' name='orderByDrop'>";
+        html = html + "         <option> State </option>";
+        html = html + "         <option> Indigenous Results </option>";
+        html = html + "         <option> Non-Indigenous Results </option>";
+        html = html + "      </select>";
+        html = html + "      <br>";
+        html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
+        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
+        html = html + "   </div><br>";
+
+        html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
+
+        html = html + "</form>";
+        
+        html = html + "</div>";
+
+        //populate form submission results
+        String outcomeDrop = context.formParam("outcomeDrop");
+        String populationRadio = context.formParam("populationRadio");
+        String displayAsRadio = context.formParam("displayAsRadio");
+        String orderByDrop = context.formParam("orderByDrop");
+        String orderRadio = context.formParam("orderRadio");
+
+     
+
+        //Col - Table
+        html = html + "<div class='colTable'>";
+        html = html + "<h1>Selected LGA</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
+        
+        //Testing form submission results
+        html = html + "<p>Outcome = " + outcomeDrop + "</p>";
+        html = html + "<p>Population Segment = " + populationRadio + "</p>";
+        html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
+        html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
+
+        //testQuery
+        //ArrayList<level2tableRow> tableData = jdbc.testQuery();
+
+        // Output into a table
+        if (outcomeDrop == null) {
+            html = html + "<h1>Please select table data options on the left</h1>";
+        } else {
+            //create and populate tableData from jdbc
+            JDBCConnection jdbc = new JDBCConnection();
+            ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
+            //start table
+            html = html + "<table><tr>";
+            html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            html = html + "</tr>";
+
+        for (level2tableRow row : tableData) {
+            html = html + "<tr>";
+            html = html + "<td>" + row.getState() + "</td>";
+            if (displayAsRadio.equals("Count")) {
+                html = html + "<td>" + row.getCountIndig() + "</td>";
+                html = html + "<td>" + row.getCountNonIndig() + "</td>";
+            } else {
+                if (row.getPercentIndig() > 100) {
+                    html = html + "<td>100%</td>";
+                } else {
+                html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
+                }
+                if (row.getPercentNonIndig() > 100) {
+                    html = html + "<td>100</td>";
+                } else {
+                html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
+                }
+            }
+
+            html = html + "</tr>";
+        }
+        // Finish the table
+        html = html + "</table>";
+        }
+        html = html + "</div>";
+
+
+        // Closes Row DIV 
+        html = html + "</div>";
+
+        html = html + "<div class='row3'>";
+
+        html = html + "<div class='col1'>";
+        html = html + "<h1>Define LGA Comparison</h1><hr class='in'>";
+        
+        //close column div
+        html = html + "</div>";
+
+        html = html + "<div class='colTable'>";
+        html = html + "<h1>Comparison LGAs: Outcome 1</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
+        //close table column div
+        html = html + "</div>";
+
+
+
+
+
+        //CLOSES CONTENT
+        html = html + "</div>";
+        html = html + "</div>";
+
+
+
+        //FOOTER
+        //Closes Footer
+        
+
+
+        // Add some JS (external file)
+        
+        // html = html + "<script type='text/javascript' src='https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js'></script>";
+        
+
+
+
 
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";
