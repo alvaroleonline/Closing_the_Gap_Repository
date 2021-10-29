@@ -110,6 +110,9 @@ public class Page2 implements Handler {
         html = html + "Each page has it's own breakdown of options to select so that you can access data on each specific outcome, as well as how it is broken down, displayed and ordered.</p>";
         //TODO: insert information on how GapScore is calculated as well? 
         html = html + "</div>";
+
+        html = html + "<div class='credits'>2021 Website built by Scott Dunsdon (s3918676) and Alvaro Pena Leon (s3909789). All material presented on this website is provided under a Creative Commons Attribution 4.0 International licence. Special mentions: Australian Government Productivity Comission- Closing the Gap Information Repository;  Australia Bureau of Statistics; Closing The Gap Report 2020.</div>";
+
         
 
         //Closes Content
@@ -117,7 +120,7 @@ public class Page2 implements Handler {
         html = html + "</div>";
 
         //footer
-        html = html + "<footer>2021 Work by Scott Dunsdon (s3918676) & Alvaro Pena Leon (s3909789).</footer>";
+        html = html + "<footer></footer>";
 
 
         // Adds some JS

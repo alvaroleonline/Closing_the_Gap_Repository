@@ -652,6 +652,15 @@ a#missionlink:hover{
 	text-decoration: none;
 }
 
+.credits{
+	margin-top: -20px;
+	font-size: 0.75rem;
+	line-height: 1.5;
+	padding: var(--content-div);
+	text-align: left;
+	color: var(--gray-500);
+}
+
 
 
 
