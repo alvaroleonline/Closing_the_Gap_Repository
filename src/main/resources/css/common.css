@@ -5,7 +5,9 @@ Base styles
 
 :root{
 	/*colors*/
+	--clear: #FFFFFF00;
 	--gray-100: #EBEFF4; /* background color*/
+	--gray-100-clear: #E6EAF250;
 	--gray-200: #E6EAF2;
 	--gray-300: #CFD8DC; /* CDD1DB */
 	--gray-400: #37474F30;
@@ -16,6 +18,7 @@ Base styles
 	--orange-clear: #ff77007c;
 	--orange-900: #BF360C;
 	--blue: #304FFE; /* 1F77B4 */
+	--blue--clear: #304FFE15;
 	--blue-900: #1A237E;
 	--blue-gradient: linear-gradient(0deg, rgba(26,35,126,1) 22%, rgba(48,79,254,1) 100%);
 	--green: #BDFF00;
@@ -30,7 +33,7 @@ Base styles
 	--h1: 2.3rem;
 	--h2: 1.2rem;
 	--p: 0.9rem;
-	--b: 600;
+	--b: 500;
 	/*padding*/
 	--content-div: 30px;
 }
@@ -84,6 +87,7 @@ h1 {
 
 h2 {
 	display: block;
+	line-height: 1.5;
 	font-size: var(--h2);
 	color: var(--gray-500);
 	margin-block-start: 0;
@@ -104,8 +108,8 @@ margin-inline-start: 0;
 margin-inline-end: 0;
 }
 
-p#blue{
-	color: var(--blue);
+b#blue{
+	color: var(--blue-900);
 }
 
 .fa {
@@ -539,14 +543,15 @@ p.outcome{
 	width: -webkit-fill-available;
 	position: absolute;
     bottom: 0;
-	background-color: var(--gray-100);
-	padding: 10px;
+	color: var(--blue-900);
+	background-color: var(--gray-100-clear);
+	padding: 12px;
 
 	transition-duration: 0.2s;
 }
 
 #viewall:hover{
-	background-color: var(--gray-300);
+	background-color: var(--gray-100);
 	transition-duration: 0.2s;
 }
 
@@ -560,11 +565,11 @@ h2.resourcelink{
 
 
 h2.resourcelink:hover{
-	color: var(--black);
+	color: var(--blue-900);
+	background-color: var(--gray-100);
 	margin:-10px;
 	padding: 10px;
 	transition: .2s;
-	background-color: var(--gray-100);
 	border-radius: var(--small);
 }
 
@@ -585,7 +590,7 @@ h2>.fa {
 
 
 .collapsible {
-	background-color: var(--gray-100);
+	background-color: var(--gray-100-clear);
 	color: var(--black);
 	border-radius: var(--small);
 	cursor: pointer;
@@ -594,13 +599,10 @@ h2>.fa {
 	border: none;
 	text-align: left;
 	outline: none;
-	font-size: 15px;
-	font-weight: 500;
   }
   
   .active, .collapsible:hover {
-	background-color: var(--gray-300);
-	color: var(--black);
+	background-color: var(--gray-100);
   }
   
   .collapsible:after {
@@ -608,8 +610,11 @@ h2>.fa {
 	content: "\f107";
     font-weight: 900; 
 	float: right;
-	margin-left: 5px;
 	font-size: 20px;
+	margin-right: 10px;
+    margin-top: -20px; 
+
+	color: var(--blue);
   }
   
   .active:after {
@@ -699,7 +704,7 @@ a#missionlink:hover{
 	box-shadow: var(--shadow-auto);
 	padding: var(--content-div);
 	text-align: left;
-	height: 100%;
+	height: max-content; /* 100% */
 }
 
 .colTable>h1 {
@@ -721,42 +726,74 @@ a#missionlink:hover{
 
 
 
-/*** 2.1 ***/
+/*** 2.1 LEVEL ***/
 
 /* Chart */
 .form-group>#outcomeDrop, #populationDrop, #countAsDrop{
 	cursor: pointer;
 	margin-bottom: 10px;
-	padding: 10px;
+	padding: 8px;
 	width: 100%;
 	height: auto;
-	background-color: var(--white);
+	background-color: var(--clear);
 	color: var(--black);
 	border-color: var(--gray-400);
 	border-radius: var(--small);
 	font-size: var(--p);
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.0);
+
 	-webkit-appearance: unset;
 	-moz-appearance: unset;
 	appearance: unset;
-	/* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); */
-	z-index: 1;
 }
 
-
-#sorticon{
+.form-group::after{
+	content: "\f078";
+	font-family: 'FontAwesome';
+    font-weight: 900;
 	float: right;
-	margin-top: -37px;
-	margin-right: 10px;
+	margin-top: -34px;
+	padding-right: 10px;
+	padding-left: 10px;
+	border-left: thin solid;
 	color:var(--blue);
-	z-index: -1;
+	border-color:var(--gray-400);
+	font-size: 0.75rem;
+	font-weight: 400;
 }
 
+button.btn.btn-primary{
+	cursor: pointer;
+	color: var(--white);
+	background-color: var(--blue-900);
+	margin-top: 50px;
+	float: right;
+	font-size: var(--p);
+	padding: 8px 10px 8px 10px;
+	border: 0;
+	border-radius: var(--small);
+
+
+	-webkit-appearance: unset;
+	-moz-appearance: unset;
+	appearance: unset;
+	
+}
+
+button.btn.btn-primary:hover{
+	background: var(--blue-900);
+	background: var(--blue-gradient);
+}
 
 /* Table */
 table.dataTable thead th, table.dataTable thead td {
     padding: 10px 10px;
     border-bottom: 1px solid var(--gray-400);
 	text-align: left;
+}
+
+table.dataTable.display tbody td {
+	border-top: 1px solid var(--gray-400);
 }
 
 table.dataTable thead th, table.dataTable tfoot th {
@@ -767,6 +804,13 @@ table {
     font-size: var(--p);
 }
 
+.dataTables_wrapper {
+	margin-top: 70px;
+	margin-bottom: 70px;
+	position: relative;
+	clear: both;
+	}
+
 .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
 	color: #333;
 	font-size: var(--p);
@@ -776,8 +820,56 @@ table.dataTable.no-footer {
 	padding-top:20px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid var(--gray-400);
-	}
+}
 
+/* Rows Style */
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+	background-color: var(--white);
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd:hover {
+	background-color: var(--gray-100);
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.even:hover {
+	background-color: var(--gray-100);
+}
+
+table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+	background-color: var(--gray-100-clear);
+}
+
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+	background-color: var(--gray-100-clear);
+}
+
+/* PAagination*/
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+	color: #fff !important;
+	background: var(--blue);
+	border-radius: 50px;
+	border: 0;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button  {
+	border: 0;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover  {
+	color: #fff !important;
+	background: var(--blue-900);
+	background: var(--blue-gradient);
+	border-radius: 50px;
+	border: 0;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover  {
+	color: #fff !important;
+	background: var(--blue-900);
+	background: var(--blue-gradient);
+	border-radius: 5px;
+	border: 0;
+}
 
 
 
