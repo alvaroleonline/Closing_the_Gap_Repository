@@ -50,8 +50,8 @@ public class Index implements Handler {
         html = html + "<div class='subnav'>";
         html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
         html = html + "<div class='subnav-content'>";
-        html = html + "<a href='page3.html'>Subtask 2.1</a>";
-        html = html + "<a href='page4.html'>Subtask 2.2</a>";
+        html = html + "<a href='page3.html'>Data by LGA</a>";
+        html = html + "<a href='page4.html'>Data by State</a>";
         html = html + "<a href='page5.html'>Subtask 3.1</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
         html = html + "</div></div>";
@@ -157,8 +157,8 @@ public class Index implements Handler {
         html = html + "<hr class='in'>" + "<a href='https://www.naccho.org.au'><h2 class='resourcelink'>National Aboriginal Community Controlled Health Organisation<p id='blue'>Leadership body for 143 ACCHOs across Australia that advocate for and implement community-developed health solutions.</p></h2></a>";
         html = html + "<hr class='in'>" + "<a href='https://firstnationsmedia.org.au'><h2 class='resourcelink'>First Nations Media Australia<p id='blue'>National peak body for the Aboriginal and Torres Strait Islander media industry.</p></h2></a>";
         html = html + "<hr class='in'>" + "<a href='https://aiatsis.gov.au/'><h2 class='resourcelink'>AIATSIS<p id='blue'>The Australian Institute of Aboriginal and Torres Strait Islander Studies</p></h2></a>";
-        html = html + "<a href='resources.html'><h2 id='viewall' class='resourcelink'>View All<i class='fa fa-angle-right'></i></h2></a>";
         html = html + "</div>";
+        html = html + "<a href='resources.html'><h2 id='viewall' class='resourcelink'>View All<i class='fa fa-angle-right'></i></h2></a>";
         html = html + "</div>";
 
 
