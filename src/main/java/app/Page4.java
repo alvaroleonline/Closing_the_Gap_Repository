@@ -70,13 +70,9 @@ public class Page4 implements Handler {
         // 2nd DIV - Chart and Table
         html = html + "<div class='row3'>";
 
-        
-
-
         //Col1 - Chart options
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
-        //insert chart options 
         html = html + "<form action='/page4.html' method='post'>";
         
         html = html + "   <div class='form-group'>";
@@ -127,20 +123,48 @@ public class Page4 implements Handler {
 
         //Col - Table
         html = html + "<div class='colTable'>";
-        html = html + "<h1>Test Query: Outcome 1</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
+        
+        if (outcomeDrop == null) {
+            html = html + "<h1>Awaiting Selection</h1><h3>Please select table data options on the left</h3><hr class='in'>";
+        } else {
+            int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
+            switch (outcomeSelect) {
+                case 1:
+                    html = html + "<h1>Outcome 1: Long and Healthy Lives</h1><h3>" + populationRadio + " population aged over 65";
+                    break;
+                case 5:
+                    html = html + "<h1>Outcome 5: Secondary Education</h1><h3>" + populationRadio + " population who have completed Year 12";
+                    break;
+                case 6:
+                    html = html + "<h1>Outcome 6: Tertiary Education</h1><h3>" + populationRadio + " population who have completed a tertiary qualification of Advanced Diploma or higher";
+                    break;
+                case 8:
+                    html = html + "<h1>Outcome 8: Economic Participation</h1><h3>" + populationRadio + " population who are employed";
+                    break;
+            }
+
+            html = html + ", displayed as ";
+            if (displayAsRadio.equals("Count")) {
+                html = html + "raw count of population.";
+            } else {
+                html = html + "percentage of population aged over 15.";
+            }
+            html = html + "</h3><hr class='in'>";
+
+        }
         
         //Testing form submission results
-        html = html + "<p>Outcome = " + outcomeDrop + "</p>";
-        html = html + "<p>Population Segment = " + populationRadio + "</p>";
-        html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
-        html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
+        //html = html + "<p>Outcome = " + outcomeDrop + "</p>";
+        //html = html + "<p>Population Segment = " + populationRadio + "</p>";
+        //html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
+        //html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
 
         //testQuery
         //ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         // Output into a table
         if (outcomeDrop == null) {
-            html = html + "<h1>Please select table data options on the left</h1>";
+            html = html + "";
         } else {
             //create and populate tableData from jdbc
             JDBCConnection jdbc = new JDBCConnection();
@@ -178,22 +202,16 @@ public class Page4 implements Handler {
 
 
 
-        // Closes 2nd DIV 
+        // Closes row3 DIV 
         html = html + "</div>";
 
-
-
-        //CLOSES CONTENT
+        //CLOSES CONTENT divs
         html = html + "</div>";
         html = html + "</div>";
-
-
 
         //FOOTER
         //Closes Footer
         
-
-
         // Add some JS (external file)
         //html = html + "<link rel='javascript' type='text/css' href='common.css' />";
         html = html + "<script src='common.js'></script>";
