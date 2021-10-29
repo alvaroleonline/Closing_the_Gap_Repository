@@ -13,11 +13,11 @@ Base styles
     --white: #FFFFFF;
 	--black: #000000;
 	--orange: #FF7600; /*FF7F0E, FF5400*/
-	--orange-clear: #FF7F0E50;
+	--orange-clear: #ff77007c;
 	--orange-900: #BF360C;
 	--blue: #304FFE; /* 1F77B4 */
 	--blue-900: #1A237E;
-	--blue-gradient: linear-gradient(49deg, rgba(26,35,126,1) 0%, rgba(26,35,126,1) 50%, rgba(33,55,177,1) 88%);
+	--blue-gradient: linear-gradient(0deg, rgba(26,35,126,1) 22%, rgba(48,79,254,1) 100%);
 	--green: #BDFF00;
 	/*border-radius*/
 	--big: 8px;
@@ -95,6 +95,10 @@ margin-block-start: 0;
 margin-block-end: 0;
 margin-inline-start: 0;
 margin-inline-end: 0;
+}
+
+p#blue{
+	color: var(--blue);
 }
 
 .fa {
@@ -417,7 +421,7 @@ p.outcome{
 }
 
 .col1{
-	color: var(--white);
+	color: var(--blue);
 	border-radius: var(--big);
 	text-align: left;
 	display: inline-block;
@@ -434,8 +438,7 @@ p.outcome{
 	padding-right: 50px;
 	transition: all .3s;
 	-webkit-transition: all .3s;
-	background: var(--blue-900);
-	background: var(--blue-gradient);
+	background-color: var(--blue-900);
 	box-shadow: var(--shadow-auto);
 }
 
@@ -512,6 +515,12 @@ p.outcome{
 .resourcebox{
 	height: 70%;
 	padding: 0px 30px 30px 30px;
+	position:relative;
+}
+
+#viewall{
+	position: absolute;
+    bottom: 0;
 }
 
 h2.resourcelink{
@@ -523,11 +532,11 @@ h2.resourcelink{
 
 
 h2.resourcelink:hover{
-	color: var(--white);
+	color: var(--black);
 	margin:-10px;
 	padding: 10px;
 	transition: .2s;
-	background-color: var(--orange);
+	background-color: var(--gray-100);
 	border-radius: var(--small);
 }
 
@@ -731,6 +740,7 @@ table.dataTable.no-footer {
 }
 
 
+
 .col4>a>h2{
 	height: 150px;
 	margin-top: 0px;
@@ -745,8 +755,7 @@ table.dataTable.no-footer {
 }
 
 .col4>a>h2:hover{
-	margin: -2px;
-	padding-right: 32px;
+	margin-top: -2px;
 	/*color: var(--white);
 	background-color: var(--orange);*/
 	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);

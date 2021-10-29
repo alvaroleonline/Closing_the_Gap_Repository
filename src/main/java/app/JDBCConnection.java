@@ -229,6 +229,7 @@ public class JDBCConnection {
 
 
 
+
     //************************************************************* LEVEL 2.1 - LGA STATISTICS *************************************************************
     
     public ArrayList<level2tableRow> dataByLga(String outcome, String population, String display) {
@@ -323,6 +324,9 @@ public class JDBCConnection {
 
     
 
+
+
+    
     //************************************************************* LEVEL 2.2 - STATE STATISTICS  *************************************************************
     
     public ArrayList<level2tableRow> dataByState(String outcome, String population, String display, String orderColumn, String order) {
