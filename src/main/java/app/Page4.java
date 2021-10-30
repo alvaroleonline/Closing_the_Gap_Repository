@@ -153,7 +153,11 @@ public class Page4 implements Handler {
             if (displayAsRadio.equals("Count")) {
                 html = html + "raw count of population.";
             } else {
-                html = html + "percentage of population aged over 15.";
+                if (outcomeSelect == 1) {
+                    html = html + "percentage of total population.";
+                } else {
+                    html = html + "percentage of population aged over 15.";
+                }
             }
             html = html + "</h3><hr class='in'>";
 
