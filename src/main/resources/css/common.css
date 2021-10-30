@@ -186,7 +186,7 @@ b {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	margin-top: 100px;
+	margin-top: 60px;
 	margin-bottom:150px;
 }
 
@@ -212,7 +212,7 @@ b {
 .navbar {
 	overflow: hidden;
 	background-color: var(--gray-300);
-	margin-bottom: 80px;
+	margin-bottom: 30px;
 }
 
 /* Navigation links */
