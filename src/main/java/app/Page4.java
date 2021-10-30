@@ -102,17 +102,17 @@ public class Page4 implements Handler {
         html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
         html = html + "      <br><br>";
         //html = html + " </div>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
-        html = html + "      <select id='orderByDrop' name='orderByDrop'>";
-        html = html + "         <option> State </option>";
-        html = html + "         <option> Indigenous Results </option>";
-        html = html + "         <option> Non-Indigenous Results </option>";
-        html = html + "      </select>";
-        html = html + "   </div>";
-        html = html + "   <br>";
-        html = html + "   <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
-        html = html + "   <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label><br>";
+        // html = html + "   <div class='form-group'>";
+        // html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
+        // html = html + "      <select id='orderByDrop' name='orderByDrop'>";
+        // html = html + "         <option> State </option>";
+        // html = html + "         <option> Indigenous Results </option>";
+        // html = html + "         <option> Non-Indigenous Results </option>";
+        // html = html + "      </select>";
+        // html = html + "   </div>";
+        // html = html + "   <br>";
+        // html = html + "   <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
+        // html = html + "   <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label><br>";
 
         html = html + "   <button type='submit' class='btn-update'>Update Chart</button>";
 
@@ -124,8 +124,8 @@ public class Page4 implements Handler {
         String outcomeDrop = context.formParam("outcomeDrop");
         String populationDrop = context.formParam("populationDrop");
         String displayAsRadio = context.formParam("displayAsRadio");
-        String orderByDrop = context.formParam("orderByDrop");
-        String orderRadio = context.formParam("orderRadio");
+        //String orderByDrop = context.formParam("orderByDrop");
+        //String orderRadio = context.formParam("orderRadio");
 
         //Col - Table
         html = html + "<div class='colTable'>";
@@ -174,7 +174,8 @@ public class Page4 implements Handler {
         } else {
             //create and populate tableData from jdbc
             JDBCConnection jdbc = new JDBCConnection();
-            ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio, orderByDrop, orderRadio);
+            ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio);
+            //ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio, orderByDrop, orderRadio);
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr><th>State</th><th>Indigenous</th><th>Non-Indigenous</th></tr></thead>";
