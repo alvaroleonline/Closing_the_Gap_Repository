@@ -144,15 +144,16 @@ public class Page6 implements Handler {
         html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
 
         //testQuery
-        //ArrayList<level2tableRow> tableData = jdbc.testQuery();
+        JDBCConnection jdbc = new JDBCConnection();
+        ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         // Output into a table
         if (outcomeDrop == null) {
             html = html + "<h1>Please select table data options on the left</h1>";
         } else {
             //create and populate tableData from jdbc
-            JDBCConnection jdbc = new JDBCConnection();
-            ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
+            // JDBCConnection jdbc = new JDBCConnection();
+            // ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
             //start table
             html = html + "<table><tr>";
             html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
