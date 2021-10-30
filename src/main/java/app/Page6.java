@@ -85,15 +85,16 @@ public class Page6 implements Handler {
         
         html = html + "<form action='/page6.html' method='post'>";
         
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
-        html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option> </option>";
-        html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
-        html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
-        html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
-        html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
-        html = html + "      </select>";
+        html = html + "   <div class='form-notdrop'>";
+        html = html + "      <label for='outcomeSelect'>Select which Outcomes to generate GapScore:</label>";
+        html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='outcome1'>";
+        html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
+        html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='outcome5'>";
+        html = html + "      <label for='outcome5'> Outcome 5 - School Completion</label><br>";
+        html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='outcome6'>";
+        html = html + "      <label for='outcome6'> Outcome 6 - Tertiary Education</label><br>";
+        html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='outcome8'>";
+        html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
@@ -125,7 +126,19 @@ public class Page6 implements Handler {
         html = html + "</div>";
 
         //populate form submission results
-        String outcomeDrop = context.formParam("outcomeDrop");
+        ArrayList<String> outcomeSelect = new ArrayList<String>();
+        if (context.formParam("outcome1") != null) {   
+            outcomeSelect.add(context.formParam("outcome1"));
+        }
+        if (context.formParam("outcome5") != null) {   
+            outcomeSelect.add(context.formParam("outcome5"));
+        }
+        if (context.formParam("outcome6") != null) {   
+            outcomeSelect.add(context.formParam("outcome6"));
+        }
+        if (context.formParam("outcome8") != null) {   
+            outcomeSelect.add(context.formParam("outcome8"));
+        }
         String populationRadio = context.formParam("populationRadio");
         String displayAsRadio = context.formParam("displayAsRadio");
         String orderByDrop = context.formParam("orderByDrop");
@@ -138,51 +151,55 @@ public class Page6 implements Handler {
         html = html + "<h1>Selected LGA</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
         
         //Testing form submission results
-        html = html + "<p>Outcome = " + outcomeDrop + "</p>";
+        html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
+        for (String outcome : outcomeSelect) {
+            html = html + outcome + ", ";
+        }
+        html = html + "</p>";
         html = html + "<p>Population Segment = " + populationRadio + "</p>";
         html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
         html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
 
         //testQuery
-        JDBCConnection jdbc = new JDBCConnection();
-        ArrayList<level2tableRow> tableData = jdbc.testQuery();
+        // JDBCConnection jdbc = new JDBCConnection();
+        // ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         // Output into a table
-        if (outcomeDrop == null) {
-            html = html + "<h1>Please select table data options on the left</h1>";
-        } else {
+        // if (outcomeDrop == null) {
+        //     html = html + "<h1>Please select table data options on the left</h1>";
+        // } else {
             //create and populate tableData from jdbc
             // JDBCConnection jdbc = new JDBCConnection();
             // ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
-            //start table
-            html = html + "<table><tr>";
-            html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
-            html = html + "</tr>";
+        //     //start table
+        //     html = html + "<table><tr>";
+        //     html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
+        //     html = html + "</tr>";
 
-        for (level2tableRow row : tableData) {
-            html = html + "<tr>";
-            html = html + "<td>" + row.getState() + "</td>";
-            if (displayAsRadio.equals("Count")) {
-                html = html + "<td>" + row.getCountIndig() + "</td>";
-                html = html + "<td>" + row.getCountNonIndig() + "</td>";
-            } else {
-                if (row.getPercentIndig() > 100) {
-                    html = html + "<td>100%</td>";
-                } else {
-                html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
-                }
-                if (row.getPercentNonIndig() > 100) {
-                    html = html + "<td>100</td>";
-                } else {
-                html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
-                }
-            }
+        //     for (level2tableRow row : tableData) {
+        //         html = html + "<tr>";
+        //         html = html + "<td>" + row.getState() + "</td>";
+        //         if (displayAsRadio.equals("Count")) {
+        //             html = html + "<td>" + row.getCountIndig() + "</td>";
+        //             html = html + "<td>" + row.getCountNonIndig() + "</td>";
+        //         } else {
+        //             if (row.getPercentIndig() > 100) {
+        //                 html = html + "<td>100%</td>";
+        //             } else {
+        //             html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
+        //             }
+        //             if (row.getPercentNonIndig() > 100) {
+        //                 html = html + "<td>100</td>";
+        //             } else {
+        //             html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
+        //             }
+        //         }
 
-            html = html + "</tr>";
-        }
-        // Finish the table
-        html = html + "</table>";
-        }
+        //         html = html + "</tr>";
+        //     }
+        // // Finish the table
+        //     html = html + "</table>";
+        //}
         html = html + "</div>";
 
 
