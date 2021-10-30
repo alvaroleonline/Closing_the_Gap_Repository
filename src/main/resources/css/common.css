@@ -674,10 +674,10 @@ h2>.fa {
 
 
 
-/*** 2.1 ***/
+/*** 2.1 & 2.2***/
 
 /* Chart */
-.form-group>#outcomeDrop, #populationDrop, #countAsDrop{
+.form-group>#outcomeDrop, #populationDrop, #countAsDrop, #orderByDrop{
 	cursor: pointer;
 	margin-bottom: 10px;
 	padding: 10px;
@@ -695,13 +695,28 @@ h2>.fa {
 	z-index: 1;
 }
 
-
 #sorticon{
 	float: right;
 	margin-top: -37px;
 	margin-right: 10px;
 	color:var(--blue);
 	z-index: -1;
+}
+
+
+.btn-primary {
+	background-color: var(--orange);
+	font-family: var(--font-main);
+	float: right;
+	border: none;
+	padding: 15px 10px;
+	cursor: pointer;
+}
+
+.btn-primary:hover {
+	background-color: var(--blue);
+	color:var(--white);
+
 }
 
 
