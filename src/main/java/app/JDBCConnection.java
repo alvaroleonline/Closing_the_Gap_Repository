@@ -323,13 +323,91 @@ public class JDBCConnection {
     }
 
     
-
-
-
-    
     //************************************************************* LEVEL 2.2 - STATE STATISTICS  *************************************************************
     
-    public ArrayList<level2tableRow> dataByState(String outcome, String population, String display, String orderColumn, String order) {
+    public ArrayList<level2tableRow> dataByState(String outcome, String population, String display) {
+        //Create ArrayList of our tableRow class to store the returned data
+        ArrayList<level2tableRow> level2TableData = new ArrayList<level2tableRow>();
+
+        // Setup the variable for the JDBC connection
+        Connection connection = null;
+
+        try {
+            // Connect to JDBC data base, prepare a new SQL Query & Set a timeout
+            connection = DriverManager.getConnection(DATABASE);
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            // The Query
+            
+            String select1 = "";
+            String select2 = "";
+            String having = "";
+
+            if (display.equals("Count")) {
+                select1 = "SUM(" + outcome + "_i)";
+                select2 = "SUM(" + outcome + "_ni)";
+            } else {
+                select1 = "AVG(" + outcome + "_iPercent)";
+                select2 = "AVG(" + outcome + "_niPercent)";
+            }
+            
+            if (!population.equals("All")) {
+                having = ", sex HAVING sex = '" + population + "'";
+            }
+            
+            String query = "SELECT state, " + select1 + ", " + select2 + " FROM level2view GROUP BY state" + having;
+            
+            //test query output
+            //System.out.println(query);
+
+            // Get Result
+            ResultSet results = statement.executeQuery(query);
+
+            // Process all of the results
+
+            while (results.next()) {
+                //create a new row of data
+                level2tableRow row = new level2tableRow();
+
+                //use Set methods to store individual values
+                row.setState(results.getString("state"));
+
+                if (display.equals("Count")) {
+                    row.setCountIndig(results.getInt(select1));
+                    row.setCountNonIndig(results.getInt(select2));
+                } else {
+                    row.setPercentIndig(results.getDouble(select1));
+                    row.setPercentNonIndig(results.getDouble(select2));
+                }
+                //add this row to our ArrayList
+                level2TableData.add(row);
+            }
+
+            // Close the statement because we are done with it
+            statement.close();
+        } catch (SQLException e) {
+            // If there is an error, lets just print the error
+            System.err.println(e.getMessage());
+        } finally {
+            // Safety code to cleanup
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                // connection close failed.
+                System.err.println(e.getMessage());
+            }
+        }
+
+        // Finally we return all table data
+        return level2TableData;
+    }
+//************************************************************* LEVEL 2.2 - OLD VERSION with ORDER BY  *************************************************************
+
+
+    public ArrayList<level2tableRow> dataByStateOLD(String outcome, String population, String display, String orderColumn, String order) {
         //Create ArrayList of our tableRow class to store the returned data
         ArrayList<level2tableRow> level2TableData = new ArrayList<level2tableRow>();
 
@@ -420,7 +498,21 @@ public class JDBCConnection {
     }
 
     
-    //a test query using the level 2 view for populating table data
+
+//************************************************************* LEVEL 3.1 - GAPSCORE  *************************************************************
+
+
+
+
+
+//************************************************************* LEVEL 3.2 - LGA COMPARISONS  *************************************************************
+
+
+
+
+
+//************************************************************* TEST QUERY  *************************************************************
+
 
     public ArrayList<level2tableRow> testQuery() {
         //Create ArrayList of our tableRow class to store the returned data
@@ -476,7 +568,5 @@ public class JDBCConnection {
         // Finally we return all table data
         return level2TableData;
     }
-
-
 
 }

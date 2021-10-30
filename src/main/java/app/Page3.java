@@ -29,7 +29,7 @@ public class Page3 implements Handler {
 
         // Add some Header information
         html = html + "<head>" + 
-               "<title>LGA Statistics</title>";
+               "<title>Outcome Data by LGA</title>";
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
@@ -38,10 +38,8 @@ public class Page3 implements Handler {
         html = html + "<script src='common.js'></script>";
         html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
         
-
         // Add the body
-        html = html + "<body>";
-
+        html = html + "</head><body>";
 
         // HEADER
         //navigation header
@@ -53,14 +51,13 @@ public class Page3 implements Handler {
         html = html + "<div class='subnav'>";
         html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
         html = html + "<div class='subnav-content'>";
-        html = html + "<a href='page3.html'>LGA Statistics</a>";
-        html = html + "<a href='page4.html'>State Statistics</a>";
+        html = html + "<a href='page3.html'>Data by LGA</a>";
+        html = html + "<a href='page4.html'>Data by State</a>";
         html = html + "<a href='page5.html'>Subtask 3.1</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
         // CLOSES HEADER
-        //html = html + "</div>";
         html = html + "</div>";
 
 
@@ -71,7 +68,7 @@ public class Page3 implements Handler {
         
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Outcome Statistics by LGA</h1>";
+        html = html + "<h1>Outcome Data by LGA</h1>";
         html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
         html = html + "</div>";
 
@@ -167,7 +164,11 @@ public class Page3 implements Handler {
             if (displayAsDrop.equals("Count")) {
                 html = html + "raw count of population.";
             } else {
-                html = html + "percentage of population aged over 15.";
+                if (outcomeSelect == 1) {
+                    html = html + "percentage of total population.";
+                } else {
+                    html = html + "percentage of population aged over 15.";
+                }
             }
             
 

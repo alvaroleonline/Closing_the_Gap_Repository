@@ -186,7 +186,7 @@ b {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	margin-top: 100px;
+	margin-top: 60px;
 	margin-bottom:150px;
 }
 
@@ -212,7 +212,7 @@ b {
 .navbar {
 	overflow: hidden;
 	background-color: var(--gray-300);
-	margin-bottom: 80px;
+	margin-bottom: 30px;
 }
 
 /* Navigation links */
@@ -726,10 +726,10 @@ a#missionlink:hover{
 
 
 
-/*** 2.1 LEVEL ***/
+/*** 2.1 & 2.2***/
 
 /* Chart */
-.form-group>#outcomeDrop, #populationDrop, #countAsDrop{
+.form-group>#outcomeDrop, #populationDrop, #countAsDrop, #orderByDrop{
 	cursor: pointer;
 	margin-bottom: 10px;
 	padding: 8px;
@@ -784,6 +784,24 @@ button.btn.btn-primary:hover{
 	background: var(--blue-900);
 	background: var(--blue-gradient);
 }
+
+.btn-update {
+	background-color: var(--orange);
+	font-family: var(--font-main);
+	float: right;
+	border: none;
+	border-radius: 10px;
+	padding: 15px 10px;
+	margin-top: 15px;
+	cursor: pointer;
+}
+
+.btn-update:hover {
+	background-color: var(--blue);
+	color:var(--white);
+
+}
+
 
 /* Table */
 table.dataTable thead th, table.dataTable thead td {

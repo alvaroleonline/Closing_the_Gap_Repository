@@ -27,14 +27,18 @@ public class Page4 implements Handler {
         String html = "<html>";
 
         // Add some Header information
-        html = html + "<head>" + 
-               "<title>State Statistics</title>";
+        html = html + "<head>"; 
+        html = html + "   <title>Outcome Data by State</title>";
 
         // Add some CSS (external file)
+        html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
+        html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
+        html = html + "<script src='common.js'></script>";
+        html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
 
-        // Add the body
-        html = html + "<body>";
+        // Close head and start body
+        html = html + "</head><body>";
 
         // HEADER
         //navigation header
@@ -46,26 +50,24 @@ public class Page4 implements Handler {
         html = html + "<div class='subnav'>";
         html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
         html = html + "<div class='subnav-content'>";
-        html = html + "<a href='page3.html'>LGA Statistics</a>";
-        html = html + "<a href='page4.html'>State Statistics</a>";
+        html = html + "<a href='page3.html'>Data by LGA</a>";
+        html = html + "<a href='page4.html'>Data by State</a>";
         html = html + "<a href='page5.html'>Subtask 3.1</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
-        html = html + "</div></div></div>";
+        html = html + "</div></div>";
+        html = html + "<a href='resources.html'>Resources</a></div>";
         // CLOSES HEADER
-        //html = html + "</div>";
         html = html + "</div>";
 
         // OPENS CONTENT
         html = html + "<div id='content'>";
         html = html + "<div id='container-main' class='container'>";
 
-        
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Outcome Statistics by State</h1>";
+        html = html + "<h1>Outcome Data by State</h1>";
         html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by State.</p>";
         html = html + "</div>";
-
 
         // 2nd DIV - Chart and Table
         html = html + "<div class='row3'>";
@@ -76,39 +78,43 @@ public class Page4 implements Handler {
         html = html + "<form action='/page4.html' method='post'>";
         
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none'> </option>";
+        html = html + "         <option value = 'none'>Select Outcome to Display:</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
         html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
-        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
+        html = html + "      </select>";
+        //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
-        html = html + "      <input type='radio' id='all' name='populationRadio' value='All' checked='checked'> <label for='all'>All</label>";
-        html = html + "      <input type='radio' id='female' name='populationRadio' value='Female'> <label for='female'>Females</label>";
-        html = html + "      <input type='radio' id='male' name='populationRadio' value='Male'> <label for='male'>Males</label>";
-        html = html + "   </div>";
-        html = html + "   <div class='form-group'>";
+        html = html + "      <select id='populationDrop' name='populationDrop'>";
+        html = html + "         <option value = 'All'>Select the Population Segment:</option>";
+        html = html + "         <option value = 'All'> Total Population</option>";
+        html = html + "         <option value = 'Female'> Female Population</option>";
+        html = html + "         <option value = 'Male'> Male Population</option>";
+        html = html + "      </select>";
+        //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
+        html = html + "   </div><br>";
+       // html = html + " <div class='form-group'>";
         html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
         html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
         html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
-        html = html + "   </div>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
-        html = html + "      <select id='orderByDrop' name='orderByDrop'>";
-        html = html + "         <option> State </option>";
-        html = html + "         <option> Indigenous Results </option>";
-        html = html + "         <option> Non-Indigenous Results </option>";
-        html = html + "      </select>";
-        html = html + "      <br>";
-        html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
-        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
-        html = html + "   </div><br>";
+        html = html + "      <br><br>";
+        //html = html + " </div>";
+        // html = html + "   <div class='form-group'>";
+        // html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
+        // html = html + "      <select id='orderByDrop' name='orderByDrop'>";
+        // html = html + "         <option> State </option>";
+        // html = html + "         <option> Indigenous Results </option>";
+        // html = html + "         <option> Non-Indigenous Results </option>";
+        // html = html + "      </select>";
+        // html = html + "   </div>";
+        // html = html + "   <br>";
+        // html = html + "   <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
+        // html = html + "   <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label><br>";
 
-        html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
+        html = html + "   <button type='submit' class='btn-update'>Update Chart</button>";
 
         html = html + "</form>";
         
@@ -116,10 +122,10 @@ public class Page4 implements Handler {
 
         //populate form submission results
         String outcomeDrop = context.formParam("outcomeDrop");
-        String populationRadio = context.formParam("populationRadio");
+        String populationDrop = context.formParam("populationDrop");
         String displayAsRadio = context.formParam("displayAsRadio");
-        String orderByDrop = context.formParam("orderByDrop");
-        String orderRadio = context.formParam("orderRadio");
+        //String orderByDrop = context.formParam("orderByDrop");
+        //String orderRadio = context.formParam("orderRadio");
 
         //Col - Table
         html = html + "<div class='colTable'>";
@@ -130,16 +136,16 @@ public class Page4 implements Handler {
             int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
             switch (outcomeSelect) {
                 case 1:
-                    html = html + "<h1>Outcome 1: Long and Healthy Lives</h1><h3>" + populationRadio + " population aged over 65";
+                    html = html + "<h1>Outcome 1: Long and Healthy Lives</h1><h3>" + populationDrop + " population aged over 65";
                     break;
                 case 5:
-                    html = html + "<h1>Outcome 5: Secondary Education</h1><h3>" + populationRadio + " population who have completed Year 12";
+                    html = html + "<h1>Outcome 5: Secondary Education</h1><h3>" + populationDrop + " population who have completed Year 12";
                     break;
                 case 6:
-                    html = html + "<h1>Outcome 6: Tertiary Education</h1><h3>" + populationRadio + " population who have completed a tertiary qualification of Advanced Diploma or higher";
+                    html = html + "<h1>Outcome 6: Tertiary Education</h1><h3>" + populationDrop + " population who have completed a tertiary qualification of Advanced Diploma or higher";
                     break;
                 case 8:
-                    html = html + "<h1>Outcome 8: Economic Participation</h1><h3>" + populationRadio + " population who are employed";
+                    html = html + "<h1>Outcome 8: Economic Participation</h1><h3>" + populationDrop + " population who are employed";
                     break;
             }
 
@@ -147,7 +153,11 @@ public class Page4 implements Handler {
             if (displayAsRadio.equals("Count")) {
                 html = html + "raw count of population.";
             } else {
-                html = html + "percentage of population aged over 15.";
+                if (outcomeSelect == 1) {
+                    html = html + "percentage of total population.";
+                } else {
+                    html = html + "percentage of population aged over 15.";
+                }
             }
             html = html + "</h3><hr class='in'>";
 
@@ -163,17 +173,17 @@ public class Page4 implements Handler {
         //ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         // Output into a table
-        if (outcomeDrop == null) {
+        if (outcomeDrop == null ||  outcomeDrop.equals("none")) {
             html = html + "";
         } else {
             //create and populate tableData from jdbc
             JDBCConnection jdbc = new JDBCConnection();
-            ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
+            ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio);
+            //ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio, orderByDrop, orderRadio);
             //start table
-            html = html + "<table><tr>";
-            html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
-            html = html + "</tr>";
-
+            html = html + "<table id='table_id' class='display'>";
+            html = html + "<thead><tr><th>State</th><th>Indigenous</th><th>Non-Indigenous</th></tr></thead>";
+            html = html + "<tbody>";
         for (level2tableRow row : tableData) {
             html = html + "<tr>";
             html = html + "<td>" + row.getState() + "</td>";
@@ -192,15 +202,13 @@ public class Page4 implements Handler {
                 html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
                 }
             }
-
             html = html + "</tr>";
         }
         // Finish the table
+        html = html + "</tbody>";
         html = html + "</table>";
         }
         html = html + "</div>";
-
-
 
         // Closes row3 DIV 
         html = html + "</div>";
@@ -212,10 +220,6 @@ public class Page4 implements Handler {
         //FOOTER
         //Closes Footer
         
-        // Add some JS (external file)
-        //html = html + "<link rel='javascript' type='text/css' href='common.css' />";
-        html = html + "<script src='common.js'></script>";
-
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";
 
