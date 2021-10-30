@@ -323,10 +323,6 @@ public class JDBCConnection {
     }
 
     
-
-
-
-    
     //************************************************************* LEVEL 2.2 - STATE STATISTICS  *************************************************************
     
     public ArrayList<level2tableRow> dataByState(String outcome, String population, String display, String orderColumn, String order) {
@@ -420,7 +416,21 @@ public class JDBCConnection {
     }
 
     
-    //a test query using the level 2 view for populating table data
+
+//************************************************************* LEVEL 3.1 - GAPSCORE  *************************************************************
+
+
+
+
+
+//************************************************************* LEVEL 3.2 - LGA COMPARISONS  *************************************************************
+
+
+
+
+
+//************************************************************* TEST QUERY  *************************************************************
+
 
     public ArrayList<level2tableRow> testQuery() {
         //Create ArrayList of our tableRow class to store the returned data
@@ -476,7 +486,5 @@ public class JDBCConnection {
         // Finally we return all table data
         return level2TableData;
     }
-
-
 
 }
