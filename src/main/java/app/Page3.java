@@ -29,7 +29,7 @@ public class Page3 implements Handler {
 
         // Add some Header information
         html = html + "<head>" + 
-               "<title>Data by LGA</title>";
+               "<title>Outcome Data by LGA</title>";
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
@@ -68,7 +68,7 @@ public class Page3 implements Handler {
         
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Outcome Statistics by LGA</h1>";
+        html = html + "<h1>Outcome Data by LGA</h1>";
         html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
         html = html + "</div>";
 

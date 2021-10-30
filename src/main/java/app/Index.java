@@ -33,7 +33,7 @@ public class Index implements Handler {
         html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
 
         // Add the body
-        html = html + "<body>";
+        html = html + "</head><body>";
 
         // Add HTML for the logo.png image
         
