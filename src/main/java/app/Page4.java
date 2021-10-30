@@ -89,7 +89,7 @@ public class Page4 implements Handler {
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
-        html = html + "         <option value = 'All' selected disabled hidden>Select the Population Segment:</option>";
+        html = html + "         <option value = 'All'>Select the Population Segment:</option>";
         html = html + "         <option value = 'All'> Total Population</option>";
         html = html + "         <option value = 'Female'> Female Population</option>";
         html = html + "         <option value = 'Male'> Male Population</option>";
