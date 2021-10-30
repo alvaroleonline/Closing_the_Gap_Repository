@@ -27,17 +27,19 @@ public class Page4 implements Handler {
         String html = "<html>";
 
         // Add some Header information
-        html = html + "<head>" + 
-               "<title>State Statistics</title>";
+        html = html + "<head>"; 
+        html = html + "   <title>Data by State</title>";
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
         html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
+        html = html + "<script src='common.js'></script>";
         html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
         html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
 
-        // Add the body
-        html = html + "<body>";
+
+        // Close head and start body
+        html = html + "</head><body>";
 
         // HEADER
         //navigation header
@@ -62,13 +64,11 @@ public class Page4 implements Handler {
         html = html + "<div id='content'>";
         html = html + "<div id='container-main' class='container'>";
 
-        
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Outcome Statistics by State</h1>";
+        html = html + "<h1>Outcome Data by State</h1>";
         html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by State.</p>";
         html = html + "</div>";
-
 
         // 2nd DIV - Chart and Table
         html = html + "<div class='row3'>";
@@ -79,7 +79,6 @@ public class Page4 implements Handler {
         html = html + "<form action='/page4.html' method='post'>";
         
         html = html + "   <div class='form-group'>";
-        //html = html + "      <label for='outcomeDrop'>Select Outcome to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
         html = html + "         <option value = 'none'>Select Outcome to Display:</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
@@ -90,10 +89,6 @@ public class Page4 implements Handler {
         //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-       // html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
-       // html = html + "      <input type='radio' id='all' name='populationRadio' value='All' checked='checked'> <label for='all'>All</label>";
-       // html = html + "      <input type='radio' id='female' name='populationRadio' value='Female'> <label for='female'>Females</label>";
-       // html = html + "      <input type='radio' id='male' name='populationRadio' value='Male'> <label for='male'>Males</label>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
         html = html + "         <option value = 'All' selected disabled hidden>Select the Population Segment:</option>";
         html = html + "         <option value = 'All'> Total Population</option>";
@@ -114,10 +109,11 @@ public class Page4 implements Handler {
         html = html + "         <option> State </option>";
         html = html + "         <option> Indigenous Results </option>";
         html = html + "         <option> Non-Indigenous Results </option>";
-        html = html + "      </select></div>";
-        html = html + "      <br>";
-        html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
-        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label><br>";
+        html = html + "      </select>";
+        html = html + "   </div>";
+        html = html + "   <br>";
+        html = html + "   <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
+        html = html + "   <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label><br>";
 
         html = html + "   <button type='submit' class='btn-update'>Update Chart</button>";
 
@@ -182,7 +178,7 @@ public class Page4 implements Handler {
             ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio, orderByDrop, orderRadio);
             //start table
             html = html + "<table id='table_id' class='display'>";
-            html = html + "<tr><th>State</th><th>Indigenous</th><th>Non-Indigenous</th></tr>";
+            html = html + "<thead><tr><th>State</th><th>Indigenous</th><th>Non-Indigenous</th></tr></thead>";
             html = html + "<tbody>";
         for (level2tableRow row : tableData) {
             html = html + "<tr>";
@@ -202,7 +198,6 @@ public class Page4 implements Handler {
                 html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
                 }
             }
-
             html = html + "</tr>";
         }
         // Finish the table
@@ -210,8 +205,6 @@ public class Page4 implements Handler {
         html = html + "</table>";
         }
         html = html + "</div>";
-
-
 
         // Closes row3 DIV 
         html = html + "</div>";
@@ -223,10 +216,6 @@ public class Page4 implements Handler {
         //FOOTER
         //Closes Footer
         
-        // Add some JS (external file)
-        //html = html + "<link rel='javascript' type='text/css' href='common.css' />";
-        html = html + "<script src='common.js'></script>";
-
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";
 
