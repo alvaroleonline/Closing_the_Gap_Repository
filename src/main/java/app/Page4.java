@@ -86,8 +86,8 @@ public class Page4 implements Handler {
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
         html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
-        //html = html + "      </select>";
-        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
+        html = html + "      </select>";
+        //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
        // html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
@@ -99,26 +99,27 @@ public class Page4 implements Handler {
         html = html + "         <option value = 'All'> Total Population</option>";
         html = html + "         <option value = 'Female'> Female Population</option>";
         html = html + "         <option value = 'Male'> Male Population</option>";
-        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
-        html = html + "   <br></div>";
-        html = html + "   <div class='form-group'>";
+        html = html + "      </select>";
+        //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
+        html = html + "   </div><br>";
+       // html = html + " <div class='form-group'>";
         html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
         html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
         html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
-        html = html + "   <br><br></div>";
+        html = html + "      <br><br>";
+        //html = html + " </div>";
         html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
         html = html + "      <select id='orderByDrop' name='orderByDrop'>";
         html = html + "         <option> State </option>";
         html = html + "         <option> Indigenous Results </option>";
         html = html + "         <option> Non-Indigenous Results </option>";
-        html = html + "      </select>";
+        html = html + "      </select></div>";
         html = html + "      <br>";
         html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
-        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
-        html = html + "   </div><br>";
+        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label><br>";
 
-        html = html + "   <button type='submit' class='btn-primary'>Update Chart</button>";
+        html = html + "   <button type='submit' class='btn-update'>Update Chart</button>";
 
         html = html + "</form>";
         

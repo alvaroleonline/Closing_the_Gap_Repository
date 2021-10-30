@@ -785,16 +785,18 @@ button.btn.btn-primary:hover{
 	background: var(--blue-gradient);
 }
 
-.btn-primary {
+.btn-update {
 	background-color: var(--orange);
 	font-family: var(--font-main);
 	float: right;
 	border: none;
+	border-radius: 10px;
 	padding: 15px 10px;
+	margin-top: 15px;
 	cursor: pointer;
 }
 
-.btn-primary:hover {
+.btn-update:hover {
 	background-color: var(--blue);
 	color:var(--white);
 
