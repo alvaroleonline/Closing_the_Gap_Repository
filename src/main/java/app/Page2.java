@@ -106,9 +106,16 @@ public class Page2 implements Handler {
         html = html + "<div class = 'content-box'>";
         html = html + "<h1>How to Use this Site</h1>";
         html = html + "<hr class='in'>";
-        html = html + "<p>Access the outcome data from the navigation menu at the top of the page - selecting how you would like to view the data: by Local Government Area (LGA), by State or one of the more detailed analysis pages listed. ";
-        html = html + "Each page has it's own breakdown of options to select so that you can access data on each specific outcome, as well as how it is broken down, displayed and ordered.</p>";
+        html = html + "<p>Access the outcome data from the navigation menu at the top of the page or the links below - selecting how you would like to view the data: by Local Government Area (LGA), by State or one of the more detailed analysis pages listed. ";
+        html = html + "Each page has it's own breakdown of options to select so that you can access data on each specific outcome, as well as how it is broken down, displayed and ordered.</p><br>";
         //TODO: insert information on how GapScore is calculated as well? 
+        html = html + "<h2>Start exploring the data</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <a href='page3.html'>Data by LGA</a>";
+        html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page5.html'>Subtask 3.1</a>";
+        html = html + "      <a href='page6.html'>Subtask 3.2</a>";
+        html = html + "   </div>";
         html = html + "</div>";
 
         html = html + "<div class='credits'>2021 Website built by Scott Dunsdon (s3918676) and Alvaro Pena Leon (s3909789). All material presented on this website is provided under a Creative Commons Attribution 4.0 International licence. Special mentions: Australian Government Productivity Comission- Closing the Gap Information Repository;  Australia Bureau of Statistics; Closing The Gap Report 2020.</div>";
