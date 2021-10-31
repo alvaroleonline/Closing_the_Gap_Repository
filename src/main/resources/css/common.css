@@ -784,14 +784,18 @@ button.btn.btn-primary:hover{
 	background: var(--blue-gradient);
 }
 
+.chart-switch {
+	display: flex;
+	justify-content: space-evenly;
+}
+
 .btn-update {
 	background-color: var(--orange);
 	font-family: var(--font-main);
-	float: right;
 	border: none;
 	border-radius: 10px;
 	padding: 15px 10px;
-	margin-top: 15px;
+	margin: 5px;
 	cursor: pointer;
 }
 

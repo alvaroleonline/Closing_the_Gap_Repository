@@ -100,7 +100,7 @@ public class Page4 implements Handler {
         html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
         html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
         html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
-        html = html + "      <br><br>";
+        //html = html + "      <br><br>";
         //html = html + " </div>";
         // html = html + "   <div class='form-group'>";
         // html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
@@ -117,7 +117,17 @@ public class Page4 implements Handler {
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
-        
+
+        html = html + "<div class='col1'>";
+        html = html + "   <BR><BR><h2>Switch Chart Type</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <button onclick='page3.html' class='btn btn-update'>Data by LGA</button>";
+        //html = html + "      <button onclick='page4.html' class='btn btn-update'>Data by LGA</button>";
+        html = html + "      <button onclick='page5.html' class='btn btn-update'>Subtask 3.1 (TBC)</button>";
+        html = html + "      <button onclick='page6.html' class='btn btn-update'>Subtask 3.2 (TBC)</button>";
+        html = html + "   </div>";
+        html = html + "</div>";
+
         html = html + "</div>";
 
         //populate form submission results
@@ -215,6 +225,28 @@ public class Page4 implements Handler {
         html = html + "</div>";
 
         // Closes row3 DIV 
+        html = html + "</div>";
+
+        // New row and col DIV for switching charts
+        html = html + "<div class='row3'>";
+        html = html + "<div class='col1'>";
+        html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <button onclick='page3.html' class='btn btn-update'>Data by LGA</button>";
+        //html = html + "      <button onclick='page4.html' class='btn btn-update'>Data by LGA</button>";
+        html = html + "      <button onclick='page5.html' class='btn btn-update'>Subtask 3.1 (TBC)</button>";
+        html = html + "      <button onclick='page6.html' class='btn btn-update'>Subtask 3.2 (TBC)</button>";
+        html = html + "   </div>";
+        html = html + "</div>";
+        html = html + "<div class='colTable'>";
+        html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <button onclick='page3.html' class='btn btn-update'>Data by LGA</button>";
+        //html = html + "      <button onclick='page4.html' class='btn btn-update'>Data by LGA</button>";
+        html = html + "      <button onclick='page5.html' class='btn btn-update'>Subtask 3.1 (TBC)</button>";
+        html = html + "      <button onclick='page6.html' class='btn btn-update'>Subtask 3.2 (TBC)</button>";
+        html = html + "   </div>";
+        html = html + "</div>";
         html = html + "</div>";
 
         //CLOSES CONTENT divs
