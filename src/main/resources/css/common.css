@@ -1,6 +1,7 @@
 /* -----------------------
 Base styles
 ------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
 
 :root{
@@ -29,8 +30,8 @@ Base styles
 	--shadow-auto: 0 1px 3px rgba(0,0,0,.2);
 	--shadow-dark: 0 1px 5px rgba(0,0,0,.6);
 	/*font attributes*/
-	--font-main: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-	--h1: 2.3rem;
+	--font-main:  'Inter', -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--h1: 2.2rem;
 	--h2: 1.2rem;
 	--p: 0.9rem;
 	--b: 500;
@@ -82,6 +83,7 @@ h1 {
 	margin-inline-start: 0;
 	margin-inline-end: 0;
 	font-weight:500;
+	letter-spacing: -0.5px;
 }
 
 
@@ -95,6 +97,7 @@ h2 {
 	margin-inline-start: 0;
 	margin-inline-end: 0;
 	font-weight:500;
+	letter-spacing: -0.2px;
 }
 
 
