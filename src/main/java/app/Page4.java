@@ -182,30 +182,34 @@ public class Page4 implements Handler {
             //ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio, orderByDrop, orderRadio);
             //start table
             html = html + "<table id='table_id' class='display'>";
-            html = html + "<thead><tr><th>State</th><th>Indigenous</th><th>Non-Indigenous</th></tr></thead>";
+            html = html + "<thead><tr>";
+            html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            html = html + "</tr></thead>";
+
             html = html + "<tbody>";
         for (level2tableRow row : tableData) {
+
             html = html + "<tr>";
-            html = html + "<td>" + row.getState() + "</td>";
+            html = html + "<td><b id='blue'>" + row.getState() + "</b></td>";
             if (displayAsRadio.equals("Count")) {
                 html = html + "<td>" + row.getCountIndig() + "</td>";
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
             } else {
                 if (row.getPercentIndig() > 100) {
-                    html = html + "<td>100%</td>";
+                    html = html + "<td>100.0%</td>";
                 } else {
-                html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentIndig()) + "%</td>";
                 }
                 if (row.getPercentNonIndig() > 100) {
-                    html = html + "<td>100</td>";
+                    html = html + "<td>100.0%</td>";
                 } else {
-                html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "%</td>";
                 }
             }
             html = html + "</tr>";
         }
-        // Finish the table
         html = html + "</tbody>";
+        // Finish the table
         html = html + "</table>";
         }
         html = html + "</div>";
