@@ -809,32 +809,48 @@ a#missionlink:hover{
 }
 
 .form-radio {
-	display: flex;
+	display: block;
 	align-items: center;
 }
 
 .radiobtn {
 	cursor: pointer;
 	width: 5%;
+	float: right;
+	margin-top: 7px;
+	margin-right: 7px;
 }
 
 .radiolabel {
-	display: inline-block;
+	margin-bottom: 7px;
 	cursor: pointer;
-	width: 45%;
-	
-	border: 1px solid var(--gray-400);
-	border-radius: 5px;
-	background-color: var(--clear);
+	padding: 4px 4px 4px 9px;
+	width: auto;
+	border-radius: 25px;
+	color: var(--black);
+	background-color: var(--gray-100);
 	font-size: var(--p);
-	text-align: center;
+	text-align: left;
+	display: block;
+	border: 1px solid var(--gray-100);
+}
+
+.radiolabel:hover {
+	background-color: var(--gray-100-clear);
+}
+
+.displayTag{
+	padding-left: 10px;
+	margin-bottom: 10px;
+	margin-top:15px;
+	color: var(--black);
 }
 
 button.btn.btn-primary{
 	cursor: pointer;
 	color: var(--white);
 	background-color: var(--blue-900);
-	margin-top: 35px;
+	margin-top: 55px;
 	float: right;
 	font-size: var(--p);
 	padding: 8px 10px 8px 10px;

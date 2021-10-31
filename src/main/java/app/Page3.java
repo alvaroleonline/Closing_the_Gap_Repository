@@ -102,12 +102,12 @@ public class Page3 implements Handler {
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         html = html + "   </div>";
-        html = html + "   <b>Display Data as</b>";
+        html = html + "   <p class='displayTag'>Display Data as:</p>";
         html = html + "   <div class='form-radio'>";
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
         html = html + "          <label class ='radiolabel' for='percent'>Proportion of Population</label>";
         html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
-        html = html + "          <label class ='radiolabel' for='count'>Raw Population<br>Count</label>";
+        html = html + "          <label class ='radiolabel' for='count'>Raw Population Count</label>";
         html = html + "   </div>";
         /*html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
@@ -225,6 +225,9 @@ public class Page3 implements Handler {
         html = html + "</table>";
         }
         html = html + "</div>";
+
+
+        
 
 
         // Closes 2nd DIV 

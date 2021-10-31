@@ -101,7 +101,7 @@ public class Page4 implements Handler {
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
         html = html + "          <label class ='radiolabel' for='percent'>Proportion of Population</label>";
         html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
-        html = html + "          <label class ='radiolabel' for='count'>Raw Population<br>Count</label>";
+        html = html + "          <label class ='radiolabel' for='count'>Raw Population Count</label>";
         html = html + "   </div>";
 
         // html = html + "   <div class='form-group'>";
