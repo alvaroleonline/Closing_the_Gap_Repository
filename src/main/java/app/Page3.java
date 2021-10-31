@@ -105,7 +105,7 @@ public class Page3 implements Handler {
         html = html + "   <p class='displayTag'>Display Data as:</p>";
         html = html + "   <div class='form-radio'>";
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
-        html = html + "          <label class ='radiolabel' for='percent'>Proportion of Population</label>";
+        html = html + "          <label class ='radiolabel' for='percent'>Percentage of Population</label>";
         html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
         html = html + "          <label class ='radiolabel' for='count'>Raw Population Count</label>";
         html = html + "   </div>";
@@ -227,10 +227,22 @@ public class Page3 implements Handler {
         html = html + "</div>";
 
 
-        
-
-
         // Closes 2nd DIV 
+        html = html + "</div>";
+
+        //New row and col DIV for switching charts
+        html = html + "<div class='row3'>";
+        html = html + "<div class='col1hide'>";
+        html = html + "</div>";
+        html = html + "<div class='colTable'>";
+        html = html + "   <h2>Explore the data in other ways</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></i></a>";
+        //html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page5.html'>Subtask 3.1<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
+        html = html + "   </div>";
+        html = html + "</div>";
         html = html + "</div>";
         
 
