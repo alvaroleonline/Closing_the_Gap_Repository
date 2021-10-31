@@ -156,7 +156,7 @@ public class Index implements Handler {
  
          //col1
          html = html + "<div class='col1'>";
-         html = html + "<a href='mission.html'>";
+         html = html + "<a href='page3.html'>";
          html = html + "<h1>Explore the Data</h1>";
          html = html + "</a>";
          html = html + "</div>";
