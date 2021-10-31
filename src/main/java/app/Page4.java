@@ -118,16 +118,6 @@ public class Page4 implements Handler {
 
         html = html + "</form>";
 
-        html = html + "<div class='col1'>";
-        html = html + "   <BR><BR><h2>Switch Chart Type</h2><hr class='in'>";
-        html = html + "   <div class='chart-switch'>";
-        html = html + "      <button onclick='page3.html' class='btn btn-update'>Data by LGA</button>";
-        //html = html + "      <button onclick='page4.html' class='btn btn-update'>Data by LGA</button>";
-        html = html + "      <button onclick='page5.html' class='btn btn-update'>Subtask 3.1 (TBC)</button>";
-        html = html + "      <button onclick='page6.html' class='btn btn-update'>Subtask 3.2 (TBC)</button>";
-        html = html + "   </div>";
-        html = html + "</div>";
-
         html = html + "</div>";
 
         //populate form submission results
@@ -229,22 +219,15 @@ public class Page4 implements Handler {
 
         // New row and col DIV for switching charts
         html = html + "<div class='row3'>";
-        html = html + "<div class='col1'>";
-        html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
-        html = html + "   <div class='chart-switch'>";
-        html = html + "      <button onclick='page3.html' class='btn btn-update'>Data by LGA</button>";
-        //html = html + "      <button onclick='page4.html' class='btn btn-update'>Data by LGA</button>";
-        html = html + "      <button onclick='page5.html' class='btn btn-update'>Subtask 3.1 (TBC)</button>";
-        html = html + "      <button onclick='page6.html' class='btn btn-update'>Subtask 3.2 (TBC)</button>";
-        html = html + "   </div>";
+        html = html + "<div class='col1hide'>";
         html = html + "</div>";
         html = html + "<div class='colTable'>";
         html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
-        html = html + "      <button onclick='page3.html' class='btn btn-update'>Data by LGA</button>";
-        //html = html + "      <button onclick='page4.html' class='btn btn-update'>Data by LGA</button>";
-        html = html + "      <button onclick='page5.html' class='btn btn-update'>Subtask 3.1 (TBC)</button>";
-        html = html + "      <button onclick='page6.html' class='btn btn-update'>Subtask 3.2 (TBC)</button>";
+        html = html + "      <a href='page3.html'>Data by LGA</a>";
+        //html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page5.html'>Subtask 3.1</a>";
+        html = html + "      <a href='page6.html'>Subtask 3.2</a>";
         html = html + "   </div>";
         html = html + "</div>";
         html = html + "</div>";
