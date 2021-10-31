@@ -131,21 +131,21 @@ public class Page4 implements Handler {
         html = html + "<div class='colTable'>";
         
         if (outcomeDrop == null || outcomeDrop.equals("none")) {
-            html = html + "<h1>Awaiting Selection</h1><h3>Please select table data options on the left</h3><hr class='in'>";
+            html = html + "<h1>Investigate the Data</h1><hr class='in'><h2>Awaiting Selection: Please select table data options on the left</h2>";
         } else {
             int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
             switch (outcomeSelect) {
                 case 1:
-                    html = html + "<h1>Outcome 1: Long and Healthy Lives</h1><h3>" + populationDrop + " population aged over 65";
+                    html = html + "<h1>Outcome 1: Long and Healthy Lives</h1<hr class='in'><h2>" + populationDrop + " population aged over 65";
                     break;
                 case 5:
-                    html = html + "<h1>Outcome 5: Secondary Education</h1><h3>" + populationDrop + " population who have completed Year 12";
+                    html = html + "<h1>Outcome 5: Secondary Education</h1><hr class='in'><h2>" + populationDrop + " population who have completed Year 12";
                     break;
                 case 6:
-                    html = html + "<h1>Outcome 6: Tertiary Education</h1><h3>" + populationDrop + " population who have completed a tertiary qualification of Advanced Diploma or higher";
+                    html = html + "<h1>Outcome 6: Tertiary Education</h1><hr class='in'><h2>" + populationDrop + " population who have completed a tertiary qualification of Advanced Diploma or higher";
                     break;
                 case 8:
-                    html = html + "<h1>Outcome 8: Economic Participation</h1><h3>" + populationDrop + " population who are employed";
+                    html = html + "<h1>Outcome 8: Economic Participation</h1><hr class='in'><h2>" + populationDrop + " population who are employed";
                     break;
             }
 
@@ -159,7 +159,7 @@ public class Page4 implements Handler {
                     html = html + "percentage of population aged over 15.";
                 }
             }
-            html = html + "</h3><hr class='in'>";
+            html = html + "</h2>";
 
         }
         

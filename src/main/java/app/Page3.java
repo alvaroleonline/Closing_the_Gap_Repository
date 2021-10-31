@@ -170,7 +170,7 @@ public class Page3 implements Handler {
                     html = html + "percentage of population aged over 15.";
                 }
             }
-            
+            html = html + "</h2>";
 
         }
         
