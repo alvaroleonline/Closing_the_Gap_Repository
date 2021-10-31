@@ -96,7 +96,7 @@ public class Page4 implements Handler {
         html = html + "      </select>";
         //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
         html = html + "   </div>";
-        html = html + "   <h3>Display Data as</h3>";
+        html = html + "   <p class='displayTag'>Display Data as</p>";
         html = html + "   <div class='form-radio'>";
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
         html = html + "          <label class ='radiolabel' for='percent'>Proportion of Population</label>";
