@@ -18,7 +18,7 @@ Base styles
 	--orange-clear: #ff77007c;
 	--orange-900: #BF360C;
 	--blue: #304FFE; /* 1F77B4 */
-	--blue-clear: #eaf6ff;
+	--blue-clear: #DAE6FE;
 	--blue-900: #1A237E;
 	--blue-gradient: linear-gradient(0deg, rgba(26,35,126,1) 22%, rgba(48,79,254,1) 100%);
 	--green: #BDFF00;
@@ -464,7 +464,7 @@ p.outcome{
 }
 
 .col1>a>h1:hover{
-	color: var(--blue);
+	color: var(--blue-900);
 	background-color: var(--blue-clear);
 	padding-right:35px;
 	transition:  .2s ease-in-out;
@@ -574,7 +574,7 @@ h2.resourcelink{
 
 
 h2.resourcelink:hover{
-	color: var(--blue);
+	color: var(--blue-900);
 	background-color: var(--blue-clear);
 	margin:-10px;
 	padding: 10px;
@@ -599,7 +599,7 @@ h2>.fa {
 
 
 .collapsible {
-	background-color: var(--gray-100-clear);
+	background-color: var(--gray-100);
 	color: var(--black);
 	border-radius: var(--small);
 	cursor: pointer;
@@ -611,7 +611,7 @@ h2>.fa {
   }
   
   .active, .collapsible:hover {
-	background-color: var(--gray-100);
+	background-color: var(--blue-clear);
   }
   
   .collapsible:after {
@@ -673,6 +673,39 @@ a#missionlink:hover{
 	padding: var(--content-div);
 	text-align: left;
 	color: var(--gray-500);
+}
+
+
+.chart-switch-mission {
+	width: 100%;
+	display: grid;
+    grid-template-columns: minmax(10%,1fr) minmax(10%,1fr) minmax(10%,1fr) minmax(10%,1fr);
+    grid-gap: 20px;
+}
+
+.chart-switch-mission>a {
+	font-family: var(--font-main);
+	font-size: var(--p);
+	font-weight: var(--b);
+	color: var(--blue-900);
+	background-color: var(--gray-100);
+	text-align: left;
+	border: none;
+	border-radius: var(--small);
+	padding: 15px;
+	cursor: pointer;
+}
+
+.chart-switch-mission>a:hover {
+	background-color: var(--blue-clear);
+	color:var(--black);
+
+}
+
+.chart-switch-mission>a>.fa {
+	float: right;
+	padding-right: 5px;
+	font-size: 1.1rem;
 }
 
 
@@ -822,28 +855,35 @@ button.btn.btn-primary:hover{
 
 .chart-switch {
 	display: flex;
-	justify-content: space-evenly; 
+	justify-content: space-between; 
 	flex-grow: 1;
 }
 
-.chart-switch > a {
+.chart-switch>a {
+	width: calc(23% - 20px);
 	display: inline-block;
-	width: 30%;
-	background-color: var(--orange);
-	color: black;
 	font-family: var(--font-main);
-	text-align: center;
+	font-size: var(--p);
+	font-weight: var(--b);
+	color: var(--blue-900);
+	background-color: var(--gray-100);
+	text-align: left;
 	border: none;
-	border-radius: 10px;
-	padding: 15px 10px;
-	margin: 5px;
+	border-radius: var(--small);
+	padding: 15px;
 	cursor: pointer;
 }
 
 .chart-switch > a:hover {
-	background-color: var(--blue);
-	color:var(--white);
+	background-color: var(--blue-clear);
+	color:var(--black);
 
+}
+
+.chart-switch>a>.fa {
+	float: right;
+	padding-right: 5px;
+	font-size: 1.1rem;
 }
 
 

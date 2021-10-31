@@ -110,11 +110,11 @@ public class Page2 implements Handler {
         html = html + "Each page has it's own breakdown of options to select so that you can access data on each specific outcome, as well as how it is broken down, displayed and ordered.</p><br>";
         //TODO: insert information on how GapScore is calculated as well? 
         html = html + "<h2>Start exploring the data</h2><hr class='in'>";
-        html = html + "   <div class='chart-switch'>";
-        html = html + "      <a href='page3.html'>Data by LGA</a>";
-        html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page5.html'>Subtask 3.1</a>";
-        html = html + "      <a href='page6.html'>Subtask 3.2</a>";
+        html = html + "   <div class='chart-switch-mission'>";
+        html = html + "      <a href='page3.html'>Data by LGA<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page5.html'>Subtask 3.1<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
         html = html + "   </div>";
         html = html + "</div>";
 
