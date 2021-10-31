@@ -124,6 +124,7 @@ public class Page3 implements Handler {
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
+
         
         html = html + "</div>";
 
@@ -228,6 +229,7 @@ public class Page3 implements Handler {
 
         // Closes 2nd DIV 
         html = html + "</div>";
+        
 
 
 
