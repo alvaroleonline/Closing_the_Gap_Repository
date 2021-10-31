@@ -63,14 +63,50 @@ public class Resources implements Handler {
         //1st DIV: Default Content Div
         html = html + "<div class='content-title'>";
         html = html + "<h1>Additional Resources</h1>";
-        html = html + "<hr class='white'>" + "<p>Links to various organisations that are working towards Closing the Gap for Indigenous Australians.</p>";
+        html = html + "<hr class='white'>" + "<p>List of Aboriginal and Torres Strait Islander peak community organisations, national and jurisdictional.</p>";
         html = html + "</div>"; 
 
 
         // OPENS DIV RESOURCES
         html = html + "<div class='row'>";
         
-        
+
+        // Resource
+        html = html + "<div class='col4'>";
+        html = html + "<a href='http://aief.com.au'>";
+        html = html + "<h2>Australian Indigenous Education Foundation";
+        html = html + "<p id='blue'>Provides funding that enables Indigenous students to pursue their education at leading schools.</p></h2>";
+        html = html + "</a>";
+        html = html + "</div>";
+
+
+         // Resource
+        html = html + "<div class='col4'>";
+        html = html + "<a href='https://aida.org.au/'>";
+        html = html + "<h2>Australian Indigenous Doctors' Association";
+        html = html + "<p id='blue'>Not-for-profit, member-based, professional association supporting Aboriginal and Torres Strait Islander medical students and doctors.</p></h2>";
+        html = html + "</a>";
+        html = html + "</div>";
+
+ 
+         // Resource
+        html = html + "<div class='col4'>";
+        html = html + "<a href='https://aiatsis.gov.au/'>";
+        html = html + "<h2>AIATSIS";
+        html = html + "<p id='blue'>The Australian Institute of Aboriginal and Torres Strait Islander Studies.</p></h2>";
+        html = html + "</a>";
+        html = html + "</div>";
+
+
+        // Resource
+        html = html + "<div class='col4'>";
+        html = html + "<a href='https://firstnationsmedia.org.au'>";
+        html = html + "<h2>First Nations Media Australia";
+        html = html + "<p id='blue'>National peak body for the Aboriginal and Torres Strait Islander media industry.</p></h2>";
+        html = html + "</a>";
+        html = html + "</div>";
+
+
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://iaha.com.au'>";
@@ -88,33 +124,6 @@ public class Resources implements Handler {
         html = html + "</a>";
         html = html + "</div>";
 
-
-        // Resource
-        html = html + "<div class='col4'>";
-        html = html + "<a href='http://aief.com.au'>";
-        html = html + "<h2>Australian Indigenous Education Foundation";
-        html = html + "<p id='blue'>Provides funding that enables Indigenous students to pursue their education at leading schools.</p></h2>";
-        html = html + "</a>";
-        html = html + "</div>";
-
-
-        // Resource
-        html = html + "<div class='col4'>";
-        html = html + "<a href='https://firstnationsmedia.org.au'>";
-        html = html + "<h2>First Nations Media Australia";
-        html = html + "<p id='blue'>National peak body for the Aboriginal and Torres Strait Islander media industry.</p></h2>";
-        html = html + "</a>";
-        html = html + "</div>";
-
- 
-         // Resource
-        html = html + "<div class='col4'>";
-        html = html + "<a href='https://aiatsis.gov.au/'>";
-        html = html + "<h2>AIATSIS";
-        html = html + "<p id='blue'>The Australian Institute of Aboriginal and Torres Strait Islander Studies.</p></h2>";
-        html = html + "</a>";
-        html = html + "</div>";
-
  
          // Resource
         html = html + "<div class='col4'>";
@@ -123,6 +132,44 @@ public class Resources implements Handler {
         html = html + "<p id='blue'>Implementation of the United Nations Declaration on the Rights of Indigenous Peoples.</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
+
+
+        // Resource
+        html = html + "<div class='col4'>";
+        html = html + "<a href='https://www.nationalfvpls.org/'>";
+        html = html + "<h2>National Family Violence Prevention Legal Services Forum";
+        html = html + "<p id='blue'>Provides legal and non-legal supports to Aboriginal and Torres Strait Islander victims/ survivors of family violence.</p></h2>";
+        html = html + "</a>";
+        html = html + "</div>";
+
+
+        // Resource
+        html = html + "<div class='col4'>";
+        html = html + "<a href='https://alc.org.au/'>";
+        html = html + "<h2>NSW Aboriginal Land Council";
+        html = html + "<p id='blue'>Peak representative body in Aboriginal Affairs.</p></h2>";
+        html = html + "</a>";
+        html = html + "</div>";
+
+
+        // Resource
+        html = html + "<div class='col4'>";
+        html = html + "<a href='https://www.snaicc.org.au/'>";
+        html = html + "<h2>SNAICC - National Voice for Our Children";
+        html = html + "<p id='blue'>Non-governmental peak body for Aboriginal and Torres Strait Islander children.</p></h2>";
+        html = html + "</a>";
+        html = html + "</div>";
+
+
+        // Resource
+        html = html + "<div class='col4'>";
+        html = html + "<a href='https://www.vaccho.org.au/'>";
+        html = html + "<h2>Victorian Aboriginal Community Controlled Health Organisation (VACCHO)";
+        html = html + "<p id='blue'>Peak body for the health and wellbeing of Aboriginal peoples living in Victoria.</p></h2>";
+        html = html + "</a>";
+        html = html + "</div>";
+
+
 
 
         // To add more resource divs..
