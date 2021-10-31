@@ -761,11 +761,33 @@ a#missionlink:hover{
 	font-weight: 400;
 }
 
+.form-radio {
+	display: flex;
+	align-items: center;
+}
+
+.radiobtn {
+	cursor: pointer;
+	width: 5%;
+}
+
+.radiolabel {
+	display: inline-block;
+	cursor: pointer;
+	width: 45%;
+	
+	border: 1px solid var(--gray-400);
+	border-radius: 5px;
+	background-color: var(--clear);
+	font-size: var(--p);
+	text-align: center;
+}
+
 button.btn.btn-primary{
 	cursor: pointer;
 	color: var(--white);
 	background-color: var(--blue-900);
-	margin-top: 50px;
+	margin-top: 35px;
 	float: right;
 	font-size: var(--p);
 	padding: 8px 10px 8px 10px;
@@ -786,11 +808,13 @@ button.btn.btn-primary:hover{
 
 .chart-switch {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-evenly; 
+	flex-grow: 1;
 }
 
 .chart-switch > a {
 	display: inline-block;
+	width: 30%;
 	background-color: var(--orange);
 	color: black;
 	font-family: var(--font-main);

@@ -95,13 +95,15 @@ public class Page4 implements Handler {
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
-        html = html + "   </div><br>";
-       // html = html + " <div class='form-group'>";
-        html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
-        html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
-        html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
-        //html = html + "      <br><br>";
-        //html = html + " </div>";
+        html = html + "   </div>";
+        html = html + "   <h3>Display Data as:</h3>";
+        html = html + "   <div class='form-radio'>";
+        html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
+        html = html + "          <label class ='radiolabel' for='percent'>Proportion of Population</label>";
+        html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
+        html = html + "          <label class ='radiolabel' for='count'>Raw Population<br>Count</label>";
+        html = html + "   </div>";
+
         // html = html + "   <div class='form-group'>";
         // html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
         // html = html + "      <select id='orderByDrop' name='orderByDrop'>";
@@ -117,16 +119,6 @@ public class Page4 implements Handler {
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
-
-        html = html + "<div class='col1'>";
-        html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
-        html = html + "   <div class='chart-switch'>";
-        html = html + "      <a href='page3.html'>Data by LGA</a>";
-        //html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page5.html'>Subtask 3.1</a>";
-        html = html + "      <a href='page6.html'>Subtask 3.2</a>";
-        html = html + "   </div>";
-        html = html + "</div>";
 
         html = html + "</div>";
 
@@ -227,20 +219,20 @@ public class Page4 implements Handler {
         // Closes row3 DIV 
         html = html + "</div>";
 
-        // New row and col DIV for switching charts
-        // html = html + "<div class='row3'>";
-        // html = html + "<div class='col1hide'>";
-        // html = html + "</div>";
-        // html = html + "<div class='colTable'>";
-        // html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
-        // html = html + "   <div class='chart-switch'>";
-        // html = html + "      <a href='page3.html'>Data by LGA</a>";
-        // //html = html + "      <a href='page4.html'>Data by State</a>";
-        // html = html + "      <a href='page5.html'>Subtask 3.1</a>";
-        // html = html + "      <a href='page6.html'>Subtask 3.2</a>";
-        // html = html + "   </div>";
-        // html = html + "</div>";
-        // html = html + "</div>";
+        //New row and col DIV for switching charts
+        html = html + "<div class='row3'>";
+        html = html + "<div class='col1hide'>";
+        html = html + "</div>";
+        html = html + "<div class='colTable'>";
+        html = html + "   <h2>Explore the data in other ways:</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <a href='page3.html'>Data by LGA</a>";
+        //html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page5.html'>Subtask 3.1</a>";
+        html = html + "      <a href='page6.html'>Subtask 3.2</a>";
+        html = html + "   </div>";
+        html = html + "</div>";
+        html = html + "</div>";
 
         //CLOSES CONTENT divs
         html = html + "</div>";
