@@ -143,16 +143,8 @@ public class Index implements Handler {
         html = html + "</div>";
 
 
-         // 3rd DIV
-         html = html + "<div class='row2'>";
-        
-         //col2
-         html = html + "<div class='col1'>";
-         html = html + "<a href='mission.html'>";
-         html = html + "<h1>Learn More</h1>";
-         html = html + "</a>";
-         html = html + "</div>";
- 
+         // 4th DIV
+         html = html + "<div class='row5'>";
  
          //col1
          html = html + "<div class='col1'>";
@@ -160,9 +152,15 @@ public class Index implements Handler {
          html = html + "<h1>Explore the Data</h1>";
          html = html + "</a>";
          html = html + "</div>";
+
+         //col2
+         html = html + "<div class='col1'>";
+         html = html + "<a href='mission.html'>";
+         html = html + "<h1>Mission</h1>";
+         html = html + "</a>";
+         html = html + "</div>";
  
- 
-         // Closes 3rd DIV 
+         // Closes 4th DIV 
          html = html + "</div>";
 
 
@@ -183,8 +181,8 @@ public class Index implements Handler {
 
 
         //col1
-        html = html + "<div class='col1'>";
-        html = html + "<img src='cover_image.jpg' class='img-cover'></img>";
+        html = html + "<div class='colimg'>";
+        // html = html + "<img src='cover_image.jpg' class='img-cover'></img>";
         html = html + "</div>";
 
 

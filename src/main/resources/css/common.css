@@ -14,11 +14,11 @@ Base styles
 	--gray-500: #37474F;
     --white: #FFFFFF;
 	--black: #000000;
-	--orange: #FF7600; /*FF7F0E, FF5400*/
+	--orange: #FF7600; /*fa8503, FF5400*/
 	--orange-clear: #ff77007c;
 	--orange-900: #BF360C;
 	--blue: #304FFE; /* 1F77B4 */
-	--blue-clear: rgba(48,79,254,0.2);
+	--blue-clear: #eaf6ff;
 	--blue-900: #1A237E;
 	--blue-gradient: linear-gradient(0deg, rgba(26,35,126,1) 22%, rgba(48,79,254,1) 100%);
 	--green: #BDFF00;
@@ -425,12 +425,16 @@ p.outcome{
 
 
 /* IMG/RESOURCES CONTAINER */
+.row5 {
+	width: 100%;
+	margin: 10px 20px;
+	display: grid;
+    grid-template-columns: minmax(66%,1fr) minmax(24%,1fr);
+    grid-gap: 21px;
+}
 
 .row2 {
 	width: 100%;
-	/*content: "";
-    display: flex;
-    justify-content:space-between;*/
 	margin: 10px 20px;
 	display: grid;
     grid-template-columns: minmax(24%,1fr) minmax(66%,1fr);
@@ -460,11 +464,11 @@ p.outcome{
 }
 
 .col1>a>h1:hover{
-	color: var(--blue-900);
+	color: var(--blue);
 	background-color: var(--blue-clear);
 	padding-right:35px;
-	transition: all .3s ease-in-out;
-	-webkit-transition: all .3s ease-in-out; 
+	transition:  .2s ease-in-out;
+	-webkit-transition:  .2s ease-in-out; 
 }
 
 .col1>a>h1:after {
@@ -479,30 +483,40 @@ p.outcome{
 	content: "\f105";
     font-weight: 900;
 	color: rgba(0,0,0,0);
-	transition: all .3s ease-in-out;
-	-webkit-transition: all .3s ease-in-out; 
+	transition:  .3s ease-in-out;
+	-webkit-transition:  .3s ease-in-out; 
   }
 
   .col1>a>h1:hover:after {
 	transform: scale(1.05);
-	background-color: var(--blue-900);
+	background-color: var(--blue);
 	color: var(--white);
 	box-shadow: 0px 0px 10px var(--blue-clear);
 	-webkit-box-shadow: 0px 0px 10px var(--blue-clear);
 	-moz-box-shadow: 0px 0px 10px var(--blue-clear);
-	transition: all .3s ease-in-out;
-	-webkit-transition: all .3s ease-in-out; 
-  }
+	transition:  .3s ease-in-out;
+	-webkit-transition:  .3s ease-in-out; 
+}
 
-.img-cover{
-	max-width: 100%;
-    max-height: 100%;
-	margin: 0;
+
+.colimg{
 	border-radius: var(--big);
+	display: inline-block;
+    overflow: hidden; /* Avoids img overflowing div */
+	box-shadow: var(--shadow-auto);
+	background: red url('cover_image.jpg');
+	background-size: cover;
+}
+
+/* .img-cover{
+	width: 100%;
+    height: auto;
+    min-height: 100%;
+	margin: 0;
 	-webkit-transition: -webkit-transform 0.4s;
     transition: transform 0.2s;
 
-}
+} */
 
 .img-cover:hover{
 	transition: transform 1s;
@@ -545,7 +559,7 @@ p.outcome{
 }
 
 #viewall:hover{
-	color: var(--blue-900);
+	color: var(--blue);
 	background-color: var(--blue-clear);
 	transition-duration: 0.2s;
 }
@@ -560,7 +574,7 @@ h2.resourcelink{
 
 
 h2.resourcelink:hover{
-	color: var(--blue-900);
+	color: var(--blue);
 	background-color: var(--blue-clear);
 	margin:-10px;
 	padding: 10px;
