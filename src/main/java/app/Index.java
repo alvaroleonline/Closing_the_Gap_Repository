@@ -102,7 +102,7 @@ public class Index implements Handler {
         
         // Fact 1
         html = html + "<div class='col3'>";
-        html = html + "<a href='page3.html'>";
+        // html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
         int count1I = jdbc.getFirstFact1("Indigenous");
         int countNon1I = jdbc.getFirstFact2("Non-Indigenous");
@@ -110,12 +110,12 @@ public class Index implements Handler {
         html = html + "<span class='fact-count'><p class='outcome'>Employed Indigenous Population</p><h1>" + count1I + "%</h1></span>";
         html = html + "<span class='fact-hidden'><p>Compared to " + countNon1I +"% of Non-Indigenous</p></span>";
         // Closes Fact
-        html = html + "</a>";
+        ///html = html + "</a>";
         html = html + "</div>";
  
         // Fact 2
         html = html + "<div class='col3'>";
-        html = html + "<a href='page3.html'>";
+        // html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
         int count21I = jdbc.getSecondFact1("Indigenous");
         int count2NonI = jdbc.getSecondFact2("Non-Indigenous");
@@ -123,12 +123,12 @@ public class Index implements Handler {
         html = html + "<span class='fact-count'><p class='outcome'>Indigenous population aged 65 or over</p><h1>" + count21I + "%</h1></span>";
         html = html + "<span class='fact-hidden'><p>Compared to " + count2NonI +"% of Non-Indigenous</p></span>";
         // Closes Fact
-        html = html + "</a>";
+        // html = html + "</a>";
         html = html + "</div>";
 
         // Fact 3
         html = html + "<div class='col3'>";
-        html = html + "<a href='page3.html'>";
+        // html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
         int count3I = jdbc.getThirdFact1("Indigenous");
         int count3NonI = jdbc.getThirdFact2("Non-Indigenous");
@@ -136,7 +136,7 @@ public class Index implements Handler {
         html = html + "<span class='fact-count'><p class='outcome'>Completed higher education</p><h1>" + count3I + "%</h1></span>";
         html = html + "<span class='fact-hidden'><p>Compared to " + count3NonI +"% of Non-Indigenous</p></span>";
         // Closes Fact
-        html = html + "</a>";
+        // html = html + "</a>";
         html = html + "</div>";
 
         // Closes 2nd DIV

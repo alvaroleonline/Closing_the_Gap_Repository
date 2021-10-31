@@ -372,6 +372,7 @@ b {
     -webkit-box-shadow: var(--shadow-auto);
     padding: var(--content-div);
     
+	cursor: default;
     overflow: hidden;
     display: table-row;
     text-align: center;
@@ -455,17 +456,17 @@ p.outcome{
 	padding: var(--content-div);
 	border-radius: var(--big);
 	position: -webkit-sticky;
-	color: var(--gray-500);
+	color: var(--blue-900);
 	padding-right: 50px;
 	transition: all .3s;
 	-webkit-transition: all .3s;
-	background-color: var(--white);
+	background-color: var(--blue-clear);
 	box-shadow: var(--shadow-auto);
 }
 
 .col1>a>h1:hover{
-	color: var(--blue-900);
-	background-color: var(--blue-clear);
+	color: var(--gray-500);
+	background-color: var(--white);
 	padding-right:35px;
 	transition:  .2s ease-in-out;
 	-webkit-transition:  .2s ease-in-out; 
