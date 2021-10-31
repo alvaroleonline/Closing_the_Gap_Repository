@@ -118,6 +118,16 @@ public class Page4 implements Handler {
 
         html = html + "</form>";
 
+        html = html + "<div class='col1'>";
+        html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <a href='page3.html'>Data by LGA</a>";
+        //html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page5.html'>Subtask 3.1</a>";
+        html = html + "      <a href='page6.html'>Subtask 3.2</a>";
+        html = html + "   </div>";
+        html = html + "</div>";
+
         html = html + "</div>";
 
         //populate form submission results
@@ -218,19 +228,19 @@ public class Page4 implements Handler {
         html = html + "</div>";
 
         // New row and col DIV for switching charts
-        html = html + "<div class='row3'>";
-        html = html + "<div class='col1hide'>";
-        html = html + "</div>";
-        html = html + "<div class='colTable'>";
-        html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
-        html = html + "   <div class='chart-switch'>";
-        html = html + "      <a href='page3.html'>Data by LGA</a>";
-        //html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page5.html'>Subtask 3.1</a>";
-        html = html + "      <a href='page6.html'>Subtask 3.2</a>";
-        html = html + "   </div>";
-        html = html + "</div>";
-        html = html + "</div>";
+        // html = html + "<div class='row3'>";
+        // html = html + "<div class='col1hide'>";
+        // html = html + "</div>";
+        // html = html + "<div class='colTable'>";
+        // html = html + "   <h2>Switch Chart Type</h2><hr class='in'>";
+        // html = html + "   <div class='chart-switch'>";
+        // html = html + "      <a href='page3.html'>Data by LGA</a>";
+        // //html = html + "      <a href='page4.html'>Data by State</a>";
+        // html = html + "      <a href='page5.html'>Subtask 3.1</a>";
+        // html = html + "      <a href='page6.html'>Subtask 3.2</a>";
+        // html = html + "   </div>";
+        // html = html + "</div>";
+        // html = html + "</div>";
 
         //CLOSES CONTENT divs
         html = html + "</div>";
