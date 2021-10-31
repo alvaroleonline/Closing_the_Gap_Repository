@@ -86,7 +86,7 @@ public class Page3 implements Handler {
         html = html + "   <div class='form-group'>";
         // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none' selected disabled hidden>Select Outcome Data</option>";
+        html = html + "         <option value = 'none'>Select Outcome Data</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
@@ -96,18 +96,18 @@ public class Page3 implements Handler {
         html = html + "   <div class='form-group'>";
         //html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
-        html = html + "         <option value = 'All' selected disabled hidden>Select the Population Segment</option>";
+        html = html + "         <option value = 'All'>Select the Population Segment</option>";
         html = html + "         <option value = 'All'> Total Population</option>";
         html = html + "         <option value = 'Female'> Female Population</option>";
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         html = html + "   </div>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <select id='countAsDrop' name='countAsDrop'>";
-        html = html + "         <option value = 'none' selected disabled hidden>Display Count as</option>";
-        html = html + "         <option value = 'Percent'> Percentages</option>";
-        html = html + "         <option value = 'Count'> Raw Figures</option>";
-        html = html + "      </select>";
+        html = html + "   <b>Display Data as</b>";
+        html = html + "   <div class='form-radio'>";
+        html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
+        html = html + "          <label class ='radiolabel' for='percent'>Proportion of Population</label>";
+        html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
+        html = html + "          <label class ='radiolabel' for='count'>Raw Population<br>Count</label>";
         html = html + "   </div>";
         /*html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
@@ -132,7 +132,7 @@ public class Page3 implements Handler {
         //populate form submission results
         String outcomeDrop = context.formParam("outcomeDrop");
         String populationDrop = context.formParam("populationDrop");
-        String displayAsDrop = context.formParam("countAsDrop");
+        String displayAsRadio = context.formParam("displayAsRadio");
         //String orderByDrop = context.formParam("orderByDrop");
         //String orderRadio = context.formParam("orderRadio");
 
@@ -162,7 +162,7 @@ public class Page3 implements Handler {
             }
 
             html = html + ", displayed as ";
-            if (displayAsDrop.equals("Count")) {
+            if (displayAsRadio.equals("Count")) {
                 html = html + "raw count of population.";
             } else {
                 if (outcomeSelect == 1) {
@@ -190,7 +190,7 @@ public class Page3 implements Handler {
         } else {
             //create and populate tableData from jdbc
             JDBCConnection jdbc = new JDBCConnection();
-            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationDrop, displayAsDrop);
+            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationDrop, displayAsRadio);
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
@@ -202,7 +202,7 @@ public class Page3 implements Handler {
             
             html = html + "<tr>";
             html = html + "<td><b id='blue'>" + row.getLga() + "</b></td>";
-            if (displayAsDrop.equals("Count")) {
+            if (displayAsRadio.equals("Count")) {
                 html = html + "<td>" + row.getCountIndig() + "</td>";
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
             } else {

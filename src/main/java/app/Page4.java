@@ -79,7 +79,7 @@ public class Page4 implements Handler {
         
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none'>Select Outcome to Display:</option>";
+        html = html + "         <option value = 'none'>Select Outcome to Display</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
@@ -89,14 +89,14 @@ public class Page4 implements Handler {
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
-        html = html + "         <option value = 'All'>Select the Population Segment:</option>";
+        html = html + "         <option value = 'All'>Select the Population Segment</option>";
         html = html + "         <option value = 'All'> Total Population</option>";
         html = html + "         <option value = 'Female'> Female Population</option>";
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
         html = html + "   </div>";
-        html = html + "   <h3>Display Data as:</h3>";
+        html = html + "   <h3>Display Data as</h3>";
         html = html + "   <div class='form-radio'>";
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
         html = html + "          <label class ='radiolabel' for='percent'>Proportion of Population</label>";
@@ -224,12 +224,12 @@ public class Page4 implements Handler {
         html = html + "<div class='col1hide'>";
         html = html + "</div>";
         html = html + "<div class='colTable'>";
-        html = html + "   <h2>Explore the data in other ways:</h2><hr class='in'>";
+        html = html + "   <h2>Explore the data in other ways</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
-        html = html + "      <a href='page3.html'>Data by LGA</a>";
+        html = html + "      <a href='page3.html'>Data by LGA<i class='fa fa-angle-right'></i></a>";
         //html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page5.html'>Subtask 3.1</a>";
-        html = html + "      <a href='page6.html'>Subtask 3.2</a>";
+        html = html + "      <a href='page5.html'>Subtask 3.1<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
         html = html + "   </div>";
         html = html + "</div>";
         html = html + "</div>";

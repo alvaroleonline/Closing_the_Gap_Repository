@@ -489,11 +489,11 @@ p.outcome{
 
   .col1>a>h1:hover:after {
 	transform: scale(1.05);
-	background-color: var(--blue);
+	background-color: var(--orange);
 	color: var(--white);
-	box-shadow: 0px 0px 10px var(--blue-clear);
-	-webkit-box-shadow: 0px 0px 10px var(--blue-clear);
-	-moz-box-shadow: 0px 0px 10px var(--blue-clear);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 	transition:  .3s ease-in-out;
 	-webkit-transition:  .3s ease-in-out; 
 }
@@ -559,7 +559,7 @@ p.outcome{
 }
 
 #viewall:hover{
-	color: var(--blue);
+	color: var(--blue-900);
 	background-color: var(--blue-clear);
 	transition-duration: 0.2s;
 }
@@ -679,7 +679,7 @@ a#missionlink:hover{
 .chart-switch-mission {
 	width: 100%;
 	display: grid;
-    grid-template-columns: minmax(10%,1fr) minmax(10%,1fr) minmax(10%,1fr) minmax(10%,1fr);
+    grid-template-columns: minmax(22%,1fr) minmax(22%,1fr) minmax(22%,1fr) minmax(22%,1fr);
     grid-gap: 20px;
 }
 
@@ -854,14 +854,13 @@ button.btn.btn-primary:hover{
 }
 
 .chart-switch {
-	display: flex;
-	justify-content: space-between; 
-	flex-grow: 1;
+	width: 100%;
+	display: grid;
+    grid-template-columns: minmax(30%,1fr) minmax(30%,1fr) minmax(30%,1fr);
+    grid-gap: 20px;
 }
 
 .chart-switch>a {
-	width: calc(23% - 20px);
-	display: inline-block;
 	font-family: var(--font-main);
 	font-size: var(--p);
 	font-weight: var(--b);
