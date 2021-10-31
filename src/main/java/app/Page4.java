@@ -114,7 +114,7 @@ public class Page4 implements Handler {
         // html = html + "   <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
         // html = html + "   <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label><br>";
 
-        html = html + "   <button type='submit' class='btn-update'>Update Chart</button>";
+        html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
         
