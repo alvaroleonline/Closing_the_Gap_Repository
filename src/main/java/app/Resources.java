@@ -60,11 +60,11 @@ public class Resources implements Handler {
         html = html + "<div id='content'>";
         html = html + "<div id='container-main' class='container'>";
         
-        /* 1st DIV: Default Content Div
+        //1st DIV: Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Closing the Gap</h1>";
-        html = html + "<hr class='white'>" + "<p>A repository on the socioeconomic outcomes of the 2020 National Agreement on Closing the Gap for Indigenous Australians.</p>";
-        html = html + "</div>"; */
+        html = html + "<h1>Additional Resources</h1>";
+        html = html + "<hr class='white'>" + "<p>Links to various organisations that are working towards Closing the Gap for Indigenous Australians.</p>";
+        html = html + "</div>"; 
 
 
         // OPENS DIV RESOURCES
