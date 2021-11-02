@@ -28,18 +28,21 @@ public class Page5 implements Handler {
 
         // Add some Header information
         html = html + "<head>" + 
-               "<title>LGA Statistics</title>";
+               "<title>Outcome Data by Gap Score</title>";
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
         html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
         html = html + "<script src='common.js'></script>";
+        html = html + "<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>";
         html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
         
 
         // Add the body
         html = html + "<body>";
+
+        JDBCConnection jdbc = new JDBCConnection();
 
 
         // HEADER
@@ -52,9 +55,9 @@ public class Page5 implements Handler {
         html = html + "<div class='subnav'>";
         html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
         html = html + "<div class='subnav-content'>";
-        html = html + "<a href='page3.html'>LGA Statistics</a>";
-        html = html + "<a href='page4.html'>State Statistics</a>";
-        html = html + "<a href='page5.html'>Subtask 3.1</a>";
+        html = html + "<a href='page3.html'>Data by LGA</a>";
+        html = html + "<a href='page4.html'>Data by State</a>";
+        html = html + "<a href='page5.html'>Gap Score</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
@@ -70,9 +73,49 @@ public class Page5 implements Handler {
         
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Outcome Statistics by LGA</h1>";
+        html = html + "<h1>Outcome Data by Gap Score</h1>";
         html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
         html = html + "</div>";
+
+
+        // 1st DIV - Default Content Div
+        html = html + "<div class='content-box'>";
+        html = html + "<h1>Gap Difference at a National Level</h1>";
+        html = html + "<hr class='in'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
+        
+        // Graph
+        html = html + "<canvas id='myChart'></canvas>";
+        // Outcome 1 
+        double outcome1I = jdbc.getOutcome1I("Indigenous");
+        double outcome1NonI = jdbc.getOutcome1NonI("Non-Indigenous");
+
+        // Outcome 5 
+        double outcome5I = jdbc.getOutcome5I("Indigenous");
+        double outcome5NonI = jdbc.getOutcome5NonI("Non-Indigenous");
+
+        // Outcome 6
+        double outcome6I = jdbc.getOutcome6I("Indigenous");
+        double outcome6NonI = jdbc.getOutcome6NonI("Non-Indigenous");
+        
+        // Outcome 8 
+        double outcome8I = jdbc.getOutcome8I("Indigenous");
+        double Outcome8NonI = jdbc.getOutcome8NonI("Non-Indigenous");
+
+         
+        // Script 
+        html = html + "<script>const labels = ['Outcome 1', 'Outcome 5', 'Outcome 6', 'Outcome 8',];";
+        html = html + "const data = {labels: labels, datasets: [";
+        html = html + "{label: 'Indigenous', backgroundColor: 'rgb(19,31,101)', borderColor: 'rgb(19,31,101)', data: [" + String.format("%.1f", outcome1I) + "," + String.format("%.1f", outcome5I) + "," + String.format("%.1f", outcome6I) + "," + String.format("%.1f", outcome8I) + ",]},";
+        html = html + "{label: 'Non-Indigenous', backgroundColor: 'rgb(255,111,0)', borderColor: 'rgb(255,111,0)', data: [" + String.format("%.1f", outcome1NonI) + "," + String.format("%.1f", outcome5NonI) + "," + String.format("%.1f", outcome6NonI) + "," + String.format("%.1f", Outcome8NonI) + ",]}";
+        html = html + "]};";
+        html = html + "const config = {type: 'bar', data: data, options: {responsive: true}};";
+        html = html + "const myChart = new Chart(document.getElementById('myChart'), config);";
+        html = html + "</script>";
+        // Graph Closed
+
+        html = html + "</div>";
+
+       
 
 
         // 2nd DIV - Chart and Table
@@ -88,28 +131,28 @@ public class Page5 implements Handler {
         html = html + "   <div class='form-group'>";
         // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none' selected disabled hidden>Select Outcome Data</option>";
+        html = html + "         <option value = 'none'>Select Outcome Data</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
         html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
-        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
-        
-        
+        html = html + "      </select>";
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
         //html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
-        html = html + "         <option value = 'All' selected disabled hidden>Select the Population Segment</option>";
+        html = html + "         <option value = 'All'>Select the Population Segment</option>";
         html = html + "         <option value = 'All'> Total Population</option>";
         html = html + "         <option value = 'Female'> Female Population</option>";
         html = html + "         <option value = 'Male'> Male Population</option>";
-        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
-        
-        
-        html = html + "      <select id='countAsDrop' name='countAsDrop'>";
-        html = html + "         <option value = 'none' selected disabled hidden>Display Count as</option>";
-        html = html + "         <option value = 'Percent'> Percentages</option>";
-        html = html + "         <option value = 'Count'> Raw Figures</option>";
-        html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
+        html = html + "      </select>";
+        html = html + "   </div>";
+        html = html + "   <p class='displayTag'>Display Data as:</p>";
+        html = html + "   <div class='form-radio'>";
+        html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
+        html = html + "          <label class ='radiolabel' for='percent'>Percentage of Population</label>";
+        html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
+        html = html + "          <label class ='radiolabel' for='count'>Raw Population Count</label>";
         html = html + "   </div>";
         /*html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
@@ -126,6 +169,7 @@ public class Page5 implements Handler {
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
+
         
         html = html + "</div>";
 
@@ -133,7 +177,7 @@ public class Page5 implements Handler {
         //populate form submission results
         String outcomeDrop = context.formParam("outcomeDrop");
         String populationDrop = context.formParam("populationDrop");
-        String countAsDrop = context.formParam("countAsDrop");
+        String displayAsRadio = context.formParam("displayAsRadio");
         //String orderByDrop = context.formParam("orderByDrop");
         //String orderRadio = context.formParam("orderRadio");
 
@@ -143,7 +187,38 @@ public class Page5 implements Handler {
         html = html + "<div class='colTable'>";
         // html = html + "<h1>Overview</h1><hr class='in'>";
 
-        html = html + "<h1>" + outcomeDrop + "," + populationDrop + "</h1><h3></h3><hr class='in'>";
+        if (outcomeDrop == null || outcomeDrop.equals("none")) {
+            html = html + "<h1>Investigate the Data</h1><hr class='in'><h2>Awaiting Selection: Please select table data options on the left</h2>";
+        } else {
+            int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
+            switch (outcomeSelect) {
+                case 1:
+                    html = html + "<h1>Outcome 1: Long and Healthy Lives</h1><hr class='in'><h2>" + populationDrop + " population aged over 65";
+                    break;
+                case 5:
+                    html = html + "<h1>Outcome 5: Secondary Education</h1><hr class='in'><h2>" + populationDrop + " population who have completed Year 12";
+                    break;
+                case 6:
+                    html = html + "<h1>Outcome 6: Tertiary Education</h1><hr class='in'><h2>" + populationDrop + " population who have completed a tertiary qualification of Advanced Diploma or higher";
+                    break;
+                case 8:
+                    html = html + "<h1>Outcome 8: Economic Participation</h1><hr class='in'><h2>" + populationDrop + " population who are employed";
+                    break;
+            }
+
+            html = html + ", displayed as ";
+            if (displayAsRadio.equals("Count")) {
+                html = html + "raw count of population.";
+            } else {
+                if (outcomeSelect == 1) {
+                    html = html + "percentage of total population.";
+                } else {
+                    html = html + "percentage of population aged over 15.";
+                }
+            }
+            html = html + "</h2>";
+
+        }
         
         /* Testing form submission results
         html = html + "<p>Outcome = " + outcomeDrop + "</p>";
@@ -156,11 +231,11 @@ public class Page5 implements Handler {
 
         // Output into a table
         if (outcomeDrop == null) {
-            html = html + "<h1>Please select table data options on the left</h1>";
+            html = html + "";
         } else {
             //create and populate tableData from jdbc
-            JDBCConnection jdbc = new JDBCConnection();
-            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationDrop, countAsDrop);
+        
+            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationDrop, displayAsRadio);
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
@@ -172,7 +247,7 @@ public class Page5 implements Handler {
             
             html = html + "<tr>";
             html = html + "<td>" + row.getLga() + "</td>";
-            if (countAsDrop.equals("Count")) {
+            if (displayAsRadio.equals("Count")) {
                 html = html + "<td>" + row.getCountIndig() + "</td>";
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
             } else {
@@ -198,6 +273,23 @@ public class Page5 implements Handler {
 
         // Closes 2nd DIV 
         html = html + "</div>";
+
+
+        //New row and col DIV for switching charts
+        html = html + "<div class='row3'>";
+        html = html + "<div class='col1hide'>";
+        html = html + "</div>";
+        html = html + "<div class='colTable'>";
+        html = html + "   <h2>Explore the data in other ways</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <a href='page3.html'>Data by LGA<i class='fa fa-angle-right'></i></a>";
+        //html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
+        html = html + "   </div>";
+        html = html + "</div>";
+        html = html + "</div>";
+        
 
         //CLOSES CONTENT
         html = html + "</div>";
