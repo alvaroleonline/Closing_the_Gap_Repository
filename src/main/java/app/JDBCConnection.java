@@ -30,8 +30,8 @@ public class JDBCConnection {
     //************************************************************* LEVEL 1.1 - INDEX PAGE *************************************************************
 
     //FACT 1
-    public int getFirstFact1(String status) {
-        int count1I = 0;
+    public double getFirstFact1(String status) {
+        double count1I = 0.0;
         Connection connection = null;
 
         try {
@@ -43,7 +43,7 @@ public class JDBCConnection {
             String query = "SELECT (CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count1I = results.getInt("(CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100");
+            count1I = results.getDouble("(CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100");
 
             // Close statement
             statement.close();
@@ -62,8 +62,8 @@ public class JDBCConnection {
         return count1I;
     }
 
-    public int getFirstFact2(String status) {
-        int count1NonI = 0;
+    public double getFirstFact2(String status) {
+        double count1NonI = 0.0;
         Connection connection = null;
 
         try {
@@ -75,7 +75,7 @@ public class JDBCConnection {
             String query = "SELECT (CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count1NonI = results.getInt("(CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100");
+            count1NonI = results.getDouble("(CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100");
             
             // Close statement
             statement.close();
@@ -96,8 +96,8 @@ public class JDBCConnection {
 
 
     //FACT 2
-    public int getSecondFact1(String status) {
-        int count2I = 0;
+    public double getSecondFact1(String status) {
+        double count2I = 0;
         Connection connection = null;
 
         try {
@@ -109,7 +109,7 @@ public class JDBCConnection {
             String query = "SELECT (CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count2I = results.getInt("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
+            count2I = results.getDouble("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
 
             // Close statement
             statement.close();
@@ -128,8 +128,8 @@ public class JDBCConnection {
         return count2I;
     }
 
-    public int getSecondFact2(String status) {
-        int count2NonI = 0;
+    public double getSecondFact2(String status) {
+        double count2NonI = 0;
         Connection connection = null;
 
         try {
@@ -141,7 +141,7 @@ public class JDBCConnection {
             String query = "SELECT (CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count2NonI = results.getInt("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
+            count2NonI = results.getDouble("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
             
             // Close statement
             statement.close();
@@ -163,8 +163,8 @@ public class JDBCConnection {
 
 
     //FACT 3
-    public int getThirdFact1(String status) {
-        int count3I = 0;
+    public double getThirdFact1(String status) {
+        double count3I = 0;
         Connection connection = null;
 
         try {
@@ -176,7 +176,7 @@ public class JDBCConnection {
             String query = "SELECT (CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count3I = results.getInt("(CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100");
+            count3I = results.getDouble("(CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100");
 
             // Close statement
             statement.close();
