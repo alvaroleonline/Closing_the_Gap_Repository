@@ -29,75 +29,13 @@ public class JDBCConnection {
 
     //************************************************************* LEVEL 1.1 - INDEX PAGE *************************************************************
 
-    //FACT 1
-    public double getFirstFact1(String status) {
-        double count1I = 0.0;
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection(DATABASE);
-            // Prepare a new SQL Query
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            String query = "SELECT (CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
-
-            ResultSet results = statement.executeQuery(query);
-            count1I = results.getDouble("(CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100");
-
-            // Close statement
-            statement.close();
-            // Exception 
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-            }
-        }
-        return count1I;
-    }
-
-    public double getFirstFact2(String status) {
-        double count1NonI = 0.0;
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection(DATABASE);
-            // Prepare a new SQL Query
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-
-            String query = "SELECT (CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
-
-            ResultSet results = statement.executeQuery(query);
-            count1NonI = results.getDouble("(CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100");
-            
-            // Close statement
-            statement.close();
-            // Exception 
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-            }
-        }
-        return count1NonI;
-    }
+    // Return Percentages for Indigenous and Non- Indigenous on every Outcome
 
 
-    //FACT 2
-    public double getSecondFact1(String status) {
-        double count2I = 0;
+    // OUTCOME 1
+
+    public double getOutcome1I(String status) {
+        double outcome1I = 0;
         Connection connection = null;
 
         try {
@@ -109,7 +47,7 @@ public class JDBCConnection {
             String query = "SELECT (CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count2I = results.getDouble("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
+            outcome1I = results.getDouble("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
 
             // Close statement
             statement.close();
@@ -125,11 +63,11 @@ public class JDBCConnection {
                 System.err.println(e.getMessage());
             }
         }
-        return count2I;
+        return outcome1I;
     }
 
-    public double getSecondFact2(String status) {
-        double count2NonI = 0;
+    public double getOutcome1NonI(String status) {
+        double outcome1NonI = 0;
         Connection connection = null;
 
         try {
@@ -141,7 +79,7 @@ public class JDBCConnection {
             String query = "SELECT (CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count2NonI = results.getDouble("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
+            outcome1NonI = results.getDouble("(CAST(SUM(o.population65plus) as FLOAT) / SUM(o.populationTotal)) * 100");
             
             // Close statement
             statement.close();
@@ -157,14 +95,14 @@ public class JDBCConnection {
                 System.err.println(e.getMessage());
             }
         }
-        return count2NonI;
+        return outcome1NonI;
     }
 
 
+    // OUTCOME 5
 
-    //FACT 3
-    public double getThirdFact1(String status) {
-        double count3I = 0;
+     public double getOutcome5I(String status) {
+        double outcome5I = 0.0;
         Connection connection = null;
 
         try {
@@ -173,10 +111,10 @@ public class JDBCConnection {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
 
-            String query = "SELECT (CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
+            String query = "SELECT (CAST(SUM(o.completedY12) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count3I = results.getDouble("(CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100");
+            outcome5I = results.getDouble("(CAST(SUM(o.completedY12) as FLOAT) / SUM(o.population15plus)) * 100");
 
             // Close statement
             statement.close();
@@ -192,11 +130,11 @@ public class JDBCConnection {
                 System.err.println(e.getMessage());
             }
         }
-        return count3I;
+        return outcome5I;
     }
 
-    public int getThirdFact2(String status) {
-        int count3NonI = 0;
+    public double getOutcome5NonI(String status) {
+        double outcome5NonI = 0.0;
         Connection connection = null;
 
         try {
@@ -205,10 +143,10 @@ public class JDBCConnection {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);
 
-            String query = "SELECT (CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
+            String query = "SELECT (CAST(SUM(o.completedY12) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
 
             ResultSet results = statement.executeQuery(query);
-            count3NonI = results.getInt("(CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100");
+            outcome5NonI = results.getDouble("(CAST(SUM(o.completedY12) as FLOAT) / SUM(o.population15plus)) * 100");
             
             // Close statement
             statement.close();
@@ -224,7 +162,142 @@ public class JDBCConnection {
                 System.err.println(e.getMessage());
             }
         }
-        return count3NonI;
+        return outcome5NonI;
+    }
+
+
+
+    // OUTCOME 6
+
+    public double getOutcome6I(String status) {
+        double outcome6I = 0;
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(DATABASE);
+            // Prepare a new SQL Query
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            String query = "SELECT (CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
+
+            ResultSet results = statement.executeQuery(query);
+            outcome6I = results.getDouble("(CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100");
+
+            // Close statement
+            statement.close();
+            // Exception 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        return outcome6I;
+    }
+
+    public int getOutcome6NonI(String status) {
+        int outcome6NonI = 0;
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(DATABASE);
+            // Prepare a new SQL Query
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            String query = "SELECT (CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
+
+            ResultSet results = statement.executeQuery(query);
+            outcome6NonI = results.getInt("(CAST(SUM(o.completedAdvDipPlus) as FLOAT) / SUM(o.population15plus)) * 100");
+            
+            // Close statement
+            statement.close();
+            // Exception 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        return outcome6NonI;
+    }
+
+
+    // OUTCOME 8
+    
+    public double getOutcome8I(String status) {
+        double outcome8I = 0.0;
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(DATABASE);
+            // Prepare a new SQL Query
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            String query = "SELECT (CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
+
+            ResultSet results = statement.executeQuery(query);
+            outcome8I = results.getDouble("(CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100");
+
+            // Close statement
+            statement.close();
+            // Exception 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        return outcome8I;
+    }
+
+    public double getOutcome8NonI(String status) {
+        double outcome8NonI = 0.0;
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection(DATABASE);
+            // Prepare a new SQL Query
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(30);
+
+            String query = "SELECT (CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100 FROM (lga l JOIN outcome o ON o.lgaCode = l.lgaCode) JOIN outcome o2 ON o.lgaCode = o2.lgaCode AND o.sex = o2.sex AND o.censusYear = o2.censusYear WHERE o.indigenousStatus = '" + status + "'";
+
+            ResultSet results = statement.executeQuery(query);
+            outcome8NonI = results.getDouble("(CAST(SUM(o.employed) as FLOAT) / SUM(o.population15plus)) * 100");
+            
+            // Close statement
+            statement.close();
+            // Exception 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        return outcome8NonI;
     }
 
 
