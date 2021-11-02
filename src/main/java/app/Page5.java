@@ -81,7 +81,7 @@ public class Page5 implements Handler {
         // 1st DIV - Default Content Div
         html = html + "<div class='content-box'>";
         html = html + "<h1>Gap Difference at a National Level</h1>";
-        html = html + "<hr class='in'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
+        html = html + "<hr class='in'>" + "<p>Figures displaying the percentage for Indigenous and Non-Indigenous Australians on each socieconomic outcome.</p>";
         
         // Graph
         html = html + "<canvas id='myChart'></canvas>";
