@@ -100,15 +100,15 @@ public class Index implements Handler {
         // Look up information from JDBC
         JDBCConnection jdbc = new JDBCConnection();
         
-        // Fact 1
+        // Fact 2
         html = html + "<div class='col3'>";
         // html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
-        double count1I = jdbc.getFirstFact1("Indigenous");
-        double countNon1I = jdbc.getFirstFact2("Non-Indigenous");
+        double outcome8I = jdbc.getOutcome8I("Indigenous");
+        double outcome8NonI = jdbc.getOutcome8NonI("Non-Indigenous");
         // Print out data
-        html = html + "<span class='fact-count'><p class='outcome'>Employed Indigenous Population</p><h1>" +  String.format("%.1f", count1I) + "%</h1></span>";
-        html = html + "<span class='fact-hidden'><p>Compared to " + String.format("%.1f", countNon1I) +"% of Non-Indigenous</p></span>";
+        html = html + "<span class='fact-count'><p class='outcome'>Employed Indigenous Population</p><h1>" +  String.format("%.1f", outcome8I) + "%</h1></span>";
+        html = html + "<span class='fact-hidden'><p>Compared to " + String.format("%.1f", outcome8NonI) +"% of Non-Indigenous</p></span>";
         // Closes Fact
         ///html = html + "</a>";
         html = html + "</div>";
@@ -117,11 +117,11 @@ public class Index implements Handler {
         html = html + "<div class='col3'>";
         // html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
-        double count21I = jdbc.getSecondFact1("Indigenous");
-        double count2NonI = jdbc.getSecondFact2("Non-Indigenous");
+        double outcome1I = jdbc.getOutcome1I("Indigenous");
+        double outcome1NonI = jdbc.getOutcome1NonI("Non-Indigenous");
         // Print out data
-        html = html + "<span class='fact-count'><p class='outcome'>Indigenous population aged 65 or over</p><h1>" + String.format("%.1f", count21I) + "%</h1></span>";
-        html = html + "<span class='fact-hidden'><p>Compared to " + String.format("%.1f", count2NonI) +"% of Non-Indigenous</p></span>";
+        html = html + "<span class='fact-count'><p class='outcome'>Indigenous population aged 65 or over</p><h1>" + String.format("%.1f", outcome1I) + "%</h1></span>";
+        html = html + "<span class='fact-hidden'><p>Compared to " + String.format("%.1f", outcome1NonI) +"% of Non-Indigenous</p></span>";
         // Closes Fact
         // html = html + "</a>";
         html = html + "</div>";
@@ -130,11 +130,11 @@ public class Index implements Handler {
         html = html + "<div class='col3'>";
         // html = html + "<a href='page3.html'>";
         // Asks this *class* for the data
-        double count3I = jdbc.getThirdFact1("Indigenous");
-        double count3NonI = jdbc.getThirdFact2("Non-Indigenous");
+        double outcome6I = jdbc.getOutcome6I("Indigenous");
+        double outcome6NonI = jdbc.getOutcome6NonI("Non-Indigenous");
         // Print out data
-        html = html + "<span class='fact-count'><p class='outcome'>Completed higher education</p><h1>" + String.format("%.1f", count3I) + "%</h1></span>";
-        html = html + "<span class='fact-hidden'><p>Compared to " + String.format("%.1f", count3NonI) +"% of Non-Indigenous</p></span>";
+        html = html + "<span class='fact-count'><p class='outcome'>Completed higher education</p><h1>" + String.format("%.1f", outcome6I) + "%</h1></span>";
+        html = html + "<span class='fact-hidden'><p>Compared to " + String.format("%.1f", outcome6NonI) +"% of Non-Indigenous</p></span>";
         // Closes Fact
         // html = html + "</a>";
         html = html + "</div>";
