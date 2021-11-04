@@ -641,24 +641,27 @@ public compareLGAdata sourceLGA (ArrayList<String> outcomeSelect, String lgaDrop
 
         // The Query
         
-        // String select1 = "";
-        // String select2 = "";
-        // String having = "";
+        String gapScoreSelect = "(" + outcomeSelect.get(0);
+        
+        if (outcomeSelect.size() > 1) {
+            for (int i = 1; i < outcomeSelect.size(); i++) {
+                gapScoreSelect = gapScoreSelect + " + " + outcomeSelect.get(i);
+            }
+        }
+        gapScoreSelect = gapScoreSelect + ") / " + outcomeSelect.size();
+        
 
-        // if (display.equals("Count")) {
-        //     select1 = "SUM(" + outcome + "_i)";
-        //     select2 = "SUM(" + outcome + "_ni)";
-        // } else {
-        //     select1 = "AVG(" + outcome + "_iPercent)";
-        //     select2 = "AVG(" + outcome + "_niPercent)";
-        // }
-        
-        // if (!population.equals("All")) {
-        //     having = ", sex HAVING sex = '" + population + "'";
-        // }
-        
-        String query = "SELECT lga, state, lgaPopulation, populationDensity, proportionIndigenous, gapScore1 FROM lgaCompareView WHERE lga = 'Melbourne'";
-        
+        String query = "SELECT lga, state, lgaPopulation, populationDensity, proportionIndigenous, " + gapScoreSelect + " FROM lgaCompareView ";
+
+        if (lgaDrop.equals("outcomeBest")) {
+            query = query + "ORDER BY " + gapScoreSelect + " DESC LIMIT 1";
+        }
+        else if (lgaDrop.equals("outcomeWorst")) {
+            query = query + "ORDER BY " + gapScoreSelect + " LIMIT 1";
+        } else {
+            query = query + "WHERE lga = '" + lgaDrop + "'";
+        }
+
         //test query output
         //System.out.println(query);
 
@@ -674,7 +677,7 @@ public compareLGAdata sourceLGA (ArrayList<String> outcomeSelect, String lgaDrop
             tableData.setPopulation(results.getInt("lgaPopulation"));
             tableData.setDensity(results.getDouble("populationDensity"));
             tableData.setProportionIndig(results.getDouble("proportionIndigenous"));
-            tableData.setGapScore(results.getDouble("gapScore"));
+            tableData.setGapScore(results.getDouble(gapScoreSelect));
         }
 
         // Close the statement because we are done with it
@@ -698,7 +701,106 @@ public compareLGAdata sourceLGA (ArrayList<String> outcomeSelect, String lgaDrop
     return tableData;
 }
 
+public ArrayList<compareLGAdata> compareLGA (ArrayList<String> outcomeSelect, String sourceLga, String comparison) {
+    //Create ArrayList of our tableRow class to store the returned data
+    ArrayList<compareLGAdata> tableData = new ArrayList<compareLGAdata>();
 
+    // Setup the variable for the JDBC connection
+    Connection connection = null;
+
+    try {
+        // Connect to JDBC data base, prepare a new SQL Query & Set a timeout
+        connection = DriverManager.getConnection(DATABASE);
+        Statement statement = connection.createStatement();
+        statement.setQueryTimeout(30);
+
+        // The Query
+        
+        String gapScoreSelect = "(" + outcomeSelect.get(0);
+        
+        if (outcomeSelect.size() > 1) {
+            for (int i = 1; i < outcomeSelect.size(); i++) {
+                gapScoreSelect = gapScoreSelect + " + " + outcomeSelect.get(i);
+            }
+        }
+        gapScoreSelect = gapScoreSelect + ") / " + outcomeSelect.size();
+        
+        if (comparison.equals("gapScore")){
+            comparison = gapScoreSelect;
+        }
+
+        String query = "SELECT lga, state, lgaPopulation, populationDensity, proportionIndigenous, " + gapScoreSelect + " FROM lgaCompareView ";
+        query = query + "WHERE " + comparison + " < (SELECT " + comparison + " from lgaCompareView WHERE lga = '" + sourceLga + "') ";
+        query = query + "ORDER BY " + comparison + " DESC LIMIT 5";
+        
+
+        //test query output
+        //System.out.println(query);
+
+        // Get Result
+        ResultSet results = statement.executeQuery(query);
+
+        // Process all of the results
+
+        while (results.next()) {
+            compareLGAdata tableRow = new compareLGAdata();
+            
+            tableRow.setLga(results.getString("lga"));
+            tableRow.setState(results.getString("state"));
+            tableRow.setPopulation(results.getInt("lgaPopulation"));
+            tableRow.setDensity(results.getDouble("populationDensity"));
+            tableRow.setProportionIndig(results.getDouble("proportionIndigenous"));
+            tableRow.setGapScore(results.getDouble(gapScoreSelect));
+
+            tableData.add(tableRow);
+        }
+
+        String query2 = "SELECT lga, state, lgaPopulation, populationDensity, proportionIndigenous, " + gapScoreSelect + " FROM lgaCompareView ";
+        query2 = query2 + "WHERE " + comparison + " > (SELECT " + comparison + " from lgaCompareView WHERE lga = '" + sourceLga + "') ";
+        query2 = query2 + "ORDER BY " + comparison + " LIMIT 5";
+        
+
+        //test query output
+        //System.out.println(query2);
+
+        // Get Result
+        ResultSet results2 = statement.executeQuery(query2);
+
+        // Process all of the results
+
+        while (results2.next()) {
+            compareLGAdata tableRow = new compareLGAdata();
+            
+            tableRow.setLga(results2.getString("lga"));
+            tableRow.setState(results2.getString("state"));
+            tableRow.setPopulation(results2.getInt("lgaPopulation"));
+            tableRow.setDensity(results2.getDouble("populationDensity"));
+            tableRow.setProportionIndig(results2.getDouble("proportionIndigenous"));
+            tableRow.setGapScore(results2.getDouble(gapScoreSelect));
+
+            tableData.add(tableRow);
+        }
+
+        // Close the statement because we are done with it
+        statement.close();
+    } catch (SQLException e) {
+        // If there is an error, lets just print the error
+        System.err.println(e.getMessage());
+    } finally {
+        // Safety code to cleanup
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            // connection close failed.
+            System.err.println(e.getMessage());
+        }
+    }
+
+    // Finally we return all table data
+    return tableData;
+}
 
 
 

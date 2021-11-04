@@ -87,13 +87,13 @@ public class Page6 implements Handler {
         
         html = html + "   <div class='form-notdrop'>";
         html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></p>";
-        html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='outcome1'>";
+        html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='gapScore1'>";
         html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
-        html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='outcome5'>";
+        html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='gapScore5'>";
         html = html + "      <label for='outcome5'> Outcome 5 - School Completion</label><br>";
-        html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='outcome6'>";
+        html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='gapScore6'>";
         html = html + "      <label for='outcome6'> Outcome 6 - Tertiary Education</label><br>";
-        html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='outcome8'>";
+        html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='gapScore8'>";
         html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
@@ -111,10 +111,14 @@ public class Page6 implements Handler {
         html = html + "   </div>";
         html = html + "   <p class='displayTag'>Compare to LGAs similar by:</p>";
         html = html + "   <div class='form-radio'>";
-        html = html + "      <input type='radio' class='radiobtn' id='density' name='comparisonRadio' value='populationDensity' checked='checked'>";
-        html = html + "          <label class ='radiolabel' for='populationDensity'>Population Density</label>";
+        html = html + "      <input type='radio' class='radiobtn' id='score' name='comparisonRadio' value='gapScore' checked='checked'>";
+        html = html + "          <label class ='radiolabel' for='score'>GapScore</label>";
+        html = html + "      <input type='radio' class='radiobtn' id='population' name='comparisonRadio' value='lgaPopulation'>";
+        html = html + "          <label class ='radiolabel' for='population'>Total LGA Population</label>";
+        html = html + "      <input type='radio' class='radiobtn' id='density' name='comparisonRadio' value='populationDensity'>";
+        html = html + "          <label class ='radiolabel' for='density'>LGA Population Density</label>";
         html = html + "      <input type='radio' class='radiobtn' id='proportionIndigenous' name='comparisonRadio' value='proportionIndigenous'>";
-        html = html + "          <label class ='radiolabel' for='proportionIndigenous'>Proportion of Population who are Indigenous</label>";
+        html = html + "          <label class ='radiolabel' for='proportionIndigenous'>Proportion of LGA who are Indigenous</label>";
         html = html + "   </div>";
 
         html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
@@ -159,53 +163,65 @@ public class Page6 implements Handler {
         // JDBCConnection jdbc = new JDBCConnection();
         // ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
-        // Output into a table
-        // if (outcomeDrop == null) {
-        //     html = html + "<h1>Please select table data options on the left</h1>";
-        // } else {
-            //create and populate tableData from jdbc
-            // JDBCConnection jdbc = new JDBCConnection();
-            // ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationRadio, displayAsRadio, orderByDrop, orderRadio);
-        //     //start table
-        //     html = html + "<table><tr>";
-        //     html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
-        //     html = html + "</tr>";
+        //Output into a table
+        if (outcomeSelect.size() == 0) {
+            html = html + "<h1>Please select table data options on the left</h1>";
+        } else {
+            //create and populate sourceLGA data from jdbc
+            compareLGAdata sourceLGA = jdbc.sourceLGA(outcomeSelect, lgaDrop);
+            //start table
+            html = html + "<table class='single_row'>";
+            html = html + "<thead><tr>";
+            html = html + "<th>LGA</th><th>State</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Proportion that are Indigenous</th>";
+            html = html + "</tr></thead>";
 
-        //     for (level2tableRow row : tableData) {
-        //         html = html + "<tr>";
-        //         html = html + "<td>" + row.getState() + "</td>";
-        //         if (displayAsRadio.equals("Count")) {
-        //             html = html + "<td>" + row.getCountIndig() + "</td>";
-        //             html = html + "<td>" + row.getCountNonIndig() + "</td>";
-        //         } else {
-        //             if (row.getPercentIndig() > 100) {
-        //                 html = html + "<td>100%</td>";
-        //             } else {
-        //             html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
-        //             }
-        //             if (row.getPercentNonIndig() > 100) {
-        //                 html = html + "<td>100</td>";
-        //             } else {
-        //             html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
-        //             }
-        //         }
+            html = html + "<tbody>";
+            html = html + "<tr>";
+            html = html + "<td><b id='blue'>" + sourceLGA.getLga() + "</td>";
+            html = html + "<td><b id='blue'>" + sourceLGA.getState() + "</td>";
+            html = html + "<td>" + String.format("%.1f",sourceLGA.getGapScore()) + "</td>";
+            html = html + "<td>" + sourceLGA.getPopulation() + "</td>";
+            html = html + "<td>" + String.format("%.1f", sourceLGA.getDensity()) + " p/km&#178;</td>";
+            html = html + "<td>" + String.format("%.1f",sourceLGA.getProportionIndig()) + "%</td>";
+            html = html + "</tr>";
 
-        //         html = html + "</tr>";
-        //     }
-        // // Finish the table
-        //     html = html + "</table>";
-        //}
+            // Finish the table
+            html = html + "</tbody>";
+            html = html + "</table>";
+
+            String sourceLgaName = sourceLGA.getLga();
+            ArrayList<compareLGAdata> tableData = jdbc.compareLGA(outcomeSelect, sourceLgaName, comparisonRadio);
+
+            html = html + "<table id='table_id' class='display'>";
+            html = html + "<thead><tr>";
+            html = html + "<th>LGA</th><th>State</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Proportion that are Indigenous</th>";
+            html = html + "</tr></thead>";
+
+            html = html + "<tbody>";
+
+            for (compareLGAdata row : tableData) {
+                html = html + "<tr>";
+                html = html + "<td><b id='blue'>" + row.getLga() + "</td>";
+                html = html + "<td><b id='blue'>" + row.getState() + "</td>";
+                html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "</td>";
+                html = html + "<td>" + row.getPopulation() + "</td>";
+                html = html + "<td>" + String.format("%.1f", row.getDensity()) + " p/km&#178;</td>";
+                html = html + "<td>" + String.format("%.1f", row.getProportionIndig()) + "%</td>";
+                html = html + "</tr>";
+            }
+
+            // Finish the table
+            html = html + "</tbody>";
+            html = html + "</table>";
+        }
         html = html + "</div>";
-
 
         // Closes Row DIV 
         html = html + "</div>";
 
         html = html + "<div class='row3'>";
 
-        html = html + "<div class='col1'>";
-        html = html + "<h1>Define LGA Comparison</h1><hr class='in'>";
-        
+        html = html + "<div class='col1hide'>";
         //close column div
         html = html + "</div>";
 
