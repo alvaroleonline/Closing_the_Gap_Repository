@@ -86,7 +86,7 @@ public class Page6 implements Handler {
         html = html + "<form action='/page6.html' method='post'>";
         
         html = html + "   <div class='form-notdrop'>";
-        html = html + "      <label for='outcomeSelect'>Select which Outcomes to generate GapScore:</label>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></p>";
         html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='outcome1'>";
         html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
         html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='outcome5'>";
@@ -97,27 +97,25 @@ public class Page6 implements Handler {
         html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
-        html = html + "      <input type='radio' id='all' name='populationRadio' value='All' checked='checked'> <label for='all'>All</label>";
-        html = html + "      <input type='radio' id='female' name='populationRadio' value='Female'> <label for='female'>Females</label>";
-        html = html + "      <input type='radio' id='male' name='populationRadio' value='Male'> <label for='male'>Males</label>";
-        html = html + "   </div>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='displayAsRadio'>Display Data as:</label><br>";
-        html = html + "      <input type='radio' id='percent' name='displayAsRadio' value='Percent' checked='checked'> <label for='percent'>Proportion of Population</label><br>";
-        html = html + "      <input type='radio' id='count' name='displayAsRadio' value='Count'> <label for='count'>Raw Population Count</label>";
-        html = html + "   </div>";
-        html = html + "   <div class='form-group'>";
-        html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
-        html = html + "      <select id='orderByDrop' name='orderByDrop'>";
-        html = html + "         <option> State </option>";
-        html = html + "         <option> Indigenous Results </option>";
-        html = html + "         <option> Non-Indigenous Results </option>";
+        html = html + "      <select id='lgaDrop' name='lgaDrop'>";
+        html = html + "         <option value = 'none'>Select LGA to Compare Against:</option>";
+        html = html + "         <option value = 'outcomeBest'> Best by selected GapScore</option>";
+        html = html + "         <option value = 'outcomeWorst'> Worst by selected GapScore</option>";
+        html = html + "         <option value = 'none'> --- Select by LGA Name --- </option>";
+        JDBCConnection jdbc = new JDBCConnection();
+        ArrayList<String> lgaNames = jdbc.getLGAs();
+        for (String lga : lgaNames) {
+            html = html + "         <option value = '" + lga + "'>" + lga + "</option>";
+        }
         html = html + "      </select>";
-        html = html + "      <br>";
-        html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
-        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
-        html = html + "   </div><br>";
+        html = html + "   </div>";
+        html = html + "   <p class='displayTag'>Compare to LGAs similar by:</p>";
+        html = html + "   <div class='form-radio'>";
+        html = html + "      <input type='radio' class='radiobtn' id='density' name='comparisonRadio' value='populationDensity' checked='checked'>";
+        html = html + "          <label class ='radiolabel' for='populationDensity'>Population Density</label>";
+        html = html + "      <input type='radio' class='radiobtn' id='proportionIndigenous' name='comparisonRadio' value='proportionIndigenous'>";
+        html = html + "          <label class ='radiolabel' for='proportionIndigenous'>Proportion of Population who are Indigenous</label>";
+        html = html + "   </div>";
 
         html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
 
@@ -139,10 +137,8 @@ public class Page6 implements Handler {
         if (context.formParam("outcome8") != null) {   
             outcomeSelect.add(context.formParam("outcome8"));
         }
-        String populationRadio = context.formParam("populationRadio");
-        String displayAsRadio = context.formParam("displayAsRadio");
-        String orderByDrop = context.formParam("orderByDrop");
-        String orderRadio = context.formParam("orderRadio");
+        String lgaDrop = context.formParam("lgaDrop");
+        String comparisonRadio = context.formParam("comparisonRadio");
 
      
 
@@ -156,9 +152,8 @@ public class Page6 implements Handler {
             html = html + outcome + ", ";
         }
         html = html + "</p>";
-        html = html + "<p>Population Segment = " + populationRadio + "</p>";
-        html = html + "<p>Display Data As = " + displayAsRadio + "</p>";
-        html = html + "<p>Order By = " + orderByDrop + " " + orderRadio + "</p>";
+        html = html + "<p>LGA Dropdown = " + lgaDrop + "</p>";
+        html = html + "<p>Comparison Radio = " + comparisonRadio + "</p>";
 
         //testQuery
         // JDBCConnection jdbc = new JDBCConnection();
