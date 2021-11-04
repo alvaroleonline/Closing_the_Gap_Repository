@@ -86,7 +86,7 @@ public class Page3 implements Handler {
         html = html + "   <div class='form-group'>";
         // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none'>Select Outcome Data</option>";
+        html = html + "         <option value = 'none'>Select Outcome</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
@@ -102,12 +102,12 @@ public class Page3 implements Handler {
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         html = html + "   </div>";
-        html = html + "   <p class='displayTag'>Display Data as:</p>";
+        html = html + "   <p class='displayTag'>Display Population Count as:</p>";
         html = html + "   <div class='form-radio'>";
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
-        html = html + "          <label class ='radiolabel' for='percent'>Percentage of Population</label>";
+        html = html + "          <label class ='radiolabel' for='percent'>Percentage</label>";
         html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
-        html = html + "          <label class ='radiolabel' for='count'>Raw Population Count</label>";
+        html = html + "          <label class ='radiolabel' for='count'>Raw Numbers</label>";
         html = html + "   </div>";
         /*html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
@@ -235,7 +235,7 @@ public class Page3 implements Handler {
         html = html + "<div class='col1hide'>";
         html = html + "</div>";
         html = html + "<div class='colTable'>";
-        html = html + "   <h2>Explore the data in other ways</h2><hr class='in'>";
+        html = html + "   <h2>Explore the data in different ways</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
         html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></i></a>";
         //html = html + "      <a href='page4.html'>Data by State</a>";
