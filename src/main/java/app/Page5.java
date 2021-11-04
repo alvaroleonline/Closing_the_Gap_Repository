@@ -73,17 +73,18 @@ public class Page5 implements Handler {
         
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Outcome Data by Gap Score</h1>";
+        html = html + "<h1>Measuring the Gap</h1>";
         html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
         html = html + "</div>";
 
 
         // 1st DIV - Default Content Div
         html = html + "<div class='content-box'>";
-        html = html + "<h1>Gap Difference at a National Level</h1>";
-        html = html + "<hr class='in'>" + "<p>Figures displaying the percentage for Indigenous and Non-Indigenous Australians on each socieconomic outcome.</p>";
+        html = html + "<h2>Figures displaying the percentage for Indigenous and Non-Indigenous Australians on each socieconomic outcome.</h2>";
+        html = html + "<hr class='in'>" + "<p>Gap Difference at a National Level.</p><br>";
         
         // Graph
+        html = html + "<p class='percent'>%</p>";
         html = html + "<canvas id='myChart'></canvas>";
         // Outcome 1 
         double outcome1I = jdbc.getOutcome1I("Indigenous");
@@ -105,13 +106,14 @@ public class Page5 implements Handler {
         // Script 
         html = html + "<script>const labels = ['Outcome 1', 'Outcome 5', 'Outcome 6', 'Outcome 8',];";
         html = html + "const data = {labels: labels, datasets: [";
-        html = html + "{label: 'Indigenous', backgroundColor: 'rgb(19,31,101)', borderColor: 'rgb(19,31,101)', data: [" + String.format("%.1f", outcome1I) + "," + String.format("%.1f", outcome5I) + "," + String.format("%.1f", outcome6I) + "," + String.format("%.1f", outcome8I) + ",]},";
-        html = html + "{label: 'Non-Indigenous', backgroundColor: 'rgb(255,111,0)', borderColor: 'rgb(255,111,0)', data: [" + String.format("%.1f", outcome1NonI) + "," + String.format("%.1f", outcome5NonI) + "," + String.format("%.1f", outcome6NonI) + "," + String.format("%.1f", Outcome8NonI) + ",]}";
+        html = html + "{label: 'Indigenous', backgroundColor: 'rgb(255,118,0)', borderColor: 'rgb(255,118,0)', data: [" + String.format("%.1f", outcome1I) + "," + String.format("%.1f", outcome5I) + "," + String.format("%.1f", outcome6I) + "," + String.format("%.1f", outcome8I) + ",]},";
+        html = html + "{label: 'Non-Indigenous', backgroundColor: 'rgb(26,35,126)', borderColor: 'rgb(26,35,126)', data: [" + String.format("%.1f", outcome1NonI) + "," + String.format("%.1f", outcome5NonI) + "," + String.format("%.1f", outcome6NonI) + "," + String.format("%.1f", Outcome8NonI) + ",]},";
         html = html + "]};";
-        html = html + "const config = {type: 'bar', data: data, options: {responsive: true}};";
+        html = html + "const config = {type: 'bar', data: data, options: {responsive: true, interaction: {mode: 'index',intersect: false,}, plugins: {legend: {labels: {font: {size: 12}}, align: 'end', position: 'top'}, tooltip: {bodyFont: {size: 15}},}}};";
         html = html + "const myChart = new Chart(document.getElementById('myChart'), config);";
         html = html + "</script>";
         // Graph Closed
+        
 
         html = html + "</div>";
 
@@ -131,7 +133,7 @@ public class Page5 implements Handler {
         html = html + "   <div class='form-group'>";
         // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none'>Select Outcome Data</option>";
+        html = html + "         <option value = 'none'>Select Outcome</option>";
         html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
         html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
         html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
@@ -147,12 +149,12 @@ public class Page5 implements Handler {
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         html = html + "   </div>";
-        html = html + "   <p class='displayTag'>Display Data as:</p>";
+        html = html + "   <p class='displayTag'>Display Population Count as:</p>";
         html = html + "   <div class='form-radio'>";
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
-        html = html + "          <label class ='radiolabel' for='percent'>Percentage of Population</label>";
+        html = html + "          <label class ='radiolabel' for='percent'>Percentage</label>";
         html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
-        html = html + "          <label class ='radiolabel' for='count'>Raw Population Count</label>";
+        html = html + "          <label class ='radiolabel' for='count'>Raw Numbers</label>";
         html = html + "   </div>";
         /*html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
@@ -280,7 +282,7 @@ public class Page5 implements Handler {
         html = html + "<div class='col1hide'>";
         html = html + "</div>";
         html = html + "<div class='colTable'>";
-        html = html + "   <h2>Explore the data in other ways</h2><hr class='in'>";
+        html = html + "   <h2>Explore the data in different ways</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
         html = html + "      <a href='page3.html'>Data by LGA<i class='fa fa-angle-right'></i></a>";
         //html = html + "      <a href='page4.html'>Data by State</a>";
