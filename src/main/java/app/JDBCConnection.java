@@ -580,6 +580,125 @@ public class JDBCConnection {
 
 //************************************************************* LEVEL 3.2 - LGA COMPARISONS  *************************************************************
 
+public ArrayList<String> getLGAs() {
+
+    ArrayList<String> lgaNames = new ArrayList<String>();
+
+    // Setup the variable for the JDBC connection
+    Connection connection = null;
+
+    try {
+        // Connect to JDBC data base, prepare a new SQL Query & Set a timeout
+        connection = DriverManager.getConnection(DATABASE);
+        Statement statement = connection.createStatement();
+        statement.setQueryTimeout(30);
+
+        // The Query
+        String query = "SELECT DISTINCT lga FROM level2view ORDER BY lga";
+        
+        // Get Result
+        ResultSet results = statement.executeQuery(query);
+
+        // Process all of the results
+
+        while (results.next()) {
+            lgaNames.add(results.getString("lga"));
+        }
+
+        // Close the statement because we are done with it
+        statement.close();
+    } catch (SQLException e) {
+        // If there is an error, lets just print the error
+        System.err.println(e.getMessage());
+    } finally {
+        // Safety code to cleanup
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            // connection close failed.
+            System.err.println(e.getMessage());
+        }
+    }
+
+    // Finally we return all table data
+    return lgaNames;
+}
+
+public compareLGAdata sourceLGA (ArrayList<String> outcomeSelect, String lgaDrop) {
+    //Create ArrayList of our tableRow class to store the returned data
+    compareLGAdata tableData = new compareLGAdata();
+
+    // Setup the variable for the JDBC connection
+    Connection connection = null;
+
+    try {
+        // Connect to JDBC data base, prepare a new SQL Query & Set a timeout
+        connection = DriverManager.getConnection(DATABASE);
+        Statement statement = connection.createStatement();
+        statement.setQueryTimeout(30);
+
+        // The Query
+        
+        // String select1 = "";
+        // String select2 = "";
+        // String having = "";
+
+        // if (display.equals("Count")) {
+        //     select1 = "SUM(" + outcome + "_i)";
+        //     select2 = "SUM(" + outcome + "_ni)";
+        // } else {
+        //     select1 = "AVG(" + outcome + "_iPercent)";
+        //     select2 = "AVG(" + outcome + "_niPercent)";
+        // }
+        
+        // if (!population.equals("All")) {
+        //     having = ", sex HAVING sex = '" + population + "'";
+        // }
+        
+        String query = "SELECT lga, state, lgaPopulation, populationDensity, proportionIndigenous, gapScore1 FROM lgaCompareView WHERE lga = 'Melbourne'";
+        
+        //test query output
+        //System.out.println(query);
+
+        // Get Result
+        ResultSet results = statement.executeQuery(query);
+
+        // Process all of the results
+
+        while (results.next()) {
+            
+            tableData.setLga(results.getString("lga"));
+            tableData.setState(results.getString("state"));
+            tableData.setPopulation(results.getInt("lgaPopulation"));
+            tableData.setDensity(results.getDouble("populationDensity"));
+            tableData.setProportionIndig(results.getDouble("proportionIndigenous"));
+            tableData.setGapScore(results.getDouble("gapScore"));
+        }
+
+        // Close the statement because we are done with it
+        statement.close();
+    } catch (SQLException e) {
+        // If there is an error, lets just print the error
+        System.err.println(e.getMessage());
+    } finally {
+        // Safety code to cleanup
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            // connection close failed.
+            System.err.println(e.getMessage());
+        }
+    }
+
+    // Finally we return all table data
+    return tableData;
+}
+
+
 
 
 
