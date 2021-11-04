@@ -27,19 +27,18 @@ public class Page6 implements Handler {
         String html = "<html>";
 
         // Add some Header information
-        html = html + "<head>" + 
-               "<title>LGA Statistics</title>";
+        html = html + "<head>";
+        html = html + "   <title>Compare LGAs across various measures</title>";
 
         // Add some CSS (external file)
-        html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
-        html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
-        html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
-        html = html + "<script src='common.js'></script>";
-        html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
-        
-
+        html = html + "   <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
+        html = html + "   <script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
+        html = html + "   <link rel='stylesheet' type='text/css' href='common.css' />";
+        html = html + "   <script src='common.js'></script>";
+        html = html + "   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
+    
         // Add the body
-        html = html + "<body>";
+        html = html + "</head><body>";
 
 
         // HEADER
@@ -52,8 +51,8 @@ public class Page6 implements Handler {
         html = html + "<div class='subnav'>";
         html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
         html = html + "<div class='subnav-content'>";
-        html = html + "<a href='page3.html'>LGA Statistics</a>";
-        html = html + "<a href='page4.html'>State Statistics</a>";
+        html = html + "<a href='page3.html'>Data by LGA</a>";
+        html = html + "<a href='page4.html'>Data by State</a>";
         html = html + "<a href='page5.html'>Subtask 3.1</a>";
         html = html + "<a href='page6.html'>Subtask 3.2</a>";
         html = html + "</div></div>";
@@ -67,21 +66,19 @@ public class Page6 implements Handler {
         html = html + "<div id='content'>";
         html = html + "<div id='container-main' class='container'>";
 
-        
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Outcome Statistics by LGA</h1>";
-        html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
+        html = html + "<h1>Compare LGAs' Attributes using GapScore </h1>";
+        html = html + "<hr class='white'>" + "<p>Compare the GapScore across Local Governments Areas using various measures including population, population density, and geographic area.</p>";
         html = html + "</div>";
-
 
         // 2nd DIV - Chart and Table
         html = html + "<div class='row3'>";
 
 
-        //Col1 - Chart
+        //Col1 - Chart options
         html = html + "<div class='col1'>";
-        html = html + "<h1>Choose LGA and Outcomes</h1><hr class='in'>";
+        html = html + "<h1>Define GapScore and Choose LGA Comparison</h1><hr class='in'>";
         
         html = html + "<form action='/page6.html' method='post'>";
         
@@ -219,20 +216,20 @@ public class Page6 implements Handler {
         // Closes Row DIV 
         html = html + "</div>";
 
+        //New row and col DIV for switching charts
         html = html + "<div class='row3'>";
-
         html = html + "<div class='col1hide'>";
-        //close column div
         html = html + "</div>";
-
         html = html + "<div class='colTable'>";
-        html = html + "<h1>Comparison LGAs: Outcome 1</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
-        //close table column div
+        html = html + "   <h2>Explore the data in different ways</h2><hr class='in'>";
+        html = html + "   <div class='chart-switch'>";
+        html = html + "      <a href='page3.html'>Data by LGA<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></a>";
+        html = html + "      <a href='page5.html'>Subtask 3.1<i class='fa fa-angle-right'></i></a>";
+        //html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
+        html = html + "   </div>";
         html = html + "</div>";
-
-
-
-
+        html = html + "</div>";
 
         //CLOSES CONTENT
         html = html + "</div>";
