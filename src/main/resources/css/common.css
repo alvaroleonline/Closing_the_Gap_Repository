@@ -111,9 +111,6 @@ margin-inline-start: 0;
 margin-inline-end: 0;
 }
 
-b#blue{
-	color: var(--blue-900);
-}
 
 .fa {
 	display: inline-block;
@@ -607,10 +604,14 @@ h2>.fa {
 
 /*** MISSION PAGE CSS ***/
 
+b#blue{
+	color: var(--blue);
+	font-size: 0.9rem;
+}
 
 .collapsible {
-	background-color: var(--gray-100);
-	color: var(--black);
+	background-color: var(--blue-900);
+	color: var(--white);
 	border-radius: var(--small);
 	cursor: pointer;
 	padding: 15px;
@@ -621,7 +622,7 @@ h2>.fa {
   }
   
   .active, .collapsible:hover {
-	background-color: var(--blue-clear);
+	background: var(--blue);
   }
   
   .collapsible:after {
@@ -633,7 +634,7 @@ h2>.fa {
 	margin-right: 10px;
     margin-top: -20px; 
 
-	color: var(--blue);
+	color: var(--white);
   }
   
   .active:after {
@@ -667,7 +668,7 @@ h2>.fa {
 
 
 a#missionlink{
-	color:var(--blue);
+	color:var(--black);
 	text-decoration: underline;
 }
 
@@ -697,26 +698,40 @@ a#missionlink:hover{
 	font-family: var(--font-main);
 	font-size: var(--p);
 	font-weight: var(--b);
-	color: var(--blue-900);
-	background-color: var(--gray-100);
+	color: var(--white);
+	background-color: var(--blue-900);
 	text-align: left;
 	border: none;
 	border-radius: var(--small);
-	padding: 15px;
+	padding: 15px 20px 15px 15px;
 	cursor: pointer;
+	transition:  .3s ease-in-out;
+	-webkit-transition:  .3s ease-in-out; 
+	
 }
 
 .chart-switch-mission>a:hover {
-	background-color: var(--blue-clear);
+	padding: 15px 5px 15px 15px;
+	background-color: var(--white);
 	color:var(--black);
+	transition:  .25s ease-in-out;
+	-webkit-transition:  .25s ease-in-out; 
+} 
 
-}
-
-.chart-switch-mission>a>.fa {
+.chart-switch-mission>a::after {
+	background-image: url('arrow-forward-wht.svg');
+	background-size: 20px 18px;
+	width: 20px;
+	height: 18px;
+	content: "";
 	float: right;
-	padding-right: 5px;
-	font-size: 1.1rem;
-}
+} 
+
+.chart-switch-mission>a:hover:after {
+	filter: invert(60%) sepia(31%) saturate(7089%) hue-rotate(359deg) brightness(98%) contrast(104%);
+	transition:  .05s ease-out;
+	-webkit-transition:  .05s ease-out; 
+} 
 
 
 
@@ -934,12 +949,6 @@ button.btn.btn-primary:hover{
 	-webkit-transition:  .05s ease-out; 
 } 
 
-.chart-switch>a>.fa {
-	float: right;
-	font-size: 1.1rem;
-	height: 15px;
-	width: 15px;
-}
 
 
 

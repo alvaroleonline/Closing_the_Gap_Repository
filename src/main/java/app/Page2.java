@@ -46,8 +46,8 @@ public class Page2 implements Handler {
         html = html + "<div class='subnav-content'>";
         html = html + "<a href='page3.html'>Data by LGA</a>";
         html = html + "<a href='page4.html'>Data by State</a>";
-        html = html + "<a href='page5.html'>Subtask 3.1</a>";
-        html = html + "<a href='page6.html'>Subtask 3.2</a>";
+        html = html + "<a href='page5.html'>The Gap</a>";
+        html = html + "<a href='page6.html'>Similar Attributes</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
 
@@ -68,56 +68,58 @@ public class Page2 implements Handler {
         html = html + "The chosen outcomes and related measurements are as follows:<br><br></p>";
 
         //Outcomes collapsible tabs
-        html = html + "<button class='collapsible'><b id='blue'>Outcome area 1 - Aboriginal and Torres Strait Islander people enjoy long and healthy lives</b></button></b>";
+        html = html + "<button class='collapsible'><b>Outcome area 1 - Aboriginal and Torres Strait Islander people enjoy long and healthy lives</b></button></b>";
         html = html + "<div class='contenthidden'><p>Life expectancy is an overarching target, which is dependent not only on health, but the social determinants (such as education, employment status, housing and income). Social determinants are estimated to be responsible for at least 34 per cent of the health gap between Indigenous and Non-Indigenous Australians. Behavioural risk factors, such as smoking, obesity, alcohol use and diet, accounted for around 19 per cent of the gap (<a id='missionlink' href='https://www.niaa.gov.au/sites/default/files/publications/2017-health-performance-framework-report_1.pdf'>AHMAC 2017</a>).</p>";
-        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b>Official target: </b></div><div class='col204'><p>Close the Gap in life expectancy within a generation, by 2031.</p></div>" + "</div>";
-        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b>How this site measures progress:</b></div><div class='col204'><p>Number of Indigenous people aged 65 or over, as a proportion of total Indigenous population.</p></div>" + "</div>";
+        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b id='blue'>Official target: </b></div><div class='col204'><p>Close the Gap in life expectancy within a generation, by 2031.</p></div>" + "</div>";
+        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b id='blue'>How this site measures progress:</b></div><div class='col204'><p>Number of Indigenous people aged 65 or over, as a proportion of total Indigenous population.</p></div>" + "</div>";
         html = html + "<hr class='small'>";
         html = html + "</div>";
 
-        html = html + "<button class='collapsible'><b id='blue'>Outcome area 5 - Aboriginal and Torres Strait Islander students achieve their full potential</b></button>";
+        html = html + "<button class='collapsible'><b>Outcome area 5 - Aboriginal and Torres Strait Islander students achieve their full potential</b></button>";
         html = html + "<div class='contenthidden'><p>One of the main indicators of educational achievement is completing high school to Year 12. This is a prerequisite for many jobs and is seen as an indicator of aptitude and attitude (<a id='missionlink'href='https://www.jstor.org/stable/24720925'>Biddle 2010</a>). Indigenous Australians, who complete Year 12, or a higher qualification, are substantially more likely to be employed. They are also more likely to work full-time and in higher-skilled occupations than early school leavers (<a id='missionlink' href='https://openresearch-repository.anu.edu.au/bitstream/1885/148675/1/CAEPR-WP-GROWTH-PUBLISH.pdf'>Shirodkar et al. 2018</a>; Venn 2018).</p>";
-        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b>Official target: </b></div><div class='col204'><p>By 2031, increase the proportion of Aboriginal and Torres Strait Islander people (age 20-24) attaining year 12 or equivalent qualification to 96 per cent.</p></div>" + "</div>";
-        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b>How this site measures progress: </b></div><div class='col204'><p>Number of Indigenous people aged 15 or over who have completed year 12.</p></div>" + "</div>";
+        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b id='blue'>Official target: </b></div><div class='col204'><p>By 2031, increase the proportion of Aboriginal and Torres Strait Islander people (age 20-24) attaining year 12 or equivalent qualification to 96 per cent.</p></div>" + "</div>";
+        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b id='blue'>How this site measures progress: </b></div><div class='col204'><p>Number of Indigenous people aged 15 or over who have completed year 12.</p></div>" + "</div>";
         html = html + "<hr class='small'>";
         html = html + "</div>";
 
-        html = html + "<button class='collapsible'><b id='blue'>Outcome area 6 - Aboriginal and Torres Strait Islander students reach their full potential through further education pathways</b></button>";
+        html = html + "<button class='collapsible'><b>Outcome area 6 - Aboriginal and Torres Strait Islander students reach their full potential through further education pathways</b></button>";
         html = html + "<div class='contenthidden'><p>Successfully progressing through and transitioning from school is important for children to improve social mobility and intergenerational outcomes. Education has a strong association with employability and income, health, and control over one's life (Pagnini et al. 2014; <a id='missionlink' href='https://www.worldbank.org/en/publication/wdr2018'>World Bank 2018</a>). Better education outcomes can also have positive intergenerational flow-on effects. More educated mothers, for example, have been associated with healthier children (<a id='missionlink' href='https://www.researchgate.net/publication/237279667_Maternal_Education_and_Child_Health_An_Exploratory_Investigation_in_a_Central_Australian_Aboriginal_Community'>Ewald and Boughton 2002</a>; <a id='missionlink' href='https://journals.sagepub.com/doi/full/10.1177/0014402920926461'>Schochet et al. 2020</a>).</p>";
-        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b>Official target: </b></div><div class='col204'><p>By 2031, increase the proportion of Aboriginal and Torres Strait Islander people aged 25-34 years who have completed a tertiary qualification (Certificate III and above) to 70 per cent.</p></div>" + "</div>";
-        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b>How this site measures progress: </b></div><div class='col204'><p>Number of Indigenous people aged 15 or over who have completed tertiary qualifications equivalent to an Advanced Diploma and above.</p></div>" + "</div>";
+        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b id='blue'>Official target: </b></div><div class='col204'><p>By 2031, increase the proportion of Aboriginal and Torres Strait Islander people aged 25-34 years who have completed a tertiary qualification (Certificate III and above) to 70 per cent.</p></div>" + "</div>";
+        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b id='blue'>How this site measures progress: </b></div><div class='col204'><p>Number of Indigenous people aged 15 or over who have completed tertiary qualifications equivalent to an Advanced Diploma and above.</p></div>" + "</div>";
         html = html + "<hr class='small'>";
         html = html + "</div>";
 
-        html = html + "<button class='collapsible'><b id='blue'>Outcome area 8 - Strong economic participation and development of Aboriginal and Torres Strait Islander people and communities</b></button>";
+        html = html + "<button class='collapsible'><b>Outcome area 8 - Strong economic participation and development of Aboriginal and Torres Strait Islander people and communities</b></button>";
         html = html + "<div class='contenthidden'><p>Participation in employment provides financial and economic security and assists in opening the door to self-determination. Employment status also has associations with outcomes for health, social and emotional wellbeing, and living standards (<a id='missionlink' href='https://pubmed.ncbi.nlm.nih.gov/21282147/'>Bambra 2011</a>; Gray et al. 2014; <a id='missionlink' href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5837404/'>Marmot 2015</a>).</p>";
-        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b>Official target: </b></div><div class='col204'><p>By 2031, increase the proportion of Aboriginal and Torres Strait Islander people aged 25-64 who are employed to 62 per cent.</p></div>" + "</div>";
-        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b>How this site measures progress: </b></div><div class='col204'><p>Number of Indigenous people aged 15 or over who are employed.</p></div>" + "</div>";
+        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b id='blue'>Official target: </b></div><div class='col204'><p>By 2031, increase the proportion of Aboriginal and Torres Strait Islander people aged 25-64 who are employed to 62 per cent.</p></div>" + "</div>";
+        html = html + "<hr class='small'>" + "<div class='row4'>" + "<div class='col104'><b id='blue'>How this site measures progress: </b></div><div class='col204'><p>Number of Indigenous people aged 15 or over who are employed.</p></div>" + "</div>";
         html = html + "<hr class='small'>";
         html = html + "</div>";
         
         html = html + "</div>";
 
         html = html + "<div class = 'content-box'>";
-        html = html + "<h1>Target Audiences</h1>";
-        html = html + "<hr class='in'>";
-        html = html + "<p>This online database seeks to strike a balance between dense amounts of information and accessibility. We want our users to be able to see a high-level view of progress towards targets with ease, as well as to be able to drill down into individual outcomes as required. Ideally having access to this data will encourage greater community buy-in to achieve the targets, and act as a touchstone and tool for advocacy work in the area.</p></div>";
-
-        html = html + "<div class = 'content-box'>";
         html = html + "<h1>How to Use this Site</h1>";
         html = html + "<hr class='in'>";
         html = html + "<p>Access the outcome data from the navigation menu at the top of the page or the links below - selecting how you would like to view the data: by Local Government Area (LGA), by State or one of the more detailed analysis pages listed. ";
         html = html + "Each page has it's own breakdown of options to select so that you can access data on each specific outcome, as well as how it is broken down, displayed and ordered.</p><br>";
-        //TODO: insert information on how GapScore is calculated as well? 
+        // TODO: insert information on how GapScore is calculated as well
         html = html + "<h2>Start exploring the data</h2><hr class='in'>";
         html = html + "   <div class='chart-switch-mission'>";
-        html = html + "      <a href='page3.html'>Data by LGA<i class='fa fa-angle-right'></i></a>";
-        html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></i></a>";
-        html = html + "      <a href='page5.html'>Subtask 3.1<i class='fa fa-angle-right'></i></a>";
-        html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page3.html'>Data by LGA</a>";
+        html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page5.html'>The Gap</a>";
+        html = html + "      <a href='page6.html'>Similar Attributes</a>";
         html = html + "   </div>";
         html = html + "</div>";
 
+
+        html = html + "<div class = 'content-box'>";
+        html = html + "<h1>Target Audiences</h1>";
+        html = html + "<hr class='in'>";
+        html = html + "<p>This online database seeks to strike a balance between dense amounts of information and accessibility. We want our users to be able to see a high-level view of progress towards targets with ease, as well as to be able to drill down into individual outcomes as required. Ideally having access to this data will encourage greater community buy-in to achieve the targets, and act as a touchstone and tool for advocacy work in the area.</p></div>";
+
+    
         html = html + "<div class='credits'>2021 Website built by Scott Dunsdon (s3918676) and Alvaro Pena Leon (s3909789). All material presented on this website is provided under a Creative Commons Attribution 4.0 International licence. Special mentions: Australian Government Productivity Comission- Closing the Gap Information Repository;  Australia Bureau of Statistics; Closing The Gap Report 2020.</div>";
 
         
