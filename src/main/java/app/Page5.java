@@ -123,6 +123,13 @@ public class Page5 implements Handler {
         html = html + "<div class='row3'>";
 
 
+        //populate form submission results
+        String outcomeDrop = context.formParam("outcomeDrop");
+        String populationDrop = context.formParam("populationDrop");
+        String displayAsRadio = context.formParam("displayAsRadio");
+        // String populationRange = context.formParam("populationRange");
+
+
         //Col1 - Chart
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
@@ -132,49 +139,41 @@ public class Page5 implements Handler {
         html = html + "   <div class='form-group'>";
         // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none'>Select Outcome</option>";
-        html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
-        html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
-        html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
-        html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
+        html = html +           createDropOption("none", "Select Outcome", outcomeDrop);
+        html = html +           createDropOption("outcome1", "Outcome 1 - Long & Healthy Lives", outcomeDrop);
+        html = html +           createDropOption("outcome5", "Outcome 5 - School Completion", outcomeDrop);
+        html = html +           createDropOption("outcome6", "Outcome 6 - Tertiary Education", outcomeDrop);
+        html = html +           createDropOption("outcome8", "Outcome 8 - Economic Participation", outcomeDrop);
         html = html + "      </select>";
         html = html + "   </div>";
+
+
         html = html + "   <div class='form-group'>";
-        //html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
-        html = html + "         <option value = 'All'>Select the Population Segment</option>";
-        html = html + "         <option value = 'All'> Total Population</option>";
-        html = html + "         <option value = 'Female'> Female Population</option>";
-        html = html + "         <option value = 'Male'> Male Population</option>";
+        html = html +           createDropOption("none", "Select the Population Segment", populationDrop);
+        html = html +           createDropOption("All", "Total Population", populationDrop);
+        html = html +           createDropOption("Female", "Female Population", populationDrop);
+        html = html +           createDropOption("Male", "Male Population", populationDrop);
         html = html + "      </select>";
         html = html + "   </div>";
-        //        
-        html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
-        html = html + "   <div class='form-radio'>";
-        html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
-        html = html + "          <label class ='radiolabel' for='percent'>Percentage</label>";
-        html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
-        html = html + "          <label class ='radiolabel' for='count'>Raw Numbers</label>";
-        html = html + "   </div>";
-                //
-        html = html + "   <p class='displayTagRange'><br>Where gap is in the range:</p>";
+
+        /*
+        html = html + "   <p class='displayTagRange'>Is in the range:</p>";
         html = html + "   <div class='form-range'>";
         html = html + "      <label for='rangelabel'>0</label>";
-        html = html + "      <input type='range' id='populationRange' name='populationRange' value='0'>";
+        html = html + "      <input type='range' id='populationRange' name='populationRange' value=''>";
         html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'></output></label>%";
         html = html + "      ";
         html = html + "   </div>";
-        /*html = html + "   <div class='form-group'>";
-        html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
-        html = html + "      <select id='orderByDrop' name='orderByDrop'>";
-        html = html + "         <option> Lga </option>";
-        html = html + "         <option> Indigenous Results </option>";
-        html = html + "         <option> Non-Indigenous Results </option>";
-        html = html + "      </select>";
-        html = html + "      <br>";
-        html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
-        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
-        html = html + "   </div><br>";*/
+        */        
+
+        html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
+        html = html + "   <div class='form-radio'>";
+        html = html +           createRadioBtn("percent", "Percent", "Percentage", displayAsRadio, true);
+        html = html +           createRadioBtn("count", "Count", "Raw Numbers", displayAsRadio, false);
+        html = html + "   </div>";
+        
+
 
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
@@ -183,13 +182,6 @@ public class Page5 implements Handler {
         
         html = html + "</div>";
 
-
-        //populate form submission results
-        String outcomeDrop = context.formParam("outcomeDrop");
-        String populationDrop = context.formParam("populationDrop");
-        String displayAsRadio = context.formParam("displayAsRadio");
-        //String orderByDrop = context.formParam("orderByDrop");
-        //String orderRadio = context.formParam("orderRadio");
 
 
 
@@ -252,9 +244,9 @@ public class Page5 implements Handler {
 
         html = html + "<thead><tr>";
         if (displayAsRadio.equals("Count")) {
-            html = html + "<th>Lga</th><th>Indigenous</th><th>Non-Indigenous</th><th>(%) Gap Difference</th>";
+            html = html + "<th>Lga</th><th>State</th><th>Indigenous</th><th>Non-Indigenous</th><th>(%) Gap Difference</th>";
         } else {
-            html = html + "<th>Lga</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference</th>";
+            html = html + "<th>Lga</th><th>State</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference</th>";
         }
         html = html + "</tr></thead>";
 
@@ -264,6 +256,7 @@ public class Page5 implements Handler {
             
             html = html + "<tr>";
             html = html + "<td><b id='blue'>" + row.getLga() + "</b></td>";
+            html = html + "<td>" + row.getState() + "</td>";
             if (displayAsRadio.equals("Count")) {
                 html = html + "<td>" + row.getCountIndig() + "</td>";
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
@@ -299,31 +292,6 @@ public class Page5 implements Handler {
        // 2nd DIV - Chart and Table
        html = html + "<div class='row3'>";
 
-
-       //Col1 - Chart options
-       html = html + "<div class='col1'>";
-       html = html + "<h1>Measure the Gap</h1><hr class='in'>";
-       
-       html = html + "<form action='/page5.html' method='post'>";
-       
-       html = html + "   <div class='form-notdrop'>";
-       html = html + "   <p class='displayTag'><label for='outcomeSelect'>Outcomes to generate Gap Score from:</label></p>";
-       html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='gapScore1'>";
-       html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
-       html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='gapScore5'>";
-       html = html + "      <label for='outcome5'> Outcome 5 - School Completion</label><br>";
-       html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='gapScore6'>";
-       html = html + "      <label for='outcome6'> Outcome 6 - Tertiary Education</label><br>";
-       html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='gapScore8'>";
-       html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
-       html = html + "   </div>";
-
-       html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
-
-       html = html + "</form>";
-       
-       html = html + "</div>";
-
        //populate form submission results
        ArrayList<String> outcomeSelect = new ArrayList<String>();
        if (context.formParam("outcome1") != null) {   
@@ -338,6 +306,37 @@ public class Page5 implements Handler {
        if (context.formParam("outcome8") != null) {   
            outcomeSelect.add(context.formParam("outcome8"));
        }
+
+
+       //Col1 - Chart options
+       html = html + "<div class='col1'>";
+       html = html + "<h1>Measure the Gap</h1><hr class='in'>";
+       
+       html = html + "<form action='/page5.html' method='post'>";
+       
+        html = html + "   <div class='form-notdrop'>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></p>";
+        html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Life Expectancy", outcomeSelect);
+        html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
+        html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
+        html = html +           createCheckbox("outcome8", "gapScore8", "Outcome 8 - Employment", outcomeSelect);
+        // html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='gapScore1'>";
+        // html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
+        // html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='gapScore5'>";
+        // html = html + "      <label for='outcome5'> Outcome 5 - School Completion</label><br>";
+        // html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='gapScore6'>";
+        // html = html + "      <label for='outcome6'> Outcome 6 - Tertiary Education</label><br>";
+        // html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='gapScore8'>";
+        // html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
+        html = html + "   </div>";
+
+       html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
+
+       html = html + "</form>";
+       
+       html = html + "</div>";
+
+       
        
 
     
@@ -359,7 +358,7 @@ public class Page5 implements Handler {
 
        //Output into a table
        if (outcomeSelect.size() == 0) {
-           html = html + "<h1>Please select table data options on the left</h1>";
+           html = html + "";
        } else {
            //create and populate sourceLGA data from jdbc
            ArrayList<compareLGAdata> tableData = jdbc.sourceOutcome(outcomeSelect);
@@ -424,6 +423,43 @@ public class Page5 implements Handler {
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
+    }
+
+
+    public String createDropOption(String value, String label, String lastSubmission) {
+        String option = "<option value = '" + value + "' ";
+        if (lastSubmission != null && !lastSubmission.equals("none") && lastSubmission.equals(value)) {
+            option = option + "selected ";
+        }
+        option = option + "> " + label + "</option>";
+        return option;
+    }
+
+    public String createRadioBtn(String id, String value, String label, String lastSubmission, boolean firstBtn) {
+        String radio = "<input type='radio' class='radiobtn' id='" + id + "' name='displayAsRadio' value='" + value + "' ";
+        
+        if (firstBtn) {
+            if (lastSubmission == null || lastSubmission.equals(value)) {
+                radio = radio + "checked ='checked' ";
+            }
+        } else {
+            if (lastSubmission != null && lastSubmission.equals(value)) {
+                radio = radio + "checked ='checked' ";
+            }
+        }
+        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label>";
+
+        return radio;
+    }
+
+
+    public String createCheckbox(String id, String value, String label, ArrayList<String> lastSubmission) {
+        String checkbox = "<input type='checkbox' id='" + id + "' name='" + id + "' value='" + value + "' ";
+        if (lastSubmission.size() > 0 && lastSubmission.contains(value)) {
+            checkbox = checkbox + "checked ='checked' ";
+        }
+        checkbox = checkbox + "><label for='" + id + "'>" + label + "</label><br>";
+        return checkbox;
     }
 
 }
