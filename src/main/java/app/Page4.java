@@ -73,6 +73,11 @@ public class Page4 implements Handler {
         // 2nd DIV - Chart and Table
         html = html + "<div class='row3'>";
 
+        //populate form submission results
+        String outcomeDrop = context.formParam("outcomeDrop");
+        String populationDrop = context.formParam("populationDrop");
+        String displayAsRadio = context.formParam("displayAsRadio");
+
         //Col1 - Chart options
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
@@ -80,42 +85,27 @@ public class Page4 implements Handler {
         
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none'>Select Outcome</option>";
-        html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
-        html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
-        html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
-        html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
+        html = html +           createDropOption("none", "Select Outcome", outcomeDrop);
+        html = html +           createDropOption("outcome1", "Outcome 1 - Long & Healthy Lives", outcomeDrop);
+        html = html +           createDropOption("outcome5", "Outcome 5 - School Completion", outcomeDrop);
+        html = html +           createDropOption("outcome6", "Outcome 6 - Tertiary Education", outcomeDrop);
+        html = html +           createDropOption("outcome8", "Outcome 8 - Economic Participation", outcomeDrop);
         html = html + "      </select>";
-        //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
+
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
-        html = html + "         <option value = 'All'>Select the Population Segment</option>";
-        html = html + "         <option value = 'All'> Total Population</option>";
-        html = html + "         <option value = 'Female'> Female Population</option>";
-        html = html + "         <option value = 'Male'> Male Population</option>";
+        html = html +           createDropOption("none", "Select the Population Segment", populationDrop);
+        html = html +           createDropOption("All", "Total Population", populationDrop);
+        html = html +           createDropOption("Female", "Female Population", populationDrop);
+        html = html +           createDropOption("Male", "Male Population", populationDrop);
         html = html + "      </select>";
-        //html = html + "      </select><i id='sorticon' class='fa fa-sort'></i>";
-        html = html + "   </div>";
-        html = html + "   <p class='displayTag'><br>Display Population Count as</p><br>";
-        html = html + "   <div class='form-radio'>";
-        html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
-        html = html + "          <label class ='radiolabel' for='percent'>Percentage</label>";
-        html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
-        html = html + "          <label class ='radiolabel' for='count'>Raw Numbers</label>";
-        html = html + "   </div>";
 
-        // html = html + "   <div class='form-group'>";
-        // html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
-        // html = html + "      <select id='orderByDrop' name='orderByDrop'>";
-        // html = html + "         <option> State </option>";
-        // html = html + "         <option> Indigenous Results </option>";
-        // html = html + "         <option> Non-Indigenous Results </option>";
-        // html = html + "      </select>";
-        // html = html + "   </div>";
-        // html = html + "   <br>";
-        // html = html + "   <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
-        // html = html + "   <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label><br>";
+        html = html + "   </div>";
+        html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
+        html = html + "   <div class='form-radio'>";
+        html = html +           createRadioBtns(displayAsRadio);
+        html = html + "   </div>";
 
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
@@ -123,17 +113,10 @@ public class Page4 implements Handler {
 
         html = html + "</div>";
 
-        //populate form submission results
-        String outcomeDrop = context.formParam("outcomeDrop");
-        String populationDrop = context.formParam("populationDrop");
-        String displayAsRadio = context.formParam("displayAsRadio");
-        //String orderByDrop = context.formParam("orderByDrop");
-        //String orderRadio = context.formParam("orderRadio");
-
         //Col - Table
         html = html + "<div class='colTable'>";
         
-        if (outcomeDrop == null || outcomeDrop.equals("none")) {
+        if (outcomeDrop == null || outcomeDrop.equals("none") || populationDrop.equals("none")) {
             html = html + "<h1>Investigate the Data</h1><hr class='in'><h2>Awaiting Selection: Please select table data options on the left</h2>";
         } else {
             int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
@@ -142,7 +125,7 @@ public class Page4 implements Handler {
                     html = html + "<h1>Outcome 1: Long and Healthy Lives</h1<hr class='in'><h2>" + populationDrop + " population aged over 65";
                     break;
                 case 5:
-                    html = html + "<h1>Outcome 5: Secondary Education</h1><hr class='in'><h2>" + populationDrop + " population who have completed Year 12";
+                    html = html + "<h1>Outcome 5: School Completion</h1><hr class='in'><h2>" + populationDrop + " population who have completed Year 12";
                     break;
                 case 6:
                     html = html + "<h1>Outcome 6: Tertiary Education</h1><hr class='in'><h2>" + populationDrop + " population who have completed a tertiary qualification of Advanced Diploma or higher";
@@ -176,7 +159,7 @@ public class Page4 implements Handler {
         //ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         // Output into a table
-        if (outcomeDrop == null ||  outcomeDrop.equals("none")) {
+        if (outcomeDrop == null ||  outcomeDrop.equals("none") || populationDrop.equals("none")) {
             html = html + "";
         } else {
             //create and populate tableData from jdbc
@@ -251,4 +234,31 @@ public class Page4 implements Handler {
         context.html(html);
     }
 
+    public String createDropOption(String value, String label, String lastSubmission) {
+        String option = "<option value = '" + value + "' ";
+        if (lastSubmission != null && !lastSubmission.equals("none") && lastSubmission.equals(value)) {
+            option = option + "selected ";
+        }
+        option = option + "> " + label + "</option>";
+        return option;
+    }
+
+    public String createRadioBtns(String lastSubmission) {
+        String radio = "<input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' ";
+        if (lastSubmission == null || lastSubmission.equals("Percent")) {
+            radio = radio + "checked ='checked' ";
+        }
+        radio = radio + "><label class ='radiolabel' for='percent'>Percentage</label>";
+
+        radio = radio + "<input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count' ";
+        if (lastSubmission != null && lastSubmission.equals("Count")) {
+            radio = radio + "checked ='checked' ";
+        }
+        radio = radio + "><label class ='radiolabel' for='count'>Raw Numbers</label>";
+
+        return radio;
+    }
+
 }
+
+
