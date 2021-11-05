@@ -199,7 +199,7 @@ public class Page6 implements Handler {
             //create and populate sourceLGA data from jdbc
             compareLGAdata sourceLGA = jdbc.sourceLGA(outcomeSelect, lgaDrop);
             //start table
-            html = html + "<table class='single_row'>";
+            html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
             html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
             html = html + "</tr></thead>";
@@ -217,10 +217,11 @@ public class Page6 implements Handler {
             html = html + "</tbody>";
             html = html + "</table>";
 
+            
             String sourceLgaName = sourceLGA.getLga();
             ArrayList<compareLGAdata> tableData = jdbc.compareLGA(outcomeSelect, sourceLgaName, comparisonRadio);
 
-            html = html + "<table id='table_id' class='display'>";
+            html = html + "<table id='table_id2' class='display'>";
             html = html + "<thead><tr>";
             html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
             html = html + "</tr></thead>";
