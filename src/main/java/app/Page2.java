@@ -103,7 +103,7 @@ public class Page2 implements Handler {
         html = html + "<hr class='in'>";
         html = html + "<p>Access the outcome data from the navigation menu at the top of the page or the links below - selecting how you would like to view the data: by Local Government Area (LGA), by State or one of the more detailed analysis pages listed. ";
         html = html + "Each page has it's own breakdown of options to select so that you can access data on each specific outcome, as well as how it is broken down, displayed and ordered.</p><br>";
-        // TODO: insert information on how GapScore is calculated as well
+        // To do insert information on how GapScore is calculated as well
         html = html + "<h2>Start exploring the data</h2><hr class='in'>";
         html = html + "   <div class='chart-switch-mission'>";
         html = html + "      <a href='page3.html'>Data by LGA</a>";
