@@ -40,7 +40,7 @@ public class Page6 implements Handler {
         // Add the body
         html = html + "</head><body>";
 
-
+        
         // HEADER
         //navigation header
         html = html + "<div id='header'>";
@@ -96,8 +96,9 @@ public class Page6 implements Handler {
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='lgaDrop' name='lgaDrop'>";
         html = html + "         <option value = 'none'>Select LGA to Compare Against:</option>";
-        html = html + "         <option value = 'outcomeBest'> Best by selected GapScore</option>";
-        html = html + "         <option value = 'outcomeWorst'> Worst by selected GapScore</option>";
+        html = html + "         <option value = 'none'> --- Select by GapScore --- </option>";
+        html = html + "         <option value = 'outcomeBest'> LGA with Best GapScore for selected Outcomes</option>";
+        html = html + "         <option value = 'outcomeWorst'> LGA with Worst GapScore for selected Outcomes</option>";
         html = html + "         <option value = 'none'> --- Select by LGA Name --- </option>";
         JDBCConnection jdbc = new JDBCConnection();
         ArrayList<String> lgaNames = jdbc.getLGAs();
@@ -145,8 +146,39 @@ public class Page6 implements Handler {
 
         //Col - Table
         html = html + "<div class='colTable'>";
-        html = html + "<h1>Selected LGA</h1><h3>Raw data of Population aged over 65</h3><hr class='in'>";
-        
+        if (outcomeSelect.size() == 0 || lgaDrop == null || lgaDrop.equals("none")) {
+            html = html + "<h1>Compare LGAs</h1><hr class='in'><h3>Awaiting Selection: Please select table data options on the left</h3>";
+        } else {
+            String comparisonText;
+            String titleText;
+            String outcomesText;
+            String lgaText;
+
+            if (comparisonRadio.equals("gapScore")){
+                comparisonText = "GapScore";
+                titleText = "GapScore";
+            } else if (comparisonRadio.equals("lgaPopulation")) {
+                comparisonText = "total population";
+                titleText = "Population";
+            } else if (comparisonRadio.equals("populationDensity")) {
+                comparisonText = "population density";
+                titleText = "Density";
+            } else {    //proportionIndigenous
+                comparisonText = "proportion of the population that are Indigenous";
+                titleText = "Indigenous Proportion";
+            }
+            
+            if (lgaDrop.equals("outcomeBest")) {
+                lgaText = "the LGA with best GapScore for selected outcomes";
+            } else if (lgaDrop.equals("outcomeWorst")){
+                lgaText = "the LGA with worst GapScore for selected outcomes";
+            } else {
+                lgaText = lgaDrop;
+            }
+
+            html = html + "<h1>LGAs Compared on " + titleText + "</h1><hr class='in'><h3>Displaying the 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
+            html = html + "<p>GapScore is currently being calculated on [selected outcomes], as an average of the proportion of Indigenous population who have met the measure for those outcomes vs. the national average for the non-Indigenous population.</p>";
+        }
         //Testing form submission results
         html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
         for (String outcome : outcomeSelect) {
@@ -161,21 +193,20 @@ public class Page6 implements Handler {
         // ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         //Output into a table
-        if (outcomeSelect.size() == 0) {
-            html = html + "<h1>Please select table data options on the left</h1>";
+        if (outcomeSelect.size() == 0 || lgaDrop == null || lgaDrop.equals("none")) {
+            html = html + "";
         } else {
             //create and populate sourceLGA data from jdbc
             compareLGAdata sourceLGA = jdbc.sourceLGA(outcomeSelect, lgaDrop);
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
-            html = html + "<th>LGA</th><th>State</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Proportion that are Indigenous</th>";
+            html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
             html = html + "</tr></thead>";
 
             html = html + "<tbody>";
             html = html + "<tr>";
-            html = html + "<td><b id='blue'>" + sourceLGA.getLga() + "</td>";
-            html = html + "<td><b id='blue'>" + sourceLGA.getState() + "</td>";
+            html = html + "<td><b id='blue'>" + sourceLGA.getLga() + ", " + sourceLGA.getState() + "</td>";
             html = html + "<td>" + String.format("%.1f",sourceLGA.getGapScore()) + "</td>";
             html = html + "<td>" + sourceLGA.getPopulation() + "</td>";
             html = html + "<td>" + String.format("%.1f", sourceLGA.getDensity()) + " p/km&#178;</td>";
@@ -192,15 +223,14 @@ public class Page6 implements Handler {
 
             html = html + "<table id='table_id2' class='display'>";
             html = html + "<thead><tr>";
-            html = html + "<th>LGA</th><th>State</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Proportion that are Indigenous</th>";
+            html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
             html = html + "</tr></thead>";
 
             html = html + "<tbody>";
 
             for (compareLGAdata row : tableData) {
                 html = html + "<tr>";
-                html = html + "<td><b id='blue'>" + row.getLga() + "</td>";
-                html = html + "<td><b id='blue'>" + row.getState() + "</td>";
+                html = html + "<td><b id='blue'>" + row.getLga() + ", " + row.getState() + "</td>";
                 html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "</td>";
                 html = html + "<td>" + row.getPopulation() + "</td>";
                 html = html + "<td>" + String.format("%.1f", row.getDensity()) + " p/km&#178;</td>";
