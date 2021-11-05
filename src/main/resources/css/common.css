@@ -610,8 +610,8 @@ b#blue{
 }
 
 .collapsible {
-	background-color: var(--blue-900);
-	color: var(--white);
+	background-color: var(--gray-100);
+	color: var(--black);
 	border-radius: var(--small);
 	cursor: pointer;
 	padding: 15px;
@@ -622,6 +622,7 @@ b#blue{
   }
   
   .active, .collapsible:hover {
+	color: var(--white);
 	background: var(--blue);
   }
   
@@ -634,7 +635,6 @@ b#blue{
 	margin-right: 10px;
     margin-top: -20px; 
 
-	color: var(--white);
   }
   
   .active:after {
