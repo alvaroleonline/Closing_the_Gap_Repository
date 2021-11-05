@@ -80,65 +80,46 @@ public class Page3 implements Handler {
         // 2nd DIV - Chart and Table
         html = html + "<div class='row3'>";
 
+        //populate form submission results
+        String outcomeDrop = context.formParam("outcomeDrop");
+        String populationDrop = context.formParam("populationDrop");
+        String displayAsRadio = context.formParam("displayAsRadio");
 
-        //Col1 - Chart
+        //Col1 - Chart options
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
-        
         html = html + "<form action='/page3.html' method='post'>";
         
         html = html + "   <div class='form-group'>";
-        // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
         html = html + "      <select id='outcomeDrop' name='outcomeDrop'>";
-        html = html + "         <option value = 'none'>Select Outcome</option>";
-        html = html + "         <option value = 'outcome1'> Outcome 1 - Life Expectancy</option>";
-        html = html + "         <option value = 'outcome5'> Outcome 5 - School Completion</option>";
-        html = html + "         <option value = 'outcome6'> Outcome 6 - Tertiary Education</option>";
-        html = html + "         <option value = 'outcome8'> Outcome 8 - Employment</option>";
+        html = html +           createDropOption("none", "Select Outcome", outcomeDrop);
+        html = html +           createDropOption("outcome1", "Outcome 1 - Long & Healthy Lives", outcomeDrop);
+        html = html +           createDropOption("outcome5", "Outcome 5 - School Completion", outcomeDrop);
+        html = html +           createDropOption("outcome6", "Outcome 6 - Tertiary Education", outcomeDrop);
+        html = html +           createDropOption("outcome8", "Outcome 8 - Economic Participation", outcomeDrop);
         html = html + "      </select>";
+
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
-        //html = html + "      <label for='populationRadio'>Select the Population Segment:</label><br>";
         html = html + "      <select id='populationDrop' name='populationDrop'>";
-        html = html + "         <option value = 'All'>Select the Population Segment</option>";
-        html = html + "         <option value = 'All'> Total Population</option>";
-        html = html + "         <option value = 'Female'> Female Population</option>";
-        html = html + "         <option value = 'Male'> Male Population</option>";
+        html = html +           createDropOption("none", "Select the Population Segment", populationDrop);
+        html = html +           createDropOption("All", "Total Population", populationDrop);
+        html = html +           createDropOption("Female", "Female Population", populationDrop);
+        html = html +           createDropOption("Male", "Male Population", populationDrop);
         html = html + "      </select>";
+
         html = html + "   </div>";
         html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
         html = html + "   <div class='form-radio'>";
-        html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
-        html = html + "          <label class ='radiolabel' for='percent'>Percentage</label>";
-        html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
-        html = html + "          <label class ='radiolabel' for='count'>Raw Numbers</label>";
+        html = html +           createRadioBtn("percent", "Percent", "Percentage", displayAsRadio, true);
+        html = html +           createRadioBtn("count", "Count", "Raw Numbers", displayAsRadio, false);
         html = html + "   </div>";
-        /*html = html + "   <div class='form-group'>";
-        html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
-        html = html + "      <select id='orderByDrop' name='orderByDrop'>";
-        html = html + "         <option> Lga </option>";
-        html = html + "         <option> Indigenous Results </option>";
-        html = html + "         <option> Non-Indigenous Results </option>";
-        html = html + "      </select>";
-        html = html + "      <br>";
-        html = html + "      <input type='radio' id='asc' name='orderRadio' value='ASC' checked='checked'> <label for='asc'>Ascending</label>";
-        html = html + "      <input type='radio' id='desc' name='orderRadio' value='DESC'> <label for='desc'>Descending</label>";
-        html = html + "   </div><br>";*/
 
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
 
-        
         html = html + "</div>";
-
-
-        //populate form submission results
-        String outcomeDrop = context.formParam("outcomeDrop");
-        String populationDrop = context.formParam("populationDrop");
-        String displayAsRadio = context.formParam("displayAsRadio");
-        //String orderByDrop = context.formParam("orderByDrop");
-        //String orderRadio = context.formParam("orderRadio");
 
 
 
@@ -198,7 +179,11 @@ public class Page3 implements Handler {
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
-            html = html + "<th>Lga</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            if (displayAsRadio.equals("Count")) {
+                html = html + "<th>LGA</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            } else {
+                html = html + "<th>LGA</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th>";
+            }
             html = html + "</tr></thead>";
 
         html = html + "<tbody>";
@@ -211,14 +196,14 @@ public class Page3 implements Handler {
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
             } else {
                 if (row.getPercentIndig() > 100) {
-                    html = html + "<td>100.0%</td>";
+                    html = html + "<td>100.0</td>";
                 } else {
-                html = html + "<td>" + String.format("%.1f", row.getPercentIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentIndig()) + "</td>";
                 }
                 if (row.getPercentNonIndig() > 100) {
-                    html = html + "<td>100.0%</td>";
+                    html = html + "<td>100.0</td>";
                 } else {
-                html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "</td>";
                 }
             }
 
@@ -270,6 +255,32 @@ public class Page3 implements Handler {
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
+    }
+
+    public String createDropOption(String value, String label, String lastSubmission) {
+        String option = "<option value = '" + value + "' ";
+        if (lastSubmission != null && !lastSubmission.equals("none") && lastSubmission.equals(value)) {
+            option = option + "selected ";
+        }
+        option = option + "> " + label + "</option>";
+        return option;
+    }
+
+    public String createRadioBtn(String id, String value, String label, String lastSubmission, boolean firstBtn) {
+        String radio = "<input type='radio' class='radiobtn' id='" + id + "' name='displayAsRadio' value='" + value + "' ";
+        
+        if (firstBtn) {
+            if (lastSubmission == null || lastSubmission.equals(value)) {
+                radio = radio + "checked ='checked' ";
+            }
+        } else {
+            if (lastSubmission != null && lastSubmission.equals(value)) {
+                radio = radio + "checked ='checked' ";
+            }
+        }
+        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label>";
+
+        return radio;
     }
 
 }
