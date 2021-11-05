@@ -133,6 +133,17 @@ b {
 	font-weight: var(--b);
 }
 
+b#blue{
+	color: var(--blue-900);
+	font-size: 0.9rem;
+}
+
+b#blue900{
+	color: var(--blue-900);
+	font-size: 0.9rem;
+}
+
+/* chart % */
 p.percent{
 	color: rgb(0,0,0,0.6);
 	font-size: 0.8rem;
@@ -604,10 +615,6 @@ h2>.fa {
 
 /*** MISSION PAGE CSS ***/
 
-b#blue{
-	color: var(--blue);
-	font-size: 0.9rem;
-}
 
 .collapsible {
 	background-color: var(--gray-100);
@@ -1264,7 +1271,7 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 	transition: all .3s ease-in-out;
 	-webkit-transition: all .3s ease-in-out; 
-  }
+}
 
 
 

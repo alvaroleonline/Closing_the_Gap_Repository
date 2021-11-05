@@ -114,7 +114,6 @@ public class Page5 implements Handler {
         html = html + "</script>";
         // Graph Closed
         
-
         html = html + "</div>";
 
        
@@ -149,14 +148,6 @@ public class Page5 implements Handler {
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         html = html + "   </div>";
-        //
-        html = html + "   <p class='displayTagRange'>In the range:</p>";
-        html = html + "   <div class='form-range'>";
-        html = html + "      <label for='rangelabel'>0</label>";
-        html = html + "      <input type='range' id='populationRange' name='populationRange' value='100'>";
-        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'>100</output></label>%";
-        html = html + "      ";
-        html = html + "   </div>";
         //        
         html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
         html = html + "   <div class='form-radio'>";
@@ -164,6 +155,14 @@ public class Page5 implements Handler {
         html = html + "          <label class ='radiolabel' for='percent'>Percentage</label>";
         html = html + "      <input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count'>";
         html = html + "          <label class ='radiolabel' for='count'>Raw Numbers</label>";
+        html = html + "   </div>";
+                //
+        html = html + "   <p class='displayTagRange'><br>Where gap is in the range:</p>";
+        html = html + "   <div class='form-range'>";
+        html = html + "      <label for='rangelabel'>0</label>";
+        html = html + "      <input type='range' id='populationRange' name='populationRange' value='0'>";
+        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'></output></label>%";
+        html = html + "      ";
         html = html + "   </div>";
         /*html = html + "   <div class='form-group'>";
         html = html + "      <label for='orderByDrop'>Order Table by:</label><br>";
@@ -244,36 +243,43 @@ public class Page5 implements Handler {
         if (outcomeDrop == null) {
             html = html + "";
         } else {
-            //create and populate tableData from jdbc
-        
-            ArrayList<level2tableRow> tableData = jdbc.dataByGapScore(outcomeDrop, populationDrop, displayAsRadio);
-            //start table
-            html = html + "<table id='table_id' class='display'>";
-            html = html + "<thead><tr>";
-            html = html + "<th>Lga</th><th>Indigenous</th><th>Non-Indigenous</th><th>Gap Difference</th>";
-            html = html + "</tr></thead>";
+           
+        //create and populate tableData from jdbc
+        ArrayList<level2tableRow> tableData = jdbc.dataByGapScore(outcomeDrop, populationDrop, displayAsRadio);
+            
+        //start table
+        html = html + "<table id='table_id' class='display'>";
+
+        html = html + "<thead><tr>";
+        if (displayAsRadio.equals("Count")) {
+            html = html + "<th>Lga</th><th>Indigenous</th><th>Non-Indigenous</th><th>(%) Gap Difference</th>";
+        } else {
+            html = html + "<th>Lga</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference</th>";
+        }
+        html = html + "</tr></thead>";
+
 
         html = html + "<tbody>";
         for (level2tableRow row : tableData) {
             
             html = html + "<tr>";
-            html = html + "<td>" + row.getLga() + "</td>";
+            html = html + "<td><b id='blue'>" + row.getLga() + "</b></td>";
             if (displayAsRadio.equals("Count")) {
                 html = html + "<td>" + row.getCountIndig() + "</td>";
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
             } else {
                 if (row.getPercentIndig() > 100) {
-                    html = html + "<td>100.00%</td>";
+                    html = html + "<td>100.0</td>";
                 } else {
-                html = html + "<td>" + String.format("%.1f", row.getPercentIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentIndig()) + "</td>";
                 }
                 if (row.getPercentNonIndig() > 100) {
-                    html = html + "<td>100.00%</td>";
+                    html = html + "<td>100.0</td>";
                 } else {
-                html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "</td>";
                 }
             }
-            html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "%</td>";
+            html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "</td>";
             
 
             html = html + "</tr>";
@@ -286,6 +292,103 @@ public class Page5 implements Handler {
 
         // Closes 2nd DIV 
         html = html + "</div>";
+
+        
+
+
+       // 2nd DIV - Chart and Table
+       html = html + "<div class='row3'>";
+
+
+       //Col1 - Chart options
+       html = html + "<div class='col1'>";
+       html = html + "<h1>Measure the Gap</h1><hr class='in'>";
+       
+       html = html + "<form action='/page5.html' method='post'>";
+       
+       html = html + "   <div class='form-notdrop'>";
+       html = html + "   <p class='displayTag'><label for='outcomeSelect'>Outcomes to generate Gap Score from:</label></p>";
+       html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='gapScore1'>";
+       html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
+       html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='gapScore5'>";
+       html = html + "      <label for='outcome5'> Outcome 5 - School Completion</label><br>";
+       html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='gapScore6'>";
+       html = html + "      <label for='outcome6'> Outcome 6 - Tertiary Education</label><br>";
+       html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='gapScore8'>";
+       html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
+       html = html + "   </div>";
+
+       html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
+
+       html = html + "</form>";
+       
+       html = html + "</div>";
+
+       //populate form submission results
+       ArrayList<String> outcomeSelect = new ArrayList<String>();
+       if (context.formParam("outcome1") != null) {   
+           outcomeSelect.add(context.formParam("outcome1"));
+       }
+       if (context.formParam("outcome5") != null) {   
+           outcomeSelect.add(context.formParam("outcome5"));
+       }
+       if (context.formParam("outcome6") != null) {   
+           outcomeSelect.add(context.formParam("outcome6"));
+       }
+       if (context.formParam("outcome8") != null) {   
+           outcomeSelect.add(context.formParam("outcome8"));
+       }
+       
+
+    
+
+       //Col - Table
+       html = html + "<div class='colTable'>";
+       html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<h2>Gap computed and measured against a national average for the range of outcomes selected.</h2><hr class='in'>";
+       
+       //Testing form submission results
+       html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
+       for (String outcome : outcomeSelect) {
+           html = html + outcome + ", ";
+       }
+       html = html + "</p>";
+       
+       //testQuery
+       // JDBCConnection jdbc = new JDBCConnection();
+       // ArrayList<level2tableRow> tableData = jdbc.testQuery();
+
+       //Output into a table
+       if (outcomeSelect.size() == 0) {
+           html = html + "<h1>Please select table data options on the left</h1>";
+       } else {
+           //create and populate sourceLGA data from jdbc
+           ArrayList<compareLGAdata> tableData = jdbc.sourceOutcome(outcomeSelect);
+           //start table
+           html = html + "<table id='table_id' class='display'>";
+           html = html + "<thead><tr>";
+           html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score</th>";
+           html = html + "</tr></thead>";
+
+           html = html + "<tbody>";
+           for (compareLGAdata row : tableData) {
+           html = html + "<tr>";
+           html = html + "<td><b id='blue'>" + row.getLga() + "</td>";
+           html = html + "<td>" + row.getPopulation() + "</td>";
+           html = html + "<td>" + String.format("%.1f", row.getDensity()) + "</td>";
+           html = html + "<td>" + String.format("%.1f",row.getProportionIndig()) + "</td>";
+           html = html + "<td>" + String.format("%.1f",row.getGapScore()) + "</td>";
+           html = html + "</tr>";
+           }
+
+           // Finish the table
+           html = html + "</tbody>";
+           html = html + "</table>";
+
+       }
+       html = html + "</div>";
+
+       // Closes Row DIV 
+       html = html + "</div>";
 
 
         //New row and col DIV for switching charts
