@@ -593,6 +593,7 @@ public ArrayList<level2tableRow> dataByGapScore(String outcome, String populatio
         String select1 = "";
         String select2 = "";
         String having = "";
+        String select3 = "";
         //String orderBy = "";
 
 
@@ -607,16 +608,11 @@ public ArrayList<level2tableRow> dataByGapScore(String outcome, String populatio
         if (!population.equals("All")) {
             having = ", sex HAVING sex = '" + population + "'";
         }
-        
-        /*if (orderColumn.equals("Lga")) {
-            orderBy = "lga";
-        } else if (orderColumn.equals("Indigenous Results")) {
-            orderBy = select1;
-        } else {
-            orderBy = select2;
-        }*/
 
-        String query = "SELECT lga, " + select1 + ", " + select2 + " FROM level2view GROUP BY lga" + having;
+        select3 = "AVG(" + outcome + "_iPercent) - AVG(" + outcome + "_niPercent)";
+        
+
+        String query = "SELECT lga, state, " + select1 + ", " + select2 + ", " + select3 + " FROM level2view GROUP BY lga" + having;
         
         //test query output
         //System.out.println(query);
@@ -632,6 +628,7 @@ public ArrayList<level2tableRow> dataByGapScore(String outcome, String populatio
 
             //use Set methods to store individual values
             row.setLga(results.getString("lga"));
+            row.setState(results.getString("state"));
 
             if (display.equals("Count")) {
                 row.setCountIndig(results.getInt(select1));
@@ -640,7 +637,7 @@ public ArrayList<level2tableRow> dataByGapScore(String outcome, String populatio
                 row.setPercentIndig(results.getDouble(select1));
                 row.setPercentNonIndig(results.getDouble(select2));
             }
-            row.setGapScore(results.getDouble(select2), results.getDouble(select2));
+            row.setGapScore(results.getDouble(select3));
             
             //add this row to our ArrayList
             level2TableData.add(row);
