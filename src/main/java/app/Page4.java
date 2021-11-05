@@ -104,7 +104,8 @@ public class Page4 implements Handler {
         html = html + "   </div>";
         html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
         html = html + "   <div class='form-radio'>";
-        html = html +           createRadioBtns(displayAsRadio);
+        html = html +           createRadioBtn("percent", "Percent", "Percentage", displayAsRadio, true);
+        html = html +           createRadioBtn("count", "Count", "Raw Numbers", displayAsRadio, false);
         html = html + "   </div>";
 
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
@@ -243,18 +244,19 @@ public class Page4 implements Handler {
         return option;
     }
 
-    public String createRadioBtns(String lastSubmission) {
-        String radio = "<input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' ";
-        if (lastSubmission == null || lastSubmission.equals("Percent")) {
-            radio = radio + "checked ='checked' ";
+    public String createRadioBtn(String id, String value, String label, String lastSubmission, boolean firstBtn) {
+        String radio = "<input type='radio' class='radiobtn' id='" + id + "' name='displayAsRadio' value='" + value + "' ";
+        
+        if (firstBtn) {
+            if (lastSubmission == null || lastSubmission.equals(value)) {
+                radio = radio + "checked ='checked' ";
+            }
+        } else {
+            if (lastSubmission != null && lastSubmission.equals(value)) {
+                radio = radio + "checked ='checked' ";
+            }
         }
-        radio = radio + "><label class ='radiolabel' for='percent'>Percentage</label>";
-
-        radio = radio + "<input type='radio' class='radiobtn' id='count' name='displayAsRadio' value='Count' ";
-        if (lastSubmission != null && lastSubmission.equals("Count")) {
-            radio = radio + "checked ='checked' ";
-        }
-        radio = radio + "><label class ='radiolabel' for='count'>Raw Numbers</label>";
+        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label>";
 
         return radio;
     }
