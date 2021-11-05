@@ -53,8 +53,8 @@ public class Page6 implements Handler {
         html = html + "<div class='subnav-content'>";
         html = html + "<a href='page3.html'>Data by LGA</a>";
         html = html + "<a href='page4.html'>Data by State</a>";
-        html = html + "<a href='page5.html'>Subtask 3.1</a>";
-        html = html + "<a href='page6.html'>Subtask 3.2</a>";
+        html = html + "<a href='page5.html'>The Gap</a>";
+        html = html + "<a href='page6.html'>Similar Attributes</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
         // CLOSES HEADER
@@ -223,13 +223,15 @@ public class Page6 implements Handler {
         html = html + "<div class='colTable'>";
         html = html + "   <h2>Explore the data in different ways</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
-        html = html + "      <a href='page3.html'>Data by LGA<i class='fa fa-angle-right'></i></a>";
-        html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></a>";
-        html = html + "      <a href='page5.html'>Subtask 3.1<i class='fa fa-angle-right'></i></a>";
-        //html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page3.html'>Data by LGA</a>";
+        //html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page5.html'>The Gap</a>";
         html = html + "   </div>";
         html = html + "</div>";
         html = html + "</div>";
+
+        
 
         //CLOSES CONTENT
         html = html + "</div>";

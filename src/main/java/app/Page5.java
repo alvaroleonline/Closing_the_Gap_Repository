@@ -57,8 +57,8 @@ public class Page5 implements Handler {
         html = html + "<div class='subnav-content'>";
         html = html + "<a href='page3.html'>Data by LGA</a>";
         html = html + "<a href='page4.html'>Data by State</a>";
-        html = html + "<a href='page5.html'>Gap Score</a>";
-        html = html + "<a href='page6.html'>Subtask 3.2</a>";
+        html = html + "<a href='page5.html'>The Gap</a>";
+        html = html + "<a href='page6.html'>Similar Attributes</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
         // CLOSES HEADER
@@ -128,7 +128,7 @@ public class Page5 implements Handler {
         html = html + "<div class='col1'>";
         html = html + "<h1>Custom Charts</h1><hr class='in'>";
         
-        html = html + "<form action='/page5.html' method='post'>";
+        html = html + "<form action='/page5.html' method='post' oninput='x.value=parseInt(populationRange.value)'>";
         
         html = html + "   <div class='form-group'>";
         // html = html + "      <label for='outcomeDrop'>Select the Outcome Data to Display:</label>";
@@ -149,7 +149,16 @@ public class Page5 implements Handler {
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         html = html + "   </div>";
-        html = html + "   <p class='displayTag'>Display Population Count as:</p>";
+        //
+        html = html + "   <p class='displayTagRange'>In the range:</p>";
+        html = html + "   <div class='form-range'>";
+        html = html + "      <label for='rangelabel'>0</label>";
+        html = html + "      <input type='range' id='populationRange' name='populationRange' value='100'>";
+        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'>100</output></label>%";
+        html = html + "      ";
+        html = html + "   </div>";
+        //        
+        html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
         html = html + "   <div class='form-radio'>";
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
         html = html + "          <label class ='radiolabel' for='percent'>Percentage</label>";
@@ -237,11 +246,11 @@ public class Page5 implements Handler {
         } else {
             //create and populate tableData from jdbc
         
-            ArrayList<level2tableRow> tableData = jdbc.dataByLga(outcomeDrop, populationDrop, displayAsRadio);
+            ArrayList<level2tableRow> tableData = jdbc.dataByGapScore(outcomeDrop, populationDrop, displayAsRadio);
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
-            html = html + "<th>Lga</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            html = html + "<th>Lga</th><th>Indigenous</th><th>Non-Indigenous</th><th>Gap Difference</th>";
             html = html + "</tr></thead>";
 
         html = html + "<tbody>";
@@ -256,14 +265,16 @@ public class Page5 implements Handler {
                 if (row.getPercentIndig() > 100) {
                     html = html + "<td>100.00%</td>";
                 } else {
-                html = html + "<td>" + String.format("%.2f", row.getPercentIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentIndig()) + "%</td>";
                 }
                 if (row.getPercentNonIndig() > 100) {
                     html = html + "<td>100.00%</td>";
                 } else {
-                html = html + "<td>" + String.format("%.2f", row.getPercentNonIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "%</td>";
                 }
             }
+            html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "%</td>";
+            
 
             html = html + "</tr>";
         }
@@ -284,10 +295,10 @@ public class Page5 implements Handler {
         html = html + "<div class='colTable'>";
         html = html + "   <h2>Explore the data in different ways</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
-        html = html + "      <a href='page3.html'>Data by LGA<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page3.html'>Data by LGA</a>";
         //html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></i></a>";
-        html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page4.html'>Data by State</a>";
+        html = html + "      <a href='page6.html'>Similar Attributes</a>";
         html = html + "   </div>";
         html = html + "</div>";
         html = html + "</div>";
@@ -302,7 +313,7 @@ public class Page5 implements Handler {
         
         // Add some JS (external file)
         
-        // html = html + "<script type='text/javascript' src='https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js'></script>";
+        
 
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";

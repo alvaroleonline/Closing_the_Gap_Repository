@@ -31,13 +31,17 @@ public class Page3 implements Handler {
         html = html + "<head>" + 
                "<title>Outcome Data by LGA</title>";
 
-        // Add some CSS (external file)
+        // Add some CSS .Js from datatables (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
         html = html + "<script type='text/javascript' src='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js'></script>";
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";
         html = html + "<script src='common.js'></script>";
+ 
         html = html + "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>";
+
         
+        
+
         // Add the body
         html = html + "</head><body>";
 
@@ -53,8 +57,8 @@ public class Page3 implements Handler {
         html = html + "<div class='subnav-content'>";
         html = html + "<a href='page3.html'>Data by LGA</a>";
         html = html + "<a href='page4.html'>Data by State</a>";
-        html = html + "<a href='page5.html'>Subtask 3.1</a>";
-        html = html + "<a href='page6.html'>Subtask 3.2</a>";
+        html = html + "<a href='page5.html'>The Gap</a>";
+        html = html + "<a href='page6.html'>Similar Attributes</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
         // CLOSES HEADER
@@ -102,7 +106,7 @@ public class Page3 implements Handler {
         html = html + "         <option value = 'Male'> Male Population</option>";
         html = html + "      </select>";
         html = html + "   </div>";
-        html = html + "   <p class='displayTag'>Display Population Count as:</p>";
+        html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
         html = html + "   <div class='form-radio'>";
         html = html + "      <input type='radio' class='radiobtn' id='percent' name='displayAsRadio' value='Percent' checked='checked'>";
         html = html + "          <label class ='radiolabel' for='percent'>Percentage</label>";
@@ -237,10 +241,10 @@ public class Page3 implements Handler {
         html = html + "<div class='colTable'>";
         html = html + "   <h2>Explore the data in different ways</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
-        html = html + "      <a href='page4.html'>Data by State<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page4.html'>Data by State</a>";
         //html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page5.html'>Subtask 3.1<i class='fa fa-angle-right'></i></a>";
-        html = html + "      <a href='page6.html'>Subtask 3.2<i class='fa fa-angle-right'></i></a>";
+        html = html + "      <a href='page5.html'>The Gap</a>";
+        html = html + "      <a href='page6.html'>Similar Attributes</a>";
         html = html + "   </div>";
         html = html + "</div>";
         html = html + "</div>";
@@ -257,14 +261,6 @@ public class Page3 implements Handler {
         //FOOTER
         //Closes Footer
         
-
-
-        // Add some JS (external file)
-        
-        // html = html + "<script type='text/javascript' src='https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js'></script>";
-        
-
-
 
 
         // Finish the HTML webpage

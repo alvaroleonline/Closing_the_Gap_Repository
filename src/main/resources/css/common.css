@@ -828,23 +828,20 @@ a#missionlink:hover{
 	width: 12px;
 	height: 12px;
 	float: right;
-	margin-top: 7px;
-	margin-right: 7px;
+	margin-top: 9px;
+	margin-right: 9px;
 	background-color: #304FFE;
 	color: var(--blue);
 	border: 1px solid black;
 }
 
-
-
-
 .radiolabel {
 	margin-bottom: 9px;
 	cursor: pointer;
-	padding: 4px 4px 4px 9px;
+	padding: 5px 4px 5px 9px;
 	width: auto;
 	border-radius: 25px;
-	color: var(--black);
+	color: var(--gray-500);
 	background-color: var(--gray-100);
 	font-size: var(--p);
 	text-align: left;
@@ -853,14 +850,19 @@ a#missionlink:hover{
 }
 
 .radiolabel:hover {
-	background-color: var(--gray-100-clear);
+	color: var(--black);
+	background-color: var(--clear);
+	border: 1px solid var(--gray-400);
 }
 
-.displayTag{
-	padding-left: 10px;
+
+
+.displayTag, .displayTagRange{
+	padding-left: 0px;
 	margin-bottom: 10px;
 	margin-top:15px;
 	color: var(--black);
+	clear: both;
 }
 
 button.btn.btn-primary{
@@ -897,29 +899,201 @@ button.btn.btn-primary:hover{
 	font-family: var(--font-main);
 	font-size: var(--p);
 	font-weight: var(--b);
-	color: var(--blue-900);
-	background-color: var(--gray-100);
+	color: var(--white);
+	background-color: var(--blue-900);
 	text-align: left;
 	border: none;
 	border-radius: var(--small);
-	padding: 15px;
+	padding: 15px 20px 15px 15px;
 	cursor: pointer;
+	transition:  .3s ease-in-out;
+	-webkit-transition:  .3s ease-in-out; 
+	
 }
 
-.chart-switch > a:hover {
-	background-color: var(--blue-clear);
+.chart-switch>a:hover {
+	padding: 15px 5px 15px 15px;
+	background-color: var(--white);
 	color:var(--black);
+	transition:  .25s ease-in-out;
+	-webkit-transition:  .25s ease-in-out; 
+} 
 
-}
+.chart-switch>a::after {
+	background-image: url('arrow-forward-wht.svg');
+	background-size: 20px 18px;
+	width: 20px;
+	height: 18px;
+	content: "";
+	float: right;
+} 
+
+.chart-switch>a:hover:after {
+	filter: invert(60%) sepia(31%) saturate(7089%) hue-rotate(359deg) brightness(98%) contrast(104%);
+	transition:  .05s ease-out;
+	-webkit-transition:  .05s ease-out; 
+} 
 
 .chart-switch>a>.fa {
 	float: right;
-	padding-right: 5px;
 	font-size: 1.1rem;
+	height: 15px;
+	width: 15px;
 }
 
 
+
+
+
+
+/* in range button */
+
+.displayTagRange{
+	width: 100%;
+	float: left;
+}
+
+.form-range{
+	width: 100%;
+	display: flex;
+	font-size: var(--p);
+	margin-top: 10px;
+	float: left;
+}
+
+input#populationRange{
+	width: 100%;
+	margin: 0 10px;
+}
+
+.outputRange{
+	border-radius: 25px;
+    width: min-content;
+	margin: -1px 0px 0 0;
+	text-align: right;
+	color: var(--black);
+}
+
+
+input[type=range] {
+	-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+	width: 100%; /* Specific width is required for Firefox. */
+	background: transparent; /* Otherwise white in Chrome */
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+  }
+  
+  input[type=range]:focus {
+	outline: none; /* Removes the blue border */
+  }
+  
+  input[type=range]::-ms-track {
+	width: 100%;
+	cursor: pointer;
+  
+	background: transparent; 
+	border-color: transparent;
+	color: transparent;
+  }
+
+  /* WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 15px;
+	width: 15px;
+	border-radius: 20px;
+	background: var(--blue);
+	cursor: pointer;
+	margin-top: -7px;
+}
+  
+  /* Firefox */
+input[type=range]::-moz-range-thumb {
+	height: 15px;
+	width: 15px;
+	border-radius: 20px;
+	background: var(--blue);
+	cursor: pointer;
+}
+  
+/* IE */
+input[type=range]::-ms-thumb {
+	height: 15px;
+	width: 15px;
+	border-radius: 20pxpx;
+	background: var(--blue);
+	cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 2px;
+	cursor: pointer;
+	background: var(--gray-400);
+	border-radius: 5px;
+}
+  
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: var(--gray-400);
+}
+  
+input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 2px;
+	cursor: pointer;
+	background: var(--gray-400);
+	border-radius: 5px;
+}
+  
+input[type=range]::-ms-track {
+	width: 100%;
+	height: 2px;
+	cursor: pointer;
+	background: transparent;
+	border-color: transparent;
+	border-width: 5px 0;
+	color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+	background: var(--gray-400);
+	border-radius: 5px;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: var(--gray-400);
+}
+  
+input[type=range]::-ms-fill-upper {
+	background: var(--gray-400);
+	border-radius: 5px;
+}
+  
+input[type=range]:focus::-ms-fill-upper {
+	background: var(--gray-400);
+}
+
+
+
+
 /* Table */
+
+
+.dataTables_wrapper .dataTables_length select {
+	border: none;
+	border-bottom: 1px solid var(--blue);
+	border-radius: 0;
+	color: var(--blue);
+	padding: 5px;
+	text-align: center;
+	-webkit-appearance: none;
+	font-size: var(--p);
+	cursor: pointer;
+}
+
+
 table.dataTable thead th, table.dataTable thead td {
     padding: 10px 10px;
     border-bottom: 1px solid var(--gray-400);
