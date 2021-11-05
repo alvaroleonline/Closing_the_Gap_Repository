@@ -101,14 +101,18 @@ public class Page6 implements Handler {
         
         html = html + "   <div class='form-notdrop'>";
         html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></p>";
-        html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='gapScore1'>";
-        html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
-        html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='gapScore5'>";
-        html = html + "      <label for='outcome5'> Outcome 5 - School Completion</label><br>";
-        html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='gapScore6'>";
-        html = html + "      <label for='outcome6'> Outcome 6 - Tertiary Education</label><br>";
-        html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='gapScore8'>";
-        html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
+        html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Life Expectancy", outcomeSelect);
+        html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
+        html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
+        html = html +           createCheckbox("outcome8", "gapScore8", "Outcome 8 - Employment", outcomeSelect);
+        // html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='gapScore1'>";
+        // html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
+        // html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='gapScore5'>";
+        // html = html + "      <label for='outcome5'> Outcome 5 - School Completion</label><br>";
+        // html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='gapScore6'>";
+        // html = html + "      <label for='outcome6'> Outcome 6 - Tertiary Education</label><br>";
+        // html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='gapScore8'>";
+        // html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
         html = html + "   </div>";
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='lgaDrop' name='lgaDrop'>";
@@ -184,7 +188,7 @@ public class Page6 implements Handler {
             }
 
             html = html + "<h1>LGAs Compared on " + titleText + "</h1><hr class='in'><h3>Displaying the 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
-            html = html + "<p>GapScore is calculated on as an average of the proportion of Indigenous population in that LGA who have met the measure for the selected outcomes vs. the national average for the non-Indigenous population.</p>";
+            html = html + "<p>GapScore is calculated as an average of the proportion of Indigenous population in that LGA who have met the measure for the selected outcomes vs. the national average for the non-Indigenous population.</p>";
         }
         //Testing form submission results
         html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
@@ -323,6 +327,15 @@ public class Page6 implements Handler {
         radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label>";
 
         return radio;
+    }
+
+    public String createCheckbox(String id, String value, String label, ArrayList<String> lastSubmission) {
+        String checkbox = "<input type='checkbox' id='" + id + "' name='" + id + "' value='" + value + "' ";
+        if (lastSubmission.size() > 0 && lastSubmission.contains(value)) {
+            checkbox = checkbox + "checked ='checked' ";
+        }
+        checkbox = checkbox + "><label for='" + id + "'>" + label + "</label><br>";
+        return checkbox;
     }
 
 }
