@@ -91,6 +91,7 @@ public class Page6 implements Handler {
         }
         String lgaDrop = context.formParam("lgaDrop");
         String comparisonRadio = context.formParam("comparisonRadio");
+        String distanceDrop = context.formParam("distanceDrop");
 
 
         //Col1 - Chart options
@@ -105,15 +106,8 @@ public class Page6 implements Handler {
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
         html = html +           createCheckbox("outcome8", "gapScore8", "Outcome 8 - Employment", outcomeSelect);
-        // html = html + "      <input type='checkbox' id='outcome1' name='outcome1' value='gapScore1'>";
-        // html = html + "      <label for='outcome1'> Outcome 1 - Life Expectancy</label><br>";
-        // html = html + "      <input type='checkbox' id='outcome5' name='outcome5' value='gapScore5'>";
-        // html = html + "      <label for='outcome5'> Outcome 5 - School Completion</label><br>";
-        // html = html + "      <input type='checkbox' id='outcome6' name='outcome6' value='gapScore6'>";
-        // html = html + "      <label for='outcome6'> Outcome 6 - Tertiary Education</label><br>";
-        // html = html + "      <input type='checkbox' id='outcome8' name='outcome8' value='gapScore8'>";
-        // html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
         html = html + "   </div>";
+
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='lgaDrop' name='lgaDrop'>";
         html = html +           createDropOption("none", "Select LGA to Compare Against:", lgaDrop);
@@ -121,33 +115,30 @@ public class Page6 implements Handler {
         html = html +           createDropOption("outcomeBest", "LGA with Best GapScore for selected Outcomes", lgaDrop);
         html = html +           createDropOption("outcomeWorst", "LGA with Worst GapScore for selected Outcomes", lgaDrop);
         html = html +           createDropOption("none", " --- Select by LGA Name --- ", lgaDrop);
-        // html = html + "         <option value = 'none'>Select LGA to Compare Against:</option>";
-        // html = html + "         <option value = 'none'> --- Select by GapScore --- </option>";
-        // html = html + "         <option value = 'outcomeBest'> LGA with Best GapScore for selected Outcomes</option>";
-        // html = html + "         <option value = 'outcomeWorst'> LGA with Worst GapScore for selected Outcomes</option>";
-        // html = html + "         <option value = 'none'> --- Select by LGA Name --- </option>";
         JDBCConnection jdbc = new JDBCConnection();
         ArrayList<String> lgaNames = jdbc.getLGAs();
         for (String lga : lgaNames) {
-            html = html + createDropOption(lga, lga, lgaDrop);
-            //html = html + "         <option value = '" + lga + "'>" + lga + "</option>";
+            html = html +       createDropOption(lga, lga, lgaDrop);
         }
         html = html + "      </select>";
         html = html + "   </div>";
+
         html = html + "   <p class='displayTag'>Compare to LGAs similar by:</p>";
         html = html + "   <div class='form-radio'>";
         html = html +           createRadioBtn("score", "gapScore", "GapScore", comparisonRadio, true);
         html = html +           createRadioBtn("population", "lgaPopulation", "Total LGA Population", comparisonRadio, false);
         html = html +           createRadioBtn("density", "populationDensity", "LGA Population Density", comparisonRadio, false);
         html = html +           createRadioBtn("proportionIndigenous", "proportionIndigenous", "Proportion of LGA who are Indigenous", comparisonRadio, false);
-        // html = html + "      <input type='radio' class='radiobtn' id='score' name='comparisonRadio' value='gapScore' checked='checked'>";
-        // html = html + "          <label class ='radiolabel' for='score'>GapScore</label>";
-        // html = html + "      <input type='radio' class='radiobtn' id='population' name='comparisonRadio' value='lgaPopulation'>";
-        // html = html + "          <label class ='radiolabel' for='population'>Total LGA Population</label>";
-        // html = html + "      <input type='radio' class='radiobtn' id='density' name='comparisonRadio' value='populationDensity'>";
-        // html = html + "          <label class ='radiolabel' for='density'>LGA Population Density</label>";
-        // html = html + "      <input type='radio' class='radiobtn' id='proportionIndigenous' name='comparisonRadio' value='proportionIndigenous'>";
-        // html = html + "          <label class ='radiolabel' for='proportionIndigenous'>Proportion of LGA who are Indigenous</label>";
+        html = html +           createRadioBtn("distance", "distance", "Distance from Source LGA", comparisonRadio, false);
+
+        html = html + "   </div>";
+        html = html + "   <div class='form-group'>";
+        html = html + "      <select id='distanceDrop' name='distanceDrop'>";
+        html = html +           createDropOption("50", "less than 50km", distanceDrop);
+        html = html +           createDropOption("100", "less than 100km", distanceDrop);
+        html = html +           createDropOption("150", "less than 150km", distanceDrop);
+        html = html +           createDropOption("200", "less than 200km", distanceDrop);
+        html = html + "      </select>";
         html = html + "   </div>";
 
         html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
@@ -161,7 +152,7 @@ public class Page6 implements Handler {
         if (outcomeSelect.size() == 0 || lgaDrop == null || lgaDrop.equals("none")) {
             html = html + "<h1>Compare LGAs</h1><hr class='in'><h3>Awaiting Selection: Please select table data options on the left</h3>";
         } else {
-            String comparisonText;
+            String comparisonText = "";
             String titleText;
             String lgaText;
 
@@ -174,9 +165,11 @@ public class Page6 implements Handler {
             } else if (comparisonRadio.equals("populationDensity")) {
                 comparisonText = "population density";
                 titleText = "Density";
-            } else {    //proportionIndigenous
+            } else if (comparisonRadio.equals("proportionIndigenous")) {    
                 comparisonText = "proportion of the population that are Indigenous";
                 titleText = "Indigenous Proportion";
+            } else {    //distance
+                titleText = "Distance";
             }
             
             if (lgaDrop.equals("outcomeBest")) {
@@ -187,17 +180,22 @@ public class Page6 implements Handler {
                 lgaText = lgaDrop;
             }
 
-            html = html + "<h1>LGAs Compared on " + titleText + "</h1><hr class='in'><h3>Displaying the 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
-            html = html + "<p>GapScore is calculated as an average of the proportion of Indigenous population in that LGA who have met the measure for the selected outcomes vs. the national average for the non-Indigenous population.</p>";
+            html = html + "<h1>LGAs Compared on " + titleText + "</h1>";
+            if (comparisonRadio.equals("distance")){
+                html = html + "<hr class='in'><h3>Displaying LGAs within " + distanceDrop + "km of " + lgaText + ".</h3>";
+            } else {
+                html = html + "<hr class='in'><h3>Displaying up to 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
+            }
+            html = html + "<p>GapScore is calculated as the proportion of Indigenous population in that LGA who have met the measure for the selected outcome minus the national average for the non-Indigenous population - e.g. A GapScore of -22 means the Indigenous population in that LGA is 22 percentage points behind the national average for non-Indigenous people. If multiple outcomes are selected, then it is an average across those outcomes. </p>";
         }
         //Testing form submission results
-        html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
-        for (String outcome : outcomeSelect) {
-            html = html + outcome + ", ";
-        }
-        html = html + "</p>";
-        html = html + "<p>LGA Dropdown = " + lgaDrop + "</p>";
-        html = html + "<p>Comparison Radio = " + comparisonRadio + "</p>";
+        // html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
+        // for (String outcome : outcomeSelect) {
+        //     html = html + outcome + ", ";
+        // }
+        // html = html + "</p>";
+        // html = html + "<p>LGA Dropdown = " + lgaDrop + "</p>";
+        // html = html + "<p>Comparison Radio = " + comparisonRadio + "</p>";
 
         //testQuery
         // JDBCConnection jdbc = new JDBCConnection();
@@ -210,7 +208,7 @@ public class Page6 implements Handler {
             //create and populate sourceLGA data from jdbc
             compareLGAdata sourceLGA = jdbc.sourceLGA(outcomeSelect, lgaDrop);
             //start table
-            html = html + "<table id='table_id' class='display'>";
+            html = html + "<table id='table_id2' class='display'>";
             html = html + "<thead><tr>";
             html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
             html = html + "</tr></thead>";
@@ -228,30 +226,73 @@ public class Page6 implements Handler {
             html = html + "</tbody>";
             html = html + "</table>";
 
-            
             String sourceLgaName = sourceLGA.getLga();
-            ArrayList<compareLGAdata> tableData = jdbc.compareLGA(outcomeSelect, sourceLgaName, comparisonRadio);
 
-            html = html + "<table id='table_id2' class='display'>";
-            html = html + "<thead><tr>";
-            html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
-            html = html + "</tr></thead>";
+            //for comparing LGAs by distance
+            if (comparisonRadio.equals("distance")) {
 
-            html = html + "<tbody>";
+                //pull table data for ALL LGAs except the source LGA
+                ArrayList<compareLGAdata> tableData = jdbc.compareDistance(outcomeSelect, sourceLgaName);
 
-            for (compareLGAdata row : tableData) {
-                html = html + "<tr>";
-                html = html + "<td><b id='blue'>" + row.getLga() + ", " + row.getState() + "</td>";
-                html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "</td>";
-                html = html + "<td>" + row.getPopulation() + "</td>";
-                html = html + "<td>" + String.format("%.2f", row.getDensity()) + " p/km&#178;</td>";
-                html = html + "<td>" + String.format("%.2f", row.getProportionIndig()) + "%</td>";
-                html = html + "</tr>";
+                //convert source LGA coordinates to Radians
+                double lat1 = Math.toRadians(sourceLGA.getLatitude());
+                double long1 = Math.toRadians(sourceLGA.getLongitude());
+
+                html = html + "<table id='table_id' class='display'>";
+                html = html + "<thead><tr>";
+                html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
+                html = html + "</tr></thead>";
+
+                html = html + "<tbody>";
+
+                for (compareLGAdata row : tableData) {
+
+                    //get the distance from source LGA for the LGA in current table row
+                    double distance = getDistance(row, lat1, long1);
+
+                    //if distance is less than the one selected by user, display LGA's data in table
+                    if (distance < Integer.parseInt(distanceDrop)) {
+
+                    html = html + "<tr>";
+                    html = html + "<td><b id='blue'>" + row.getLga() + ", " + row.getState() + "</td>";
+                    html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "</td>";
+                    html = html + "<td>" + row.getPopulation() + "</td>";
+                    html = html + "<td>" + String.format("%.2f", row.getDensity()) + " p/km&#178;</td>";
+                    html = html + "<td>" + String.format("%.2f", row.getProportionIndig()) + "%</td>";
+                    html = html + "</tr>";
+
+                    }
+                }
+
+                // Finish the table
+                html = html + "</tbody>";
+                html = html + "</table>";
+            
+            } else { 
+                //for all other comparisons
+                ArrayList<compareLGAdata> tableData = jdbc.compareLGA(outcomeSelect, sourceLgaName, comparisonRadio);
+
+                html = html + "<table id='table_id' class='display'>";
+                html = html + "<thead><tr>";
+                html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
+                html = html + "</tr></thead>";
+
+                html = html + "<tbody>";
+
+                for (compareLGAdata row : tableData) {
+                    html = html + "<tr>";
+                    html = html + "<td><b id='blue'>" + row.getLga() + ", " + row.getState() + "</td>";
+                    html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "</td>";
+                    html = html + "<td>" + row.getPopulation() + "</td>";
+                    html = html + "<td>" + String.format("%.2f", row.getDensity()) + " p/km&#178;</td>";
+                    html = html + "<td>" + String.format("%.2f", row.getProportionIndig()) + "%</td>";
+                    html = html + "</tr>";
+                }
+
+                // Finish the table
+                html = html + "</tbody>";
+                html = html + "</table>";
             }
-
-            // Finish the table
-            html = html + "</tbody>";
-            html = html + "</table>";
         }
         html = html + "</div>";
 
@@ -315,6 +356,7 @@ public class Page6 implements Handler {
     public String createRadioBtn(String id, String value, String label, String lastSubmission, boolean firstBtn) {
         String radio = "<input type='radio' class='radiobtn' id='" + id + "' name='comparisonRadio' value='" + value + "' ";
         
+        //if the radio button is to be selected on page first load, firstBtn needs to be set to true
         if (firstBtn) {
             if (lastSubmission == null || lastSubmission.equals(value)) {
                 radio = radio + "checked ='checked' ";
@@ -336,6 +378,25 @@ public class Page6 implements Handler {
         }
         checkbox = checkbox + "><label for='" + id + "'>" + label + "</label><br>";
         return checkbox;
+    }
+
+
+    public double getDistance (compareLGAdata currentLGA, double lat1, double long1) {
+        double lat2 = Math.toRadians(currentLGA.getLatitude());
+        double long2 = Math.toRadians(currentLGA.getLongitude());
+
+        double dlon = long2 - long1;
+        double dlat = lat2 - lat1;
+        double a = Math.pow(Math.sin(dlat / 2), 2)
+                 + Math.cos(lat1) * Math.cos(lat2)
+                 * Math.pow(Math.sin(dlon / 2),2);
+             
+        double c = 2 * Math.asin(Math.sqrt(a));
+ 
+        // Radius of earth in kilometers
+        double r = 6371;
+ 
+        return (c * r);
     }
 
 }

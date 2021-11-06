@@ -7,6 +7,9 @@ public class compareLGAdata {
     double density;
     double proportionIndig;
     double gapScore;
+    double latitude;
+    double longitude;
+
 
     compareLGAdata() {
         lga = "";
@@ -15,6 +18,8 @@ public class compareLGAdata {
         density = 0.0;
         proportionIndig = 0.0;
         gapScore = 0.0;
+        latitude = 0.0;
+        longitude = 0.0;
     }
 
     public void setLga(String input) {
@@ -41,6 +46,14 @@ public class compareLGAdata {
         gapScore = input;
     }
 
+    public void setLatitude(double input) {
+        latitude = input;
+    }
+
+    public void setLongitude(double input) {
+        longitude = input;
+    }
+
     public String getLga() {
         return lga;
     }
@@ -63,6 +76,14 @@ public class compareLGAdata {
 
     public double getGapScore() {
         return gapScore;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
  
 
