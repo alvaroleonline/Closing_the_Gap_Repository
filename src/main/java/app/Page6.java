@@ -184,18 +184,18 @@ public class Page6 implements Handler {
             if (comparisonRadio.equals("distance")){
                 html = html + "<hr class='in'><h3>Displaying LGAs within " + distanceDrop + "km of " + lgaText + ".</h3>";
             } else {
-                html = html + "<hr class='in'><h3>Displaying the 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
+                html = html + "<hr class='in'><h3>Displaying up to 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
             }
             html = html + "<p>GapScore is calculated as an average of the proportion of Indigenous population in that LGA who have met the measure for the selected outcomes vs. the national average for the non-Indigenous population.</p>";
         }
         //Testing form submission results
-        html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
-        for (String outcome : outcomeSelect) {
-            html = html + outcome + ", ";
-        }
-        html = html + "</p>";
-        html = html + "<p>LGA Dropdown = " + lgaDrop + "</p>";
-        html = html + "<p>Comparison Radio = " + comparisonRadio + "</p>";
+        // html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
+        // for (String outcome : outcomeSelect) {
+        //     html = html + outcome + ", ";
+        // }
+        // html = html + "</p>";
+        // html = html + "<p>LGA Dropdown = " + lgaDrop + "</p>";
+        // html = html + "<p>Comparison Radio = " + comparisonRadio + "</p>";
 
         //testQuery
         // JDBCConnection jdbc = new JDBCConnection();
@@ -208,7 +208,7 @@ public class Page6 implements Handler {
             //create and populate sourceLGA data from jdbc
             compareLGAdata sourceLGA = jdbc.sourceLGA(outcomeSelect, lgaDrop);
             //start table
-            html = html + "<table id='table_id' class='display'>";
+            html = html + "<table id='table_id2' class='display'>";
             html = html + "<thead><tr>";
             html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
             html = html + "</tr></thead>";
@@ -238,7 +238,7 @@ public class Page6 implements Handler {
                 double lat1 = Math.toRadians(sourceLGA.getLatitude());
                 double long1 = Math.toRadians(sourceLGA.getLongitude());
 
-                html = html + "<table id='table_id2' class='display'>";
+                html = html + "<table id='table_id' class='display'>";
                 html = html + "<thead><tr>";
                 html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
                 html = html + "</tr></thead>";
@@ -272,7 +272,7 @@ public class Page6 implements Handler {
                 //for all other comparisons
                 ArrayList<compareLGAdata> tableData = jdbc.compareLGA(outcomeSelect, sourceLgaName, comparisonRadio);
 
-                html = html + "<table id='table_id2' class='display'>";
+                html = html + "<table id='table_id' class='display'>";
                 html = html + "<thead><tr>";
                 html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
                 html = html + "</tr></thead>";
