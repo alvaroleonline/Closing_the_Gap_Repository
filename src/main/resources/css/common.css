@@ -32,7 +32,7 @@ Base styles
 	/*font attributes*/
 	--font-main:  -apple-system, 'Inter', BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	--h1: 2.2rem;
-	--h2: 1.2rem;
+	--h2: 1.3rem;
 	--p: 0.9rem;
 	--b: 500;
 	/*padding*/
@@ -1404,4 +1404,57 @@ footer {
 
 
 
-  /* LEAVE AT END 
+/* LEAVE AT END */
+
+@media (max-width: 1068px){
+
+.row {
+	width: 100%;
+	margin: 10px 20px;
+	display: grid;
+	grid-template-columns: minmax(100%,1fr);
+	grid-gap: 20px;
+}
+
+.row2 {
+	width: 100%;
+	margin: 10px 20px;
+	display: grid;
+	grid-template-columns: minmax(100%,1fr);
+	grid-gap: 21px;
+}
+
+.row3 {
+	width: 100%;
+	margin: 10px 20px;
+	display: grid;
+	grid-template-columns: minmax(100%,1fr);
+	grid-gap: 21px;
+	}
+
+
+
+}
+
+
+
+
+@media (max-width: 867px){
+
+.row5 {
+	width: 100%;
+	margin: 10px 20px;
+	display: grid;
+	grid-template-columns: minmax(100%,1fr);
+	grid-gap: 21px;
+}
+
+
+
+
+
+}
+
+
+
+  
