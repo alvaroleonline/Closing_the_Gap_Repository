@@ -186,7 +186,7 @@ public class Page6 implements Handler {
             } else {
                 html = html + "<hr class='in'><h3>Displaying up to 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
             }
-            html = html + "<p>GapScore is calculated as an average of the proportion of Indigenous population in that LGA who have met the measure for the selected outcomes vs. the national average for the non-Indigenous population.</p>";
+            html = html + "<p>GapScore is calculated as the proportion of Indigenous population in that LGA who have met the measure for the selected outcome minus the national average for the non-Indigenous population - e.g. A GapScore of -22 means the Indigenous population in that LGA is 22 percentage points behind the national average for non-Indigenous people. If multiple outcomes are selected, then it is an average across those outcomes. </p>";
         }
         //Testing form submission results
         // html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
