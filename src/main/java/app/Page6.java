@@ -372,11 +372,11 @@ public class Page6 implements Handler {
     }
 
     public String createCheckbox(String id, String value, String label, ArrayList<String> lastSubmission) {
-        String checkbox = "<input type='checkbox' id='" + id + "' name='" + id + "' value='" + value + "' ";
+        String checkbox = "<label class='checkboxContainer'><input type='checkbox' id='" + id + "' name='" + id + "' value='" + value + "' ";
         if (lastSubmission.size() > 0 && lastSubmission.contains(value)) {
             checkbox = checkbox + "checked ='checked' ";
         }
-        checkbox = checkbox + "><label for='" + id + "'>" + label + "</label><br>";
+        checkbox = checkbox + "><label for='" + id + "'>" + label + "</label><span class='checkmark'></span></label><br>";
         return checkbox;
     }
 
