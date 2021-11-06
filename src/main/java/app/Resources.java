@@ -74,8 +74,8 @@ public class Resources implements Handler {
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='http://aief.com.au'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>Australian Indigenous Education Foundation";
-        html = html + "<p>Provides funding that enables Indigenous students to pursue their education at leading schools.</p></h2>";
+        html = html + "<h2>Australian Indigenous Education Foundation";
+        html = html + "<p>Provides funding that enables Indigenous students to pursue their education at leading schools.</p><p id='gray500'>Category: Education</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -83,8 +83,8 @@ public class Resources implements Handler {
          // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://aida.org.au/'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>Australian Indigenous Doctors' Association";
-        html = html + "<p>Not-for-profit, member-based, professional association supporting Aboriginal and Torres Strait Islander medical students and doctors.</p></h2>";
+        html = html + "<h2>Australian Indigenous Doctors' Association";
+        html = html + "<p>Not-for-profit, member-based, professional association supporting Aboriginal and Torres Strait Islander medical students and doctors.</p><p id='gray500'>Category: Health</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -92,8 +92,8 @@ public class Resources implements Handler {
          // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://aiatsis.gov.au/'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>AIATSIS";
-        html = html + "<p>The Australian Institute of Aboriginal and Torres Strait Islander Studies.</p></h2>";
+        html = html + "<h2>AIATSIS";
+        html = html + "<p>The Australian Institute of Aboriginal and Torres Strait Islander Studies.</p><p id='gray500'>Category: Organization</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -101,8 +101,8 @@ public class Resources implements Handler {
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://firstnationsmedia.org.au'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>First Nations Media Australia";
-        html = html + "<p>National peak body for the Aboriginal and Torres Strait Islander media industry.</p></h2>";
+        html = html + "<h2>First Nations Media Australia";
+        html = html + "<p>National peak body for the Aboriginal and Torres Strait Islander media industry.</p><p id='gray500'>Category: Media</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -110,8 +110,8 @@ public class Resources implements Handler {
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://iaha.com.au'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>IAHA Indigenous Allied Health Australia";
-        html = html + "<p>Member-based Aboriginal and Torres Strait Islander allied health organisation.</p></h2>";
+        html = html + "<h2>IAHA Indigenous Allied Health Australia";
+        html = html + "<p>Member-based Aboriginal and Torres Strait Islander allied health organisation.</p><p id='gray500'>Category: Health</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -119,8 +119,8 @@ public class Resources implements Handler {
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://www.naccho.org.au'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>National Aboriginal Community Controlled Health Organisation";
-        html = html + "<p>Leadership body for 143 ACCHOs across Australia.</p></h2>";
+        html = html + "<h2>National Aboriginal Community Controlled Health Organisation";
+        html = html + "<p>Leadership body for 143 ACCHOs across Australia.</p><p id='gray500'>Category: Health</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -128,8 +128,8 @@ public class Resources implements Handler {
          // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://humanrights.gov.au'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>National Congress of Australia's First Peoples";
-        html = html + "<p>Implementation of the United Nations Declaration on the Rights of Indigenous Peoples.</p></h2>";
+        html = html + "<h2>National Congress of Australia's First Peoples";
+        html = html + "<p>Implementation of the United Nations Declaration on the Rights of Indigenous Peoples.</p><p id='gray500'>Category: Organization</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -137,8 +137,8 @@ public class Resources implements Handler {
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://www.nationalfvpls.org/'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>National Family Violence Prevention Legal Services Forum";
-        html = html + "<p>Provides legal and non-legal supports to Aboriginal and Torres Strait Islander victims/ survivors of family violence.</p></h2>";
+        html = html + "<h2>National Family Violence Prevention Legal Services Forum";
+        html = html + "<p>Provides legal and non-legal supports to Aboriginal and Torres Strait Islander victims/ survivors of family violence.</p><p id='gray500'>Category: Organization</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -146,8 +146,8 @@ public class Resources implements Handler {
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://alc.org.au/'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>NSW Aboriginal Land Council";
-        html = html + "<p>Peak representative body in Aboriginal Affairs.</p></h2>";
+        html = html + "<h2>NSW Aboriginal Land Council";
+        html = html + "<p>Peak representative body in Aboriginal Affairs.</p><p id='gray500'>Category: Organization</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -155,8 +155,8 @@ public class Resources implements Handler {
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://www.snaicc.org.au/'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>SNAICC - National Voice for Our Children";
-        html = html + "<p>Non-governmental peak body for Aboriginal and Torres Strait Islander children.</p></h2>";
+        html = html + "<h2>SNAICC - National Voice for Our Children";
+        html = html + "<p>Non-governmental peak body for Aboriginal and Torres Strait Islander children.</p><p id='gray500'>Category: Education</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
@@ -164,8 +164,8 @@ public class Resources implements Handler {
         // Resource
         html = html + "<div class='col4'>";
         html = html + "<a href='https://www.vaccho.org.au/'>";
-        html = html + "<h2><p id='gray500'>Category: Organization</p>Victorian Aboriginal Community Controlled Health Organisation (VACCHO)";
-        html = html + "<p>Peak body for the health and wellbeing of Aboriginal peoples living in Victoria.</p></h2>";
+        html = html + "<h2>Victorian Aboriginal Community Controlled Health Organisation (VACCHO)";
+        html = html + "<p>Peak body for the health and wellbeing of Aboriginal peoples living in Victoria.</p><p id='gray500'>Category: Health</p></h2>";
         html = html + "</a>";
         html = html + "</div>";
 
