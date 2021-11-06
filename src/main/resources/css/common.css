@@ -119,6 +119,10 @@ p#blue{
 	color: var(--blue);
 }
 
+p#gray500{
+	color: var(--gray-500);
+}
+
 
 .fa {
 	display: inline-block;
@@ -610,18 +614,6 @@ h2.resourcelink:hover{
 	padding: 10px;
 	transition: .2s;
 	border-radius: var(--small);
-}
-
-h2>p{
-	padding-top: 0px;
-	font-weight: 400;
-	color: var(--black);
-}
-
-h2>.fa {
-	float: right;
-	padding-right: 10px;
-	margin-top:2px;
 }
 
 
@@ -1294,6 +1286,16 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 
 /*** RESOURCES PAGE ***/
 
+.rowfullwidth {
+	width: 100%;
+	/*content: "";
+    display: flex;
+    justify-content:space-between;*/
+	margin: 10px 20px;
+	display: grid;
+    grid-template-columns: minmax(100%,1fr);
+    grid-gap: 20px;
+}
 
 .col4{
 	color: var(--white);
@@ -1304,54 +1306,67 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
     position: relative;
 }
 
-
-
 .col4>a>h2{
-	height: 150px;
+	height: auto;
 	margin-top: 0px;
 	padding: var(--content-div);
 	border-radius: var(--big);
 	position: -webkit-sticky;
 	transition: all .3s;
 	-webkit-transition: all .3s;
-	color: var(--blue-900);
-	background-color: var(--blue-clear);
+	color: var(--blue);
+	background-color: var(--white);
 	box-shadow: var(--shadow-auto);
 }
 
-.col4>a>h2:hover{
-	margin-top: -2px;
-	color: var(--black);
-	background-color: var(--white);
-	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
-	-webkit-box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
-	-moz-box-shadow: 0 15px 15px rgba(0, 0, 0, 0.4);
-	transition: all .25s ease-in-out;
-	-webkit-transition: all .25s ease-in-out; 
+h2>p#gray500{
+	padding-top: 0px;
+	font-weight: 400;
+	color: var(--gray-500);
+	margin-bottom: 10px;
 }
 
-.col4>a>h2:after {
-	height: 40px;
-	width: 24px;
-	font-size: 30px;
-    line-height: 37px;
-    padding-left: 16px;
+h2>p{
+	padding-top: 0px;
+	font-weight: 400;
+	color: var(--black);
+}
+
+.col4>a>h2:hover{
+	margin-top: -5px;
+	margin-bottom: 5px;
+	color: var(--black);
+	background-color: var(--white);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+	transition: all .2s ease-out;
+	-webkit-transition: all .2s ease-out; 
+
+	padding-right:30px;
+}
+
+.col4>a>h2:before {
+	width: 30px;
+	margin-top: 5px;
+	padding: 2px;
 	border-radius: 50px;
-	font-family: 'FontAwesome';
-	content: "\f105";
-    font-weight: 900;
+	float: right;
+	content: url(arrow-forward-wht.svg);
 	color: rgba(0,0,0,0);
 	transition: all .3s ease-in-out;
 	-webkit-transition: all .3s ease-in-out; 
 	position: absolute;
 	bottom: 25;
 	right: 35;
-  }
+}
 
-  .col4>a>h2:hover:after {
+
+.col4>a>h2:hover:before {
 	margin-right: -10px;
 	transform: scale(1.05);
 	background-color: var(--orange);
+	content: url(arrow-forward-wht.svg);
 	color: var(--white);
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
