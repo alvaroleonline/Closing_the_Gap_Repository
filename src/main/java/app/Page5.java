@@ -127,7 +127,7 @@ public class Page5 implements Handler {
         String outcomeDrop = context.formParam("outcomeDrop");
         String populationDrop = context.formParam("populationDrop");
         String displayAsRadio = context.formParam("displayAsRadio");
-        // String populationRange = context.formParam("populationRange");
+        String populationRange = context.formParam("populationRange");
 
 
         //Col1 - Chart
@@ -157,15 +157,15 @@ public class Page5 implements Handler {
         html = html + "      </select>";
         html = html + "   </div>";
 
-        /*
-        html = html + "   <p class='displayTagRange'>Is in the range:</p>";
+        
+        html = html + "   <p class='displayTagRange'>Where Gap difference is <output class='outputRange' name='x' for='populationRange'>__</output> or below:</p>";
         html = html + "   <div class='form-range'>";
         html = html + "      <label for='rangelabel'>0</label>";
         html = html + "      <input type='range' id='populationRange' name='populationRange' value=''>";
-        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'></output></label>%";
+        html = html + "      <label for='rangelabel'></label>%";
         html = html + "      ";
         html = html + "   </div>";
-        */        
+               
 
         html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
         html = html + "   <div class='form-radio'>";
@@ -237,7 +237,7 @@ public class Page5 implements Handler {
         } else {
            
         //create and populate tableData from jdbc
-        ArrayList<level2tableRow> tableData = jdbc.dataByGapScore(outcomeDrop, populationDrop, displayAsRadio);
+        ArrayList<level2tableRow> tableData = jdbc.dataByGapScore(outcomeDrop, populationDrop, displayAsRadio, populationRange);
             
         //start table
         html = html + "<table id='table_id' class='display'>";

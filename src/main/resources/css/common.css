@@ -111,6 +111,11 @@ margin-inline-start: 0;
 margin-inline-end: 0;
 }
 
+p>.outputRange {
+	
+	color: var(--blue);
+	}
+
 
 .fa {
 	display: inline-block;
@@ -139,7 +144,7 @@ b#blue{
 }
 
 b#blue900{
-	color: var(--blue-900);
+	color: var(--blue);
 	font-size: 0.9rem;
 }
 

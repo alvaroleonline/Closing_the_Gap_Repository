@@ -575,7 +575,7 @@ public class JDBCConnection {
 //************************************************************* LEVEL 3.1 - GAPSCORE  *************************************************************
 
 
-public ArrayList<level2tableRow> dataByGapScore(String outcome, String population, String display) {
+public ArrayList<level2tableRow> dataByGapScore(String outcome, String population, String display, String range) {
     //Create ArrayList of our tableRow class to store the returned data
     ArrayList<level2tableRow> level2TableData = new ArrayList<level2tableRow>();
 
@@ -609,10 +609,10 @@ public ArrayList<level2tableRow> dataByGapScore(String outcome, String populatio
             having = ", sex HAVING sex = '" + population + "'";
         }
 
-        select3 = "AVG(" + outcome + "_iPercent) - AVG(" + outcome + "_niPercent)";
+        select3 = "AVG(" + outcome + "_niPercent) - AVG(" + outcome + "_iPercent)";
         
 
-        String query = "SELECT lga, state, " + select1 + ", " + select2 + ", " + select3 + " FROM level2view GROUP BY lga" + having;
+        String query = "SELECT lga, state, " + select1 + ", " + select2 + ", " + select3 + " FROM level2view GROUP BY lga" + having + " AND " + select3 + " <= " + range;
         
         //test query output
         //System.out.println(query);
