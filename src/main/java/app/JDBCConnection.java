@@ -596,6 +596,8 @@ public ArrayList<level2tableRow> dataByGapScore(String outcome, String populatio
         String select3 = "";
         //String orderBy = "";
 
+        
+
 
         if (display.equals("Count")) {
             select1 = "SUM(" + outcome + "_i)";
@@ -604,15 +606,20 @@ public ArrayList<level2tableRow> dataByGapScore(String outcome, String populatio
             select1 = "AVG(" + outcome + "_iPercent)";
             select2 = "AVG(" + outcome + "_niPercent)";
         }
-        
-        if (!population.equals("All")) {
-            having = ", sex HAVING sex = '" + population + "'";
-        }
 
         select3 = "AVG(" + outcome + "_niPercent) - AVG(" + outcome + "_iPercent)";
         
+        if (!population.equals("All")) {
+            having = ", sex HAVING sex = '" + population + "' AND " + select3 + " <= " + range;
+        }
+        else {
+            having = " HAVING " + select3 + " <= " + range;
+        }
 
-        String query = "SELECT lga, state, " + select1 + ", " + select2 + ", " + select3 + " FROM level2view GROUP BY lga" + having + " AND " + select3 + " <= " + range;
+        
+        
+
+        String query = "SELECT lga, state, " + select1 + ", " + select2 + ", " + select3 + " FROM level2view GROUP BY lga" + having;
         
         //test query output
         //System.out.println(query);

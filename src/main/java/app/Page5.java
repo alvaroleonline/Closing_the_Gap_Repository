@@ -162,7 +162,7 @@ public class Page5 implements Handler {
         html = html + "   <div class='form-range'>";
         html = html + "      <label for='rangelabel'>0</label>";
         html = html + "      <input type='range' id='populationRange' name='populationRange' value=''>";
-        html = html + "      <label for='rangelabel'></label>%";
+        html = html + "      <label for='rangelabel'>100</label>%";
         html = html + "      ";
         html = html + "   </div>";
                
