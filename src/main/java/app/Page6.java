@@ -226,13 +226,15 @@ public class Page6 implements Handler {
             html = html + "</tbody>";
             html = html + "</table>";
 
-            
             String sourceLgaName = sourceLGA.getLga();
 
+            //for comparing LGAs by distance
             if (comparisonRadio.equals("distance")) {
 
+                //pull table data for ALL LGAs except the source LGA
                 ArrayList<compareLGAdata> tableData = jdbc.compareDistance(outcomeSelect, sourceLgaName);
 
+                //convert source LGA coordinates to Radians
                 double lat1 = Math.toRadians(sourceLGA.getLatitude());
                 double long1 = Math.toRadians(sourceLGA.getLongitude());
 
@@ -245,8 +247,10 @@ public class Page6 implements Handler {
 
                 for (compareLGAdata row : tableData) {
 
+                    //get the distance from source LGA for the LGA in current table row
                     double distance = getDistance(row, lat1, long1);
 
+                    //if distance is less than the one selected by user, display LGA's data in table
                     if (distance < Integer.parseInt(distanceDrop)) {
 
                     html = html + "<tr>";
@@ -264,9 +268,8 @@ public class Page6 implements Handler {
                 html = html + "</tbody>";
                 html = html + "</table>";
             
-
             } else { 
-
+                //for all other comparisons
                 ArrayList<compareLGAdata> tableData = jdbc.compareLGA(outcomeSelect, sourceLgaName, comparisonRadio);
 
                 html = html + "<table id='table_id2' class='display'>";
@@ -353,6 +356,7 @@ public class Page6 implements Handler {
     public String createRadioBtn(String id, String value, String label, String lastSubmission, boolean firstBtn) {
         String radio = "<input type='radio' class='radiobtn' id='" + id + "' name='comparisonRadio' value='" + value + "' ";
         
+        //if the radio button is to be selected on page first load, firstBtn needs to be set to true
         if (firstBtn) {
             if (lastSubmission == null || lastSubmission.equals(value)) {
                 radio = radio + "checked ='checked' ";
@@ -389,9 +393,8 @@ public class Page6 implements Handler {
              
         double c = 2 * Math.asin(Math.sqrt(a));
  
-        // Radius of earth in kilometers. Use 3956
-        // for miles
-        double r = 6378.8;
+        // Radius of earth in kilometers
+        double r = 6371;
  
         return (c * r);
     }
