@@ -112,9 +112,12 @@ margin-inline-end: 0;
 }
 
 p>.outputRange {
-	
 	color: var(--blue);
-	}
+}
+
+p#blue{
+	color: var(--blue);
+}
 
 
 .fa {
@@ -569,27 +572,31 @@ p.outcome{
 
 
 #viewall{
-	margin: 30px 20px 30px 20px;
+	margin: 30px 20px 20px 20px;
 	border-radius: var(--small);
 	width: -webkit-fill-available;
 	position: absolute;
     bottom: 0;
-	color: var(--black);
-	background-color: var(--gray-100);
-	padding: 12px;
+	color: var(--white);
+	background-color: var(--blue-900);
+	padding: 15px;
 
-	transition-duration: 0.2s;
+	transition: 0.25s ease-in-out;
+	-webkit-transition: 0.25s ease-in-out;
 }
 
 #viewall:hover{
-	color: var(--blue-900);
-	background-color: var(--blue-clear);
-	transition-duration: 0.2s;
+	color: var(--black);
+	background-color: var(--white);
+	padding: 15px 5px 15px 15px;
+	transition: 0.25s ease-in-out;
+	-webkit-transition: 0.25s ease-in-out;
+
 }
 
 
 h2.resourcelink{
-	color: var(--black);
+	color: var(--blue);
 	height: auto; /*30*/
 	transition: .2s;
 	overflow: hidden; /* Allows arrow to fall within div */
@@ -597,8 +604,8 @@ h2.resourcelink{
 
 
 h2.resourcelink:hover{
-	color: var(--blue-900);
-	background-color: var(--blue-clear);
+	color: var(--black);
+	background-color: var(--gray-100);
 	margin:-10px;
 	padding: 10px;
 	transition: .2s;
@@ -606,8 +613,9 @@ h2.resourcelink:hover{
 }
 
 h2>p{
-	padding-top: 10px;
+	padding-top: 0px;
 	font-weight: 400;
+	color: var(--black);
 }
 
 h2>.fa {
