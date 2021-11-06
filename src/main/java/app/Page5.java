@@ -315,7 +315,7 @@ public class Page5 implements Handler {
        html = html + "<form action='/page5.html' method='post'>";
        
         html = html + "   <div class='form-notdrop'>";
-        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></p>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></br><br></p>";
         html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Life Expectancy", outcomeSelect);
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
@@ -454,11 +454,11 @@ public class Page5 implements Handler {
 
 
     public String createCheckbox(String id, String value, String label, ArrayList<String> lastSubmission) {
-        String checkbox = "<input type='checkbox' id='" + id + "' name='" + id + "' value='" + value + "' ";
+        String checkbox = "<label class='checkboxContainer'><input type='checkbox' id='" + id + "' name='" + id + "' value='" + value + "' ";
         if (lastSubmission.size() > 0 && lastSubmission.contains(value)) {
             checkbox = checkbox + "checked ='checked' ";
         }
-        checkbox = checkbox + "><label for='" + id + "'>" + label + "</label><br>";
+        checkbox = checkbox + "><label for='" + id + "'>" + label + "</label><span class='checkmark'></span></label><br>";
         return checkbox;
     }
 
