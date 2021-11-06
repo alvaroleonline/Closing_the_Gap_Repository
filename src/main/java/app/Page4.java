@@ -123,7 +123,7 @@ public class Page4 implements Handler {
             int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
             switch (outcomeSelect) {
                 case 1:
-                    html = html + "<h1>Outcome 1: Long and Healthy Lives</h1<hr class='in'><h2>" + populationDrop + " population aged over 65";
+                    html = html + "<h1>Outcome 1: Long and Healthy Lives</h1><hr class='in'><h2>" + populationDrop + " population aged over 65";
                     break;
                 case 5:
                     html = html + "<h1>Outcome 5: School Completion</h1><hr class='in'><h2>" + populationDrop + " population who have completed Year 12";
@@ -170,7 +170,11 @@ public class Page4 implements Handler {
             //start table
             html = html + "<table id='table_id' class='display'>";
             html = html + "<thead><tr>";
-            html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            if (displayAsRadio.equals("Count")) {
+                html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";
+            } else {
+                html = html + "<th>State</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th>";
+            }
             html = html + "</tr></thead>";
 
             html = html + "<tbody>";
@@ -183,14 +187,14 @@ public class Page4 implements Handler {
                 html = html + "<td>" + row.getCountNonIndig() + "</td>";
             } else {
                 if (row.getPercentIndig() > 100) {
-                    html = html + "<td>100.0%</td>";
+                    html = html + "<td>100.0</td>";
                 } else {
-                html = html + "<td>" + String.format("%.1f", row.getPercentIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentIndig()) + "</td>";
                 }
                 if (row.getPercentNonIndig() > 100) {
-                    html = html + "<td>100.0%</td>";
+                    html = html + "<td>100.0</td>";
                 } else {
-                html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "%</td>";
+                html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "</td>";
                 }
             }
             html = html + "</tr>";
