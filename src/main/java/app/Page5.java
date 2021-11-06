@@ -71,20 +71,19 @@ public class Page5 implements Handler {
         html = html + "<div id='container-main' class='container'>";
 
         
-        // 1st DIV - Default Content Div
+        // DIV - Title Div
         html = html + "<div class='content-title'>";
         html = html + "<h1>Measuring the Gap</h1>";
         html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
         html = html + "</div>";
 
 
-        // 1st DIV - Default Content Div
+        // 1st DIV -  Content Div Graph
         html = html + "<div class='content-box'>";
-        html = html + "<h2>Figures displaying the percentage for Indigenous and Non-Indigenous Australians on each socieconomic outcome.</h2>";
-        html = html + "<hr class='in'>" + "<p>Gap Difference at a National Level.</p><br>";
+        html = html + "<h2 id='graph'>National percentage of Indigenous and Non-Indigenous Australians in each socieconomic outcome</h2>";
         
         // Graph
-        html = html + "<p class='percent'>%</p>";
+        
         html = html + "<canvas id='myChart'></canvas>";
         // Outcome 1 
         double outcome1I = jdbc.getOutcome1I("Indigenous");
@@ -109,11 +108,22 @@ public class Page5 implements Handler {
         html = html + "{label: 'Indigenous', backgroundColor: 'rgb(255,118,0)', borderColor: 'rgb(255,118,0)', data: [" + String.format("%.1f", outcome1I) + "," + String.format("%.1f", outcome5I) + "," + String.format("%.1f", outcome6I) + "," + String.format("%.1f", outcome8I) + ",]},";
         html = html + "{label: 'Non-Indigenous', backgroundColor: 'rgb(26,35,126)', borderColor: 'rgb(26,35,126)', data: [" + String.format("%.1f", outcome1NonI) + "," + String.format("%.1f", outcome5NonI) + "," + String.format("%.1f", outcome6NonI) + "," + String.format("%.1f", Outcome8NonI) + ",]},";
         html = html + "]};";
-        html = html + "const config = {type: 'bar', data: data, options: {responsive: true, interaction: {mode: 'index',intersect: false,}, plugins: {legend: {labels: {font: {size: 12}}, align: 'end', position: 'top'}, tooltip: {bodyFont: {size: 15}},}}};";
+        html = html + "const config = {type: 'bar', data: data, options: {responsive: true, interaction: {mode: 'index',intersect: false,}, plugins: {legend: {labels: {font: {size: 12}}, align: 'end', position: 'bottom'}, tooltip: {bodyFont: {size: 15}},}}};";
         html = html + "const myChart = new Chart(document.getElementById('myChart'), config);";
         html = html + "</script>";
         // Graph Closed
+        html = html + "<p class='percent'>%</p>";
+
+        html = html + "<hr class='in'>" + "<h1 id='subtitle''>Key Statistics</h1>";
+        html = html + "<ul id='keystats'>";
+        html = html + "<li>4.8% - Under 5% of the Indigenous population of Australia is aged 65 and over. This is compared to 15.9% of the non-Indigenous population being in the same age bracket.</li><br>";
+        html = html + "<li>33% - The proportion of Indigenous people aged 15 and up who have completed an Advanced Diploma or higher education (11%) is one-third of the proportion of the non-Indigenous population who have done the same (33%).</li><br>";
+        html = html + "<li>42.7% - This is the proportion of the Indigenous population aged 15 and up that are in the labor force and employed. This compares to 60% of the non-Indigenous population of the same age.</li>";
+        html = html + "</ul>";
         
+
+
+        // Closes 1st DIV
         html = html + "</div>";
 
        

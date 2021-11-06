@@ -100,7 +100,6 @@ h2 {
 	letter-spacing: -0.1px;
 }
 
-
 p {
 display: block;
 font-size: var(--p);
@@ -132,7 +131,7 @@ p#gray500{
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	transform: translate(0, 0);
-  }
+}
 
 b {
 	display: block;
@@ -155,13 +154,40 @@ b#blue900{
 	font-size: 0.9rem;
 }
 
+
 /* chart % */
+h2#graph{
+	text-align: left;
+	line-height: 1.5;
+	font-size: var(--h2);
+	margin-bottom: 20px;
+	margin-right: 10px;
+}
+
+h1#subtitle{
+	font-size: var(--h1);
+	margin-bottom: 30px;
+}
+
 p.percent{
 	color: rgb(0,0,0,0.6);
-	font-size: 0.8rem;
-	position: absolute;
-	margin-left: 5px;
-	margin-top: 5px;
+	font-size: 0.7rem;
+	position: relative;
+	padding-left: 7px;
+	margin-top: -50px;
+	margin-bottom: 50px;
+	padding-bottom: 0px;
+	border-bottom: 0px solid var(--gray-400);
+}
+
+ul#keystats>li{
+	font-size: var(--p);
+	color: var(--black);
+	padding-left: 10px;
+}
+
+ul{
+	padding-inline-start: 27px;
 }
 
 /* CONTAINER */
@@ -534,7 +560,7 @@ p.outcome{
 	display: inline-block;
     overflow: hidden; /* Avoids img overflowing div */
 	box-shadow: var(--shadow-auto);
-	background: var(--orange) url('cover_image.jpg');
+	background: var(--clear) url('cover_image.jpg');
 	background-size: cover;
 }
 
@@ -1280,10 +1306,6 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 
 
 
-
-
-
-
 /*** RESOURCES PAGE ***/
 
 .rowfullwidth {
@@ -1390,10 +1412,6 @@ footer {
 	bottom: 15px;
 	margin-top: 30px;
 }
-
-
-
-
 
 
 
