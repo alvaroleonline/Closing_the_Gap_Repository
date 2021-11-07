@@ -168,11 +168,11 @@ public class Page5 implements Handler {
         html = html + "   </div>";
 
         
-        html = html + "   <p class='displayTagRange'>Where Gap difference is <output class='outputRange' name='x' for='populationRange'>__</output> or below:</p>";
+        html = html + "   <p class='displayTagRange'>Where Gap diffrence is between:</p>";
         html = html + "   <div class='form-range'>";
-        html = html + "      <label for='rangelabel'>0</label>";
+        html = html + "      <label for='rangelabel'><p id='blue'>0</p></label>";
         html = html + "      <input type='range' id='populationRange' name='populationRange' value=''>";
-        html = html + "      <label for='rangelabel'>100</label>%";
+        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'>50</output></label>%";
         html = html + "      ";
         html = html + "   </div>";
                
