@@ -357,11 +357,11 @@ public class Page5 implements Handler {
        html = html + "<h1>Tracking Targets</h1>" + "<hr class='in'>" + "<h2>Gap computed and measured against a national average for the range of outcomes selected.</h2><hr class='in'>";
        
        //Testing form submission results
-       html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
-       for (String outcome : outcomeSelect) {
-           html = html + outcome + ", ";
-       }
-       html = html + "</p>";
+    //    html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
+    //    for (String outcome : outcomeSelect) {
+    //        html = html + outcome + ", ";
+    //    }
+    //    html = html + "</p>";
        
        //testQuery
        // JDBCConnection jdbc = new JDBCConnection();
