@@ -108,7 +108,7 @@ public class Page6 implements Handler {
         html = html +           createCheckbox("outcome8", "gapScore8", "Outcome 8 - Employment", outcomeSelect);
         html = html + "   </div>";
 
-        html = html + "   <div class='form-group'>";
+        html = html + "   <br><div class='form-group'>";
         html = html + "      <select id='lgaDrop' name='lgaDrop'>";
         html = html +           createDropOption("none", "Select LGA to Compare Against:", lgaDrop);
         html = html +           createDropOption("none", " --- Select by GapScore --- ", lgaDrop);
@@ -138,6 +138,8 @@ public class Page6 implements Handler {
         html = html +           createDropOption("100", "less than 100km", distanceDrop);
         html = html +           createDropOption("150", "less than 150km", distanceDrop);
         html = html +           createDropOption("200", "less than 200km", distanceDrop);
+        html = html +           createDropOption("250", "less than 250km", distanceDrop);
+        html = html +           createDropOption("300", "less than 300km", distanceDrop);
         html = html + "      </select>";
         html = html + "   </div>";
 
@@ -186,7 +188,7 @@ public class Page6 implements Handler {
             } else {
                 html = html + "<hr class='in'><h3>Displaying up to 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
             }
-            html = html + "<p>GapScore is calculated as the proportion of Indigenous population in that LGA who have met the measure for the selected outcome minus the national average for the non-Indigenous population - e.g. A GapScore of -22 means the Indigenous population in that LGA is 22 percentage points behind the national average for non-Indigenous people. If multiple outcomes are selected, then it is an average across those outcomes. </p>";
+            html = html + "<p>GapScore is a rating of 0 to 100, where 100 indicates the Indigenous population have met or exceeded the national average for the non-Indigenous population in the selected Outcome(s).</p>";
         }
         //Testing form submission results
         // html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
@@ -270,7 +272,7 @@ public class Page6 implements Handler {
             
             } else { 
                 //for all other comparisons
-                ArrayList<compareLGAdata> tableData = jdbc.compareLGA(outcomeSelect, sourceLgaName, comparisonRadio);
+                ArrayList<compareLGAdata> tableData = jdbc.compareLGA(outcomeSelect, lgaDrop, sourceLgaName, comparisonRadio);
 
                 html = html + "<table id='table_id' class='display'>";
                 html = html + "<thead><tr>";

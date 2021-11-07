@@ -869,7 +869,7 @@ public compareLGAdata sourceLGA (ArrayList<String> outcomeSelect, String lgaDrop
     return tableData;
 }
 
-public ArrayList<compareLGAdata> compareLGA (ArrayList<String> outcomeSelect, String sourceLga, String comparison) {
+public ArrayList<compareLGAdata> compareLGA (ArrayList<String> outcomeSelect, String lgaDrop, String sourceLga, String comparison) {
     //Create ArrayList of our tableRow class to store the returned data
     ArrayList<compareLGAdata> tableData = new ArrayList<compareLGAdata>();
 
@@ -897,16 +897,20 @@ public ArrayList<compareLGAdata> compareLGA (ArrayList<String> outcomeSelect, St
             comparison = gapScoreSelect;
         }
 
+        
+
         String query = "SELECT lga, state, lgaPopulation, populationDensity, proportionIndigenous, " + gapScoreSelect + " FROM lgaCompareView ";
         query = query + "WHERE " + comparison + " <= (SELECT " + comparison + " from lgaCompareView WHERE lga = '" + sourceLga + "') AND lga IS NOT '" + sourceLga + "'";
-        query = query + "ORDER BY " + comparison + " DESC LIMIT 5";
-        // query = query + "CASE WHEN (SELECT COUNT(lga) FROM lgaCompareView WHERE " + comparison + " > (SELECT " + comparison + " from lgaCompareView WHERE lga = '" + sourceLga + "' ORDER BY " + comparison + ")) < 5";
-        // query = query + "THEN LIMIT (10 - (SELECT COUNT(lga) FROM lgaCompareView WHERE " + comparison + " > (SELECT " + comparison + " from lgaCompareView WHERE lga = '" + sourceLga + "' ORDER BY " + comparison + "))";
-        // query = query + "ELSE LIMIT 5 END";
+        query = query + "ORDER BY " + comparison + " DESC "; 
         
+        if (lgaDrop.equals("outcomeBest") && comparison.equals(gapScoreSelect)) {
+            query = query + "LIMIT 10";
+        } else {
+            query = query + "LIMIT 5";
+        }
  
         //test query output
-        System.out.println(query);
+        //System.out.println(query);
 
         // Get Result
         ResultSet results = statement.executeQuery(query);
@@ -1000,13 +1004,9 @@ public ArrayList<compareLGAdata> compareDistance (ArrayList<String> outcomeSelec
 
         String query = "SELECT lga, state, latitude, longitude, lgaPopulation, populationDensity, proportionIndigenous, " + gapScoreSelect + " FROM lgaCompareView ";
         query = query + "WHERE lga IS NOT '" + sourceLga + "'";
-        // query = query + "CASE WHEN (SELECT COUNT(lga) FROM lgaCompareView WHERE " + comparison + " > (SELECT " + comparison + " from lgaCompareView WHERE lga = '" + sourceLga + "' ORDER BY " + comparison + ")) < 5";
-        // query = query + "THEN LIMIT (10 - (SELECT COUNT(lga) FROM lgaCompareView WHERE " + comparison + " > (SELECT " + comparison + " from lgaCompareView WHERE lga = '" + sourceLga + "' ORDER BY " + comparison + "))";
-        // query = query + "ELSE LIMIT 5 END";
         
- 
         //test query output
-        System.out.println(query);
+        //System.out.println(query);
 
         // Get Result
         ResultSet results = statement.executeQuery(query);
