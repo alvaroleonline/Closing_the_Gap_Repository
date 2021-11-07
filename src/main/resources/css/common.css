@@ -1018,7 +1018,7 @@ input#populationRange{
     width: min-content;
 	margin: -1px 0px 0 0;
 	text-align: right;
-	color: var(--black);
+	color: var(--blue);
 }
 
 
