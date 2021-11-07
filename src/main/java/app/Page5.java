@@ -268,7 +268,7 @@ public class Page5 implements Handler {
         if (displayAsRadio.equals("Count")) {
             html = html + "<th>LGA</th><th>State</th><th>Indigenous</th><th>Non-Indigenous</th><th>(%) Gap Difference</th>";
         } else {
-            html = html + "<th>LGA</th><th>State</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference</th>";
+            html = html + "<th>LGA</th><th>State</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference*</th>";
         }
         html = html + "</tr></thead>";
 
@@ -308,6 +308,7 @@ public class Page5 implements Handler {
         html = html + "</tbody>";
         // Finish the table
         html = html + "</table>";
+        html = html + "<hr class='in'><p>*Gap Difference results indicate the gap between Non-Indigenous and Indigenous. Red values represent where Non-Indigenous percentages outnumber those of Indigenous, while green represent the opposite.</p>";
         }
         html = html + "</div>";
 

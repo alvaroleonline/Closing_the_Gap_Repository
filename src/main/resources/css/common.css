@@ -181,7 +181,7 @@ p.percent{
 	color: rgb(0,0,0,0.6);
 	font-size: 0.7rem;
 	position: relative;
-	padding-left: 7px;
+	padding-left: 10px;
 	margin-top: -50px;
 	margin-bottom: 50px;
 	padding-bottom: 0px;
@@ -861,7 +861,6 @@ a#missionlink:hover{
 	border-radius: var(--small);
 	font-size: var(--p);
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.0);
-	font-weight: 500;
 	
 
 	-webkit-appearance: unset;
@@ -938,7 +937,6 @@ a#missionlink:hover{
 	margin-top:20px;
 	color: var(--black);
 	clear: both;
-	font-weight: var(--b);
 }
 
 .displayTagKm{
