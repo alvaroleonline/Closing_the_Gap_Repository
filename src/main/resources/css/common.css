@@ -867,12 +867,30 @@ a#missionlink:hover{
 	appearance: unset;
 }
 
+.form-group>#distanceDrop{
+	width: 90%;
+	position: relative;
+	left: 10%;
+}
+
 .form-group::after{
 	content: "\f078";
 	font-family: 'FontAwesome';
     font-weight: 900;
 	float: right;
 	margin-top: -34px;
+	padding-right: 10px;
+	padding-left: 10px;
+	border-left: thin solid;
+	color:var(--blue);
+	border-color:var(--gray-400);
+	font-size: 0.75rem;
+	font-weight: 400;
+}
+
+.form-group>#distanceDrop::after{
+	float: right;
+	margin-top: -10px;
 	padding-right: 10px;
 	padding-left: 10px;
 	border-left: thin solid;

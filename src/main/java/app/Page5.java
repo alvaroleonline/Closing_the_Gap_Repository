@@ -143,7 +143,7 @@ public class Page5 implements Handler {
 
         //Col1 - Chart
         html = html + "<div class='col1'>";
-        html = html + "<h1>Custom Charts</h1><hr class='in'>";
+        html = html + "<h1>Customise Chart</h1><hr class='in'>";
         
         html = html + "<form action='/page5.html' method='post' oninput='x.value=parseInt(populationRange.value)'>";
         
@@ -169,11 +169,22 @@ public class Page5 implements Handler {
         html = html + "   </div>";
 
         
-        html = html + "   <p class='displayTagRange'>Where Gap diffrence is between:</p>";
+        html = html + "   <p class='displayTagRange'>Where Gap difference is between:</p>";
         html = html + "   <div class='form-range'>";
         html = html + "      <label for='rangelabel'><p id='blue'>0</p></label>";
-        html = html + "      <input type='range' id='populationRange' name='populationRange' value=''>";
-        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'>50</output></label>%";
+        html = html + "      <input type='range' id='populationRange' name='populationRange'";
+        if (populationRange != null) {
+            html = html + "      value='" + populationRange + "'>";
+        } else {
+            html = html + "      value='100'>";
+        }
+        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'>";
+        if (populationRange != null) {
+            html = html +       populationRange;
+            } else {
+            html = html +       "100";
+            }
+        html = html + "      </output></label>%";
         html = html + "      ";
         html = html + "   </div>";
                
@@ -200,7 +211,7 @@ public class Page5 implements Handler {
         html = html + "<div class='colTable'>";
         // html = html + "<h1>Overview</h1><hr class='in'>";
 
-        if (outcomeDrop == null || outcomeDrop.equals("none")) {
+        if (outcomeDrop == null || outcomeDrop.equals("none") || populationDrop.equals("none")) {
             html = html + "<h1>Investigate the Data</h1><hr class='in'><h2>Awaiting Selection: Please select table data options on the left</h2>";
         } else {
             int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
@@ -243,7 +254,7 @@ public class Page5 implements Handler {
         //ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         // Output into a table
-        if (outcomeDrop == null) {
+        if (outcomeDrop == null || outcomeDrop.equals("none") || populationDrop.equals("none")) {
             html = html + "";
         } else {
            
@@ -327,12 +338,12 @@ public class Page5 implements Handler {
 
        //Col1 - Chart options
        html = html + "<div class='col1'>";
-       html = html + "<h1>Gap Score Chart</h1><hr class='in'>";
+       html = html + "<h1>Customise Gap Score Chart</h1><hr class='in'>";
        
        html = html + "<form action='/page5.html' method='post'>";
        
         html = html + "   <div class='form-notdrop'>";
-        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate Gap Score from:</label></br><br></p>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate Gap Score:</label></br><br></p>";
         html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
