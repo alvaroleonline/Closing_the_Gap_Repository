@@ -47,7 +47,7 @@ public class Page4 implements Handler {
         //html = html + "<div id='container-header' class='container'>";
         html = html + "<div class='navbar'>";
         html = html + "<a href='/'>Home</a>";
-        html = html + "<a class='current' href='mission.html'>Mission</a>";
+        html = html + "<a href='info.html'>Information</a>";
         html = html + "<div class='subnav'>";
         html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
         html = html + "<div class='subnav-content'>";

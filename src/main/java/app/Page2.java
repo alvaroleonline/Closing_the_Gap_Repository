@@ -19,7 +19,7 @@ import io.javalin.http.Handler;
 public class Page2 implements Handler {
 
     // URL of this page relative to http://localhost:7000/
-    public static final String URL = "/mission.html";
+    public static final String URL = "/info.html";
 
     @Override
     public void handle(Context context) throws Exception {
@@ -40,7 +40,7 @@ public class Page2 implements Handler {
         //navigation header
         html = html + "<header><div class='navbar'>";
         html = html + "<a href='/'>Home</a>";
-        html = html + "<a class='current' href='mission.html'>Mission</a>";
+        html = html + "<a class='current' href='info.html'>Information</a>";
         html = html + "<div class='subnav'>";
         html = html + "<button class='subnavbtn'>Outcome Data  <i class='fa fa-caret-down'></i></button>";
         html = html + "<div class='subnav-content'>";
