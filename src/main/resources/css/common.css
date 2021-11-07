@@ -646,6 +646,9 @@ h2.resourcelink:hover{
 
 /*** MISSION PAGE CSS ***/
 
+p > a {
+	color: var(--blue-900);
+}
 
 .collapsible {
 	background-color: var(--gray-100);
