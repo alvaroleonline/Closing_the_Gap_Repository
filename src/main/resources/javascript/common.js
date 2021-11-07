@@ -91,7 +91,8 @@ $(document).ready( function () {
 
 $(document).ready( function() {
     $('#table_selectedLga').dataTable( {
-      "sDom": '<"display"t>'
+      "sDom": '<"display"t>',
+      "ordering": false
     } );
 } );
 
