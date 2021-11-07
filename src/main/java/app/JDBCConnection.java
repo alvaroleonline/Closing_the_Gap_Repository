@@ -932,11 +932,17 @@ public ArrayList<compareLGAdata> compareLGA (ArrayList<String> outcomeSelect, St
 
         String query2 = "SELECT lga, state, lgaPopulation, populationDensity, proportionIndigenous, " + gapScoreSelect + " FROM lgaCompareView ";
         query2 = query2 + "WHERE " + comparison + " > (SELECT " + comparison + " from lgaCompareView WHERE lga = '" + sourceLga + "') ";
-        query2 = query2 + "ORDER BY " + comparison + " LIMIT 5";
+        query2 = query2 + "ORDER BY " + comparison;
         
+        if (tableData.size() < 5) {
+            query2 = query2 + " LIMIT " + (10 - tableData.size());
+        } else {
+            query2 = query2 + " LIMIT 5";
+        }
+
 
         //test query output
-        //System.out.println(query2);
+        System.out.println(query2);
 
         // Get Result
         ResultSet results2 = statement.executeQuery(query2);
