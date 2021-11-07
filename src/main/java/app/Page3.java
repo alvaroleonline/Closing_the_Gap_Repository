@@ -109,7 +109,7 @@ public class Page3 implements Handler {
         html = html + "      </select>";
 
         html = html + "   </div>";
-        html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
+        html = html + "   <p class='displayTag'>Display Population Count as:</p>";
         html = html + "   <div class='form-radio'>";
         html = html +           createRadioBtn("percent", "Percent", "Percentage", displayAsRadio, true);
         html = html +           createRadioBtn("count", "Count", "Raw Numbers", displayAsRadio, false);

@@ -171,7 +171,7 @@ public class Page5 implements Handler {
         
         html = html + "   <p class='displayTagRange'>Where Gap difference is between:</p>";
         html = html + "   <div class='form-range'>";
-        html = html + "      <label for='rangelabel'><p id='blue'>0</p></label>";
+        html = html + "      <label for='rangelabel'><p>0</p></label>";
         html = html + "      <input type='range' id='populationRange' name='populationRange'";
         if (populationRange != null) {
             html = html + "      value='" + populationRange + "'>";
@@ -189,7 +189,7 @@ public class Page5 implements Handler {
         html = html + "   </div>";
                
 
-        html = html + "   <p class='displayTag'><br>Display Population Count as:</p><br>";
+        html = html + "   <p class='displayTag'><br>Display Population Count as:</p>";
         html = html + "   <div class='form-radio'>";
         html = html +           createRadioBtn("percent", "Percent", "Percentage", displayAsRadio, true);
         html = html +           createRadioBtn("count", "Count", "Raw Numbers", displayAsRadio, false);
@@ -212,7 +212,7 @@ public class Page5 implements Handler {
         // html = html + "<h1>Overview</h1><hr class='in'>";
 
         if (outcomeDrop == null || outcomeDrop.equals("none") || populationDrop.equals("none")) {
-            html = html + "<h1>Investigate the Data</h1><hr class='in'><h2>Awaiting Selection: Please select table data options on the left</h2>";
+            html = html + "<h1>Investigate the Gap</h1><hr class='in'><h2>Awaiting Selection: Please select table data options on the left</h2>";
         } else {
             int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
             switch (outcomeSelect) {
@@ -266,9 +266,9 @@ public class Page5 implements Handler {
 
         html = html + "<thead><tr>";
         if (displayAsRadio.equals("Count")) {
-            html = html + "<th>Lga</th><th>State</th><th>Indigenous</th><th>Non-Indigenous</th><th>(%) Gap Difference</th>";
+            html = html + "<th>LGA</th><th>State</th><th>Indigenous</th><th>Non-Indigenous</th><th>(%) Gap Difference</th>";
         } else {
-            html = html + "<th>Lga</th><th>State</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference</th>";
+            html = html + "<th>LGA</th><th>State</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference</th>";
         }
         html = html + "</tr></thead>";
 
@@ -338,12 +338,12 @@ public class Page5 implements Handler {
 
        //Col1 - Chart options
        html = html + "<div class='col1'>";
-       html = html + "<h1>Customise Gap Score Chart</h1><hr class='in'>";
+       html = html + "<h1>Customise Chart</h1><hr class='in'>";
        
        html = html + "<form action='/page5.html' method='post'>";
        
         html = html + "   <div class='form-notdrop'>";
-        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate Gap Score:</label></br><br></p>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate Gap Score:</label></p>";
         html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
@@ -371,7 +371,7 @@ public class Page5 implements Handler {
 
        //Col - Table
        html = html + "<div class='colTable'>";
-       html = html + "<h1>Tracking Targets</h1>" + "<hr class='in'>";
+       html = html + "<h1>Measuring the Gap</h1>" + "<hr class='in'>";
        
 
        /* Testing form submission results
@@ -388,16 +388,17 @@ public class Page5 implements Handler {
 
        //Output into a table
        if (outcomeSelect.size() == 0) {
-           html = html + "<h2>Awaiting Selection: Generate the Gap Score selecting the outcomes on the left.</h2>";
+           html = html + "<h2>Awaiting Selection: Generate the Gap Score selecting the outcomes on the left</h2>";
        } else {
            // Descriptive Information
-           html = html + "<h2>Gap Score measured in a range of 0 to 100, where 100 indicates the Indigenous population has met the national average for the Non-Indigenous population in the selected Outcome(s).</h2><hr class='in'>";
+           html = html + "<h2>Gap Score calculated based on the the selected Outcome(s).</h2>";
+           html = html + "<hr class='in'><p>*Gap Score is a rating of 0 to 100, where 100 indicates the Indigenous population have met or exceeded the national average for the Non-Indigenous population in the selected Outcome(s).</p>";
            //create and populate sourceLGA data from jdbc
            ArrayList<compareLGAdata> tableData = jdbc.sourceOutcome(outcomeSelect);
            //start table
            html = html + "<table id='table_id' class='display'>";
            html = html + "<thead><tr>";
-           html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score</th>";
+           html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score*</th>";
            html = html + "</tr></thead>";
 
            html = html + "<tbody>";
