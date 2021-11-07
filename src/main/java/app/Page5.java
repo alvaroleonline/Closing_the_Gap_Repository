@@ -229,7 +229,7 @@ public class Page5 implements Handler {
                     html = html + "percentage of population aged over 15.";
                 }
             }
-            html = html + "</h2>";
+            html = html + "</h2><hr class='in'>";
 
         }
         
@@ -354,14 +354,15 @@ public class Page5 implements Handler {
 
        //Col - Table
        html = html + "<div class='colTable'>";
-       html = html + "<h1>Tracking Targets</h1>" + "<hr class='in'>" + "<h2>Gap computed and measured against a national average for the range of outcomes selected.</h2><hr class='in'>";
+       html = html + "<h1>Tracking Targets</h1>" + "<hr class='in'>";
        
-       //Testing form submission results
+
+       /* Testing form submission results
        html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
        for (String outcome : outcomeSelect) {
            html = html + outcome + ", ";
        }
-       html = html + "</p>";
+       html = html + "</p>"; */
        
        //testQuery
        // JDBCConnection jdbc = new JDBCConnection();
@@ -369,8 +370,10 @@ public class Page5 implements Handler {
 
        //Output into a table
        if (outcomeSelect.size() == 0) {
-           html = html + "";
+           html = html + "<h2>Awaiting Selection: Generate the Gap Score selecting the outcomes on the left.</h2>";
        } else {
+           // Descriptive Information
+           html = html + "<h2>Gap Score measured in a range of 0 to 100, where 100 indicates the Indigenous population has met the national average for the Non-Indigenous population in the selected Outcome(s).</h2><hr class='in'>";
            //create and populate sourceLGA data from jdbc
            ArrayList<compareLGAdata> tableData = jdbc.sourceOutcome(outcomeSelect);
            //start table
@@ -386,14 +389,13 @@ public class Page5 implements Handler {
            html = html + "<td>" + row.getPopulation() + "</td>";
            html = html + "<td>" + String.format("%.1f", row.getDensity()) + "</td>";
            html = html + "<td>" + String.format("%.1f",row.getProportionIndig()) + "</td>";
-           html = html + "<td>" + String.format("%.1f",row.getGapScore()) + "</td>";
+           html = html + "<td><p id='blue'>" + String.format("%.1f",row.getGapScore()) + "</p></td>";
            html = html + "</tr>";
            }
 
            // Finish the table
            html = html + "</tbody>";
            html = html + "</table>";
-
        }
        html = html + "</div>";
 

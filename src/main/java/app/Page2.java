@@ -103,8 +103,8 @@ public class Page2 implements Handler {
         html = html + "<hr class='in'>";
         html = html + "<p>Access the outcome data from the navigation menu at the top of the page or the links below - selecting how you would like to view the data: by Local Government Area (LGA), by State or one of the more detailed analysis pages listed. ";
         html = html + "Each page has it's own breakdown of options to select so that you can access data on each specific outcome, as well as how it is broken down, displayed and ordered.</p><br>";
-        html = html + "<h2>GapScore</h2>";
-        html = html + "<p>The latter two pages of the site (<i>Measuring the Gap</i> and <i>Compare LGAs</i>) utilise a measure called GapScore. This measure looks at the proportion of Indigenous population in an LGA who have reached the target for an outcome, and compares it against the national average for the non-Indigenous population for the same outcome. This difference is then converted into a rating from 0 to 100, where 100 indicates the Indigenous population have met or exceeded that national average, and a 0 indicates that none of the local Indigenous population meet the measurement requirements.</p><br>";
+        html = html + "<h2>The Gap Score</h2><hr class='in'>";
+        html = html + "<p>The latter two pages of the site (<i>Measuring the Gap</i> and <i>Compare LGAs</i>) utilise a measure labelled as the Gap Score. This measure looks at the proportion of Indigenous population in an LGA who have reached the target for an outcome, and compares it against the national average for the non-Indigenous population for the same outcome. This difference is then converted into a rating from 0 to 100, where 100 indicates the Indigenous population have met or exceeded that national average, and a 0 indicates that none of the local Indigenous population meet the measurement requirements.</p><br>";
         html = html + "<h2>Start exploring the data</h2><hr class='in'>";
         html = html + "   <div class='chart-switch-mission'>";
         html = html + "      <a href='page3.html'>Data by LGA</a>";
