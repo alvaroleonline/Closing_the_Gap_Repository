@@ -99,21 +99,14 @@ public class Page6 implements Handler {
         html = html + "<h1>Define GapScore and Choose LGA Comparison</h1><hr class='in'>";
         
         html = html + "<form action='/page6.html' method='post'>";
-        
-        html = html + "   <div class='form-notdrop'>";
-        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></p>";
-        html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
-        html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
-        html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
-        html = html +           createCheckbox("outcome8", "gapScore8", "Outcome 8 - Employment", outcomeSelect);
-        html = html + "   </div>";
 
-        html = html + "   <br><div class='form-group'>";
+        html = html + "   <div class='form-group'>";
+        html = html + "   <p class='displayTag'><label for ='lgaDrop'>Select LGA for comparison:</label></p>";
         html = html + "      <select id='lgaDrop' name='lgaDrop'>";
-        html = html +           createDropOption("none", "Select LGA to Compare Against:", lgaDrop);
+        html = html +           createDropOption("none", "", lgaDrop);
         html = html +           createDropOption("none", " --- Select by GapScore --- ", lgaDrop);
-        html = html +           createDropOption("outcomeBest", "LGA with Best GapScore for selected Outcomes", lgaDrop);
-        html = html +           createDropOption("outcomeWorst", "LGA with Worst GapScore for selected Outcomes", lgaDrop);
+        html = html +           createDropOption("outcomeBest", "LGA with Best GapScore", lgaDrop);
+        html = html +           createDropOption("outcomeWorst", "LGA with Worst GapScore", lgaDrop);
         html = html +           createDropOption("none", " --- Select by LGA Name --- ", lgaDrop);
         JDBCConnection jdbc = new JDBCConnection();
         ArrayList<String> lgaNames = jdbc.getLGAs();
@@ -123,15 +116,24 @@ public class Page6 implements Handler {
         html = html + "      </select>";
         html = html + "   </div>";
 
+        html = html + "   <div class='form-notdrop'>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore:</label></p>";
+        html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
+        html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
+        html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
+        html = html +           createCheckbox("outcome8", "gapScore8", "Outcome 8 - Employment", outcomeSelect);
+        html = html + "   </div>";
+
         html = html + "   <p class='displayTag'>Compare to LGAs similar by:</p>";
         html = html + "   <div class='form-radio'>";
         html = html +           createRadioBtn("score", "gapScore", "GapScore", comparisonRadio, true);
-        html = html +           createRadioBtn("population", "lgaPopulation", "Total LGA Population", comparisonRadio, false);
-        html = html +           createRadioBtn("density", "populationDensity", "LGA Population Density", comparisonRadio, false);
-        html = html +           createRadioBtn("proportionIndigenous", "proportionIndigenous", "Proportion of LGA who are Indigenous", comparisonRadio, false);
-        html = html +           createRadioBtn("distance", "distance", "Distance from Source LGA", comparisonRadio, false);
+        html = html +           createRadioBtn("population", "lgaPopulation", "Total Population", comparisonRadio, false);
+        html = html +           createRadioBtn("density", "populationDensity", "Population Density", comparisonRadio, false);
+        html = html +           createRadioBtn("proportionIndigenous", "proportionIndigenous", "Proportion who are Indigenous", comparisonRadio, false);
+        html = html +           createRadioBtn("distance", "distance", "Distance from selected LGA", comparisonRadio, false);
 
         html = html + "   </div>";
+        html = html + "   <p class='displayTag'><label for='distanceDrop'>Where distance is:</label></p>";
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='distanceDrop' name='distanceDrop'>";
         html = html +           createDropOption("50", "less than 50km", distanceDrop);
