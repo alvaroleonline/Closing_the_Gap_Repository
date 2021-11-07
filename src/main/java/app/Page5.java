@@ -116,9 +116,9 @@ public class Page5 implements Handler {
 
         html = html + "<hr class='in'>" + "<h1 id='subtitle''>Key Statistics</h1>";
         html = html + "<ul id='keystats'>";
-        html = html + "<li>4.8% - Under 5% of the Indigenous population of Australia is aged 65 and over. This is compared to 15.9% of the non-Indigenous population being in the same age bracket.</li><br>";
-        html = html + "<li>33% - The proportion of Indigenous people aged 15 and up who have completed an Advanced Diploma or higher education (11%) is one-third of the proportion of the non-Indigenous population who have done the same (33%).</li><br>";
-        html = html + "<li>42.7% - This is the proportion of the Indigenous population aged 15 and up that are in the labor force and employed. This compares to 60% of the non-Indigenous population of the same age.</li>";
+        html = html + "<li><p>Outcome 1 measures Long and Healthy lives. Just under 5% of the Indigenous population of Australia is aged 65 and over. This is compared to 15.9% of the Non-Indigenous population in the same age bracket. This results in an 11.1% gap difference for Indigenous people to reach the Non-Indigenous national average.</p></li><br>";
+        html = html + "<li><p>Outcome 6 measures Tertiary Education. The percentage of Indigenous people aged 15 and over who have completed an Advanced Diploma or higher education is just over 11%; this is 1/3 compared to the proportion of the Non-Indigenous population who have done the same (33%) at a National level.</p></li><br>";
+        html = html + "<li><p>Outcome 8 measures Employment. 42.7% of the proportion of the Indigenous population aged 15 and over are in the labour force and employed. This compares to 60% of the non-Indigenous population of the same age.</p></li>";
         html = html + "</ul>";
         
 
