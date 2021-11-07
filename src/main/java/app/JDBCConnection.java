@@ -760,7 +760,7 @@ public ArrayList<String> getLGAs() {
         statement.setQueryTimeout(30);
 
         // The Query
-        String query = "SELECT DISTINCT lga FROM level2view ORDER BY lga";
+        String query = "SELECT DISTINCT lga FROM lgaCompareView ORDER BY lga";
         
         // Get Result
         ResultSet results = statement.executeQuery(query);
