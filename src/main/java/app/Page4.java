@@ -168,7 +168,7 @@ public class Page4 implements Handler {
             ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio);
             //ArrayList<level2tableRow> tableData = jdbc.dataByState(outcomeDrop, populationDrop, displayAsRadio, orderByDrop, orderRadio);
             //start table
-            html = html + "<table id='table_id' class='display'>";
+            html = html + "<table id='table_byState' class='display'>";
             html = html + "<thead><tr>";
             if (displayAsRadio.equals("Count")) {
                 html = html + "<th>State</th><th>Indigenous</th><th>Non-Indigenous</th>";

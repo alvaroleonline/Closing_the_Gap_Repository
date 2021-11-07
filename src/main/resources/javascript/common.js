@@ -89,5 +89,16 @@ $(document).ready( function () {
     $('#table_id2').DataTable();
 } );
 
+$(document).ready( function() {
+    $('#table_selectedLga').dataTable( {
+      "sDom": '<"display"t>'
+    } );
+} );
+
+$(document).ready( function() {
+    $('#table_byState').dataTable( {
+      "sDom": '<"display"fti>'
+    } );
+} );
 
 

@@ -117,7 +117,7 @@ public class Page6 implements Handler {
         html = html + "   </div>";
 
         html = html + "   <div class='form-notdrop'>";
-        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore:</label></p>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcome(s) to generate GapScore:</label></p>";
         html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
@@ -212,7 +212,7 @@ public class Page6 implements Handler {
             //create and populate sourceLGA data from jdbc
             compareLGAdata sourceLGA = jdbc.sourceLGA(outcomeSelect, lgaDrop);
             //start table
-            html = html + "<table id='table_id2' class='display'>";
+            html = html + "<table id='table_selectedLga' class='display'>";
             html = html + "<thead><tr>";
             html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
             html = html + "</tr></thead>";
