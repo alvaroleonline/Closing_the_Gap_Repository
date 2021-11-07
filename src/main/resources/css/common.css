@@ -118,6 +118,14 @@ p#blue{
 	color: var(--blue);
 }
 
+p#red{
+	color: red;
+}
+
+p#green{
+	color: green;
+}
+
 p#gray500{
 	color: var(--gray-500);
 }

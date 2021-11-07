@@ -283,7 +283,13 @@ public class Page5 implements Handler {
                 html = html + "<td>" + String.format("%.1f", row.getPercentNonIndig()) + "</td>";
                 }
             }
-            html = html + "<td>" + String.format("%.1f", row.getGapScore()) + "</td>";
+            if (row.getGapScore() < 0) {
+                html = html + "<td><p id='green'>" + String.format("%.1f", row.getGapScore()) + "</p></td>";
+            }
+            else{
+                html = html + "<td><p id='red'>" + String.format("%.1f", row.getGapScore()) + "</p'></td>";
+            }
+            
             
 
             html = html + "</tr>";
@@ -475,5 +481,6 @@ public class Page5 implements Handler {
         checkbox = checkbox + "><label for='" + id + "'>" + label + "</label><span class='checkmark'></span></label><br>";
         return checkbox;
     }
+    
 
 }
