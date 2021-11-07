@@ -28,7 +28,7 @@ public class Page2 implements Handler {
 
         // Add some Header information
         html = html + "<head>" + 
-               "<title>Mission Statement</title>";
+               "<title>Site Information</title>";
 
         // Add some CSS (external file)
         html = html + "<link rel='stylesheet' type='text/css' href='common.css' />";

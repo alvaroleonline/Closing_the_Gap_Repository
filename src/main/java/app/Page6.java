@@ -28,7 +28,7 @@ public class Page6 implements Handler {
 
         // Add some Header information
         html = html + "<head>";
-        html = html + "   <title>Compare LGAs across various measures</title>";
+        html = html + "   <title>Compare LGAs</title>";
 
         // Add some CSS (external file)
         html = html + "   <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/r-2.2.9/sp-1.4.0/datatables.min.css'>";
