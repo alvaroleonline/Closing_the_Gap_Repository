@@ -74,7 +74,7 @@ public class Page5 implements Handler {
         // DIV - Title Div
         html = html + "<div class='content-title'>";
         html = html + "<h1>Measuring the Gap</h1>";
-        html = html + "<hr class='white'>" + "<p>Explore the socioeconomic outcome data for Indigenous Australians by Local Goverment Area.</p>";
+        html = html + "<hr class='white'>" + "<p>Explore the gap in the socioeconomic outcome data for Indigenous Australians.</p>";
         html = html + "</div>";
 
 
@@ -99,14 +99,14 @@ public class Page5 implements Handler {
         
         // Outcome 8 
         double outcome8I = jdbc.getOutcome8I("Indigenous");
-        double Outcome8NonI = jdbc.getOutcome8NonI("Non-Indigenous");
+        double outcome8NonI = jdbc.getOutcome8NonI("Non-Indigenous");
 
          
         // Script 
         html = html + "<script>const labels = ['Outcome 1', 'Outcome 5', 'Outcome 6', 'Outcome 8',];";
         html = html + "const data = {labels: labels, datasets: [";
         html = html + "{label: 'Indigenous', backgroundColor: 'rgb(255,118,0)', borderColor: 'rgb(255,118,0)', data: [" + String.format("%.1f", outcome1I) + "," + String.format("%.1f", outcome5I) + "," + String.format("%.1f", outcome6I) + "," + String.format("%.1f", outcome8I) + ",]},";
-        html = html + "{label: 'Non-Indigenous', backgroundColor: 'rgb(26,35,126)', borderColor: 'rgb(26,35,126)', data: [" + String.format("%.1f", outcome1NonI) + "," + String.format("%.1f", outcome5NonI) + "," + String.format("%.1f", outcome6NonI) + "," + String.format("%.1f", Outcome8NonI) + ",]},";
+        html = html + "{label: 'Non-Indigenous', backgroundColor: 'rgb(26,35,126)', borderColor: 'rgb(26,35,126)', data: [" + String.format("%.1f", outcome1NonI) + "," + String.format("%.1f", outcome5NonI) + "," + String.format("%.1f", outcome6NonI) + "," + String.format("%.1f", outcome8NonI) + ",]},";
         html = html + "]};";
         html = html + "const config = {type: 'bar', data: data, options: {responsive: true, interaction: {mode: 'index',intersect: false,}, plugins: {legend: {labels: {font: {size: 12}}, align: 'end', position: 'bottom'}, tooltip: {bodyFont: {size: 15}},}}};";
         html = html + "const myChart = new Chart(document.getElementById('myChart'), config);";
@@ -116,9 +116,10 @@ public class Page5 implements Handler {
 
         html = html + "<hr class='in'>" + "<h1 id='subtitle''>Key Statistics</h1>";
         html = html + "<ul id='keystats'>";
-        html = html + "<li>4.8% - Under 5% of the Indigenous population of Australia is aged 65 and over. This is compared to 15.9% of the non-Indigenous population being in the same age bracket.</li><br>";
-        html = html + "<li>33% - The proportion of Indigenous people aged 15 and up who have completed an Advanced Diploma or higher education (11%) is one-third of the proportion of the non-Indigenous population who have done the same (33%).</li><br>";
-        html = html + "<li>42.7% - This is the proportion of the Indigenous population aged 15 and up that are in the labor force and employed. This compares to 60% of the non-Indigenous population of the same age.</li>";
+        html = html + "<li><p>Outcome 1 measures Long and Healthy lives. Just " + String.format("%.1f", outcome1I) + "% of the Indigenous population of Australia is aged 65 and over. This is compared to " + String.format("%.1f", outcome1NonI) + "% of the Non-Indigenous population in the same age bracket. This results in an " + String.format("%.1f", outcome1NonI - outcome1I) + "% Gap difference for Indigenous people to reach the Non-Indigenous national average.</p></li><br>";
+        html = html + "<li><p>Outcome 5 focuses on School Completion by measuring the population aged 15 and over who have completed year 12. The biggest Gap difference between Non-Indigenous and Indigenous can be found in this outcome; displaying a " + String.format("%.1f", outcome5NonI - outcome5I) + "% difference.</p></li><br>";
+        html = html + "<li><p>Outcome 6 measures Tertiary Education. " + String.format("%.1f", outcome6I) + "% of Indigenous people aged 15 and over have completed an Advanced Diploma or higher education; this is 1/3 of the Non-Indigenous population who have done the same at a National level (" + String.format("%.0f", outcome6NonI) + "%).</p></li><br>";
+        html = html + "<li><p>Outcome 8 measures Employment. " + String.format("%.1f", outcome8I) + "% of the Indigenous population aged 15 and over are in the labour force and employed. This compares to " + String.format("%.0f", outcome8NonI) + "% of the non-Indigenous population in the same range; indicating that Indigenous people are " + String.format("%.1f", outcome8NonI - outcome8I) + "% away from gaining equality.</p></li>";
         html = html + "</ul>";
         
 
@@ -320,12 +321,12 @@ public class Page5 implements Handler {
 
        //Col1 - Chart options
        html = html + "<div class='col1'>";
-       html = html + "<h1>Measure the Gap</h1><hr class='in'>";
+       html = html + "<h1>Gap Score Chart</h1><hr class='in'>";
        
        html = html + "<form action='/page5.html' method='post'>";
        
         html = html + "   <div class='form-notdrop'>";
-        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></br><br></p>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate Gap Score from:</label></br><br></p>";
         html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
@@ -340,7 +341,7 @@ public class Page5 implements Handler {
         // html = html + "      <label for='outcome8'> Outcome 8 - Employment</label><br>";
         html = html + "   </div>";
 
-       html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
+       html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
        html = html + "</form>";
        
@@ -353,7 +354,7 @@ public class Page5 implements Handler {
 
        //Col - Table
        html = html + "<div class='colTable'>";
-       html = html + "<h1>Closing the Gap</h1>" + "<hr class='in'>" + "<h2>Gap computed and measured against a national average for the range of outcomes selected.</h2><hr class='in'>";
+       html = html + "<h1>Tracking Targets</h1>" + "<hr class='in'>" + "<h2>Gap computed and measured against a national average for the range of outcomes selected.</h2><hr class='in'>";
        
        //Testing form submission results
        html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
