@@ -169,11 +169,22 @@ public class Page5 implements Handler {
         html = html + "   </div>";
 
         
-        html = html + "   <p class='displayTagRange'>Where Gap diffrence is between:</p>";
+        html = html + "   <p class='displayTagRange'>Where Gap difference is between:</p>";
         html = html + "   <div class='form-range'>";
         html = html + "      <label for='rangelabel'><p id='blue'>0</p></label>";
-        html = html + "      <input type='range' id='populationRange' name='populationRange' value=''>";
-        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'>50</output></label>%";
+        html = html + "      <input type='range' id='populationRange' name='populationRange'";
+        if (populationRange != null) {
+            html = html + "      value='" + populationRange + "'>";
+        } else {
+            html = html + "      value='100'>";
+        }
+        html = html + "      <label for='rangelabel'><output class='outputRange' name='x' for='populationRange'>";
+        if (populationRange != null) {
+            html = html +       populationRange;
+            } else {
+            html = html +       "100";
+            }
+        html = html + "      </output></label>%";
         html = html + "      ";
         html = html + "   </div>";
                
@@ -200,7 +211,7 @@ public class Page5 implements Handler {
         html = html + "<div class='colTable'>";
         // html = html + "<h1>Overview</h1><hr class='in'>";
 
-        if (outcomeDrop == null || outcomeDrop.equals("none")) {
+        if (outcomeDrop == null || outcomeDrop.equals("none") || populationDrop.equals("none")) {
             html = html + "<h1>Investigate the Data</h1><hr class='in'><h2>Awaiting Selection: Please select table data options on the left</h2>";
         } else {
             int outcomeSelect = Integer.parseInt(outcomeDrop.substring(outcomeDrop.length()-1));
@@ -243,7 +254,7 @@ public class Page5 implements Handler {
         //ArrayList<level2tableRow> tableData = jdbc.testQuery();
 
         // Output into a table
-        if (outcomeDrop == null) {
+        if (outcomeDrop == null || outcomeDrop.equals("none") || populationDrop.equals("none")) {
             html = html + "";
         } else {
            
