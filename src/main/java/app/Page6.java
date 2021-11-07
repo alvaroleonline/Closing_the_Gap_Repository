@@ -68,8 +68,8 @@ public class Page6 implements Handler {
 
         // 1st DIV - Default Content Div
         html = html + "<div class='content-title'>";
-        html = html + "<h1>Compare LGAs' Attributes using GapScore </h1>";
-        html = html + "<hr class='white'>" + "<p>Compare the GapScore across Local Governments Areas using various measures including population, population density, and geographic area.</p>";
+        html = html + "<h1>Compare LGAs' Attributes & Gap Score </h1>";
+        html = html + "<hr class='white'>" + "<p>Compare the Gap Score across Local Governments Areas using various measures including population, population density, and geographic distance.</p>";
         html = html + "</div>";
 
         // 2nd DIV - Chart and Table
@@ -96,17 +96,17 @@ public class Page6 implements Handler {
 
         //Col1 - Chart options
         html = html + "<div class='col1'>";
-        html = html + "<h1>Define GapScore and Choose LGA Comparison</h1><hr class='in'>";
+        html = html + "<h1>Customise Chart</h1><hr class='in'>";
         
         html = html + "<form action='/page6.html' method='post'>";
 
         html = html + "   <div class='form-group'>";
-        html = html + "   <p class='displayTag'><label for ='lgaDrop'>Select LGA for comparison:</label></p>";
+        html = html + "   <h2 class='displayTag'><label for ='lgaDrop'>Select LGA for comparison:</label></h2>";
         html = html + "      <select id='lgaDrop' name='lgaDrop'>";
         html = html +           createDropOption("none", "", lgaDrop);
         html = html +           createDropOption("none", " --- Select by GapScore --- ", lgaDrop);
-        html = html +           createDropOption("outcomeBest", "LGA with Best GapScore", lgaDrop);
-        html = html +           createDropOption("outcomeWorst", "LGA with Worst GapScore", lgaDrop);
+        html = html +           createDropOption("outcomeBest", "LGA with Best Gap Score", lgaDrop);
+        html = html +           createDropOption("outcomeWorst", "LGA with Worst Gap Score", lgaDrop);
         html = html +           createDropOption("none", " --- Select by LGA Name --- ", lgaDrop);
         JDBCConnection jdbc = new JDBCConnection();
         ArrayList<String> lgaNames = jdbc.getLGAs();
@@ -117,23 +117,23 @@ public class Page6 implements Handler {
         html = html + "   </div>";
 
         html = html + "   <div class='form-notdrop'>";
-        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcome(s) to generate GapScore:</label></p>";
+        html = html + "   <h2 class='displayTag'><label for='outcomeSelect'>Select Outcome(s) for Gap Score:</label></h2>";
         html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
         html = html +           createCheckbox("outcome8", "gapScore8", "Outcome 8 - Employment", outcomeSelect);
         html = html + "   </div>";
 
-        html = html + "   <p class='displayTag'>Compare to LGAs similar by:</p>";
+        html = html + "   <h2 class='displayTag'>Compare to LGAs similar by:</h2>";
         html = html + "   <div class='form-radio'>";
-        html = html +           createRadioBtn("score", "gapScore", "GapScore", comparisonRadio, true);
+        html = html +           createRadioBtn("score", "gapScore", "Gap Score", comparisonRadio, true);
         html = html +           createRadioBtn("population", "lgaPopulation", "Total Population", comparisonRadio, false);
         html = html +           createRadioBtn("density", "populationDensity", "Population Density", comparisonRadio, false);
         html = html +           createRadioBtn("proportionIndigenous", "proportionIndigenous", "Proportion who are Indigenous", comparisonRadio, false);
         html = html +           createRadioBtn("distance", "distance", "Distance from selected LGA", comparisonRadio, false);
 
         html = html + "   </div>";
-        html = html + "   <p class='displayTag'><label for='distanceDrop'>Where distance is:</label></p>";
+        html = html + "   <p class='displayTag' style='margin-left: 10%'><label for='distanceDrop'>Where distance is:</label></p>";
         html = html + "   <div class='form-group'>";
         html = html + "      <select id='distanceDrop' name='distanceDrop'>";
         html = html +           createDropOption("50", "less than 50km", distanceDrop);
@@ -148,7 +148,6 @@ public class Page6 implements Handler {
         html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
-        
         html = html + "</div>";
 
         //Col - Table
@@ -161,8 +160,8 @@ public class Page6 implements Handler {
             String lgaText;
 
             if (comparisonRadio.equals("gapScore")){
-                comparisonText = "GapScore";
-                titleText = "GapScore";
+                comparisonText = "Gap Score";
+                titleText = "Gap Score";
             } else if (comparisonRadio.equals("lgaPopulation")) {
                 comparisonText = "total population";
                 titleText = "Population";
@@ -177,9 +176,9 @@ public class Page6 implements Handler {
             }
             
             if (lgaDrop.equals("outcomeBest")) {
-                lgaText = "the LGA with best GapScore for selected outcomes";
+                lgaText = "the LGA with best Gap Score for selected outcomes";
             } else if (lgaDrop.equals("outcomeWorst")){
-                lgaText = "the LGA with worst GapScore for selected outcomes";
+                lgaText = "the LGA with worst Gap Score for selected outcomes";
             } else {
                 lgaText = lgaDrop;
             }
@@ -190,7 +189,7 @@ public class Page6 implements Handler {
             } else {
                 html = html + "<hr class='in'><h3>Displaying up to 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h3>";
             }
-            html = html + "<p>GapScore is a rating of 0 to 100, where 100 indicates the Indigenous population have met or exceeded the national average for the non-Indigenous population in the selected Outcome(s).</p>";
+            html = html + "<p>Gap Score is a rating of 0 to 100, where 100 indicates the Indigenous population have met or exceeded the national average for the non-Indigenous population in the selected Outcome(s).</p>";
         }
         //Testing form submission results
         // html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
@@ -214,7 +213,7 @@ public class Page6 implements Handler {
             //start table
             html = html + "<table id='table_selectedLga' class='display'>";
             html = html + "<thead><tr>";
-            html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
+            html = html + "<th>LGA</th><th>Gap Score</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
             html = html + "</tr></thead>";
 
             html = html + "<tbody>";
@@ -244,7 +243,7 @@ public class Page6 implements Handler {
 
                 html = html + "<table id='table_id' class='display'>";
                 html = html + "<thead><tr>";
-                html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
+                html = html + "<th>LGA</th><th>Gap Score</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
                 html = html + "</tr></thead>";
 
                 html = html + "<tbody>";
@@ -278,7 +277,7 @@ public class Page6 implements Handler {
 
                 html = html + "<table id='table_id' class='display'>";
                 html = html + "<thead><tr>";
-                html = html + "<th>LGA</th><th>GapScore</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
+                html = html + "<th>LGA</th><th>Gap Score</th><th>Total Population</th><th>Population Density</th><th>Indigenous Proportion</th>";
                 html = html + "</tr></thead>";
 
                 html = html + "<tbody>";

@@ -942,7 +942,7 @@ public ArrayList<compareLGAdata> compareLGA (ArrayList<String> outcomeSelect, St
 
 
         //test query output
-        System.out.println(query2);
+        //System.out.println(query2);
 
         // Get Result
         ResultSet results2 = statement.executeQuery(query2);

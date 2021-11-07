@@ -143,7 +143,7 @@ public class Page5 implements Handler {
 
         //Col1 - Chart
         html = html + "<div class='col1'>";
-        html = html + "<h1>Custom Charts</h1><hr class='in'>";
+        html = html + "<h1>Customise Chart</h1><hr class='in'>";
         
         html = html + "<form action='/page5.html' method='post' oninput='x.value=parseInt(populationRange.value)'>";
         
@@ -321,12 +321,12 @@ public class Page5 implements Handler {
 
        //Col1 - Chart options
        html = html + "<div class='col1'>";
-       html = html + "<h1>Gap Score Chart</h1><hr class='in'>";
+       html = html + "<h1>Customise Gap Score Chart</h1><hr class='in'>";
        
        html = html + "<form action='/page5.html' method='post'>";
        
         html = html + "   <div class='form-notdrop'>";
-        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate Gap Score from:</label></br><br></p>";
+        html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate Gap Score:</label></br><br></p>";
         html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);

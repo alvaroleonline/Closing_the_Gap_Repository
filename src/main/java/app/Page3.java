@@ -87,7 +87,7 @@ public class Page3 implements Handler {
 
         //Col1 - Chart options
         html = html + "<div class='col1'>";
-        html = html + "<h1>Custom Charts</h1><hr class='in'>";
+        html = html + "<h1>Customise Chart</h1><hr class='in'>";
         html = html + "<form action='/page3.html' method='post'>";
         
         html = html + "   <div class='form-group'>";
