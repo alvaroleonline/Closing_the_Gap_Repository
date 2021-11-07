@@ -53,8 +53,8 @@ public class Page6 implements Handler {
         html = html + "<div class='subnav-content'>";
         html = html + "<a href='page3.html'>Data by LGA</a>";
         html = html + "<a href='page4.html'>Data by State</a>";
-        html = html + "<a href='page5.html'>The Gap</a>";
-        html = html + "<a href='page6.html'>Similar Attributes</a>";
+        html = html + "<a href='page5.html'>Measuring the Gap</a>";
+        html = html + "<a href='page6.html'>Compare LGAs</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
         // CLOSES HEADER
@@ -102,7 +102,7 @@ public class Page6 implements Handler {
         
         html = html + "   <div class='form-notdrop'>";
         html = html + "   <p class='displayTag'><label for='outcomeSelect'>Select Outcomes to generate GapScore from:</label></p>";
-        html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Life Expectancy", outcomeSelect);
+        html = html +           createCheckbox("outcome1", "gapScore1", "Outcome 1 - Long & Healthy Lives", outcomeSelect);
         html = html +           createCheckbox("outcome5", "gapScore5", "Outcome 5 - School Completion", outcomeSelect);
         html = html +           createCheckbox("outcome6", "gapScore6", "Outcome 6 - Tertiary Education", outcomeSelect);
         html = html +           createCheckbox("outcome8", "gapScore8", "Outcome 8 - Employment", outcomeSelect);
@@ -307,33 +307,20 @@ public class Page6 implements Handler {
         html = html + "   <h2>Explore the data in different ways</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
         html = html + "      <a href='page3.html'>Data by LGA</a>";
-        //html = html + "      <a href='page4.html'>Data by State</a>";
         html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page5.html'>The Gap</a>";
+        html = html + "      <a href='page5.html'>Measuring the Gap</a>";
+        // html = html + "      <a href='page6.html'>Compare LGAs</a>";
         html = html + "   </div>";
         html = html + "</div>";
         html = html + "</div>";
 
-        
 
         //CLOSES CONTENT
         html = html + "</div>";
         html = html + "</div>";
 
-
-
         //FOOTER
         //Closes Footer
-        
-
-
-        // Add some JS (external file)
-        
-        // html = html + "<script type='text/javascript' src='https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js'></script>";
-        
-
-
-
 
         // Finish the HTML webpage
         html = html + "</body>" + "</html>";

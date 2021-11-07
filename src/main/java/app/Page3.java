@@ -57,8 +57,8 @@ public class Page3 implements Handler {
         html = html + "<div class='subnav-content'>";
         html = html + "<a href='page3.html'>Data by LGA</a>";
         html = html + "<a href='page4.html'>Data by State</a>";
-        html = html + "<a href='page5.html'>The Gap</a>";
-        html = html + "<a href='page6.html'>Similar Attributes</a>";
+        html = html + "<a href='page5.html'>Measuring the Gap</a>";
+        html = html + "<a href='page6.html'>Compare LGAs</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
         // CLOSES HEADER
@@ -96,7 +96,7 @@ public class Page3 implements Handler {
         html = html +           createDropOption("outcome1", "Outcome 1 - Long & Healthy Lives", outcomeDrop);
         html = html +           createDropOption("outcome5", "Outcome 5 - School Completion", outcomeDrop);
         html = html +           createDropOption("outcome6", "Outcome 6 - Tertiary Education", outcomeDrop);
-        html = html +           createDropOption("outcome8", "Outcome 8 - Economic Participation", outcomeDrop);
+        html = html +           createDropOption("outcome8", "Outcome 8 - Employment", outcomeDrop);
         html = html + "      </select>";
 
         html = html + "   </div>";
@@ -136,13 +136,13 @@ public class Page3 implements Handler {
                     html = html + "<h1>Outcome 1: Long and Healthy Lives</h1><hr class='in'><h2>" + populationDrop + " population aged over 65";
                     break;
                 case 5:
-                    html = html + "<h1>Outcome 5: Secondary Education</h1><hr class='in'><h2>" + populationDrop + " population who have completed Year 12";
+                    html = html + "<h1>Outcome 5: School Completion</h1><hr class='in'><h2>" + populationDrop + " population who have completed Year 12";
                     break;
                 case 6:
                     html = html + "<h1>Outcome 6: Tertiary Education</h1><hr class='in'><h2>" + populationDrop + " population who have completed a tertiary qualification of Advanced Diploma or higher";
                     break;
                 case 8:
-                    html = html + "<h1>Outcome 8: Economic Participation</h1><hr class='in'><h2>" + populationDrop + " population who are employed";
+                    html = html + "<h1>Outcome 8: Employment</h1><hr class='in'><h2>" + populationDrop + " population who are employed";
                     break;
             }
 
@@ -226,10 +226,10 @@ public class Page3 implements Handler {
         html = html + "<div class='colTable'>";
         html = html + "   <h2>Explore the data in different ways</h2><hr class='in'>";
         html = html + "   <div class='chart-switch'>";
+        //html = html + "      <a href='page3.html'>Data by LGA</a>";
         html = html + "      <a href='page4.html'>Data by State</a>";
-        //html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page5.html'>The Gap</a>";
-        html = html + "      <a href='page6.html'>Similar Attributes</a>";
+        html = html + "      <a href='page5.html'>Measuring the Gap</a>";
+        html = html + "      <a href='page6.html'>Compare LGAs</a>";
         html = html + "   </div>";
         html = html + "</div>";
         html = html + "</div>";

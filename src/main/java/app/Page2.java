@@ -46,8 +46,8 @@ public class Page2 implements Handler {
         html = html + "<div class='subnav-content'>";
         html = html + "<a href='page3.html'>Data by LGA</a>";
         html = html + "<a href='page4.html'>Data by State</a>";
-        html = html + "<a href='page5.html'>The Gap</a>";
-        html = html + "<a href='page6.html'>Similar Attributes</a>";
+        html = html + "<a href='page5.html'>Measuring the Gap</a>";
+        html = html + "<a href='page6.html'>Compare LGAs</a>";
         html = html + "</div></div>";
         html = html + "<a href='resources.html'>Resources</a></div>";
 
@@ -108,8 +108,8 @@ public class Page2 implements Handler {
         html = html + "   <div class='chart-switch-mission'>";
         html = html + "      <a href='page3.html'>Data by LGA</a>";
         html = html + "      <a href='page4.html'>Data by State</a>";
-        html = html + "      <a href='page5.html'>The Gap</a>";
-        html = html + "      <a href='page6.html'>Similar Attributes</a>";
+        html = html + "      <a href='page5.html'>Measuring the Gap</a>";
+        html = html + "      <a href='page6.html'>Compare LGAs</a>";
         html = html + "   </div>";
         html = html + "</div>";
 
