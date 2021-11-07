@@ -184,7 +184,7 @@ public class Index implements Handler {
 
 
         //col1
-        html = html + "<div class='colimg'>";
+        html = html + "<div class='colimg' title='Photo by Photoholgic on Unsplash <https://unsplash.com>'>";
         // html = html + "<img src='cover_image.jpg' class='img-cover'></img>";
         html = html + "</div>";
 
