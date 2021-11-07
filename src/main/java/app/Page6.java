@@ -143,7 +143,7 @@ public class Page6 implements Handler {
         html = html + "      </select>";
         html = html + "   </div>";
 
-        html = html + "   <button type='submit' class='btn btn-primary'>Generate Table Data</button>";
+        html = html + "   <button type='submit' class='btn btn-primary'>Update Chart</button>";
 
         html = html + "</form>";
         
