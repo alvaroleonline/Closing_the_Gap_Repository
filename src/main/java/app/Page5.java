@@ -15,6 +15,11 @@ import io.javalin.http.Handler;
  *
  * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
+ * 
+ *  This site uses DataTables available under the MIT license.
+ *  Copyright (C) 2008-2021, SpryMedia Ltd.
+ *  This site uses Chart.js available under the MIT license .
+ *  Ccopyright © 2014-2021 Chart.js contributors.
  */
 public class Page5 implements Handler {
 
@@ -78,13 +83,9 @@ public class Page5 implements Handler {
         html = html + "</div>";
 
 
-        // 1st DIV -  Content Div Graph
+        // 1st DIV -  Content Div 
         html = html + "<div class='content-box'>";
-        html = html + "<h2 id='graph'>National percentage of Indigenous and Non-Indigenous Australians in each socieconomic outcome</h2>";
         
-        // Graph
-        
-        html = html + "<canvas id='myChart'></canvas>";
         // Outcome 1 
         double outcome1I = jdbc.getOutcome1I("Indigenous");
         double outcome1NonI = jdbc.getOutcome1NonI("Non-Indigenous");
@@ -101,29 +102,33 @@ public class Page5 implements Handler {
         double outcome8I = jdbc.getOutcome8I("Indigenous");
         double outcome8NonI = jdbc.getOutcome8NonI("Non-Indigenous");
 
-         
+
+        html = html + "<h1>Key Statistics</h1><hr class='in'>";
+        html = html + "<ul id='keystats'>";
+        html = html + "<li><p>Outcome 1 measures Long and Healthy lives. Just " + String.format("%.1f", outcome1I) + "% of the Indigenous population of Australia is aged 65 and over. This is compared to " + String.format("%.1f", outcome1NonI) + "% of the Non-Indigenous population in the same age bracket. This results in an " + String.format("%.1f", outcome1NonI - outcome1I) + "% Gap difference for Indigenous people to reach the Non-Indigenous national average.</p></li><br>";
+        html = html + "<li><p>Outcome 5 focuses on School Completion by measuring the population aged 15 and over who have completed year 12. The biggest Gap difference between Non-Indigenous and Indigenous can be found in this outcome; displaying a " + String.format("%.1f", outcome5NonI - outcome5I) + "% difference.</p></li><br>";
+        html = html + "<li><p>Outcome 6 measures Tertiary Education. " + String.format("%.1f", outcome6I) + "% of Indigenous people aged 15 and over have completed an Advanced Diploma or higher education; this is 1/3 of the Non-Indigenous population who have done the same at a National level (" + String.format("%.0f", outcome6NonI) + "%).</p></li><br>";
+        html = html + "<li><p>Outcome 8 measures Employment. " + String.format("%.1f", outcome8I) + "% of the Indigenous population aged 15 and over are in the labour force and employed. This compares to " + String.format("%.0f", outcome8NonI) + "% of the non-Indigenous population in the same range; indicating that Indigenous people are " + String.format("%.1f", outcome8NonI - outcome8I) + "% away from gaining equality.</p><br></li>";
+        html = html + "</ul>"; 
+
+
+        html = html + "<h2 id='graph'>National percentage of Indigenous and Non-Indigenous Australians in each socieconomic outcome</h2>";
+        // Graph
+        html = html + "<canvas id='myChart'></canvas><br>";
         // Script 
         html = html + "<script>const labels = ['Outcome 1', 'Outcome 5', 'Outcome 6', 'Outcome 8',];";
         html = html + "const data = {labels: labels, datasets: [";
         html = html + "{label: 'Indigenous', backgroundColor: 'rgb(255,118,0)', borderColor: 'rgb(255,118,0)', data: [" + String.format("%.1f", outcome1I) + "," + String.format("%.1f", outcome5I) + "," + String.format("%.1f", outcome6I) + "," + String.format("%.1f", outcome8I) + ",]},";
         html = html + "{label: 'Non-Indigenous', backgroundColor: 'rgb(26,35,126)', borderColor: 'rgb(26,35,126)', data: [" + String.format("%.1f", outcome1NonI) + "," + String.format("%.1f", outcome5NonI) + "," + String.format("%.1f", outcome6NonI) + "," + String.format("%.1f", outcome8NonI) + ",]},";
         html = html + "]};";
-        html = html + "const config = {type: 'bar', data: data, options: {responsive: true, interaction: {mode: 'index',intersect: false,}, plugins: {legend: {labels: {font: {size: 12}}, align: 'end', position: 'bottom'}, tooltip: {bodyFont: {size: 15}},}}};";
+        html = html + "const config = {type: 'bar', data: data, options: {responsive: true, interaction: {mode: 'index',intersect: false,}, plugins: {legend: {labels: {font: {size: 12}, padding: 30}, align: 'center', position: 'bottom'}, tooltip: {bodyFont: {size: 15}},}}};";
         html = html + "const myChart = new Chart(document.getElementById('myChart'), config);";
         html = html + "</script>";
         // Graph Closed
         html = html + "<p class='percent'>%</p>";
 
-        html = html + "<hr class='in'>" + "<h1 id='subtitle''>Key Statistics</h1>";
-        html = html + "<ul id='keystats'>";
-        html = html + "<li><p>Outcome 1 measures Long and Healthy lives. Just " + String.format("%.1f", outcome1I) + "% of the Indigenous population of Australia is aged 65 and over. This is compared to " + String.format("%.1f", outcome1NonI) + "% of the Non-Indigenous population in the same age bracket. This results in an " + String.format("%.1f", outcome1NonI - outcome1I) + "% Gap difference for Indigenous people to reach the Non-Indigenous national average.</p></li><br>";
-        html = html + "<li><p>Outcome 5 focuses on School Completion by measuring the population aged 15 and over who have completed year 12. The biggest Gap difference between Non-Indigenous and Indigenous can be found in this outcome; displaying a " + String.format("%.1f", outcome5NonI - outcome5I) + "% difference.</p></li><br>";
-        html = html + "<li><p>Outcome 6 measures Tertiary Education. " + String.format("%.1f", outcome6I) + "% of Indigenous people aged 15 and over have completed an Advanced Diploma or higher education; this is 1/3 of the Non-Indigenous population who have done the same at a National level (" + String.format("%.0f", outcome6NonI) + "%).</p></li><br>";
-        html = html + "<li><p>Outcome 8 measures Employment. " + String.format("%.1f", outcome8I) + "% of the Indigenous population aged 15 and over are in the labour force and employed. This compares to " + String.format("%.0f", outcome8NonI) + "% of the non-Indigenous population in the same range; indicating that Indigenous people are " + String.format("%.1f", outcome8NonI - outcome8I) + "% away from gaining equality.</p></li>";
-        html = html + "</ul>";
         
-
-
+        
         // Closes 1st DIV
         html = html + "</div>";
 
@@ -266,9 +271,9 @@ public class Page5 implements Handler {
 
         html = html + "<thead><tr>";
         if (displayAsRadio.equals("Count")) {
-            html = html + "<th>LGA</th><th>State</th><th>Indigenous</th><th>Non-Indigenous</th><th>(%) Gap Difference</th>";
+            html = html + "<th>LGA</th><th>State</th><th>Indigenous</th><th>Non-Indigenous</th><th>(%) Gap Difference *</th>";
         } else {
-            html = html + "<th>LGA</th><th>State</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference*</th>";
+            html = html + "<th>LGA</th><th>State</th><th>(%) Indigenous</th><th>(%) Non-Indigenous</th><th>(%) Gap Difference *</th>";
         }
         html = html + "</tr></thead>";
 
@@ -308,7 +313,7 @@ public class Page5 implements Handler {
         html = html + "</tbody>";
         // Finish the table
         html = html + "</table>";
-        html = html + "<hr class='in'><p>*Gap Difference results indicate the gap between Non-Indigenous and Indigenous. Red values represent where Non-Indigenous percentages outnumber those of Indigenous, while green represent the opposite.</p>";
+        html = html + "<hr class='in'><p>* Gap Difference results indicate the gap between Non-Indigenous and Indigenous. Red values represent where Non-Indigenous percentages outnumber those of Indigenous, while green represent the opposite.</p>";
         }
         html = html + "</div>";
 
@@ -386,20 +391,29 @@ public class Page5 implements Handler {
        //testQuery
        // JDBCConnection jdbc = new JDBCConnection();
        // ArrayList<level2tableRow> tableData = jdbc.testQuery();
+       
+       if (outcomeSelect.size() == 0) {
+          html = html + "<h2>Awaiting Selection: Generate the Gap Score selecting the outcomes on the left</h2>";
+     } else if (outcomeSelect.size() == 1){
+          html = html + "<h2>Gap Score calculated based on the the selected Outcome.</h2><hr class='in'>";
+     } else {
+        // Descriptive Information
+          html = html + "<h2>Gap Score calculated based on the the selected Outcomes.</h2><hr class='in'>";
+    }
 
        //Output into a table
        if (outcomeSelect.size() == 0) {
-           html = html + "<h2>Awaiting Selection: Generate the Gap Score selecting the outcomes on the left</h2>";
+           html = html + "";
        } else {
            // Descriptive Information
-           html = html + "<h2>Gap Score calculated based on the the selected Outcome(s).</h2>";
-           html = html + "<hr class='in'><p>*Gap Score is a rating of 0 to 100, where 100 indicates the Indigenous population have met or exceeded the national average for the Non-Indigenous population in the selected Outcome(s).</p>";
+           // html = html + "<h2>Gap Score calculated based on the the selected Outcomes.</h2><hr class='in'>";
+           
            //create and populate sourceLGA data from jdbc
            ArrayList<compareLGAdata> tableData = jdbc.sourceOutcome(outcomeSelect);
            //start table
            html = html + "<table id='table_id' class='display'>";
            html = html + "<thead><tr>";
-           html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score*</th>";
+           html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score *</th>";
            html = html + "</tr></thead>";
 
            html = html + "<tbody>";
@@ -416,6 +430,7 @@ public class Page5 implements Handler {
            // Finish the table
            html = html + "</tbody>";
            html = html + "</table>";
+           html = html + "<hr class='in'><p>* Gap Score is a rating of 0 to 100, where 100 indicates the Indigenous population have met or exceeded the national average for the Non-Indigenous population in the selected Outcome(s).</p>";
        }
        html = html + "</div>";
 
@@ -469,7 +484,7 @@ public class Page5 implements Handler {
     }
 
     public String createRadioBtn(String id, String value, String label, String lastSubmission, boolean firstBtn) {
-        String radio = "<input type='radio' class='radiobtn' id='" + id + "' name='displayAsRadio' value='" + value + "' ";
+        String radio = "<label class='radiocontainer'><input type='radio' class='radiobtn' id='" + id + "' name='displayAsRadio' value='" + value + "' ";
         
         if (firstBtn) {
             if (lastSubmission == null || lastSubmission.equals(value)) {
@@ -480,7 +495,7 @@ public class Page5 implements Handler {
                 radio = radio + "checked ='checked' ";
             }
         }
-        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label>";
+        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label><span class='checkmark'></span></label>";
 
         return radio;
     }

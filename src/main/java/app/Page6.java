@@ -15,6 +15,11 @@ import io.javalin.http.Handler;
  *
  * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
+ * 
+ *  This site uses DataTables available under the MIT license.
+ *  Copyright (C) 2008-2021, SpryMedia Ltd.
+ *  This site uses Chart.js available under the MIT license .
+ *  Ccopyright © 2014-2021 Chart.js contributors.
  */
 public class Page6 implements Handler {
 
@@ -189,7 +194,9 @@ public class Page6 implements Handler {
             } else {
                 html = html + "<hr class='in'><h2>Displaying up to 10 LGAs that have the closest " + comparisonText + ", compared to " + lgaText + ".</h2>";
             }
-            html = html + "<hr class='in'><p>*Gap Score is a rating of 0 to 100, where 100 indicates the Indigenous population have met or exceeded the national average for the Non-Indigenous population in the selected Outcome(s).</p>";
+            // html = html + "<hr class='in'>";
+            html = html + "<hr class='in'><p>* Gap Score is a rating of 0 to 100, where 100 indicates the Indigenous population have met or exceeded the national average for the Non-Indigenous population in the selected Outcome(s).</p>";
+            
         }
         //Testing form submission results
         // html = html + "<p>OutcomeSelect - Size = " + outcomeSelect.size() + " Contents = ";
@@ -213,7 +220,7 @@ public class Page6 implements Handler {
             //start table
             html = html + "<table id='table_selectedLga' class='display'>";
             html = html + "<thead><tr>";
-            html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score*</th>";
+            html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score *</th>";
             html = html + "</tr></thead>";
 
             html = html + "<tbody>";
@@ -243,7 +250,7 @@ public class Page6 implements Handler {
 
                 html = html + "<table id='table_id' class='display'>";
                 html = html + "<thead><tr>";
-                html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score</th>";
+                html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score *</th>";
                 html = html + "</tr></thead>";
 
                 html = html + "<tbody>";
@@ -270,6 +277,7 @@ public class Page6 implements Handler {
                 // Finish the table
                 html = html + "</tbody>";
                 html = html + "</table>";
+                
             
             } else { 
                 //for all other comparisons
@@ -277,7 +285,7 @@ public class Page6 implements Handler {
 
                 html = html + "<table id='table_id' class='display'>";
                 html = html + "<thead><tr>";
-                html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score</th>";
+                html = html + "<th>LGA</th><th>Total Population</th><th>Population/ km<sup>2</sup></th><th>(%) Indigenous Proportion</th><th>(%) Gap Score *</th>";
                 html = html + "</tr></thead>";
 
                 html = html + "<tbody>";
@@ -295,6 +303,7 @@ public class Page6 implements Handler {
                 // Finish the table
                 html = html + "</tbody>";
                 html = html + "</table>";
+                
             }
         }
         html = html + "</div>";
@@ -344,7 +353,7 @@ public class Page6 implements Handler {
     }
 
     public String createRadioBtn(String id, String value, String label, String lastSubmission, boolean firstBtn) {
-        String radio = "<input type='radio' class='radiobtn' id='" + id + "' name='comparisonRadio' value='" + value + "' ";
+        String radio = "<label class='radiocontainer'><input type='radio' class='radiobtn' id='" + id + "' name='comparisonRadio' value='" + value + "' ";
         
         //if the radio button is to be selected on page first load, firstBtn needs to be set to true
         if (firstBtn) {
@@ -356,7 +365,7 @@ public class Page6 implements Handler {
                 radio = radio + "checked ='checked' ";
             }
         }
-        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label>";
+        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label><span class='checkmark'></span></label>";
 
         return radio;
     }

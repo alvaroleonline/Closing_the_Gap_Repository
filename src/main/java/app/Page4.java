@@ -15,6 +15,11 @@ import io.javalin.http.Handler;
  *
  * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
+ * 
+ *  This site uses DataTables available under the MIT license.
+ *  Copyright (C) 2008-2021, SpryMedia Ltd.
+ *  This site uses Chart.js available under the MIT license .
+ *  Ccopyright © 2014-2021 Chart.js contributors.
  */
 public class Page4 implements Handler {
 
@@ -249,7 +254,7 @@ public class Page4 implements Handler {
     }
 
     public String createRadioBtn(String id, String value, String label, String lastSubmission, boolean firstBtn) {
-        String radio = "<input type='radio' class='radiobtn' id='" + id + "' name='displayAsRadio' value='" + value + "' ";
+        String radio = "<label class='radiocontainer'><input type='radio' class='radiobtn' id='" + id + "' name='displayAsRadio' value='" + value + "' ";
         
         if (firstBtn) {
             if (lastSubmission == null || lastSubmission.equals(value)) {
@@ -260,7 +265,7 @@ public class Page4 implements Handler {
                 radio = radio + "checked ='checked' ";
             }
         }
-        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label>";
+        radio = radio + "><label class ='radiolabel' for='" + id + "'>" + label + "</label><span class='checkmark'></span></label>";
 
         return radio;
     }

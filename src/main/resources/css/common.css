@@ -167,9 +167,8 @@ b#blue900{
 h2#graph{
 	text-align: left;
 	line-height: 1.5;
-	font-size: var(--h2);
-	margin-bottom: 20px;
-	margin-right: 10px;
+	font-size: 0.9rem;
+	margin: 40px 20px 20px 0px;
 }
 
 h1#subtitle{
@@ -182,7 +181,7 @@ p.percent{
 	font-size: 0.7rem;
 	position: relative;
 	padding-left: 10px;
-	margin-top: -50px;
+	margin-top: -85px;
 	margin-bottom: 50px;
 	padding-bottom: 0px;
 	border-bottom: 0px solid var(--gray-400);
@@ -194,8 +193,9 @@ ul#keystats>li{
 	padding-left: 10px;
 }
 
-ul{
-	padding-inline-start: 27px;
+ul#keystats{
+	padding-inline-start: 20px;
+	margin-bottom: 0px;
 }
 
 /* CONTAINER */
@@ -897,7 +897,7 @@ a#missionlink:hover{
 	align-items: center;
 }
 
-.radiobtn {
+/*.radiobtn {
 	cursor: pointer;
 	width: 12px;
 	height: 12px;
@@ -907,12 +907,12 @@ a#missionlink:hover{
 	background-color: #304FFE;
 	color: var(--blue);
 	border: 1px solid black;
-}
+}*/
 
 .radiolabel {
 	margin-bottom: 9px;
 	cursor: pointer;
-	padding: 5px 4px 5px 9px;
+	padding: 4px 4px 4px 35px;
 	width: auto;
 	border-radius: 25px;
 	color: var(--black);
@@ -927,6 +927,75 @@ a#missionlink:hover{
 	color: var(--black);
 	background-color: var(--clear);
 	border: 1px solid var(--gray-400);
+}
+
+
+.radiocontainer {
+	display: block;
+	position: relative;
+	padding-left: 0px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+  
+/* Hide the browser's default radio button */
+.radiocontainer input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+  
+/* Create a custom radio button */
+/* .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color:var(--white);
+	border-radius: 50%;
+} */
+
+
+.radiocontainer input ~ .checkmark {
+	margin: 1px;
+}
+
+/* On mouse-over, add a grey background color */
+.radiocontainer:hover input ~ .checkmark {
+	background-color: var(--gray-100);
+}
+  
+/* When the radio button is checked, add a blue background */
+.radiocontainer input:checked ~ .checkmark {
+	background-color: var(--blue);
+}
+  
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+  
+/* Show the indicator (dot/circle) when checked */
+.radiocontainer input:checked ~ .checkmark:after {
+	display: block;
+}
+  
+/* Style the indicator (dot/circle) */
+.radiocontainer .checkmark:after {
+	top: 4px;
+	left: 4px;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: white;
 }
 
 
@@ -1166,10 +1235,16 @@ input[type=range]:focus::-ms-fill-upper {
 	user-select: none;
 	color: var(--black);
 	background-color: var(--gray-100);
-	padding: 5px 5px 5px 35px;
+	border: 1px solid var(--gray-100);
+	padding: 4px 4px 4px 35px;
 	border-radius: 25px;
 }
-  
+
+.checkboxContainer:hover {
+	background-color: var(--white);
+	border: 1px solid var(--gray-400);
+}
+
 /* Hide the browser's default checkbox */
 .checkboxContainer input {
 	position: absolute;
@@ -1182,8 +1257,8 @@ input[type=range]:focus::-ms-fill-upper {
 /* Create a custom checkbox */
 .checkmark {
 	position: absolute;
-	top: 4px;
-	left: 5px;
+	top: 3px;
+	left: 4px;
 	height: 17px;
 	width: 17px;
 	background-color: var(--white);
@@ -1194,8 +1269,8 @@ input[type=range]:focus::-ms-fill-upper {
   
 /* On mouse-over, add a grey background color */
 .checkboxContainer:hover input ~ .checkmark {
-	background-color: var(--white);
-	border: 1px solid var(--gray-500);
+	background-color: var(--gray-100);
+	border: 1px solid var(--gray-400);
 }
   
 /* When the checkbox is checked, add a blue background */
@@ -1330,7 +1405,16 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 }
 
 
+.dataTables_wrapper#table_selectedLga_wrapper {
+	margin-top: 30px;
+	margin-bottom: 10px;
+	position: relative;
+	clear: both;
+}
 
+table#table_selectedLga.dataTable.stripe tbody tr.odd, table#table_selectedLga.dataTable.display tbody tr.odd {
+	background-color: var(--gray-100-clear);
+}
 
 
 
